@@ -1,0 +1,51 @@
+[user]
+	email = nicolas.lamirault@gmail.com
+	name = Nicolas Lamirault
+	signingkey = 0x5F99269A6FCA437C
+
+[color]
+    ui = true
+    diff = auto
+    status = auto
+    branch = auto
+
+[alias]
+        lgtree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+        lg = log --graph --format='%Cred%h%Creset %ad %C(bold cyan)%an%Creset - %s - %C(yellow)%d%Creset' --date=short --abbrev-commit
+        lga = log --format='%Cred%h%Creset %ad %C(bold cyan)%an%Creset - %s%C(yellow)%d%Creset' --graph --date=short --abbrev-commit --all
+        #lgme = log --since yesterday --oneline --author 'Nicolas Lamirault'
+        lgme = log --oneline --author 'Your User'
+        ucommits = shortlog -sn
+        contributors = shortlog --summary --numbered
+
+        cancel = reset --hard
+        undo = revert HEAD
+        diffstat = diff --stat -r
+        whatsnew = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+
+        difforigin = diff origin/master..master
+
+[giggle]
+    main-window-maximized = false
+	main-window-geometry = 1262x772+1861+210
+	history-view-vpane-position = 301
+	file-view-vpane-position = 346
+	main-window-view = HistoryView
+
+[core]
+	excludesfile = ~/.gitignore
+	attributesfile = ~/.gitattributes
+
+	autocrlf = input
+	safecrlf = true
+	quotepath = false
+
+[commit]
+	gpgsign = true
+
+[merge]
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
+
+[push]
+	default = simple

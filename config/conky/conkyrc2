@@ -1,0 +1,136 @@
+# Utiliser sa propre fenetre ?
+own_window yes
+
+# Type de fenetre : normal, desktop, dock ou override
+own_window_type normal
+
+# Pseudo transparence (yes/no) et options: undecorated,below,above,sticky,skip_taskbar/pager
+own_window_transparent yes
+own_window_hints undecorated,below,skip_taskbar,skip_pager
+
+# Utiliser Xft (polices lissées etc)
+use_xft yes
+
+# Police a utiliser : use_xft doit etre a "yes"
+xftfont Comic sans MS:size=8
+xftalpha 0.8
+
+# Taux de raffraichissement de la fenetre (en secondes)
+update_interval 1
+
+# Nombres de rafraichissement avant fermeture : 0 pour infini
+total_run_times 0
+
+# Emplacement top_right ou tr, middle_right ou mr, bottom_right ou br. Donc: tl, tr, tm, bl, br, bm, ml, mr.
+alignment top_right
+
+# Largeur maximum
+maximum_width 400
+# Taille minimum de la fenetre, largeur puis hauteur
+minimum_size 400 600
+
+# Ecart avec le bord: x= gauche/droit y= haut/bas
+gap_x 8
+gap_y 20
+
+# Afficher les ombres?
+draw_shades no
+
+# Afficher des contours ?
+draw_outline no
+
+# Contours autour des blocs de texte?
+draw_borders no
+
+# Contours en trait-tillés, longueur d'un trait en pixels
+stippled_borders 8
+
+# Largeur des marges
+# border_margin 4
+
+# Largeur du contour
+border_width 1
+
+# Couleurs par defaut
+default_color grey
+default_shade_color black
+default_outline_color black
+# color1 184F14
+# color2 597E55
+# color3 469041
+color1 0080FF
+color2 2E9AFE
+color3 81BEF7
+
+# Pour eviter le clignotement
+double_buffer yes
+
+# Augmente la taille du buffer de 128k a 1024k
+#text_buffer_size 1024
+
+# Soustraire les mémoires tampons de la mémoire utiliser ?
+no_buffers yes
+
+# Tout le texte en majuscule ?
+uppercase no
+
+# Nombre d'echantillons a utiliser pour calculer la moyenne d'utilisation
+cpu_avg_samples 4
+net_avg_samples 4
+
+# Pour affichier les caracteres speciaux
+override_utf8_locale yes
+
+# Fonctionne uniquement avec la police Monospace, évite les chevauchements de textes
+use_spacer none
+
+TEXT
+
+${color1}${font StyleBats:size=12}F$font UTILISATION CPU${hr 3}
+${color3}${top name 1} $alignr${top pid 1} ${top cpu 1}
+${color3}${top name 2} $alignr${top pid 2} ${top cpu 2}
+${color3}${top name 3} $alignr${top pid 3} ${top cpu 3}
+${color3}${top name 4} $alignr${top pid 4} ${top cpu 4}
+${color3}${top name 5} $alignr${top pid 5} ${top cpu 5}
+
+${color1}${font StyleBats:size=12}E$font UTILISATION MEMOIRE${hr 3}
+${color3}${top_mem name 1} $alignr${top_mem pid 1} ${top_mem mem 1}
+${color3}${top_mem name 2} $alignr${top_mem pid 2} ${top_mem mem 2}
+${color3}${top_mem name 3} $alignr${top_mem pid 3} ${top_mem mem 3}
+${color3}${top_mem name 4} $alignr${top_mem pid 4} ${top_mem mem 4}
+${color3}${top_mem name 5} $alignr${top_mem pid 5} ${top_mem mem 5}
+
+${color1}${font StyleBats:size=12}Z$font PORTS${hr 3}
+${color2}Ouverts : $color${tcp_portmon 1 65535 count}$alignc${color2}Entrants : $color${tcp_portmon 1 32767 count} $alignr${color2}Sortants : $color${tcp_portmon 32768 61000 count}
+${tcp_portmon 1 65535 rhost 0} $alignr${tcp_portmon 1 65535 lservice 0}
+${tcp_portmon 1 65535 rhost 1} $alignr${tcp_portmon 1 65535 lservice 1}
+${tcp_portmon 1 65535 rhost 2} $alignr${tcp_portmon 1 65535 lservice 2}
+${tcp_portmon 1 65535 rhost 3} $alignr${tcp_portmon 1 65535 lservice 3}
+${tcp_portmon 1 65535 rhost 4} $alignr${tcp_portmon 1 65535 lservice 4}
+${tcp_portmon 1 65535 rhost 5} $alignr${tcp_portmon 1 65535 lservice 5}
+${tcp_portmon 1 65535 rhost 6} $alignr${tcp_portmon 1 65535 lservice 6}
+${tcp_portmon 1 65535 rhost 7} $alignr${tcp_portmon 1 65535 lservice 7}
+${tcp_portmon 1 65535 rhost 8} $alignr${tcp_portmon 1 65535 lservice 8}
+${tcp_portmon 1 65535 rhost 9} $alignr${tcp_portmon 1 65535 lservice 9}
+
+# ${color1}${font StyleBats:size=12}Q$font METEO${hr 3}
+# ${color2}Le temps à ${time %H}h : ${alignr}Direction du vent :
+# $color${font ConkyWeather:size=32}${offset 25}${execi 1800 conkyForecast --location=FRXX0114 --datatype=WF}${offset 260}${font ConkyWindNESW:size=40}${execi 1800 conkyForecast --location=FRXX0114 --datatype=BS}${font}
+
+# ${color2}Vitesse du vent : $color${execi 1800 conkyForecast --location=FRXX0114 --datatype=WS } ${color2}  ${alignr}Force : $color${execi 1800 conkyForecast --location=FRXX0114 --datatype=WS --beaufort -L fr}${font}
+# ${color2}T° max : $color${execi 1800 conkyForecast --location=FRXX0114 --datatype=HT } $alignr${color2}T° min : $color${execi 1800 conkyForecast --location=FRXX0114 --datatype=LT}
+# ${color2}Pression : $alignr$color${execi 1800 conkyForecast --location=FRXX0114 --datatype=BR  -L fr} - ${execi 1800 conkyForecast --location=FRXX0114 --datatype=BD -L fr}
+# ${color2}Risque de précipitation : $alignr$color${execi 1800 conkyForecast --location=FRXX0114 --datatype=PC --startday=0 -L fr}
+# ${color2}Observation : $alignr$color${execi 1800 conkyForecast --location=FRXX0114 --datatype=CT  -L fr}
+# ${color2}Indice UV : $alignr$color${execi 1800 conkyForecast --location=FRXX0114 --datatype=UI  -L fr} - ${execi 1800 conkyForecast --location=FRXX0114 --datatype=UT  -L fr}
+# ${color2}Point de rosée : $alignr$color${execi 1800 conkyForecast --location=FRXX0114 --datatype=DP  -L fr}
+# ${color2}Lune : $alignr$color${execi 1800 conkyForecast --location=FRXX0114 --datatype=MP --locale=fr}
+# ${color2}Ephemerides : $alignr$color${execi 1800 conkyForecast --location=FRXX0114 --datatype=SR  -L fr}${font} - ${execi 1800 conkyForecast --location=FRXX0114 --datatype=SS  -L fr}
+
+# ${color2}Les prévisions sur 4 jours :
+# $color${offset 30}${execi 1800 conkyForecast --config=~/.config/conky/conkyForecast.config --location=FRXX0016 --datatype=DW --startday=1 --shortweekday  -L fr}${offset 80}${execi 1800 conkyForecast --config=~/.config/conky/conkyForecast.config --location=FRXX0016 --datatype=DW --startday=2 --shortweekday  -L fr}${offset 75}${execi 1800 conkyForecast --config=~/.config/conky/conkyForecast.config --location=FRXX0016 --datatype=DW --startday=3 --shortweekday  -L fr}${offset 80}${execi 1800 conkyForecast --config=~/.config/conky/conkyForecast.config --location=FRXX0016 --datatype=DW --startday=4 --shortweekday  -L fr}
+# ${offset 30}${execi 1800 conkyForecast --config=~/.config/conky/conkyForecast.config --location=FRXX0016 --datatype=HT --startday=1 --hideunits --centeredwidth=3 --shortweekday  -L fr}/${execi 1800 conkyForecast --config=~/.config/conky/conkyForecast.config --location=FRXX0016 --datatype=LT --startday=1 --hideunits --centeredwidth=3  -L fr}${offset 65}${execi 1800 conkyForecast --config=~/.config/conky/conkyForecast.config --location=FRXX0016 --datatype=HT --startday=2 --hideunits --centeredwidth=3 --shortweekday  -L fr}/${execi 1800 conkyForecast --config=~/.config/conky/conkyForecast.config --location=FRXX0016 --datatype=LT --startday=2 --hideunits --centeredwidth=3  -L fr}${offset 60}${execi 1800 conkyForecast --config=~/.config/conky/conkyForecast.config --location=FRXX0016 --datatype=HT --startday=3 --hideunits --centeredwidth=3 --shortweekday  -L fr}/${execi 1800 conkyForecast --config=~/.config/conky/conkyForecast.config --location=FRXX0016 --datatype=LT --startday=3 --hideunits --centeredwidth=3  -L fr}${offset 60}${execi 1800 conkyForecast --config=~/.config/conky/conkyForecast.config --location=FRXX0016 --datatype=HT --startday=4 --hideunits --centeredwidth=3 --shortweekday  -L fr}/${execi 1800 conkyForecast --config=~/.config/conky/conkyForecast.config --location=FRXX0016 --datatype=LT --startday=4 --hideunits --centeredwidth=3  -L fr}
+# ${offset 25}${font ConkyWeather:size=32}${execi 1800 conkyForecast -L fr --config=~/.config/conky/conkyForecast.config --location=FRXX0016 --datatype=WF --startday=1 --endday=4 --spaces=5}${font}
+
+# ${color2}Station météo: $color${execi 1800 conkyForecast --config=~/.config/conky/conkyForecast.config --location=FRXX0016 --datatype=OB  -L fr}
+# ${color2}Dernière mise à jour: $color${execi 1800 conkyForecast --config=~/.config/conky/conkyForecast.config --location=FRXX0016 --datatype=LU}${font}

@@ -1,0 +1,147 @@
+# Utiliser sa propre fenetre ?
+own_window yes
+
+# Type de fenetre : normal, desktop, dock ou override
+own_window_type normal
+
+# Pseudo transparence (yes/no) et options: undecorated,below,above,sticky,skip_taskbar/pager
+own_window_transparent yes
+own_window_hints undecorated,below,skip_taskbar,skip_pager
+
+# Utiliser Xft (polices lissées etc)
+use_xft yes
+
+# Police a utiliser : use_xft doit etre a "yes"
+xftfont Comic sans MS:size=8
+xftalpha 0.8
+
+# Taux de raffraichissement de la fenetre (en secondes)
+update_interval 1
+
+# Nombres de rafraichissement avant fermeture : 0 pour infini
+total_run_times 0
+
+# Emplacement top_right ou tr, middle_right ou mr, bottom_right ou br. Donc: tl, tr, tm, bl, br, bm, ml, mr.
+alignment top_left
+
+# Largeur maximum
+maximum_width 400
+# Taille minimum de la fenetre, largeur puis hauteur
+minimum_size 400 1000
+
+# Ecart avec le bord: x= gauche/droit y= haut/bas
+gap_x 1
+gap_y 20
+
+# Afficher les ombres?
+draw_shades no
+
+# Afficher des contours ?
+draw_outline no
+
+# Contours autour des blocs de texte?
+draw_borders no
+
+# Contours en trait-tillés, longueur d'un trait en pixels
+stippled_borders 8
+
+# Largeur des marges
+# border_margin 4
+
+# Largeur du contour
+border_width 1
+
+# Couleurs par defaut
+default_color grey
+default_shade_color black
+default_outline_color black
+color1 0080FF
+color2 2E9AFE
+color3 81BEF7
+# color1 184F14
+# color2 597E55
+# color3 469041
+
+# Pour eviter le clignotement
+double_buffer yes
+
+# Augmente la taille du buffer de 128k a 1024k
+#text_buffer_size 1024
+
+# Soustraire les mémoires tampons de la mémoire utiliser ?
+no_buffers yes
+
+# Tout le texte en majuscule ?
+uppercase no
+
+# Nombre d'echantillons a utiliser pour calculer la moyenne d'utilisation
+cpu_avg_samples 4
+net_avg_samples 4
+
+# Pour affichier les caracteres speciaux
+override_utf8_locale yes
+
+# Fonctionne uniquement avec la police Monospace
+use_spacer none
+
+TEXT
+${color2}${font LCD:style=Bold:pixelsize=30}$alignc${time %H:%M:%S} - ${time %d/%m/%Y}$font$color
+
+${color1}${font StyleBats:size=12}2$font GENERAL${hr 3}
+${color2}$alignc$nodename - $sysname $kernel
+${color2}Uptime:$color $uptime $alignr${color2}Charge:$color $loadavg
+${color2}Threads : $color $processes $alignr${color2}En cours : $color $running_processes
+${color2}RAM :$color$mem/$memmax - $memperc% ${color3}${membar}
+${color2}Swap :$color$swap/$swapmax - $swapperc% ${color3}${swapbar}
+
+${color1}${font StyleBats:size=12}5$font CPU${hr 3}
+${color2}Core1 : $color${cpu cpu1}% ${color3}${cpubar cpu1}
+${color2}Core2 : $color${cpu cpu2}% ${color3}${cpubar cpu2}
+${color white}${cpugraph 143712 13B108}
+
+${color1}${font StyleBats:size=12}O$font Ethernet${hr 3}
+${color2}IP Locale : $color${addr eno1} $alignr${color2}IP Publique : $color${execi 1800
+~/.config/conky/ip.sh}
+${color2}IP Passerelle : $color$gw_ip $alignr${color2}Interface Passerelle : $color$gw_iface
+${color2}Download : ${color}${alignc}${totaldown eno1} $alignr${downspeed eno1} k/s
+${downspeedgraph eno1 143712 13B108 650}
+${color2}Upload : ${color}${alignc}${totalup eno1} $alignr${upspeed eno1} k/s
+${upspeedgraph eno1 143712 13B108 100}
+
+${color1}${font StyleBats:size=12}O$font Wifi${hr 3}
+${color2}IP Wifi : $color${addr wlp3s0} $alignr${color2}Accès : $color${wireless_essid wlp3s0}
+${color2}Force du signal : $color${wireless_link_qual_perc wlp3s0} $alignr${color2}Taux : $color${wireless_bitrate wlp3s0}
+${color2}Download : ${color}${alignc}${totaldown wlp3s0} $alignr${downspeed wlp3s0} k/s
+${downspeedgraph wlp3s0 143712 13B108 650}
+${color2}Upload : ${color}${alignc}${totalup wlp3s0} $alignr${upspeed wlp3s0} k/s
+${upspeedgraph wlp3s0 143712 13B108 100}
+
+${color1}${font StyleBats:size=12}X$font ESPACE DISQUE${hr 3}
+${color2}Root : $color${fs_free /}/${fs_size /} $alignr${fs_used_perc /}%
+${color3}${fs_bar /}
+${color2}Home : $color${fs_free /home}/${fs_size /home} $alignr${fs_used_perc /home}%
+${color3}${fs_bar /home}
+
+${color1}${font StyleBats:size=12}J$font ACCES DISQUE${hr 3}
+${color2}Lecture :$color${diskio_read} $alignr${color2}Ecriture :$color${diskio_write}
+${diskiograph_read 22,195 143712 13B108} ${alignr}${diskiograph_write 22,195 143712 13B108}
+
+# ${color1}${font StyleBats:size=12}3$font TEMPERATURES${hr 3}
+# ${color2}CPU : $alignr$color+${acpitemp}C
+# ${color2}M/B : $alignr$color${exec sensors | grep thermal | awk '{ print $2}'}
+# ${color2}Disque Dur : $alignr$color+${hddtemp /dev/sda}
+# ${color2}Ventilateurs : $alignr$color${exec sensors | grep fan1 | awk '{ print $2}'} RPM
+
+# ${color1}${font StyleBats:size=12}F$font UTILISATION CPU${hr 3}
+# ${color #085000}${top name 1} $alignr${top pid 1} ${top cpu 1}
+# ${color #086E00}${top name 2} $alignr${top pid 2} ${top cpu 2}
+# ${color #088C00}${top name 3} $alignr${top pid 3} ${top cpu 3}
+# ${color #08A000}${top name 4} $alignr${top pid 4} ${top cpu 4}
+# ${color #08B400}${top name 5} $alignr${top pid 5} ${top cpu 5}
+
+# ${color1}${font StyleBats:size=12}E$font UTILISATION MEMOIRE${hr 3}
+# ${color #085000}${top_mem name 1} $alignr${top_mem pid 1} ${top_mem mem 1}
+# ${color #086E00}${top_mem name 2} $alignr${top_mem pid 2} ${top_mem mem 2}
+# ${color #088C00}${top_mem name 3} $alignr${top_mem pid 3} ${top_mem mem 3}
+# ${color #08A000}${top_mem name 4} $alignr${top_mem pid 4} ${top_mem mem 4}
+# ${color #08B400}${top_mem name 5} $alignr${top_mem pid 5} ${top_mem mem 5}
