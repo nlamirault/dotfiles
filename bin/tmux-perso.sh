@@ -56,6 +56,8 @@ function tmux_lam {
     tmux send-keys -t $SESSION "cd $HOME/Perso/decks" C-m
     tmux new-window -n "Framboise"
     tmux send-keys -t $SESSION "cd $HOME/Perso/framboise" C-m
+    tmux new-window -n "Mert"
+    tmux send-keys -t $SESSION "cd $HOME/Perso/mert" C-m
 
 	tmux attach-session -t $SESSION
 }
