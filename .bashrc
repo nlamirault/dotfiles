@@ -37,6 +37,7 @@ export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 export RUST_SRC_PATH=$HOME/Apps/rust
 export PATH=$PATH:$RUST_SRC_PATH/usr/local/bin
 export PATH=$PATH:$HOME/Apps/racer/target/release
+export PATH=$PATH:$HOME/.cargo/bin/
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$RUST_SRC_PATH/usr/local/lib
 
 # Java
