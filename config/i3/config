@@ -56,13 +56,15 @@ bindsym $mod+d exec rofi -show run -bg "#000000" -fg "#ff5500" -hlbg "#000000" -
 
 # =======================================================
 # Requirements : tt-font-awesome
-set $tag1 "1: "
-set $tag2 "2: "
-set $tag3 "3: "
-set $tag4 "4: "
+set $tag1 "1: "
+set $tag2 "2: "
+set $tag3 "3: "
+set $tag4 "4::"
+set $tag5 "5: "
 set $tag6 "6: "
-set $tag7 "7: "
-set $tag8 "8: "
+set $tag7 "7: "
+set $tag8 "8: "
+
 # =======================================================
 
 # change focus
