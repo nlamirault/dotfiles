@@ -33,6 +33,7 @@
 	main-window-view = HistoryView
 
 [core]
+    editor = nvim
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
 
