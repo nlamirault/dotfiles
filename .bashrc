@@ -100,11 +100,16 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-PERSO_BASH="$HOME/etc/Perso/bash.d"
+PERSO_BASH="${HOME}/etc/Perso/bash.d"
 if [ -d "$PERSO_BASH" ]; then
-    for file in `ls $PERSO_BASH`
-    do
-        . $PERSO_BASH/$file
+    for file in $(ls ${PERSO_BASH}); do
+        echo ${file}
+        rc=${PERSO_BASH}/${file}
+        if [ -f "${rc}" ]; then
+            . $rc
+        else
+            echo "not found ${rc}"
+        fi
     done
 fi
 
