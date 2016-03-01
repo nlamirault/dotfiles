@@ -103,3 +103,10 @@ call plug#end()
 " let g:airline_right_sep = ' '
 " let g:airline_right_alt_sep = '|'
 " let g:airline_theme= 'molokai'
+
+
+" --------------- Theme ----------------------------------
+
+" set background=dark
+" colorscheme material-theme
+color dracula
