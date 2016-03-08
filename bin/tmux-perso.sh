@@ -70,10 +70,15 @@ function tmux_lam {
     tmux send-keys -t $SESSION "cd $HOME/Perso/sift.el" C-m
     tmux new-window -n "decks"
     tmux send-keys -t $SESSION "cd $HOME/Perso/decks" C-m
-    tmux new-window -n "Framboise"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/framboise" C-m
     tmux new-window -n "Mert"
     tmux send-keys -t $SESSION "cd ${GO_PRJ}/mert" C-m
+
+    tmux new-window -n "Framboise"
+    tmux send-keys -t $SESSION "cd $HOME/Perso/Zeiot/framboise" C-m
+    tmux new-window -n "Rasphome"
+    tmux send-keys -t $SESSION "cd $HOME/Perso/Zeiot/rasphome" C-m
+    tmux new-window -n "Arduino-examples"
+    tmux send-keys -t $SESSION "cd $HOME/Perso/Zeiot/arduino-examples" C-m
 
 	tmux attach-session -t $SESSION
 }
