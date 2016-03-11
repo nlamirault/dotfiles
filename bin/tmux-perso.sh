@@ -77,8 +77,8 @@ function tmux_lam {
 
     tmux new-window -n "Framboise"
     tmux send-keys -t $SESSION "cd $HOME/Perso/Zeiot/framboise" C-m
-    tmux new-window -n "Rasphome"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/Zeiot/rasphome" C-m
+    tmux new-window -n "Jarvis"
+    tmux send-keys -t $SESSION "cd $HOME/Perso/Zeiot/jarvis" C-m
     tmux new-window -n "Arduino-examples"
     tmux send-keys -t $SESSION "cd $HOME/Perso/Zeiot/arduino-examples" C-m
 
