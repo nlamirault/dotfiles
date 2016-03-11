@@ -24,6 +24,8 @@ function tmux_lam {
     tmux new-session -s $SESSION -n Lam -d
     tmux new-window -n "Config"
     tmux send-keys -t $SESSION "cd $HOME/Perso/dotfiles/" C-m
+    tmux new-window -n "Divona"
+    tmux send-keys -t $SESSION "cd $HOME/Perso/divona/" C-m
     tmux new-window -n "Scame"
     tmux send-keys -t $SESSION "cd $HOME/Perso/scame/" C-m
     tmux new-window -n "Vision"
