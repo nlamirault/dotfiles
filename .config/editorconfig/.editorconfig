@@ -56,8 +56,7 @@ tab_width = none
 ###########################################################
 ; Javascript, YAML
 ###########################################################
-[*.js,*.yml,*.yaml]
+[*.js,*.json,*.yml,*.yaml]
 indent_style = space
 indent_size = 2
-
 
