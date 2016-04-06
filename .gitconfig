@@ -1,7 +1,7 @@
 [user]
 	email = nicolas.lamirault@gmail.com
 	name = Nicolas Lamirault
-	signingkey = 0x5F99269A6FCA437C
+	signingkey = nicolas.lamirault@gmail.com
 
 [color]
     ui = true
