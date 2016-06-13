@@ -16,9 +16,8 @@
 PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/bin/X11:/usr/sbin:/usr/lib/postgresql/bin/:$HOME/bin:/usr/games/:/usr/lib/openoffice/program/
 export PATH
 
-EDITOR=/usr/bin/vim
-CVSEDITOR=/usr/bin/vim
-export EDITOR CVSEDITOR
+EDITOR=/usr/bin/neovim
+export EDITOR
 
 export COLUMNS=250
 
