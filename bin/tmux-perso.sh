@@ -72,6 +72,12 @@ function tmux_lam {
     tmux send-keys -t $SESSION "cd $HOME/Perso/bento" C-m
     tmux new-window -n "sift.el"
     tmux send-keys -t $SESSION "cd $HOME/Perso/sift.el" C-m
+    tmux new-window -n "opensource.el"
+    tmux send-keys -t $SESSION "cd $HOME/Perso/opensource.el" C-m
+    tmux new-window -n "emacs-markdownfmt"
+    tmux send-keys -t $SESSION "cd $HOME/Perso/emacs-markdownfmt" C-m
+    tmux new-window -n "Julius"
+    tmux send-keys -t $SESSION "cd $HOME/Perso/julius" C-m
     tmux new-window -n "decks"
     tmux send-keys -t $SESSION "cd $HOME/Perso/decks" C-m
     tmux new-window -n "Mert"
