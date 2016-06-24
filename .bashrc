@@ -38,6 +38,10 @@ export PATH=$PATH:$RUST_SRC_PATH/usr/local/bin
 export PATH=$PATH:$HOME/.cargo/bin/
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$RUST_SRC_PATH/usr/local/lib
 
+# Erlang
+export ERLANG_HOME=$HOME/Apps/otp_src_19.0
+export PATH=$PATH:$ERLANG_HOME/bin/
+
 # Java
 export JAVA_HOME=$APPS/jre1.7.0_67
 export PATH=$PATH:$JAVA_HOME/bin
