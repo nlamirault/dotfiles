@@ -54,6 +54,10 @@ export PATH=$PATH:$MAVEN_1_HOME/bin:$MAVEN_3_HOME/bin
 export ANT_HOME=$APPS/apache-ant-1.8.2
 export PATH=$PATH:$ANT_HOME/bin
 
+XDG_CACHE_HOME=${HOME}/.cache
+XDG_DATA_HOME=${HOME}/.share
+XDG_DATA_DIRS=${HOME}/.share
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
