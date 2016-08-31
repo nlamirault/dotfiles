@@ -82,9 +82,23 @@ function tmux_lam {
     tmux send-keys -t $SESSION "cd $HOME/Perso/decks" C-m
     tmux new-window -n "Mert"
     tmux send-keys -t $SESSION "cd ${GO_PRJ}/mert" C-m
-
     tmux new-window -n "Framboise"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/Zeiot/framboise" C-m
+    tmux send-keys -t $SESSION "cd $HOME/Perso/framboise" C-m
+    tmux new-window -n "kodi_exporter"
+    tmux send-keys -t $SESSION " cd ${GO_PRO}/kodi_exporter" C-m
+    tmux new-window -n "syno_exporter"
+    tmux send-keys -t $SESSION " cd ${GO_PRO}/syno_exporter" C-m
+    # Zeiot
+    tmux new-window -n "Jarvis"
+    tmux send-keys -t $SESSION "cd $HOME/Perso/Zeiot/jarvis" C-m
+    tmux new-window -n "Arduino-examples"
+    tmux send-keys -t $SESSION "cd $HOME/Perso/Zeiot/arduino-examples" C-m
+
+	tmux attach-session -t $SESSION
+}
+
+tmux_lam
+    # Zeiot
     tmux new-window -n "Jarvis"
     tmux send-keys -t $SESSION "cd $HOME/Perso/Zeiot/jarvis" C-m
     tmux new-window -n "Arduino-examples"
