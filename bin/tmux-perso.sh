@@ -15,96 +15,81 @@
 # limitations under the License.
 #
 
-GO_PRJ="$HOME/Apps/golang/src/github.com/nlamirault"
+GO_PRJ="$HOME/Apps/golang/src/github.com/"
 
-SESSION="lam"
+SESSION="perso"
 
-function tmux_lam {
+function tmux_perso {
     tmux start-server
     tmux new-session -s $SESSION -n Lam -d
     tmux new-window -n "Config"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/dotfiles/" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/dotfiles/" C-m
     tmux new-window -n "nlamirault"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/nlamirault.github.io/" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/nlamirault.github.io/" C-m
     tmux new-window -n "Divona"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/divona/" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/divona/" C-m
     tmux new-window -n "Scame"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/scame/" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/scame/" C-m
     tmux new-window -n "Vision"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/vision" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/vision" C-m
     tmux new-window -n "Blinky"
-    tmux send-keys -t $SESSION "cd ${GO_PRJ}/blinky" C-m
+    tmux send-keys -t $SESSION "cd ${GO_PRJ}/nlamirault/blinky" C-m
     tmux new-window -n "Tchoupi"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/tchoupi" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/tchoupi" C-m
     tmux new-window -n "gotest.el"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/gotest.el" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/gotest.el" C-m
     tmux new-window -n "phpunit.el"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/phpunit.el" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/phpunit.el" C-m
     tmux new-window -n "Marcopolo"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/marcopolo" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/marcopolo" C-m
     tmux new-window -n "Dionysos"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/dionysos" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/dionysos" C-m
     tmux new-window -n "E-Gitlab"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/emacs-gitlab" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/emacs-gitlab" C-m
     tmux new-window -n "E-Travis"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/emacs-travis" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/emacs-travis" C-m
     tmux new-window -n "Enigma"
-    tmux send-keys -t $SESSION "cd ${GO_PRJ}/enigma" C-m
+    tmux send-keys -t $SESSION "cd ${GO_PRJ}/nlamirault/enigma" C-m
     tmux new-window -n "Aneto"
-    tmux send-keys -t $SESSION "cd ${GO_PRJ}/aneto" C-m
+    tmux send-keys -t $SESSION "cd ${GO_PRJ}/nlamirault/aneto" C-m
     tmux new-window -n "Guzuta"
-    tmux send-keys -t $SESSION "cd ${GO_PRJ}/guzuta" C-m
+    tmux send-keys -t $SESSION "cd ${GO_PRJ}/nlamirault/guzuta" C-m
     tmux new-window -n "Abraracourcix"
-    tmux send-keys -t $SESSION "cd ${GO_PRJ}/abraracourcix" C-m
+    tmux send-keys -t $SESSION "cd ${GO_PRJ}/nlamirault/abraracourcix" C-m
     tmux new-window -n "Geronimo"
-    tmux send-keys -t $SESSION "cd ${GO_PRJ}/geronimo" C-m
+    tmux send-keys -t $SESSION "cd ${GO_PRJ}/nlamirault/geronimo" C-m
     tmux new-window -n "Iris"
-    tmux send-keys -t $SESSION "cd ${GO_PRJ}/iris" C-m
+    tmux send-keys -t $SESSION "cd ${GO_PRJ}/nlamirault/iris" C-m
     tmux new-window -n "Shiva"
-    tmux send-keys -t $SESSION "cd ${GO_PRJ}/shiva" C-m
+    tmux send-keys -t $SESSION "cd ${GO_PRJ}/nlamirault/shiva" C-m
     tmux new-window -n "Skybox"
-    tmux send-keys -t $SESSION "cd ${GO_PRJ}/skybox" C-m
+    tmux send-keys -t $SESSION "cd ${GO_PRJ}/nlamirault/skybox" C-m
     tmux new-window -n "Actarus"
-    tmux send-keys -t $SESSION "cd ${GO_PRJ}/actarus" C-m
+    tmux send-keys -t $SESSION "cd ${GO_PRJ}/nlamirault/actarus" C-m
     tmux new-window -n "Muk"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/muk" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/muk" C-m
     tmux new-window -n "Bento"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/bento" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/bento" C-m
     tmux new-window -n "sift.el"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/sift.el" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/sift.el" C-m
     tmux new-window -n "opensource.el"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/opensource.el" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/opensource.el" C-m
     tmux new-window -n "emacs-markdownfmt"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/emacs-markdownfmt" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/emacs-markdownfmt" C-m
     tmux new-window -n "Julius"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/julius" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/julius" C-m
     tmux new-window -n "decks"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/decks" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/decks" C-m
     tmux new-window -n "Mert"
-    tmux send-keys -t $SESSION "cd ${GO_PRJ}/mert" C-m
+    tmux send-keys -t $SESSION "cd ${GO_PRJ}/nlamirault/mert" C-m
     tmux new-window -n "Framboise"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/framboise" C-m
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/framboise" C-m
     tmux new-window -n "kodi_exporter"
-    tmux send-keys -t $SESSION " cd ${GO_PRO}/kodi_exporter" C-m
+    tmux send-keys -t $SESSION " cd ${GO_PRJ}/nlamirault/kodi_exporter" C-m
     tmux new-window -n "syno_exporter"
-    tmux send-keys -t $SESSION " cd ${GO_PRO}/syno_exporter" C-m
-    # Zeiot
-    tmux new-window -n "Jarvis"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/Zeiot/jarvis" C-m
-    tmux new-window -n "Arduino-examples"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/Zeiot/arduino-examples" C-m
+    tmux send-keys -t $SESSION " cd ${GO_PRJ}/nlamirault/syno_exporter" C-m
 
-	tmux attach-session -t $SESSION
+    tmux attach-session -t $SESSION
 }
 
-tmux_lam
-    # Zeiot
-    tmux new-window -n "Jarvis"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/Zeiot/jarvis" C-m
-    tmux new-window -n "Arduino-examples"
-    tmux send-keys -t $SESSION "cd $HOME/Perso/Zeiot/arduino-examples" C-m
-
-	tmux attach-session -t $SESSION
-}
-
-tmux_lam
+tmux_perso
