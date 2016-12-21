@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-GO_PRJ="$HOME/Apps/golang/src/github.com/pilotariak"
+GO_PRJ="${HOME}/Apps/golang/src/github.com/pilotariak"
 
 SESSION="pilotariak"
 
@@ -23,11 +23,11 @@ function tmux_pilotariak {
     tmux start-server
     tmux new-session -s $SESSION -n Pilotariak -d
     tmux new-window -n "Trinquet"
-    tmux send-keys -t $SESSION "cd {GO_PRJ}/trinquet" C-m
+    tmux send-keys -t $SESSION "cd ${GO_PRJ}/trinquet" C-m
     tmux new-window -n "Paleta"
-    tmux send-keys -t $SESSION "cd {GO_PRJ}/paleta" C-m
-    tmux new-window -n "pilotariak-webapp"
-    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Pilotariak/pilotariak-webapp" C-m
+    tmux send-keys -t $SESSION "cd ${GO_PRJ}/paleta" C-m
+    tmux new-window -n "Pilotari"
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Pilotariak/pilotari" C-m
     tmux attach-session -t $SESSION
 }
 

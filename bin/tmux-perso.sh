@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-GO_PRJ="$HOME/Apps/golang/src/github.com/"
+GO_PRJ="${HOME}/Apps/golang/src/github.com/"
 
 SESSION="perso"
 
@@ -72,6 +72,12 @@ function tmux_perso {
     tmux send-keys -t $SESSION "cd ${HOME}/Perso/bento" C-m
     tmux new-window -n "sift.el"
     tmux send-keys -t $SESSION "cd ${HOME}/Perso/sift.el" C-m
+    tmux new-window -n "ripgrep.el"
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/ripgrep.el" C-m
+    tmux new-window -n "socyl"
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/socyl" C-m
+    tmux new-window -n "timonier"
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/timonier" C-m
     tmux new-window -n "opensource.el"
     tmux send-keys -t $SESSION "cd ${HOME}/Perso/opensource.el" C-m
     tmux new-window -n "emacs-markdownfmt"
@@ -82,12 +88,24 @@ function tmux_perso {
     tmux send-keys -t $SESSION "cd ${HOME}/Perso/decks" C-m
     tmux new-window -n "Mert"
     tmux send-keys -t $SESSION "cd ${GO_PRJ}/nlamirault/mert" C-m
+    tmux new-window -n "Happy"
+    tmux send-keys -t $SESSION "cd ${GO_PRJ}/nlamirault/happy" C-m
+    tmux new-window -n "Helmsman"
+    tmux send-keys -t $SESSION "cd ${GO_PRJ}/nlamirault/helmsman" C-m
+    tmux new-window -n "k8s-bot"
+    tmux send-keys -t $SESSION "cd ${GO_PRJ}/nlamirault/k8s-bot" C-m
     tmux new-window -n "Framboise"
     tmux send-keys -t $SESSION "cd ${HOME}/Perso/framboise" C-m
     tmux new-window -n "kodi_exporter"
     tmux send-keys -t $SESSION " cd ${GO_PRJ}/nlamirault/kodi_exporter" C-m
+    tmux new-window -n "pihole_exporter"
+    tmux send-keys -t $SESSION " cd ${GO_PRJ}/nlamirault/pihole_exporter" C-m
     tmux new-window -n "syno_exporter"
     tmux send-keys -t $SESSION " cd ${GO_PRJ}/nlamirault/syno_exporter" C-m
+    tmux new-window -n "domoticz_exporter"
+    tmux send-keys -t $SESSION " cd ${GO_PRJ}/nlamirault/domoticz_exporter" C-m
+    tmux new-window -n "speedtest_exporter"
+    tmux send-keys -t $SESSION " cd ${GO_PRJ}/nlamirault/speedtest_exporter" C-m
 
     tmux attach-session -t $SESSION
 }
