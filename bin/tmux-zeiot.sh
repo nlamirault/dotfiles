@@ -28,6 +28,8 @@ function tmux_zeiot {
     tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/charts" C-m
     tmux new-window -n "jarvis-bot"
     tmux send-keys -t $SESSION "cd {GO_PRJ}/jarvis-bot" C-m
+    tmux new-window -n "rpi-helm"
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-helm" C-m
     tmux new-window -n "rpi-prometheus"
     tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-prometheus" C-m
     tmux new-window -n "rpi-alertmanager"
