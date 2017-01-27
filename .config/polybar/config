@@ -35,9 +35,9 @@ font-3 = FontAwesome:pixelsize=10;0
 ; font-3 = Siji:pixelsize=10;0
 ; ;font-4 = FontAwesome:size=10;-8
 
-modules-left = powermenu mpd
+modules-left = powermenu mpd filesystem-slash filesystem-home
 modules-center = xwindow
-modules-right = volume wireless-network wired-network battery clock
+modules-right = backlight volume battery clock
 
 ; wm-restack = bspwm
 
@@ -58,7 +58,7 @@ underline-size = 3
 underline-color = ${colors.accent}
 
 ;border-color = #ff0000
-border-top = 3
+border-top-size = 3
 border-top-color = #3d3d3d
 ;border-bottom = 0
 ;border-bottom-color = #333333
@@ -78,7 +78,7 @@ font-4 = Unifont:size=5;-4
 font-5 = Termsynu:size=7;-3
 
 modules-left = i3
-modules-center = filesystem-slash filesystem-home
+modules-center = wireless-network wirelessspeeddown wirelessspeedup wired-network
 modules-right = xbacklight cpu memory clock
 ;modules-right = memory
 
@@ -145,17 +145,33 @@ bar-empty = ─
 bar-empty-font = 6
 bar-empty-foreground = #44
 
+; [module/backlight]
+; type = internal/backlight
+; card = intel_backlight
+; format = <ramp> <label>
+; ramp-0 = 
+; ramp-1 = 
+; ramp-2 = 
+; ramp-foreground = #666
+; interactive = true
 
 [module/backlight]
 type = internal/backlight
 card = intel_backlight
-format = <ramp> <label>
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = #666
-interactive = true
 
+format = <label> <bar>
+label = ""
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #ff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+;bar-empty-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
 type = internal/bspwm
@@ -320,14 +336,46 @@ animation-packetloss-1 = 
 animation-packetloss-1-foreground = ${bar/top.foreground}
 animation-packetloss-framerate = 500
 
+[module/wirelessspeedup]
+type = internal/network
+interface = wlp3s0
+label-connected = "%upspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+; format-connected-prefix-foreground = #5b
+
+[module/wirelessspeeddown]
+type = internal/network
+interface = wlp3s0
+label-connected = "%downspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+; format-connected-prefix-foreground = #5b
+
 [module/wired-network]
 type = internal/network
 interface = enp0s25
 interval = 2.0
 
-label-connected =   %local_ip%
+label-connected =  %local_ip%
 label-disconnected = Ethernet disconnected
 label-disconnected-foreground = #66
+
+[module/wiredspeedup]
+type = internal/network
+interface = enp0s25
+label-connected = "%upspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+; format-connected-prefix-foreground = #5b
+
+[module/wiredspeeddown]
+type = internal/network
+interface = enp0s25
+label-connected = "%downspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+; format-connected-prefix-foreground = #5b
 
 [module/mpd]
 type = internal/mpd
@@ -377,9 +425,9 @@ speaker-mixer = Speaker
 headphone-mixer = Headphone
 headphone-id = 9
 
-format-volume = <ramp-volume> <label-volume>
+format-volume = <ramp-volume> <label-volume> <bar-volume>
 
-label-volume = volume %percentage%%
+label-volume = %percentage%%
 label-volume-foreground = #ff
 
 label-muted = sound muted
@@ -394,6 +442,24 @@ ramp-volume-3 = 
 ramp-headphones-0 = 
 ramp-headphones-1 = 
 ramp-headphones-foreground = #9f78e1
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #5af78e
+bar-volume-foreground-1 = #5af78e
+bar-volume-foreground-2 = #5af78e
+bar-volume-foreground-3 = #5af78e
+bar-volume-foreground-4 = #5af78e
+bar-volume-foreground-5 = #f3f99d
+bar-volume-foreground-6 = #ff5c57
+bar-volume-gradient = false
+bar-volume-indicator = │
+bar-volume-indicator-font = 2
+bar-volume-indicator-foreground = #ff
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+;bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
