@@ -509,7 +509,7 @@ label-mounted = " %{F-} %percentage_used%%"
 [module/xwindow]
 type = internal/xwindow
 label-maxlen = 75
-label-foreground = #bbb
+; label-foreground = #bbb
 
 [module/powermenu]
 type = custom/menu
