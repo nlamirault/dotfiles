@@ -328,7 +328,7 @@ ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-;ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-foreground = #00ff40
 
 animation-packetloss-0 = 
 animation-packetloss-0-foreground = #ffa64c
@@ -342,7 +342,7 @@ interface = wlp3s0
 label-connected = "%upspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = " "
-; format-connected-prefix-foreground = #5b
+format-connected-prefix-foreground = #00ff40
 
 [module/wirelessspeeddown]
 type = internal/network
@@ -350,7 +350,7 @@ interface = wlp3s0
 label-connected = "%downspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = " "
-; format-connected-prefix-foreground = #5b
+format-connected-prefix-foreground = #00ff40
 
 [module/wired-network]
 type = internal/network
@@ -367,7 +367,7 @@ interface = enp0s25
 label-connected = "%upspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = " "
-; format-connected-prefix-foreground = #5b
+format-connected-prefix-foreground = #00ff40
 
 [module/wiredspeeddown]
 type = internal/network
@@ -375,7 +375,7 @@ interface = enp0s25
 label-connected = "%downspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = " "
-; format-connected-prefix-foreground = #5b
+format-connected-prefix-foreground = #00ff40
 
 [module/mpd]
 type = internal/mpd
