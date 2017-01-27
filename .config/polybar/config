@@ -1,5 +1,16 @@
 [colors]
+background = #000000
+foreground = #ffffff
 accent = #fba922
+black = ${colors.background}
+white = ${colors.foreground}
+transparent = #00ffffff
+red = #e31a1c
+green = #31a354
+blue = #3182bd
+purple = #756bb1
+orange = #de935f
+yellow = #d7a645
 
 [bar/top]
 enable-ipc = true
@@ -7,10 +18,7 @@ monitor = eDP-1
 width = 100%
 height = 27
 
-background = #000000
-; background = #1f1f1f
-; foreground = #eee
-foreground = #eeffff
+background = ${colors.background}
 
 border-bottom-size = 1
 border-bottom-color = #333
@@ -161,10 +169,11 @@ card = intel_backlight
 
 format = <label> <bar>
 label = ""
+format-prefix-foreground = ${colors.yellow}
 
 bar-width = 10
 bar-indicator = |
-bar-indicator-foreground = #ff
+bar-indicator-foreground = ${colors.yellow}
 bar-indicator-font = 2
 bar-fill = ─
 bar-fill-font = 2
@@ -217,11 +226,15 @@ type = internal/i3
 format = <label-state> <label-mode>
 pin-workspaces = true
 
-ws-icon-0 = 
-ws-icon-1 = 
-ws-icon-2 = 
-ws-icon-3 = 
-ws-icon-4 = 
+; ws-icon-0 = 1: ;
+; ws-icon-1 = 2: ;
+; ws-icon-3 = 3: ;
+; ws-icon-4 = 4: ;
+; ws-icon-5 = 5: ;
+; ws-icon-6 = 6: ;
+; ws-icon-7 = 7: ;
+; ws-icon-8 = 8: ;
+; ws-icon-9 = 9: ;
 ws-icon-default = 
 
 label-dimmed-underline = ${root.background}
@@ -317,18 +330,18 @@ type = internal/network
 interface = wlp3s0
 interval = 2.0
 ping-interval = 10
-
+format-connected-underline = ${colors.red}
 format-connected = <ramp-signal> <label-connected>
 label-connected = %essid%
 label-disconnected = " not connected"
-label-disconnected-foreground = #66
+format-disconnected-underline = ${colors.red}
 
 ramp-signal-0 = 
 ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-ramp-signal-foreground = #00ff40
+ramp-signal-foreground = ${colors.red}
 
 animation-packetloss-0 = 
 animation-packetloss-0-foreground = #ffa64c
@@ -341,16 +354,18 @@ type = internal/network
 interface = wlp3s0
 label-connected = "%upspeed:7%"
 format-connected = <label-connected>
-format-connected-prefix = " "
-format-connected-prefix-foreground = #00ff40
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.blue}
+format-connected-underline = ${colors.blue}
 
 [module/wirelessspeeddown]
 type = internal/network
 interface = wlp3s0
 label-connected = "%downspeed:7%"
 format-connected = <label-connected>
-format-connected-prefix = " "
-format-connected-prefix-foreground = #00ff40
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.green}
+format-connected-underline = ${colors.green}
 
 [module/wired-network]
 type = internal/network
@@ -367,7 +382,8 @@ interface = enp0s25
 label-connected = "%upspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = " "
-format-connected-prefix-foreground = #00ff40
+format-connected-prefix-foreground = ${colors.blue}
+format-connected-underline = ${colors.blue}
 
 [module/wiredspeeddown]
 type = internal/network
@@ -375,7 +391,8 @@ interface = enp0s25
 label-connected = "%downspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = " "
-format-connected-prefix-foreground = #00ff40
+format-connected-prefix-foreground = ${colors.green}
+format-connected-underline = ${colors.green}
 
 [module/mpd]
 type = internal/mpd
@@ -412,12 +429,28 @@ bar-progress-empty-font = 3
 bar-progress-empty-foreground = #44
 
 [module/clock]
+; type = internal/date
+; interval = 5
+; format-prefix = 
+; format-prefix-foreground = ${colors.purple}
+; ; format-padding = 2
+; format-underline = ${colors.purple}
+; ; format-background = #000
+; ; format-foreground = #fff
+; date = %%{F#ffffff} %Y-%m-%d%%{F-}  %%{F#ffffff}%H:%M%%{F-}
+
 type = internal/date
-interval = 5
-format-padding = 5
-format-background = #000
-format-foreground = #fff
-date = %%{F#ffffff}%Y-%m-%d%%{F-}  %%{F#ffffff}%H:%M%%{F-}
+interval = 60
+
+format-padding = 1
+format-prefix = 
+format-prefix-foreground = ${colors.purple}
+format-underline = ${colors.purple}
+
+date = "%Y-%m-%d %H:%M"
+date-alt = "%a, %d %b"
+; label-padding-left = 1
+
 
 [module/volume]
 type = internal/volume
@@ -464,16 +497,18 @@ bar-volume-empty-font = 2
 [module/battery]
 type = internal/battery
 full-at = 98
-;format-charging = %{T3}Battery <label-charging> %{T-}
-;format-discharging = %{T3}Battery <label-discharging> %{T-}
-;format-full = %{T3}Battery <label-full>
+
 label-charging-font = 3
 label-discharging-font = 3
-label-full =
+label-full = %{F#31a354}%{F-} %percentage%% %{F#d7a645}%{F-}
 
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 format-full-prefix = " "
+format-charging-overline = ${colors.green}
+format-charging-foreground = ${colors.green}
+format-full-overline = ${colors.green}
+
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
@@ -486,25 +521,22 @@ animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
 
-;label-full-font = 3
-
 [module/filesystem-home]
 type = internal/fs
-interval = 25
-
+interval = 3600
 mount-0 = /home
-# label-mounted = "%{F#5b5b5b}%{F-} %percentage_used%%"
+
 label-mounted = " %{F-} %percentage_used%%"
+; label-mounted-padding-left = 1
+label-mounted-foreground = ${colors.orange}
 
 [module/filesystem-slash]
 type = internal/fs
-interval = 25
-
+interval = 3600
 mount-0 = /
-# label-mounted = "%{F#5b5b5b}%{F-} %percentage_used%%"
+
 label-mounted = " %{F-} %percentage_used%%"
-;label-unmounted = %mountpoint%: not mounted
-;label-unmounted-foreground = ${colors.foreground-alt}
+label-mounted-foreground = ${colors.orange}
 
 [module/xwindow]
 type = internal/xwindow
