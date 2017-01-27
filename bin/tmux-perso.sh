@@ -106,6 +106,8 @@ function tmux_perso {
     tmux send-keys -t $SESSION " cd ${GO_PRJ}/nlamirault/domoticz_exporter" C-m
     tmux new-window -n "speedtest_exporter"
     tmux send-keys -t $SESSION " cd ${GO_PRJ}/nlamirault/speedtest_exporter" C-m
+    tmux new-window -n "chione"
+    tmux send-keys -t $SESSION " cd ${GO_PRJ}/nlamirault/chione" C-m
 
     tmux attach-session -t $SESSION
 }

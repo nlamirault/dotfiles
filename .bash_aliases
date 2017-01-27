@@ -81,12 +81,27 @@ alias cpuinfo='lscpu'
 ## get GPU ram on desktop / laptop##
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 
-
 # Web
 
 alias httpsnif="sudo ngrep -d 'enp0s25' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i enp0s25 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 alias showports='netstat -tulanp'
+
+# Docker
+
+docker_cleanup() {
+    docker rm $(docker ps -aq 2>/dev/null) 2>/dev/null
+    docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
+}
+
+docker_images_cleanup() {
+    docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
+}
+
+docker_volumes_cleanup() {
+    docker volume rm $(docker volume ls | awk '{print $2}')
+}
+
 
 # Misc
 
