@@ -11,13 +11,10 @@
 
 set $mod Mod4
 
-# autostart
-exec feh --bg-scale ~/share/archlinux-simplyblack.png
-
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font pango: Monospace 6
+font pango: Monospace 8
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -56,6 +53,14 @@ bindsym $mod+d exec rofi -show run -bg "#000000" -fg "#ff5500" -hlbg "#000000" -
 
 # =======================================================
 # Requirements : tt-font-awesome
+# set $tag1 "1: "
+# set $tag2 "2: "
+# set $tag3 "3: "
+# set $tag4 "4: "
+# set $tag6 "6: "
+# set $tag7 "7: "
+# set $tag8 "8: "
+#
 set $tag1 "1: "
 set $tag2 "2: "
 set $tag3 "3: "
@@ -64,6 +69,9 @@ set $tag5 "5: "
 set $tag6 "6: "
 set $tag7 "7: "
 set $tag8 "8: "
+set $tag9 "9: "
+set $tag10 "10: "
+set $tag11 "11: "
 
 # =======================================================
 
@@ -232,38 +240,38 @@ client.focused_inactive #333333 #000000 #DF740C #484e50
 client.unfocused        #333333 #000000 #6FC3DF #292d2e
 client.urgent           #2f343a #900000 #DF740C #900000
 
-bar {
-      # status_command i3status
-      status_command i3blocks -c ~/.config/i3/i3blocks.conf
-      # status_command i3bar-icons
-      # status_command j4status
-      # status_command i3blocks
-      # status_command j4status -c ~/.i3/j4status.conf
-      colors {
-            background          #181818
-            statusline          #f8f8f2
-            # class border background text
-            #focused_workspace   #66d9ef #34bdef #181818
-            #active_workspace    #181818 #a3babf #5e7175
-            #inactive_workspace  #181818 #5e7175 #a3babf
-            #urgent_workspace    #181818 #fd971f #181818
-            focused_workspace   #66d9ef #000000 #DF740C
-            active_workspace    #181818 #000000 #6FC3DF
-            inactive_workspace  #181818 #000000 #6FC3DF
-            urgent_workspace    #181818 #000000 #6FC3DF
-        }
-}
+# bar {
+#       # status_command i3status
+#       status_command i3blocks -c ~/.config/i3/i3blocks.conf
+#       # status_command i3bar-icons
+#       colors {
+#             background          #181818
+#             statusline          #f8f8f2
+#             # class border background text
+#             #focused_workspace   #66d9ef #34bdef #181818
+#             #active_workspace    #181818 #a3babf #5e7175
+#             #inactive_workspace  #181818 #5e7175 #a3babf
+#             #urgent_workspace    #181818 #fd971f #181818
+#             focused_workspace   #66d9ef #000000 #DF740C
+#             active_workspace    #181818 #000000 #6FC3DF
+#             inactive_workspace  #181818 #000000 #6FC3DF
+#             urgent_workspace    #181818 #000000 #6FC3DF
+#         }
+# }
 
-bar {
-    status_command ~/.config/i3/i3-conky.sh
-    workspace_buttons no
-    position top
-    colors {
-        background          #181818
-        statusline          #f8f8f2
-        #focused_workspace   #66d9ef #000000 #DF740C
-        #active_workspace    #181818 #000000 #6FC3DF
-        #inactive_workspace  #181818 #000000 #6FC3DF
-        #urgent_workspace    #181818 #000000 #6FC3DF
-    }
-}
+# bar {
+#     status_command ~/.config/i3/i3-conky.sh
+#     workspace_buttons no
+#     position top
+#     mode dock
+#     colors {
+#           background          #181818
+#           statusline          #f8f8f2
+#     }
+# }
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# autostart
+exec feh --bg-scale ~/.config/i3/archlinux-simplyblack.png
+exec --no-startup-id parcellite
