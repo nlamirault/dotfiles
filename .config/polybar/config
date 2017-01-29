@@ -332,7 +332,7 @@ interval = 2.0
 ping-interval = 10
 format-connected-underline = ${colors.red}
 format-connected = <ramp-signal> <label-connected>
-label-connected = %essid%
+label-connected = %essid% %local_ip%
 label-disconnected = " not connected"
 format-disconnected-underline = ${colors.red}
 
