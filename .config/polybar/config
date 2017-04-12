@@ -86,7 +86,7 @@ font-4 = Unifont:size=5;-4
 font-5 = Termsynu:size=7;-3
 
 modules-left = i3
-modules-center = wireless-network wirelessspeeddown wirelessspeedup wired-network
+modules-center = vpncheck wireless-network wirelessspeeddown wirelessspeedup wired-network wiredspeedup wiredspeeddown pkg
 modules-right = cpu memory clock
 ;modules-right = memory
 
@@ -584,6 +584,26 @@ type = custom/script
 exec = uname -s -m -r
 format-foreground = #ff5c56
 
+[module/vpncheck]
+type = custom/script
+exec = pgrep openvpn
+interval = 5
+format-connected-underline = ${colors.yellow}
+label-connected = " not connected"
+format-disconnected-underline = ${colors.yellow}
+label-disconnected = " not connected"
+
+[module/pkg]
+type = custom/script
+interval = 1200
+format = <label>
+; format-underline = #dc322f
+label = "%output:0:30%"
+exec = .config/polybar/pkg.sh
+exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+format-prefix = " "
+format-prefix-foreground = ${colors.yellow}
+format-underline = ${colors.yellow}
 
 
 
