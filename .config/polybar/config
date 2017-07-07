@@ -23,9 +23,9 @@ background = ${colors.background}
 border-bottom-size = 1
 border-bottom-color = #333
 
-overline-size = 10
+overline-size = 3
 overline-color = ${self.background}
-underline-size = 10
+underline-size = 3
 underline-color = ${self.background}
 
 padding-left = 0
@@ -44,7 +44,7 @@ font-3 = FontAwesome:pixelsize=10;0
 ; ;font-4 = FontAwesome:size=10;-8
 
 modules-left = powermenu mpd filesystem-slash filesystem-home
-modules-center = xwindow
+modules-center = clock xwindow
 modules-right = backlight volume battery
 
 ; wm-restack = bspwm
@@ -87,7 +87,7 @@ font-5 = Termsynu:size=7;-3
 
 modules-left = i3
 modules-center = vpncheck wireless-network wirelessspeeddown wirelessspeedup wired-network wiredspeedup wiredspeeddown pkg
-modules-right = cpu memory clock
+modules-right = cpu memory 
 ;modules-right = memory
 
 ; wm-restack = i3
@@ -505,7 +505,7 @@ label-full = %{F#31a354}%{F-} %percentage%% %{F#d7a645}%{F-}
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 format-full-prefix = " "
-format-charging-overline = ${colors.green}
+format-charging-underline = ${colors.green}
 format-charging-foreground = ${colors.green}
 format-full-overline = ${colors.green}
 
