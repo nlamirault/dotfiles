@@ -33,15 +33,12 @@ padding-right = 0
 module-margin-left = 3
 module-margin-right = 3
 
-font-0 = hack:pixelsize=8;0
-font-1 = unifont:size=6:heavy:fontformat=truetype;-2
-font-2 = siji:pixelsize=8;0
-font-3 = FontAwesome:pixelsize=10;0
-; font-0 = NotoSans-Regular:size=8;1
-; font-1 = MaterialIcons:size=10;0
-; font-2 = Termsynu:size=8;-1
-; font-3 = Siji:pixelsize=10;0
-; ;font-4 = FontAwesome:size=10;-8
+font-0 = NotoSans-Regular:size=8;0
+font-1 = Unifont:size=5;-3
+font-2 = FontAwesome:size=8;-2
+font-3 = NotoSans-Regular:size=8;-1
+font-4 = Unifont:size=5;-4
+font-5 = Termsynu:size=7;-3
 
 modules-left = powermenu mpd filesystem-slash filesystem-home
 modules-center = clock xwindow
