@@ -10,11 +10,12 @@ green = #31a354
 blue = #3182bd
 purple = #756bb1
 orange = #de935f
-yellow = #d7a645
+yellow = #faee41
 
 [bar/top]
 enable-ipc = true
-monitor = eDP-1
+# monitor = eDP-1
+monitor = ${env:MONITOR}
 width = 100%
 height = 27
 
@@ -23,9 +24,9 @@ background = ${colors.background}
 border-bottom-size = 1
 border-bottom-color = #333
 
-overline-size = 10
+overline-size = 3
 overline-color = ${self.background}
-underline-size = 10
+underline-size = 3
 underline-color = ${self.background}
 
 padding-left = 0
@@ -33,26 +34,29 @@ padding-right = 0
 module-margin-left = 3
 module-margin-right = 3
 
-font-0 = hack:pixelsize=8;0
-font-1 = unifont:size=6:heavy:fontformat=truetype;-2
-font-2 = siji:pixelsize=8;0
-font-3 = FontAwesome:pixelsize=10;0
-; font-0 = NotoSans-Regular:size=8;1
-; font-1 = MaterialIcons:size=10;0
-; font-2 = Termsynu:size=8;-1
-; font-3 = Siji:pixelsize=10;0
-; ;font-4 = FontAwesome:size=10;-8
+font-0 = "NotoSans-Regular:size=8;0"
+font-1 = "Unifont:size=5;0"
+font-2 = "FontAwesome:size=8;0"
+font-3 = "NotoSans-Regular:size=8;0"
+font-4 = "Unifont:size=5;0"
+font-5 = "Termsynu:size=7;0"
+
+; font-0 = hack:size=9;2
+; font-1 = unifont:size=9;2
+; font-2 = siji:size=9;3
+; font-3 = FontAwesome:size=9;2
 
 modules-left = powermenu mpd filesystem-slash filesystem-home
 modules-center = xwindow
-modules-right = backlight volume battery
+modules-right = xkeyboard backlight volume battery
 
 ; wm-restack = bspwm
 
 tray-position = right
 
 [bar/bottom]
-monitor = eDP-1
+# monitor = eDP-1
+monitor = ${env:MONITOR}
 bottom = true
 width = 100%
 height = 27
@@ -78,15 +82,20 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 6
 
-font-0 = NotoSans-Regular:size=8;0
-font-1 = Unifont:size=5;-3
-font-2 = FontAwesome:size=8;-2
-font-3 = NotoSans-Regular:size=8;-1
-font-4 = Unifont:size=5;-4
-font-5 = Termsynu:size=7;-3
+font-0 = "NotoSans-Regular:size=8;0"
+font-1 = "Unifont:size=5;0"
+font-2 = "FontAwesome:size=8;0"
+font-3 = "NotoSans-Regular:size=8;0"
+font-4 = "Unifont:size=5;0"
+font-5 = "Termsynu:size=7;0"
+
+; font-0 = hack:pixelsize=8;0
+; font-1 = unifont:size=6:heavy:fontformat=truetype;-2
+; font-2 = siji:pixelsize=8;0
+; font-3 = FontAwesome:pixelsize=10;0
 
 modules-left = i3
-modules-center = vpncheck wireless-network wirelessspeeddown wirelessspeedup wired-network wiredspeedup wiredspeeddown pkg
+modules-center = vpncheck wireless-network wirelessspeeddown wirelessspeedup wired-network wiredspeedup wiredspeeddown pkg mail
 modules-right = cpu memory clock
 ;modules-right = memory
 
@@ -325,6 +334,15 @@ bar-used-empty = █
 bar-used-empty-font = 5
 bar-used-empty-foreground = #44
 
+[module/vpncheck]
+type = custom/script
+exec = pgrep openvpn
+interval = 5
+format-connected-underline = ${colors.yellow}
+label-connected = " not connected"
+format-disconnected-underline = ${colors.yellow}
+label-disconnected = " not connected"
+
 [module/wireless-network]
 type = internal/network
 interface = wlp3s0
@@ -371,8 +389,9 @@ format-connected-underline = ${colors.green}
 type = internal/network
 interface = enp0s25
 interval = 2.0
-
-label-connected =  %local_ip%
+format-connected-underline = ${colors.red}
+format-connected = <label-connected>
+label-connected =  %local_ip%
 label-disconnected = Ethernet disconnected
 label-disconnected-foreground = #66
 
@@ -429,27 +448,16 @@ bar-progress-empty-font = 3
 bar-progress-empty-foreground = #44
 
 [module/clock]
-; type = internal/date
-; interval = 5
-; format-prefix = 
-; format-prefix-foreground = ${colors.purple}
-; ; format-padding = 2
-; format-underline = ${colors.purple}
-; ; format-background = #000
-; ; format-foreground = #fff
-; date = %%{F#ffffff} %Y-%m-%d%%{F-}  %%{F#ffffff}%H:%M%%{F-}
-
 type = internal/date
-interval = 60
-
-format-padding = 1
-format-prefix = 
+interval = 1
+; date-alt =   %A %H:%M
+date =    %a - %d.%m.%Y
+time = "  %H:%M:%S"
+time-alt = "%a - %d.%m.%Y - %I:%M %p"
+; format-prefix = " "
 format-prefix-foreground = ${colors.purple}
 format-underline = ${colors.purple}
-
-date = "%Y-%m-%d %H:%M"
-date-alt = "%a, %d %b"
-; label-padding-left = 1
+label = %date% %time%
 
 
 [module/volume]
@@ -525,23 +533,49 @@ animation-charging-4 = 
 type = internal/fs
 interval = 3600
 mount-0 = /home
-
-label-mounted = " %{F-} %percentage_used%%"
-; label-mounted-padding-left = 1
-label-mounted-foreground = ${colors.orange}
+format-mounted-prefix = " "
+;label-mounted =  %{F-} %percentage_used%%
+label-mounted = "%{F-} %percentage_used%%"
+;label-mounted =  %mountpoint%: %percentage_used%% of %total%
+format-mounted-prefix-foreground = ${colors.yellow}
+format-mounted-underline = ${colors.yellow}
 
 [module/filesystem-slash]
 type = internal/fs
 interval = 3600
 mount-0 = /
-
-label-mounted = " %{F-} %percentage_used%%"
-label-mounted-foreground = ${colors.orange}
+format-mounted-prefix = " "
+label-mounted = "%{F-} %percentage_used%%"
+;label-mounted =  %mountpoint%: %percentage_used%% of %total%
+; label-mounted-foreground = ${colors.white}
+format-mounted-prefix-foreground = ${colors.yellow}
+format-mounted-underline = ${colors.yellow}
 
 [module/xwindow]
 type = internal/xwindow
 label-maxlen = 75
+format-prefix = " "
+format-prefix-foreground = ${colors.green}
+format-prefix-underline = ${colors.green}
+label = "%title%"
 ; label-foreground = #bbb
+label-layout-underline = ${colors.green}
+; label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-underline = ${colors.green}
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+format-prefix = " "
+format-prefix-foreground = ${colors.purple}
+format-prefix-underline = ${colors.purple}
+label-layout = %layout%
+label-layout-underline = ${colors.purple}
+label-indicator-padding = 2
+label-indicator-margin = 1
+;label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.purple}
 
 [module/powermenu]
 type = custom/menu
@@ -555,13 +589,13 @@ label-open-foreground = #ff5c56
 label-close =  cancel
 label-separator = " | "
 
-menu-0-0 = reboot
+menu-0-0 =  reboot
 menu-0-0-exec = menu-open-1
-menu-0-1 = power off
+menu-0-1 =  power off
 menu-0-1-exec = menu-open-2
 menu-0-2 = log out
 menu-0-2-exec = menu-open-3
-menu-0-3 = 
+menu-0-3 =  lock
 menu-0-3-exec = "/usr/bin/slimlock &"
 
 menu-1-0 = cancel
@@ -584,14 +618,32 @@ type = custom/script
 exec = uname -s -m -r
 format-foreground = #ff5c56
 
-[module/vpncheck]
+[module/github-prometheus]
 type = custom/script
-exec = pgrep openvpn
-interval = 5
-format-connected-underline = ${colors.yellow}
-label-connected = " not connected"
-format-disconnected-underline = ${colors.yellow}
-label-disconnected = " not connected"
+
+; Available tokens:
+;   %counter%
+; Command to be executed (using "/usr/bin/env sh -c [command]")
+exec = curl -s https://api.github.com/repos/prometheus/prometheus/releases/latest | grep tarball_url | grep -v RC | head -n 1 | cut -d '"' -f 4|cut -d "/" -f8|sed -es/^v//g
+
+; Conditional command that, if defined, needs to exit successfully
+; before the main exec command is invoked.
+; Default: ""
+;exec-if = pgrep -x myservice
+
+; Will the script output continous content?
+; Default: false
+;tail = true
+
+; Seconds to sleep between updates
+; Default: 2 (0 if `tail = true`)
+interval = 3600
+
+format = <label>
+;format-padding = 1
+;format-underline = #ff5c57
+format-prefix = " "
+click-left = xdg-open github.com/prometheus/prometheus/releases/latest
 
 [module/pkg]
 type = custom/script
@@ -599,12 +651,30 @@ interval = 1200
 format = <label>
 ; format-underline = #dc322f
 label = "%output:0:30%"
-exec = .config/polybar/pkg.sh
+exec = ~/.config/polybar/pkg.sh
 exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
 format-prefix = " "
 format-prefix-foreground = ${colors.yellow}
 format-underline = ${colors.yellow}
 
+[module/mail]
+type = custom/script
+interval = 10
+format = <label>
+format-prefix = "  "
+format-prefix-foreground = ${colors.orange}
+format-underline = ${colors.orange}
+exec = ~/.config/polybar/mail.py
 
+[module/github]
+type = internal/github
+interval = 30
+; token = ${file:~/.config/polybar/github.token}
+token = ${env:POLYBAR_GITHUB_ACCESS_TOKEN}
+empty-notifications = true
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.white}
+format-underline = {colors.white}
 
 ; vim:ft=dosini
