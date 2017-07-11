@@ -34,21 +34,16 @@ padding-right = 0
 module-margin-left = 3
 module-margin-right = 3
 
-font-0 = "NotoSans-Regular:size=8;0"
-font-1 = "Unifont:size=5;0"
-font-2 = "FontAwesome:size=8;0"
-font-3 = "NotoSans-Regular:size=8;0"
-font-4 = "Unifont:size=5;0"
-font-5 = "Termsynu:size=7;0"
-
-; font-0 = hack:size=9;2
-; font-1 = unifont:size=9;2
-; font-2 = siji:size=9;3
-; font-3 = FontAwesome:size=9;2
+font-0 = NotoSans-Regular:size=8;0
+font-1 = Unifont:size=5;-3
+font-2 = FontAwesome:size=8;-2
+font-3 = NotoSans-Regular:size=8;-1
+font-4 = Unifont:size=5;-4
+font-5 = Termsynu:size=7;-3
 
 modules-left = powermenu mpd filesystem-slash filesystem-home
-modules-center = xwindow
-modules-right = xkeyboard backlight volume battery
+modules-center = clock xwindow
+modules-right = backlight volume battery
 
 ; wm-restack = bspwm
 
@@ -95,8 +90,8 @@ font-5 = "Termsynu:size=7;0"
 ; font-3 = FontAwesome:pixelsize=10;0
 
 modules-left = i3
-modules-center = vpncheck wireless-network wirelessspeeddown wirelessspeedup wired-network wiredspeedup wiredspeeddown pkg mail
-modules-right = cpu memory clock
+modules-center = vpncheck wireless-network wirelessspeeddown wirelessspeedup wired-network wiredspeedup wiredspeeddown pkg
+modules-right = cpu memory
 ;modules-right = memory
 
 ; wm-restack = i3
@@ -513,7 +508,7 @@ label-full = %{F#31a354}%{F-} %percentage%% %{F#d7a645}%{F-}
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 format-full-prefix = " "
-format-charging-overline = ${colors.green}
+format-charging-underline = ${colors.green}
 format-charging-foreground = ${colors.green}
 format-full-overline = ${colors.green}
 
