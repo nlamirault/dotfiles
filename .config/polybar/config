@@ -331,12 +331,16 @@ bar-used-empty-foreground = #44
 
 [module/vpncheck]
 type = custom/script
-exec = pgrep openvpn
-interval = 5
-format-connected-underline = ${colors.yellow}
-label-connected = " not connected"
-format-disconnected-underline = ${colors.yellow}
-label-disconnected = " not connected"
+interval = 10
+format = <label>
+if_exec = "pgrep openvpn"
+; To print tun0 ip address in label
+exec = "ip a | grep tun0 | tail -n 1 | awk '{print $2}'"
+; label = " vpn %output%"
+format-prefix = " "
+; format-prefix-foreground = ${colors.red}
+format-underline = ${colors.red}
+label = "vpn %output%"
 
 [module/wireless-network]
 type = internal/network
