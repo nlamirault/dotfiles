@@ -92,4 +92,6 @@ alias showports='netstat -tulanp'
 
 # Misc
 
-alias meteo="curl wttr.in/Bordeaux"
+function weather() {
+    curl http://wttr.in/${1:-bordeaux}
+}
