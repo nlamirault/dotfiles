@@ -19,16 +19,33 @@ rofi.width: 50
 rofi.lines: 5
 rofi.columns: 1
 rofi.opacity: 100
+
 !                    bg       fg      altbg    hlbg     hlfg
-rofi.color-normal: #263238, #eeffff, #263238, #4883ff, #eeffff
-rofi.color-urgent: #263238, #eeffff, #263238, #4883ff, #eeffff
-rofi.color-active: #263238, #eeffff, #263238, #4883ff, #eeffff
-rofi.color-window: #263238, #4883ff, #4883ff
+!rofi.color-normal: #263238, #eeffff, #263238, #4883ff, #eeffff
+!rofi.color-urgent: #263238, #eeffff, #263238, #4883ff, #eeffff
+!rofi.color-active: #263238, #eeffff, #263238, #4883ff, #eeffff
+!rofi.color-window: #263238, #4883ff, #4883ff
+!rofi.separator-style: solid
+
 rofi.bw: 4
 rofi.location: 0
 rofi.padding: 10
 rofi.fuzzy: true
-rofi.separator-style: solid
 rofi.hide-scrollbar: true
 rofi.auto-select: false
 rofi.terminal: st
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! Copyright: 2017 leofa
+! ------------------------------------------------------------------------------
+! "Color scheme for normal row" Set from: File
+rofi.color-normal:                   argb:0383c4a, #c4cbd4, argb:96404552, #4084d6, #f9f9f9
+! "Color scheme for urgent row" Set from: File
+rofi.color-urgent:                   argb:02d303b, #cc6666, argb:e52d303b, #a54242, #f9f9f9
+! "Color scheme for active row" Set from: File
+rofi.color-active:                   argb:02d303b, #b5bd68, argb:e42d303b, #8c9440, #f9f9f9
+! "Color scheme window" Set from: File
+rofi.color-window:                   argb:f22d303b, #7c8389, #1d1f21
+! "Separator style (none, dash, solid)" Set from: XResources
+rofi.separator-style:                solid
