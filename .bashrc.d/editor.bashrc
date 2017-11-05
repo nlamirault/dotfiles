@@ -17,3 +17,5 @@
 EDITOR=/usr/bin/nvim
 export VISUAL=vim
 export EDITOR=vim
+
+alias vi="nvim"
