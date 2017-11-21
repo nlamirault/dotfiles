@@ -276,5 +276,3 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec feh --bg-scale ~/.config/i3/archlinux-simplyblack.png
 exec --no-startup-id parcellite
 
-# Lock after timeout
-exec --no-startup-id "$HOME/.config/i3/autolock"
