@@ -505,8 +505,8 @@ bar-volume-empty-font = 2
 type = internal/battery
 full-at = 98
 
-label-charging-font = 3
-label-discharging-font = 3
+;label-charging-font = 3
+;label-discharging-font = 3
 label-full = %{F#31a354}%{F-} %percentage%% %{F#d7a645}%{F-}
 
 format-charging = <animation-charging> <label-charging>
