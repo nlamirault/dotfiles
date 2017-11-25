@@ -7,6 +7,9 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
+export MONITOR="LVDS"
+export WIFI_INTERFACE="wlp6s0"
+export ETH_INTERFACE="enp7s7"
 polybar top &
 polybar bottom &
 

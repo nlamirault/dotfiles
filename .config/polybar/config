@@ -344,7 +344,7 @@ label = "vpn %output%"
 
 [module/wireless-network]
 type = internal/network
-interface = wlp3s0
+interface = ${env:WIFI_INTERFACE}
 interval = 2.0
 ping-interval = 10
 format-connected-underline = ${colors.red}
@@ -368,7 +368,7 @@ animation-packetloss-framerate = 500
 
 [module/wirelessspeedup]
 type = internal/network
-interface = wlp3s0
+interface = ${env:WIFI_INTERFACE}
 label-connected = "%upspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = " "
@@ -377,7 +377,7 @@ format-connected-underline = ${colors.blue}
 
 [module/wirelessspeeddown]
 type = internal/network
-interface = wlp3s0
+interface = {env:WIFI_INTERFACE}
 label-connected = "%downspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = " "
@@ -386,7 +386,7 @@ format-connected-underline = ${colors.green}
 
 [module/wired-network]
 type = internal/network
-interface = enp0s25
+interface = {env:ETH_INTERFACE}
 interval = 2.0
 format-connected-underline = ${colors.red}
 format-connected = <label-connected>
@@ -396,7 +396,7 @@ label-disconnected-foreground = #66
 
 [module/wiredspeedup]
 type = internal/network
-interface = enp0s25
+interface = ${env:ETH_INTERFACE}
 label-connected = "%upspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = " "
@@ -405,7 +405,7 @@ format-connected-underline = ${colors.blue}
 
 [module/wiredspeeddown]
 type = internal/network
-interface = enp0s25
+interface = ${env:ETH_INTERFACE}
 label-connected = "%downspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = " "
