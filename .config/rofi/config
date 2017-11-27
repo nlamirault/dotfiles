@@ -1,0 +1,4 @@
+rofi.terminal:      alacritty
+rofi.theme:         ~/.config/rofi/flat-blue.rasi
+rofi.sidebar-mode:  true
+rofi.show-icons:    true
