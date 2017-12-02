@@ -47,18 +47,22 @@ function ps1_powerline {
     if [ "$RETCODE" -eq 0 ]; then
       if [ "$NUM_JOBS" -eq 0 ]; then
         # No jobs or ret code
-        PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_ALT$PROMPT \$ $PROMPT_END"
+        # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_ALT$PROMPT \$ $PROMPT_END"
+        PS1="$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_ALT$PROMPT \$ $PROMPT_END"
       else
         # no ret code but jobs
-        PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_END$PROMPT \$ $PROMPT_END"
+        # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_END$PROMPT \$ $PROMPT_END"
+        PS1="$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_END$PROMPT \$ $PROMPT_END"
       fi
     else
       if [ "$NUM_JOBS" -eq 0 ]; then
         # No jobs but ret code is there
-        PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_RET$RET \$ ⚑ $RETCODE $RET_END"
+        # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_RET$RET \$ ⚑ $RETCODE $RET_END"
+        PS1="$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_RET$RET \$ ⚑ $RETCODE $RET_END"
       else
         # Both jobs and ret code
-        PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_GIT_END$RET \$ ⚑ $RETCODE $RET_END"
+        # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_GIT_END$RET \$ ⚑ $RETCODE $RET_END"
+        PS1="$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_GIT_END$RET \$ ⚑ $RETCODE $RET_END"
       fi
     fi
   else
