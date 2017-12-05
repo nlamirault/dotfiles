@@ -1,3 +1,17 @@
+; Copyright (C) 2016-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+; Licensed under the Apache License, Version 2.0 (the "License");
+; you may not use this file except in compliance with the License.
+; You may obtain a copy of the License at
+;
+;     http://www.apache.org/licenses/LICENSE-2.0
+;
+; Unless required by applicable law or agreed to in writing, software
+; distributed under the License is distributed on an "AS IS" BASIS,
+; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+; See the License for the specific language governing permissions and
+; limitations under the License.
+
 [colors]
 background = #000000
 foreground = #ffffff
@@ -41,13 +55,13 @@ font-3 = NotoSans-Regular:size=8;-1
 font-4 = Unifont:size=5;-4
 font-5 = Termsynu:size=7;-3
 
-modules-left = powermenu mpd filesystem-slash filesystem-home
+modules-left = powermenu filesystem-slash filesystem-home
 modules-center = clock xwindow
 modules-right = backlight volume battery
 
-; wm-restack = bspwm
+; ; wm-restack = bspwm
 
-tray-position = right
+; tray-position = right
 
 [bar/bottom]
 # monitor = eDP-1
@@ -92,80 +106,8 @@ font-5 = "Termsynu:size=7;0"
 modules-left = i3
 modules-center = vpncheck wireless-network wirelessspeeddown wirelessspeedup wired-network wiredspeedup wiredspeeddown pkg
 modules-right = cpu memory
-;modules-right = memory
 
-; wm-restack = i3
-
-[bar/external]
-enable-ipc = true
-monitor = HDMI-1
-bottom = true
-;dock = true
-width = ${bar/bottom.width}
-height = ${bar/bottom.height}
-
-background = ${bar/bottom.background}
-foreground = ${bar/bottom.foreground}
-
-underline-size = ${bar/bottom.underline-size}
-underline-color = ${bar/bottom.underline-color}
-overline-size = ${bar/bottom.overline-size}
-overline-color = ${bar/bottom.overline-color}
-
-border-bottom.= ${bar/bottom.border-bottom}
-border-bottom.color = ${bar/bottom.border-bottom-color}
-
-spacing = ${bar/bottom.spacing}
-padding-left = ${bar/bottom.padding-left}
-padding-right = ${bar/bottom.padding-right}
-module-margin-left = 0
-module-margin-right = ${bar/bottom.module-margin-right}
-
-font-0 = ${bar/bottom.font-0}
-font-1 = ${bar/bottom.font-1}
-font-2 = ${bar/bottom.font-2}
-font-3 = ${bar/bottom.font-3}
-font-4 = ${bar/bottom.font-4}
-font-5 = ${bar/bottom.font-5}
-
-modules-left = i3
-modules-center = xwindow
-modules-right = fs-root clock
-
-wm-restack = ${bar/bottom.wm-restack}
-
-[module/xbacklight]
-type = internal/xbacklight
-output = eDP-1
-format = <ramp> <bar>
-
-ramp-0 = 
-ramp-0-foreground = #666
-ramp-1 = 
-ramp-1-foreground = #999
-ramp-2 = 
-ramp-2-foreground = #fff
-
-bar-width = 12
-bar-indicator = |
-bar-indicator-font = 6
-bar-indicator-foreground = #bbffffff
-bar-fill = ─
-bar-fill-font = 6
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 6
-bar-empty-foreground = #44
-
-; [module/backlight]
-; type = internal/backlight
-; card = intel_backlight
-; format = <ramp> <label>
-; ramp-0 = 
-; ramp-1 = 
-; ramp-2 = 
-; ramp-foreground = #666
-; interactive = true
+; ; wm-restack = i3
 
 [module/backlight]
 type = internal/backlight
@@ -186,59 +128,12 @@ bar-empty = ─
 bar-empty-font = 2
 ;bar-empty-foreground = ${colors.foreground-alt}
 
-[module/bspwm]
-type = internal/bspwm
-format = <label-state> <label-mode>
-
-ws-icon-0 = 
-ws-icon-1 = 
-ws-icon-2 = 
-ws-icon-3 = 
-ws-icon-4 = 
-ws-icon-default = 
-
-label-dimmed-underline = ${root.background}
-
-label-focused = %icon%  %name%
-label-focused-foreground = #f3f3f3
-label-focused-background = #3f3f3f
-;label-focused-underline = ${colors.accent}
-label-focused-underline = #9f78e1
-label-focused-font = 4
-label-focused-padding = 4
-
-label-occupied = %icon%  %name%
-label-occupied-underline = #555555
-label-occupied-font = 4
-label-occupied-padding = 4
-
-label-urgent = %icon%  %name%
-label-urgent-foreground = #000000
-label-urgent-background = #bd2c40
-label-urgent-underline = #9b0a20
-label-urgent-font = 4
-label-urgent-padding = 4
-
-label-empty = %icon%  %name%
-label-empty-foreground = #55ffffff
-label-empty-font = 4
-label-empty-padding = 4
-
-
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
 pin-workspaces = true
+; strip-wsnumbers = true
 
-; ws-icon-0 = 1: ;
-; ws-icon-1 = 2: ;
-; ws-icon-3 = 3: ;
-; ws-icon-4 = 4: ;
-; ws-icon-5 = 5: ;
-; ws-icon-6 = 6: ;
-; ws-icon-7 = 7: ;
-; ws-icon-8 = 8: ;
-; ws-icon-9 = 9: ;
 ws-icon-default = 
 
 label-dimmed-underline = ${root.background}
@@ -268,7 +163,6 @@ label-visible = %icon%  %name%
 label-visible-foreground = #55ffffff
 label-visible-font = 4
 label-visible-padding = 4
-
 
 [module/cpu]
 type = internal/cpu
@@ -656,24 +550,24 @@ format-prefix = " "
 format-prefix-foreground = ${colors.yellow}
 format-underline = ${colors.yellow}
 
-[module/mail]
-type = custom/script
-interval = 10
-format = <label>
-format-prefix = "  "
-format-prefix-foreground = ${colors.orange}
-format-underline = ${colors.orange}
-exec = ~/.config/polybar/mail.py
+; [module/mail]
+; type = custom/script
+; interval = 10
+; format = <label>
+; format-prefix = "  "
+; format-prefix-foreground = ${colors.orange}
+; format-underline = ${colors.orange}
+; exec = ~/.config/polybar/mail.py
 
-[module/github]
-type = internal/github
-interval = 30
-; token = ${file:~/.config/polybar/github.token}
-token = ${env:POLYBAR_GITHUB_ACCESS_TOKEN}
-empty-notifications = true
-format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.white}
-format-underline = {colors.white}
+; [module/github]
+; type = internal/github
+; interval = 30
+; ; token = ${file:~/.config/polybar/github.token}
+; token = ${env:POLYBAR_GITHUB_ACCESS_TOKEN}
+; empty-notifications = true
+; format = <label>
+; format-prefix = " "
+; format-prefix-foreground = ${colors.white}
+; format-underline = {colors.white}
 
-; vim:ft=dosini
+; ; vim:ft=dosini

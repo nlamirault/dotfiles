@@ -1,5 +1,19 @@
 #!/usr/bin/env sh
 
+# Copyright (C) 2016-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 # Terminate already running bar instances
 killall -q polybar
 
@@ -7,10 +21,17 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
-export MONITOR="LVDS"
-export WIFI_INTERFACE="wlp6s0"
-export ETH_INTERFACE="enp7s7"
-polybar top &
-polybar bottom &
+export WIFI_INTERFACE="wlp3s0"
+export ETH_INTERFACE="enp0s25"
+
+# Launch bar1 and bar2
+MONITOR=eDP-1 polybar top &
+MONITOR=DP-2-1 polybar top &
+MONITOR=DP-2-3 polybar top &
+MONITOR=DP-2 polybar top &
+MONITOR=eDP-1 polybar bottom &
+MONITOR=DP-2-1 polybar bottom &
+MONITOR=DP-2-3 polybar bottom &
+MONITOR=DP-2 polybar bottom &
 
 echo "Bars launched..."
