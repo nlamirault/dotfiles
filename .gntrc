@@ -1,0 +1,50 @@
+# Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#     http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+[Workspace-1]
+name = Me
+
+[Finch]
+color-available = yellow; default
+color-away = green; default
+color-idle = green; default
+color-offline = red; default
+color-message-sent = white; default
+color-message-received = yellow; default
+color-message-highlight = red; default
+color-message-action = green; default
+color-timestamp = blue; default
+#See below for details on color
+
+[colors]
+# The RGB values range in [0, 1000]
+black = 0; 0; 0
+red = 1000; 0; 0
+green = 0; 1000; 0
+blue = 250; 550; 700
+white = 1000; 1000; 1000
+gray = 700; 700; 700
+darkgray = 256; 256; 256
+
+[colorpairs]
+normal = green; default
+highlight = green; default
+highlightd = red; default
+shadow = black; default
+title = red; default
+titled = green; default
+text = white; black
+disabled = gray; black
+urgent = red; black
