@@ -271,7 +271,7 @@ format-connected-underline = ${colors.blue}
 
 [module/wirelessspeeddown]
 type = internal/network
-interface = {env:WIFI_INTERFACE}
+interface = ${env:WIFI_INTERFACE}
 label-connected = "%downspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = " "
@@ -280,7 +280,7 @@ format-connected-underline = ${colors.green}
 
 [module/wired-network]
 type = internal/network
-interface = {env:ETH_INTERFACE}
+interface = ${env:ETH_INTERFACE}
 interval = 2.0
 format-connected-underline = ${colors.red}
 format-connected = <label-connected>
