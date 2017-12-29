@@ -14,5 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-export LC_ALL=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
+alias kube_complete="source <(kubectl completion bash)"
+alias kube_get_pods="kubectl get pods -o wide --show-labels --all-namespaces"
+alias kube_get_svc="kubectl get svc  -o wide --show-labels --all-namespaces"
