@@ -3,9 +3,9 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -43,7 +43,7 @@ export GTK_THEME=Arc:dark
 PERSO_BASH="${HOME}/etc/Perso/bash.d"
 if [ -d "$PERSO_BASH" ]; then
     for file in $(ls ${PERSO_BASH}); do
-        echo ${file}
+        # echo ${file}
         rc=${PERSO_BASH}/${file}
         if [ -f "${rc}" ]; then
             . $rc
@@ -52,3 +52,9 @@ if [ -d "$PERSO_BASH" ]; then
         fi
     done
 fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/nlamirault/Apps/google-cloud-sdk/path.bash.inc' ]; then source '/home/nlamirault/Apps/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/nlamirault/Apps/google-cloud-sdk/completion.bash.inc' ]; then source '/home/nlamirault/Apps/google-cloud-sdk/completion.bash.inc'; fi
