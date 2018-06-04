@@ -33,6 +33,7 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 if  [ -x "$(command -v exa)" ]; then
     alias ls='exa'
     alias la='exa -agbhl --time-style=long-iso'
+    alias lt='exa -agbhl --time-style=long-iso -s modified'
     alias lo='ls -la'
     alias tree='exa -gbhlT'
 else
@@ -71,6 +72,10 @@ elif [ -x "$(command -v vim)" ]; then
     alias vi='vim'
 fi
 
+# Network
+# -----------------------------------------------------
+alias ip='ip --color'
+alias ipb='ip --color --brief'
 
 # Security
 # -----------------------------------------------------
@@ -80,6 +85,9 @@ alias iptlistin='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
 alias iptlistout='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
 alias iptlistfw='sudo /sbin/iptables -L FORWARD -n -v --line-numbers'
 alias firewall=iptlist
+
+alias lsports='sudo lsof -i -T -n'
+alias showports='netstat -tulanp'
 
 # reboot / halt / poweroff
 alias reboot='sudo /sbin/reboot'
@@ -91,16 +99,21 @@ alias shutdown='sudo /sbin/shutdown'
 # -----------------------------------------------------
 
 alias meminfo='free -m -l -t'
+
 ## get top process eating memory
 alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 ## get top process eating cpu ##
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+alias psmy='ps -ef | grep $USER"'
+
 ## Get server cpu info ##
 alias cpuinfo='lscpu'
 ## get GPU ram on desktop / laptop##
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+
+
 
 
 # Web
@@ -108,4 +121,3 @@ alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 
 alias httpsnif="sudo ngrep -d 'enp0s25' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i enp0s25 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
-alias showports='netstat -tulanp'
