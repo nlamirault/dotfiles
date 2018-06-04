@@ -22,3 +22,9 @@ for BIN in ${K8S_BINARIES[@]}; do
   fi
 done
 
+alias kci="kubectl cluster-info"
+
+alias ksvcs='kubectl get services --sort-by=.metadata.name -o wide'
+
+alias kpods="kubectl get pods -o wide"
+alias kpodsko="kubectl get pods --sort-by='.status.containerStatuses[0].restartCount -o wide"
