@@ -24,12 +24,6 @@ function tmux_zeiot {
     tmux new-session -s $SESSION -n Zeiot -d
     tmux new-window -n "Jarvis"
     tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/jarvis" C-m
-    tmux new-window -n "charts"
-    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/charts" C-m
-    tmux new-window -n "jarvis-bot"
-    tmux send-keys -t $SESSION "cd {GO_PRJ}/jarvis-bot" C-m
-    tmux new-window -n "rpi-helm"
-    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-helm" C-m
     tmux new-window -n "rpi-prometheus"
     tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-prometheus" C-m
     tmux new-window -n "rpi-alertmanager"
@@ -38,16 +32,12 @@ function tmux_zeiot {
     tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-grafana" C-m
     tmux new-window -n "rpi-node_exporter"
     tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-node_exporter" C-m
-    tmux new-window -n "rpi-snmp_exporter"
-    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-snmp_exporter" C-m
-    tmux new-window -n "rpi-domoticz"
-    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-domoticz" C-m
-    tmux new-window -n "rpi-pihole_exporter"
-    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-pihole_exporter" C-m
-    tmux new-window -n "rpi-speedtest_exporter"
-    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-speedtest_exporter" C-m
-    # tmux new-window -n "Arduino-examples"
-    # tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/arduino-examples" C-m
+    tmux new-window -n "rpi-influxdb"
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-influxdb" C-m
+    tmux new-window -n "rpi-coredns"
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-coredns" C-m
+    tmux new-window -n "rpi-vault"
+    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-vault" C-m
     tmux attach-session -t $SESSION
 }
 
