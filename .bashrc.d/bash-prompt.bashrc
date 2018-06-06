@@ -2,6 +2,16 @@
 
 # TODO: Currently, this is hardcoded. Ideally, this should be rewritten to be configurable.
 
+
+export KUBE_PS1_SYMBOL_ENABLE=false
+export KUBE_PS1_PREFIX=" "
+export KUBE_PS1_SUFFIX=""
+# export KUBE_PS1_BG_COLOR=""
+# export KUBE_PS1_SYMBOL_COLOR="blue"
+# export KUBE_PS1_SEPARATOR=""
+export KUBE_PS1_DIVIDER=$' \u2638 '
+# export KUBE_PS1_SYMBOL_USE_IMG=true
+
 function ps1_powerline {
   RETCODE=$? # save return code
   NUM_JOBS=$(jobs -rp | wc -l)
@@ -31,7 +41,7 @@ function ps1_powerline {
   local RET="\[\e[48;5;160m\]\[\e[38;5;255m\]"
   local RET_END="\[\e[0m\]\[\e[38;5;160m\]\[\e[0m\] "
 
-  local PROMPT="\[\e[48;5;236m\]\[\e[38;5;255m\]"
+  local PROMPT="$(kube_ps1)\[\e[48;5;236m\]\[\e[38;5;255m\]"
   local PROMPT_END="\[\e[0m\]\[\e[38;5;236m\]\[\e[0m\] "
 
   local HOST="\[\e[48;5;236m\]\[\e[38;5;255m\]"
@@ -51,21 +61,21 @@ function ps1_powerline {
       if [ "$NUM_JOBS" -eq 0 ]; then
         # No jobs or ret code
         # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_ALT$PROMPT \$ $PROMPT_END"
-        PS1="$HOST  \h $HOST_END$BLUE \W $BLUE_END_ALT$PROMPT  $PROMPT_END"
+        PS1="$HOST  \h $HOST_END$BLUE  \W $BLUE_END_ALT$PROMPT  $PROMPT_END"
       else
         # no ret code but jobs
         # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_END$PROMPT \$ $PROMPT_END"
-        PS1="$HOST  \h $HOST_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_END$PROMPT  $PROMPT_END"
+        PS1="$HOST  \h $HOST_END$BLUE  \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_END$PROMPT  $PROMPT_END"
       fi
     else
       if [ "$NUM_JOBS" -eq 0 ]; then
         # No jobs but ret code is there
         # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_RET$RET \$ ⚑ $RETCODE $RET_END"
-        PS1="$HOST  \h $HOST_END$BLUE \W $BLUE_END_RET$RET   $RETCODE $RET_END"
+        PS1="$HOST  \h $HOST_END$BLUE  \W $BLUE_END_RET$RET   $RETCODE $RET_END"
       else
         # Both jobs and ret code
         # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_GIT_END$RET \$ ⚑ $RETCODE $RET_END"
-        PS1="$HOST  \h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_GIT_END$RET   $RETCODE $RET_END"
+        PS1="$HOST  \h $GREEN_END$BLUE  \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_GIT_END$RET   $RETCODE $RET_END"
       fi
     fi
   else
@@ -84,27 +94,28 @@ function ps1_powerline {
       if [ "$NUM_JOBS" -eq 0 ]; then
         # No jobs or ret code
         # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END$ORANGE $GIT_BRANCH $GIT_STATUS$PROMPT \$ $PROMPT_END"
-        PS1="$HOST  \h $HOST_END$BLUE \W $BLUE_END$ORANGE $GIT_BRANCH $GIT_STATUS$PROMPT  $PROMPT_END"
+        PS1="$HOST  \h $HOST_END$BLUE  \W $BLUE_END$ORANGE $GIT_BRANCH $GIT_STATUS$PROMPT  $PROMPT_END"
       else
         # no ret code but jobs
         # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_RET_END$ORANGE $GIT_BRANCH $GIT_STATUS$PROMPT \$ $PROMPT_END"
-        PS1="$HOST  \h $HOST_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_RET_END$ORANGE $GIT_BRANCH $GIT_STATUS$PROMPT  $PROMPT_END"
+        PS1="$HOST  \h $HOST_END$BLUE  \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_RET_END$ORANGE $GIT_BRANCH $GIT_STATUS$PROMPT  $PROMPT_END"
       fi
     else
       if [ "$NUM_JOBS" -eq 0 ]; then
         # No jobs but ret code is there
         # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END$ORANGE $GIT_BRANCH $GIT_STATUS$RET \$ ⚑ $RETCODE $RET_END"
-        PS1="$HOST  \h $HOST_END$BLUE \W $BLUE_END$ORANGE $GIT_BRANCH $GIT_STATUS$RET   $RETCODE $RET_END"
+        PS1="$HOST  \h $HOST_END$BLUE  \W $BLUE_END$ORANGE $GIT_BRANCH $GIT_STATUS$RET   $RETCODE $RET_END"
       else
         # Both jobs and ret code
         # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_RET_END$ORANGE $GIT_BRANCH $GIT_STATUS$RET \$ ⚑ $RETCODE $RET_END"
-        PS1="$HOST  \h $HOST_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_RET_END$ORANGE $GIT_BRANCH $GIT_STATUS$RET   $RETCODE $RET_END"
+        PS1="$HOST  \h $HOST_END$BLUE  \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_RET_END$ORANGE $GIT_BRANCH $GIT_STATUS$RET   $RETCODE $RET_END"
       fi
     fi
 
   fi
+
 }
 
 if [  "$TERM" != "linux" ]; then
-   PROMPT_COMMAND="ps1_powerline; $PROMPT_COMMAND"
+    PROMPT_COMMAND="ps1_powerline; $PROMPT_COMMAND"
 fi
