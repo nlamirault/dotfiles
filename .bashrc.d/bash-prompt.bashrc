@@ -34,6 +34,9 @@ function ps1_powerline {
   local PROMPT="\[\e[48;5;236m\]\[\e[38;5;255m\]"
   local PROMPT_END="\[\e[0m\]\[\e[38;5;236m\]\[\e[0m\] "
 
+  local HOST="\[\e[48;5;236m\]\[\e[38;5;255m\]"
+  local HOST_END="\[\e[48;5;27m\]\[\e[38;5;236m\]"
+
   if [ ! -w "$PWD" ]; then
     # Current directory is not writable
     BLUE_END="\[\e[48;5;160m\]\[\e[38;5;27m\]\[\e[38;5;255m\]  \[\e[48;5;208m\]\[\e[38;5;160m\]"
@@ -48,21 +51,21 @@ function ps1_powerline {
       if [ "$NUM_JOBS" -eq 0 ]; then
         # No jobs or ret code
         # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_ALT$PROMPT \$ $PROMPT_END"
-        PS1="$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_ALT$PROMPT \$ $PROMPT_END"
+        PS1="$HOST  \h $HOST_END$BLUE \W $BLUE_END_ALT$PROMPT  $PROMPT_END"
       else
         # no ret code but jobs
         # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_END$PROMPT \$ $PROMPT_END"
-        PS1="$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_END$PROMPT \$ $PROMPT_END"
+        PS1="$HOST  \h $HOST_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_END$PROMPT  $PROMPT_END"
       fi
     else
       if [ "$NUM_JOBS" -eq 0 ]; then
         # No jobs but ret code is there
         # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_RET$RET \$ ⚑ $RETCODE $RET_END"
-        PS1="$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_RET$RET \$ ⚑ $RETCODE $RET_END"
+        PS1="$HOST  \h $HOST_END$BLUE \W $BLUE_END_RET$RET   $RETCODE $RET_END"
       else
         # Both jobs and ret code
         # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_GIT_END$RET \$ ⚑ $RETCODE $RET_END"
-        PS1="$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_GIT_END$RET \$ ⚑ $RETCODE $RET_END"
+        PS1="$HOST  \h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_GIT_END$RET   $RETCODE $RET_END"
       fi
     fi
   else
@@ -70,7 +73,7 @@ function ps1_powerline {
     local NUM_MODIFIED=$(git diff --name-only --diff-filter=M | wc -l)
     local NUM_STAGED=$(git diff --staged --name-only --diff-filter=AM | wc -l)
     local NUM_CONFLICT=$(git diff --name-only --diff-filter=U | wc -l)
-    local GIT_STATUS="\[\e[48;5;255m\]\[\e[38;5;208m\]\[\e[38;5;27m\] ✚$NUM_MODIFIED \[\e[38;5;208m\]\[\e[38;5;2m\] ✔$NUM_STAGED \[\e[38;5;208m\]\[\e[38;5;9m\] ✘$NUM_CONFLICT "
+    local GIT_STATUS="\[\e[48;5;255m\]\[\e[38;5;208m\]\[\e[38;5;27m\]  $NUM_MODIFIED \[\e[38;5;208m\]\[\e[38;5;2m\]  $NUM_STAGED \[\e[38;5;208m\]\[\e[38;5;9m\] ✘ $NUM_CONFLICT "
     if [ "$RETCODE" -eq 0 ]; then
       GIT_STATUS+="\[\e[38;5;255m\]\[\e[48;5;236m\]"
     else
@@ -81,21 +84,21 @@ function ps1_powerline {
       if [ "$NUM_JOBS" -eq 0 ]; then
         # No jobs or ret code
         # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END$ORANGE $GIT_BRANCH $GIT_STATUS$PROMPT \$ $PROMPT_END"
-        PS1="$GREEN @\h $GREEN_END$BLUE \W $BLUE_END$ORANGE $GIT_BRANCH $GIT_STATUS$PROMPT \$ $PROMPT_END"
+        PS1="$HOST  \h $HOST_END$BLUE \W $BLUE_END$ORANGE $GIT_BRANCH $GIT_STATUS$PROMPT  $PROMPT_END"
       else
         # no ret code but jobs
         # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_RET_END$ORANGE $GIT_BRANCH $GIT_STATUS$PROMPT \$ $PROMPT_END"
-        PS1="$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_RET_END$ORANGE $GIT_BRANCH $GIT_STATUS$PROMPT \$ $PROMPT_END"
+        PS1="$HOST  \h $HOST_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_RET_END$ORANGE $GIT_BRANCH $GIT_STATUS$PROMPT  $PROMPT_END"
       fi
     else
       if [ "$NUM_JOBS" -eq 0 ]; then
         # No jobs but ret code is there
         # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END$ORANGE $GIT_BRANCH $GIT_STATUS$RET \$ ⚑ $RETCODE $RET_END"
-        PS1="$GREEN @\h $GREEN_END$BLUE \W $BLUE_END$ORANGE $GIT_BRANCH $GIT_STATUS$RET \$ ⚑ $RETCODE $RET_END"
+        PS1="$HOST  \h $HOST_END$BLUE \W $BLUE_END$ORANGE $GIT_BRANCH $GIT_STATUS$RET   $RETCODE $RET_END"
       else
         # Both jobs and ret code
         # PS1="$GREY \t $GREY_END$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_RET_END$ORANGE $GIT_BRANCH $GIT_STATUS$RET \$ ⚑ $RETCODE $RET_END"
-        PS1="$GREEN @\h $GREEN_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_RET_END$ORANGE $GIT_BRANCH $GIT_STATUS$RET \$ ⚑ $RETCODE $RET_END"
+        PS1="$HOST  \h $HOST_END$BLUE \W $BLUE_END_JOBS$JOBS$NUM_JOBS $JOBS_NO_RET_END$ORANGE $GIT_BRANCH $GIT_STATUS$RET   $RETCODE $RET_END"
       fi
     fi
 
