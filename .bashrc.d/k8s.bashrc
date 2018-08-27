@@ -17,3 +17,38 @@
 alias kube_complete="source <(kubectl completion bash)"
 alias kube_get_pods="kubectl get pods -o wide --show-labels --all-namespaces"
 alias kube_get_svc="kubectl get svc  -o wide --show-labels --all-namespaces"
+
+# Get resources
+# kget <pod|deployment|svc> <resource-name> <option>
+kget() {
+  kubectl get $@
+}
+
+# Change context
+# kctx <context-name>
+kctx() {
+  kubectl config use-context $1
+}
+
+# Change namespace
+# kns <namespace-name>
+kns() {
+  kubectl config set-context $(kubectl config current-context) --namespace=$1
+}
+
+# Get current context
+kcurrent() {
+  kubectl config current-context
+}
+
+# Delete resources
+# kdel <pod|deployment|svc> <resource-name> <option>
+kdel() {
+  kubectl delete $@
+}
+
+# Describe resources
+# kdes <pod|deployment|svc> <resource-name> <option>
+kdes() {
+  kubectl describe $@
+}

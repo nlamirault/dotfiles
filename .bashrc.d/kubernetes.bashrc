@@ -24,7 +24,36 @@ done
 
 alias kci="kubectl cluster-info"
 
-alias ksvcs='kubectl get services --sort-by=.metadata.name -o wide'
+alias kccc='kubectl config current-context'
+alias kccu='kubectl config use-context'
 
-alias kpods="kubectl get pods -o wide"
-alias kpodsko="kubectl get pods --sort-by='.status.containerStatuses[0].restartCount -o wide"
+alias kcaf='kubectl apply -f'
+alias kcdf='kubectl delete -f'
+alias kcx='kubectl exec -it'
+
+alias kcgn='kubectl get nodes'
+alias kcgd='kubectl get deployments'
+alias kcgp='kubectl get pods'
+alias kcgpw="kubectl get pods -o wide"
+alias kcgj='kubectl get jobs'
+alias kcgs='kubectl get services'
+alias kcgsw='kubectl get services --sort-by=.metadata.name -o wide'
+alias kcgpvc='kubectl get pvc'
+alias kcgpv='kubectl get pv'
+
+alias kcds='kubectl delete service'
+alias kcdd='kubectl delete deployments'
+alias kcdp='kubectl delete pods'
+alias kcdj='kubectl delete jobs'
+alias kcdpv='kubectl delete pv'
+alias kcdpvc='kubectl delete pvc'
+
+alias kcl='kubectl logs'
+alias kclf='kubectl logs -f'
+
+alias kkgpn='kubectl get pods -o wide --sort-by="{.spec.nodeName}"'
+
+alias kcdp='kubectl describe pod'
+alias kcds='kubectl describe service'
+alias kcdpvc='kubectl describe pvc'
+alias kcdpv='kubectl describe pv'
