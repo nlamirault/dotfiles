@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+# set -e
+# set -x
 
 if [ -d ~/.bashrc.d ]; then
     for file in $(/bin/ls ~/.bashrc.d/*.bashrc); do
@@ -39,19 +41,6 @@ export TERM=xterm-256color
 export GTK2_RC_FILES=/usr/share/themes/Arc-Dark/gtk-2.0/gtkrc
 export GTK_THEME=Arc:dark
 
-
-PERSO_BASH="${HOME}/etc/Perso/bash.d"
-if [ -d "$PERSO_BASH" ]; then
-    for file in $(ls ${PERSO_BASH}); do
-        # echo ${file}
-        rc=${PERSO_BASH}/${file}
-        if [ -f "${rc}" ]; then
-            . $rc
-        else
-            echo "not found ${rc}"
-        fi
-    done
-fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/nlamirault/Apps/google-cloud-sdk/path.bash.inc' ]; then source '/home/nlamirault/Apps/google-cloud-sdk/path.bash.inc'; fi
