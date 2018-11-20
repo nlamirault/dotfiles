@@ -50,6 +50,10 @@ else
     alias fgrep='fgrep --color=auto'
 fi
 
+if [ -x "$(command -v bat)" ]; then
+    alias cat='bat'
+fi
+
 alias lsi="devicons-ls"
 
 alias clean='find . \( -name ".*~" -o -name "*~" -o -name ".saves*" -o -name ".#*" \) -print -exec /bin/rm {} \;'
