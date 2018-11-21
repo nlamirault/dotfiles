@@ -35,7 +35,7 @@ if  [ -x "$(command -v exa)" ]; then
     alias la='exa -agbhl --time-style=long-iso'
     alias lt='exa -agbhl --time-style=long-iso -s modified'
     alias lo='ls -la'
-    alias tree='exa -gbhlT'
+    alias tree='exa -abhlT'
 else
     alias ls="command ls ${colorflag}"
     alias ls="ls -lF ${colorflag}"
