@@ -25,10 +25,6 @@ export COLUMNS=250
 
 APPS=$HOME/Apps
 
-XDG_CACHE_HOME=${HOME}/.cache
-XDG_DATA_HOME=${HOME}/.share
-XDG_DATA_DIRS=${HOME}/.share
-
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
