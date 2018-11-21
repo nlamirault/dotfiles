@@ -14,14 +14,38 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PIHOLE_IP="${1:-192.168.1.227}"
+
+
+PIHOLE_IP="${2:-192.168.1.228}"
 LIVEBOX_IP="192.168.1.1"
 
+function usage {
+    echo "Usage: $0 on|off [ pihole IP ]"
+}
 
 function dns_pihole_on {
-    sed -e "s/nameserver ${LIVEBOX_IP}/nameserver ${PIHOLE_IP}/g" /etc/resolv.conf
+    sed -i "s/nameserver ${LIVEBOX_IP}/nameserver ${PIHOLE_IP}/g" /etc/resolv.conf
 }
 
 function dns_pihole_off {
-    sed -e "s/nameserver ${PIHOLE_IP}/nameserver ${LIVEBOX_IP}/g" /etc/resolv.conf
+    sed -i "s/nameserver ${PIHOLE_IP}/nameserver ${LIVEBOX_IP}/g" /etc/resolv.conf
 }
+
+
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 on|off [ pihole IP ]"
+    exit 1
+fi
+
+case $1 in
+    on)
+    dns_pihole_on
+    ;;
+    off)
+    dns_pihole_off
+    ;;
+    *)
+    usage
+    ;;
+esac
+
