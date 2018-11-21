@@ -1,4 +1,4 @@
-; Copyright (C) 2016-2017 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+; Copyright (C) 2016-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ; Licensed under the Apache License, Version 2.0 (the "License");
 ; you may not use this file except in compliance with the License.
@@ -11,6 +11,10 @@
 ; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 ; See the License for the specific language governing permissions and
 ; limitations under the License.
+
+;----------------------------------------------------------
+;			C O L O R S
+;----------------------------------------------------------
 
 [colors]
 background = #000000
@@ -25,6 +29,28 @@ blue = #3182bd
 purple = #756bb1
 orange = #de935f
 yellow = #faee41
+
+xcolor0 = ${xrdb:color0}
+xcolor1 = ${xrdb:color1}
+xcolor2 = ${xrdb:color2}
+xcolor3 = ${xrdb:color3}
+xcolor4 = ${xrdb:color4}
+xcolor5 = ${xrdb:color5}
+xcolor6 = ${xrdb:color6}
+xcolor7 = ${xrdb:color7}
+xcolor8 = ${xrdb:color8}
+xcolor9 = ${xrdb:color9}
+xcolor10 = ${xrdb:color10}
+xcolor11 = ${xrdb:color11}
+xcolor12 = ${xrdb:color12}
+xcolor13 = ${xrdb:color13}
+xcolor14 = ${xrdb:color14}
+xcolor15 = ${xrdb:color15}
+
+
+;----------------------------------------------------------
+;			B A R : TOP
+;----------------------------------------------------------
 
 [bar/top]
 enable-ipc = true
@@ -48,20 +74,33 @@ padding-right = 0
 module-margin-left = 3
 module-margin-right = 3
 
+;----------------------------------------------------------
+;			F O N T S
+;----------------------------------------------------------
+
 font-0 = NotoSans-Regular:size=8;0
 font-1 = Unifont:size=5;-3
 font-2 = FontAwesome:size=8;-2
 font-3 = NotoSans-Regular:size=8;-1
 font-4 = Unifont:size=5;-4
 font-5 = Termsynu:size=7;-3
+; See symbols: http://fontawesome.io/cheatsheet/
+
+;----------------------------------------------------------
+;  	    M O D U L E    L A Y O U T S
+;----------------------------------------------------------
 
 modules-left = powermenu filesystem-slash filesystem-home
 modules-center = clock xwindow
+; modules-center = MiddleArrowLeft clock xwindow MiddleArrowRight
 modules-right = backlight volume battery
 
-; ; wm-restack = bspwm
-
 ; tray-position = right
+
+
+;----------------------------------------------------------
+;			B A R : BOTTOM
+;----------------------------------------------------------
 
 [bar/bottom]
 # monitor = eDP-1
@@ -91,6 +130,10 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 6
 
+;----------------------------------------------------------
+;			F O N T S
+;----------------------------------------------------------
+
 font-0 = "NotoSans-Regular:size=8;0"
 font-1 = "Unifont:size=5;0"
 font-2 = "FontAwesome:size=8;0"
@@ -103,11 +146,13 @@ font-5 = "Termsynu:size=7;0"
 ; font-2 = siji:pixelsize=8;0
 ; font-3 = FontAwesome:pixelsize=10;0
 
-modules-left = i3
-modules-center = vpncheck wireless-network wirelessspeeddown wirelessspeedup wired-network wiredspeedup wiredspeeddown pkg
-modules-right = cpu memory
+;----------------------------------------------------------
+;  	    M O D U L E    L A Y O U T S
+;----------------------------------------------------------
 
-; ; wm-restack = i3
+modules-left = i3
+modules-center = vpncheck wireless-network wirelessspeeddown wirelessspeedup wired-network wiredspeedup wiredspeeddown
+modules-right = cpu memory
 
 [module/backlight]
 type = internal/backlight
@@ -133,8 +178,17 @@ type = internal/i3
 format = <label-state> <label-mode>
 pin-workspaces = true
 ; strip-wsnumbers = true
-
 ws-icon-default = 
+ws-icon-0 = "1;➊"
+ws-icon-1 = "2;➋"
+ws-icon-2 = "3;➌"
+ws-icon-3 = "4;➍"
+ws-icon-4 = "5;➎"
+ws-icon-5 = "6;➏"
+ws-icon-6 = "7;➐"
+ws-icon-7 = "8;➑"
+ws-icon-8 = "9;➒"
+ws-icon-9 = "10;➓"
 
 label-dimmed-underline = ${root.background}
 
@@ -163,6 +217,8 @@ label-visible = %icon%  %name%
 label-visible-foreground = #55ffffff
 label-visible-font = 4
 label-visible-padding = 4
+
+
 
 [module/cpu]
 type = internal/cpu
@@ -347,17 +403,20 @@ interval = 1
 date =    %a - %d.%m.%Y
 time = "  %H:%M:%S"
 time-alt = "%a - %d.%m.%Y - %I:%M %p"
-; format-prefix = " "
+label = %date% %time%
 format-prefix-foreground = ${colors.purple}
 format-underline = ${colors.purple}
-label = %date% %time%
-
+; format-foreground = ${colors.purple}
+; format-background = ${colors.black}
 
 [module/volume]
 type = internal/volume
 speaker-mixer = Speaker
 headphone-mixer = Headphone
 headphone-id = 9
+master-soundcard=default
+speaker-soundcard = default
+headphone-soundcard = default
 
 format-volume = <ramp-volume> <label-volume> <bar-volume>
 
@@ -569,5 +628,80 @@ format-underline = ${colors.yellow}
 ; format-prefix = " "
 ; format-prefix-foreground = ${colors.white}
 ; format-underline = {colors.white}
+
+
+;----------------------------------------------------------
+;	          T E X T    M O D U L E S
+;----------------------------------------------------------
+
+[module/pipe]
+type = custom/text
+content = "|"
+content-foreground = ${colors.darkgrey}
+content-background = ${colors.xcolor0}
+content-padding = 1
+
+[module/LeftStripe]
+type = custom/text
+content = "î²"
+content-foreground = ${colors.xcolor0}
+content-background = ${colors.xcolor1}
+
+[module/arrow1]
+type = custom/text
+content = "î²"
+content-foreground = ${colors.xcolor1}
+content-background = ${colors.xcolor0}
+
+[module/arrow2]
+type = custom/text
+content = " î²"
+content-foreground = ${colors.xcolor7}
+content-background = ${colors.xcolor1}
+
+[module/arrow3]
+type = custom/text
+content = " î²"
+content-foreground = ${colors.xcolor1}
+content-background = ${colors.xcolor7}
+
+[module/RightStripe]
+type = custom/text
+content = "î°"
+content-foreground = ${colors.xcolor0}
+content-background = ${colors.xcolor1}
+
+[module/RightArrow1]
+type = custom/text
+content = "î°"
+content-foreground = ${colors.xcolor1}
+content-background = ${colors.xcolor0}
+
+[module/RightArrow2]
+type = custom/text
+content = "î°"
+content-foreground = ${colors.xcolor7}
+content-background = ${colors.xcolor1}
+
+[module/RightArrow3]
+type = custom/text
+content = "î°"
+content-foreground = ${colors.xcolor1}
+content-background = ${colors.xcolor7}
+
+[module/MiddleArrowLeft]
+type = custom/text
+content = ""
+content-foreground = ${colors.purple}
+content-background = ${colors.black}
+
+[module/MiddleArrowRight]
+type = custom/text
+content = ""
+content-foreground = ${colors.green}
+content-background = ${colors.black}
+
+
+
 
 ; ; vim:ft=dosini
