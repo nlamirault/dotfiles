@@ -57,7 +57,7 @@ enable-ipc = true
 # monitor = eDP-1
 monitor = ${env:MONITOR}
 width = 100%
-height = 27
+height = 28
 
 background = ${colors.background}
 
@@ -69,19 +69,20 @@ overline-color = ${self.background}
 underline-size = 3
 underline-color = ${self.background}
 
-padding-left = 0
-padding-right = 0
-module-margin-left = 3
-module-margin-right = 3
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 2
 
 ;----------------------------------------------------------
 ;			F O N T S
 ;----------------------------------------------------------
 
-font-0 = NotoSans-Regular:size=8;0
+font-0 = NotoSans-Regular:size=10;0
 font-1 = Unifont:size=5;-3
-font-2 = FontAwesome:size=8;-2
-font-3 = NotoSans-Regular:size=8;-1
+font-2 = FontAwesome:size=10;-2
+font-3 = NotoSans-Regular:size=10;-1
 font-4 = Unifont:size=5;-4
 font-5 = Termsynu:size=7;-3
 ; See symbols: http://fontawesome.io/cheatsheet/
@@ -90,8 +91,8 @@ font-5 = Termsynu:size=7;-3
 ;  	    M O D U L E    L A Y O U T S
 ;----------------------------------------------------------
 
-modules-left = powermenu filesystem-slash filesystem-home
-modules-center = clock xwindow
+modules-left = my-text-label powermenu filesystem-slash filesystem-home
+modules-center = clock xkeyboard xwindow
 ; modules-center = MiddleArrowLeft clock xwindow MiddleArrowRight
 modules-right = backlight volume battery
 
@@ -134,17 +135,13 @@ module-margin-right = 6
 ;			F O N T S
 ;----------------------------------------------------------
 
-font-0 = "NotoSans-Regular:size=8;0"
-font-1 = "Unifont:size=5;0"
-font-2 = "FontAwesome:size=8;0"
-font-3 = "NotoSans-Regular:size=8;0"
-font-4 = "Unifont:size=5;0"
-font-5 = "Termsynu:size=7;0"
-
-; font-0 = hack:pixelsize=8;0
-; font-1 = unifont:size=6:heavy:fontformat=truetype;-2
-; font-2 = siji:pixelsize=8;0
-; font-3 = FontAwesome:pixelsize=10;0
+font-0 = NotoSans-Regular:size=10;0
+font-1 = Unifont:size=5;-3
+font-2 = FontAwesome:size=10;-2
+font-3 = NotoSans-Regular:size=10;-1
+font-4 = Unifont:size=5;-4
+font-5 = Termsynu:size=7;-3
+; See symbols: http://fontawesome.io/cheatsheet/
 
 ;----------------------------------------------------------
 ;  	    M O D U L E    L A Y O U T S
@@ -153,6 +150,8 @@ font-5 = "Termsynu:size=7;0"
 modules-left = i3
 modules-center = vpncheck wireless-network wirelessspeeddown wirelessspeedup wired-network wiredspeedup wiredspeeddown
 modules-right = cpu memory
+
+#########################################################
 
 [module/backlight]
 type = internal/backlight
@@ -166,12 +165,14 @@ bar-width = 10
 bar-indicator = |
 bar-indicator-foreground = ${colors.yellow}
 bar-indicator-font = 2
-bar-fill = ─
+bar-fill = ""
 bar-fill-font = 2
 bar-fill-foreground = #9f78e1
-bar-empty = ─
+bar-empty = ""
 bar-empty-font = 2
 ;bar-empty-foreground = ${colors.foreground-alt}
+
+#########################################################
 
 [module/i3]
 type = internal/i3
@@ -218,7 +219,7 @@ label-visible-foreground = #55ffffff
 label-visible-font = 4
 label-visible-padding = 4
 
-
+#########################################################
 
 [module/cpu]
 type = internal/cpu
@@ -255,6 +256,8 @@ ramp-coreload-7 = █
 ramp-coreload-7-font = 2
 ramp-coreload-7-foreground = #ff5555
 
+#########################################################
+
 [module/memory]
 type = internal/memory
 interval = 0.2
@@ -279,6 +282,8 @@ bar-used-empty = █
 bar-used-empty-font = 5
 bar-used-empty-foreground = #44
 
+#########################################################
+
 [module/vpncheck]
 type = custom/script
 interval = 10
@@ -291,6 +296,8 @@ format-prefix = " "
 ; format-prefix-foreground = ${colors.red}
 format-underline = ${colors.red}
 label = "vpn %output%"
+
+#########################################################
 
 [module/wireless-network]
 type = internal/network
@@ -316,23 +323,29 @@ animation-packetloss-1 = 
 animation-packetloss-1-foreground = ${bar/top.foreground}
 animation-packetloss-framerate = 500
 
+#########################################################
+
 [module/wirelessspeedup]
 type = internal/network
 interface = ${env:WIFI_INTERFACE}
 label-connected = "%upspeed:7%"
 format-connected = <label-connected>
-format-connected-prefix = " "
+format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.blue}
 format-connected-underline = ${colors.blue}
+
+#########################################################
 
 [module/wirelessspeeddown]
 type = internal/network
 interface = ${env:WIFI_INTERFACE}
 label-connected = "%downspeed:7%"
 format-connected = <label-connected>
-format-connected-prefix = " "
+format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.green}
 format-connected-underline = ${colors.green}
+
+#########################################################
 
 [module/wired-network]
 type = internal/network
@@ -344,6 +357,8 @@ label-connected =  %local_ip%
 label-disconnected = Ethernet disconnected
 label-disconnected-foreground = #66
 
+#########################################################
+
 [module/wiredspeedup]
 type = internal/network
 interface = ${env:ETH_INTERFACE}
@@ -353,6 +368,8 @@ format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.blue}
 format-connected-underline = ${colors.blue}
 
+#########################################################
+
 [module/wiredspeeddown]
 type = internal/network
 interface = ${env:ETH_INTERFACE}
@@ -361,6 +378,8 @@ format-connected = <label-connected>
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.green}
 format-connected-underline = ${colors.green}
+
+#########################################################
 
 [module/mpd]
 type = internal/mpd
@@ -396,12 +415,14 @@ bar-progress-empty = ▒
 bar-progress-empty-font = 3
 bar-progress-empty-foreground = #44
 
+#########################################################
+
 [module/clock]
 type = internal/date
 interval = 1
 ; date-alt =   %A %H:%M
 date =    %a - %d.%m.%Y
-time = "  %H:%M:%S"
+time = " %H:%M:%S"
 time-alt = "%a - %d.%m.%Y - %I:%M %p"
 label = %date% %time%
 format-prefix-foreground = ${colors.purple}
@@ -409,77 +430,112 @@ format-underline = ${colors.purple}
 ; format-foreground = ${colors.purple}
 ; format-background = ${colors.black}
 
+#########################################################
+
+# [module/volume]
+# type = internal/volume
+# speaker-mixer = Speaker
+# headphone-mixer = Headphone
+# headphone-id = 9
+# master-soundcard=default
+# speaker-soundcard = default
+# headphone-soundcard = default
+
+# format-volume = <ramp-volume> <label-volume> <bar-volume>
+
+# label-volume = %percentage%%
+# label-volume-foreground = #ff
+
+# label-muted = sound muted
+# label-muted-foreground = #99ffffff
+
+# ramp-volume-0 = 
+# ramp-volume-1 = 
+# ramp-volume-2 = 
+# ramp-volume-3 = 
+# ;ramp-volume-foreground = #9f78e1
+
+# ramp-headphones-0 = 
+# ramp-headphones-1 = 
+# ramp-headphones-foreground = #9f78e1
+
+# bar-volume-width = 10
+# bar-volume-foreground-0 = #5af78e
+# bar-volume-foreground-1 = #5af78e
+# bar-volume-foreground-2 = #5af78e
+# bar-volume-foreground-3 = #5af78e
+# bar-volume-foreground-4 = #5af78e
+# bar-volume-foreground-5 = #f3f99d
+# bar-volume-foreground-6 = #ff5c57
+# bar-volume-gradient = false
+# bar-volume-indicator = │
+# bar-volume-indicator-font = 2
+# bar-volume-indicator-foreground = #ff
+# bar-volume-fill = ─
+# bar-volume-fill-font = 2
+# bar-volume-empty = ─
+# bar-volume-empty-font = 2
+
+#########################################################
+
 [module/volume]
-type = internal/volume
-speaker-mixer = Speaker
-headphone-mixer = Headphone
-headphone-id = 9
-master-soundcard=default
-speaker-soundcard = default
-headphone-soundcard = default
+type = internal/pulseaudio
 
-format-volume = <ramp-volume> <label-volume> <bar-volume>
+format-volume = <label-volume> <bar-volume>
+label-volume = 
+label-volume-foreground = #8FF6FF
 
-label-volume = %percentage%%
-label-volume-foreground = #ff
-
-label-muted = sound muted
-label-muted-foreground = #99ffffff
-
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-ramp-volume-3 = 
-;ramp-volume-foreground = #9f78e1
-
-ramp-headphones-0 = 
-ramp-headphones-1 = 
-ramp-headphones-foreground = #9f78e1
+format-muted-suffix = "  "
+format-muted-foreground = #8FF6FF
+label-muted = " Mute"
+format-muted-underline = #8FF6FF
 
 bar-volume-width = 10
-bar-volume-foreground-0 = #5af78e
-bar-volume-foreground-1 = #5af78e
-bar-volume-foreground-2 = #5af78e
-bar-volume-foreground-3 = #5af78e
-bar-volume-foreground-4 = #5af78e
-bar-volume-foreground-5 = #f3f99d
-bar-volume-foreground-6 = #ff5c57
+bar-volume-foreground-0 = #8FF6FF
+
 bar-volume-gradient = false
-bar-volume-indicator = │
-bar-volume-indicator-font = 2
-bar-volume-indicator-foreground = #ff
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-;bar-volume-empty-foreground = ${colors.foreground-alt}
+bar-volume-indicator =
+bar-volume-indicator-font = 0
+bar-volume-fill = ""
+bar-volume-fill-font = 1
+bar-volume-empty = ""
+bar-volume-empty-font = 1
+bar-volume-empty-foreground = ${colors.yellow}
+
+#########################################################
 
 [module/battery]
 type = internal/battery
 full-at = 98
 
-;label-charging-font = 3
-;label-discharging-font = 3
-label-full = %{F#31a354}%{F-} %percentage%% %{F#d7a645}%{F-}
+# label-full = %{F#31a354}%{F-} %percentage%% %{F#d7a645}%{F-}
 
 format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${colors.yellow}
+format-charging-foreground = ${colors.yellow}
+
 format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${colors.yellow}
+
 format-full-prefix = " "
-format-charging-underline = ${colors.green}
-format-charging-foreground = ${colors.green}
-format-full-overline = ${colors.green}
+format-full-overline = ${colors.yellow}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
+ramp-capacity-foreground = ${self.format-charging-underline}
 
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
+animation-charging-foreground = ${self.format-charging-underline}
+animation-charging-framerate = 750
+
+#########################################################
 
 [module/filesystem-home]
 type = internal/fs
@@ -492,6 +548,8 @@ label-mounted = "%{F-} %percentage_used%%"
 format-mounted-prefix-foreground = ${colors.yellow}
 format-mounted-underline = ${colors.yellow}
 
+#########################################################
+
 [module/filesystem-slash]
 type = internal/fs
 interval = 3600
@@ -503,31 +561,41 @@ label-mounted = "%{F-} %percentage_used%%"
 format-mounted-prefix-foreground = ${colors.yellow}
 format-mounted-underline = ${colors.yellow}
 
+#########################################################
+
 [module/xwindow]
 type = internal/xwindow
-label-maxlen = 75
-format-prefix = " "
+label = %title:0:46:...%
+# label = "%title%"
+format-prefix = " "
+format-suffix = " "
+# label-maxlen = 75
+# format-prefix = " "
 format-prefix-foreground = ${colors.green}
-format-prefix-underline = ${colors.green}
-label = "%title%"
-; label-foreground = #bbb
-label-layout-underline = ${colors.green}
-; label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-underline = ${colors.green}
+# format-prefix-underline = ${colors.green}
+format-suffix-foreground = ${colors.green}
+# format-suffix-underline = ${colors.green}
+format-underline = ${colors.green}
+# label-layout-underline = ${colors.green}
+# label-indicator-margin = 1
+# label-indicator-underline = ${colors.green}
+
+#########################################################
 
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
 format-prefix = " "
-format-prefix-foreground = ${colors.purple}
-format-prefix-underline = ${colors.purple}
+format-prefix-foreground = ${colors.red}
+format-prefix-underline = ${colors.red}
 label-layout = %layout%
-label-layout-underline = ${colors.purple}
+label-layout-underline = ${colors.red}
 label-indicator-padding = 2
 label-indicator-margin = 1
 ;label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.purple}
+label-indicator-underline = ${colors.red}
+
+#########################################################
 
 [module/powermenu]
 type = custom/menu
@@ -565,10 +633,14 @@ menu-3-0-exec = i3-msg exit
 menu-3-1 = cancel
 menu-3-1-exec = menu-open-0
 
+#########################################################
+
 [module/kernel]
 type = custom/script
 exec = uname -s -m -r
 format-foreground = #ff5c56
+
+#########################################################
 
 [module/github-prometheus]
 type = custom/script
@@ -597,6 +669,8 @@ format = <label>
 format-prefix = " "
 click-left = xdg-open github.com/prometheus/prometheus/releases/latest
 
+#########################################################
+
 [module/pkg]
 type = custom/script
 interval = 1200
@@ -609,6 +683,8 @@ format-prefix = " "
 format-prefix-foreground = ${colors.yellow}
 format-underline = ${colors.yellow}
 
+#########################################################
+
 ; [module/mail]
 ; type = custom/script
 ; interval = 10
@@ -617,6 +693,8 @@ format-underline = ${colors.yellow}
 ; format-prefix-foreground = ${colors.orange}
 ; format-underline = ${colors.orange}
 ; exec = ~/.config/polybar/mail.py
+
+#########################################################
 
 ; [module/github]
 ; type = internal/github
@@ -629,6 +707,13 @@ format-underline = ${colors.yellow}
 ; format-prefix-foreground = ${colors.white}
 ; format-underline = {colors.white}
 
+###############################################################################
+
+[module/my-text-label]
+type = custom/text
+content = " %{F#7df059}  %{F-} Arch Linux "
+content-foreground = ${colors.white}
+content-underline = #7df059
 
 ;----------------------------------------------------------
 ;	          T E X T    M O D U L E S
