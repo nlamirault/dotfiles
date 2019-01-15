@@ -54,9 +54,10 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+w exec quickswitch.py
 
 # Rofi
-bindsym $mod+Tab exec rofi -show window -bg "#000000" -fg "#ff5500" -hlbg "#000000" -hlfg "#6fc3df" -bc "#ffe64d" -font monospace\ 10
-bindsym $mod+d exec rofi -show run -bg "#000000" -fg "#ff5500" -hlbg "#000000" -hlfg "#6fc3df" -bc "#ffe64d" -font monospace\ 10
-
+# bindsym $mod+Tab exec rofi -show window -bg "#000000" -fg "#ff5500" -hlbg "#000000" -hlfg "#6fc3df" -bc "#ffe64d" -font monospace\ 10
+# bindsym $mod+d exec rofi -show run -bg "#000000" -fg "#ff5500" -hlbg "#000000" -hlfg "#6fc3df" -bc "#ffe64d" -font monospace\ 10
+bindsym $mod+Tab exec rofi -show window -font monospace\ 10
+bindsym $mod+d exec rofi -show run -font monospace\ 10
 
 # =======================================================
 # Requirements : tt-font-awesome
@@ -281,4 +282,5 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # autostart
 exec feh --bg-scale ~/.config/i3/archlinux-simplyblack.png
-exec --no-startup-id parcellite
+# exec --no-startup-id light-locker
+exec --no-startup-id /usr/lib/gsd-xsettings
