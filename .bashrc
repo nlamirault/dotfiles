@@ -15,18 +15,19 @@
 # set -e
 # set -x
 
-if [ -d ~/.bashrc.d ]; then
-    for file in $(/bin/ls ~/.bashrc.d/*.bashrc); do
+if [ -d ~/.config/bashrc.d ]; then
+    for file in $(/bin/ls ~/.config/bashrc.d/*.bashrc); do
         . $file;
     done
 fi
 
-if [ -d ~/.shrc.d ]; then
-    for file in $(/bin/ls ~/.shrc.d/*.shrc); do
+if [ -d ~/.config/shrc.d ]; then
+    for file in $(/bin/ls ~/.config/shrc.d/*.shrc); do
         . $file;
     done
 fi
 
+# Load local configuration
 [ -f ~/.local.bashrc ] && . ~/.local.bashrc
 
 export COLUMNS=250

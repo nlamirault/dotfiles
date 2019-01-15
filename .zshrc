@@ -12,18 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if [ -d ~/.zshrc.d ]; then
-    for file in $(/bin/ls ~/.zshrc.d/*.zshrc); do
+if [ -d ~/.config/zshrc.d ]; then
+    for file in $(/bin/ls ~/.config/zshrc.d/*.zshrc); do
         . $file;
     done
 fi
 
-if [ -d ~/.shrc.d ]; then
-    for file in $(/bin/ls ~/.shrc.d/*.shrc); do
+if [ -d ~/.config/shrc.d ]; then
+    for file in $(/bin/ls ~/.config/shrc.d/*.shrc); do
         . $file;
     done
 fi
 
+# Load local configuration
 [ -f ~/.local.zshrc ] && . ~/.local.zshrc
 
 export COLUMNS=250
