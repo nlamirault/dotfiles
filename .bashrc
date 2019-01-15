@@ -1,4 +1,4 @@
-# Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# Copyright (C) 2016-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
 # set -e
 # set -x
 
@@ -31,8 +31,6 @@ fi
 [ -f ~/.local.bashrc ] && . ~/.local.bashrc
 
 export COLUMNS=250
-
-APPS=$HOME/Applications
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
