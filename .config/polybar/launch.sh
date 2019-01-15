@@ -25,6 +25,7 @@ export WIFI_INTERFACE="wlp3s0"
 export ETH_INTERFACE="enp0s25"
 
 # Launch bar1 and bar2
+
 MONITOR=eDP-1 polybar top &
 MONITOR=DP-2-1 polybar top &
 MONITOR=DP-2-3 polybar top &
@@ -33,5 +34,10 @@ MONITOR=eDP-1 polybar bottom &
 MONITOR=DP-2-1 polybar bottom &
 MONITOR=DP-2-3 polybar bottom &
 MONITOR=DP-2 polybar bottom &
+
+# Launch polybar
+# MONITOR=eDP-1 polybar main &
+# MONITOR=DP-2-1 polybar main &
+# MONITOR=DP-2-3 polybar main &
 
 echo "Bars launched..."

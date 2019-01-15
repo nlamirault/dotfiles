@@ -12,9 +12,9 @@
 ; See the License for the specific language governing permissions and
 ; limitations under the License.
 
-;----------------------------------------------------------
+;=====================================================
 ;			C O L O R S
-;----------------------------------------------------------
+;=====================================================
 
 [colors]
 background = #000000
@@ -47,10 +47,32 @@ xcolor13 = ${xrdb:color13}
 xcolor14 = ${xrdb:color14}
 xcolor15 = ${xrdb:color15}
 
+;=====================================================
+;   variables
+;=====================================================
 
-;----------------------------------------------------------
+[variables]
+
+;=====================================================
+;   fonts
+;=====================================================
+[fonts]
+
+font-0 = NotoSans-Regular:size=8;0
+font-1 = Unifont:size=5;-3
+font-2 = FontAwesome:size=8;0
+font-3 = NotoSans-Regular:size=8;-1
+; font-4 = Unifont:size=5;-4
+font-4 = Material Icons:size=8
+# font-4 = PowerlineSymbols:size=10;3
+font-5 = Termsynu:size=7;-3
+
+; See symbols: http://fontawesome.io/cheatsheet/
+
+
+;=====================================================
 ;			B A R : TOP
-;----------------------------------------------------------
+;=====================================================
 
 [bar/top]
 enable-ipc = true
@@ -75,16 +97,17 @@ padding-right = 2
 module-margin-left = 2
 module-margin-right = 2
 
-;----------------------------------------------------------
-;			F O N T S
-;----------------------------------------------------------
+font-0 = ${fonts.font-0}
+font-1 = ${fonts.font-1}
+font-2 = ${fonts.font-2}
+font-3 = ${fonts.font-3}
+font-4 = ${fonts.font-4}
+font-5 = ${fonts.font-5}
 
-font-0 = NotoSans-Regular:size=10;0
-font-1 = Unifont:size=5;-3
-font-2 = FontAwesome:size=10;-2
-font-3 = NotoSans-Regular:size=10;-1
-font-4 = Unifont:size=5;-4
-font-5 = Termsynu:size=7;-3
+# font-0 = "Inconsolata Nerd Font:size=12:antialias=true;2"
+# font-1 = "Inconsolata for Powerline:size=14:antialias=true;3"
+# font-2 = "Inconsolata Nerd Font:size=14:antialias=true;3"
+
 ; See symbols: http://fontawesome.io/cheatsheet/
 
 ;----------------------------------------------------------
@@ -93,15 +116,13 @@ font-5 = Termsynu:size=7;-3
 
 modules-left = my-text-label powermenu filesystem-slash filesystem-home
 modules-center = clock xkeyboard xwindow
-; modules-center = MiddleArrowLeft clock xwindow MiddleArrowRight
 modules-right = backlight volume battery
 
 ; tray-position = right
 
-
-;----------------------------------------------------------
+;=====================================================
 ;			B A R : BOTTOM
-;----------------------------------------------------------
+;=====================================================
 
 [bar/bottom]
 # monitor = eDP-1
@@ -118,30 +139,21 @@ overline-color = ${colors.accent}
 underline-size = 3
 underline-color = ${colors.accent}
 
-;border-color = #ff0000
 border-top-size = 3
 border-top-color = #3d3d3d
-;border-bottom = 0
-;border-bottom-color = #333333
 
 spacing = 3
-;padding-right = 4
 padding-left = 0
 padding-right = 0
 module-margin-left = 0
 module-margin-right = 6
 
-;----------------------------------------------------------
-;			F O N T S
-;----------------------------------------------------------
-
-font-0 = NotoSans-Regular:size=10;0
-font-1 = Unifont:size=5;-3
-font-2 = FontAwesome:size=10;-2
-font-3 = NotoSans-Regular:size=10;-1
-font-4 = Unifont:size=5;-4
-font-5 = Termsynu:size=7;-3
-; See symbols: http://fontawesome.io/cheatsheet/
+font-0 = ${fonts.font-0}
+font-1 = ${fonts.font-1}
+font-2 = ${fonts.font-2}
+font-3 = ${fonts.font-3}
+font-4 = ${fonts.font-4}
+font-5 = ${fonts.font-5}
 
 ;----------------------------------------------------------
 ;  	    M O D U L E    L A Y O U T S
@@ -151,6 +163,7 @@ modules-left = i3
 modules-center = vpncheck wireless-network wirelessspeeddown wirelessspeedup wired-network wiredspeedup wiredspeeddown
 modules-right = cpu memory
 
+
 #########################################################
 
 [module/backlight]
@@ -158,6 +171,7 @@ type = internal/backlight
 card = intel_backlight
 
 format = <label> <bar>
+; format = <ramp> <label>
 label = ""
 format-prefix-foreground = ${colors.yellow}
 
@@ -170,6 +184,13 @@ bar-fill-font = 2
 bar-fill-foreground = #9f78e1
 bar-empty = ""
 bar-empty-font = 2
+
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
 ;bar-empty-foreground = ${colors.foreground-alt}
 
 #########################################################
@@ -225,8 +246,8 @@ label-visible-padding = 4
 type = internal/cpu
 interval = 1.5
 
+format-prefix = " "
 format = <label> <ramp-coreload>
-
 label = CPU
 ; label-font = 3
 ; label-foreground = #99
@@ -262,7 +283,7 @@ ramp-coreload-7-foreground = #ff5555
 type = internal/memory
 interval = 0.2
 format = <label> <bar-used>
-
+format-prefix = " "
 label = RAM
 ; label-font = 3
 ; label-foreground = #99
@@ -292,7 +313,7 @@ if_exec = "pgrep openvpn"
 ; To print tun0 ip address in label
 exec = "ip a | grep tun0 | tail -n 1 | awk '{print $2}'"
 ; label = " vpn %output%"
-format-prefix = " "
+format-prefix = " "
 ; format-prefix-foreground = ${colors.red}
 format-underline = ${colors.red}
 label = "vpn %output%"
@@ -421,7 +442,7 @@ bar-progress-empty-foreground = #44
 type = internal/date
 interval = 1
 ; date-alt =   %A %H:%M
-date =    %a - %d.%m.%Y
+date = " %a - %d.%m.%Y"
 time = " %H:%M:%S"
 time-alt = "%a - %d.%m.%Y - %I:%M %p"
 label = %date% %time%
@@ -482,16 +503,16 @@ format-underline = ${colors.purple}
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
-label-volume = 
-label-volume-foreground = #8FF6FF
+label-volume = " "
+label-volume-foreground = ${colors.white}
 
-format-muted-suffix = "  "
-format-muted-foreground = #8FF6FF
-label-muted = " Mute"
-format-muted-underline = #8FF6FF
+format-muted-prefix = "  "
+format-muted-foreground = ${colors.blue}
+label-muted = "Mute"
+format-muted-underline = ${colors.blue}
 
 bar-volume-width = 10
-bar-volume-foreground-0 = #8FF6FF
+bar-volume-foreground-0 = ${colors.white}
 
 bar-volume-gradient = false
 bar-volume-indicator =
@@ -500,7 +521,30 @@ bar-volume-fill = ""
 bar-volume-fill-font = 1
 bar-volume-empty = ""
 bar-volume-empty-font = 1
-bar-volume-empty-foreground = ${colors.yellow}
+bar-volume-empty-foreground = ${colors.blue}
+
+##########################################################
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 65
+
+format =  <label> <ramp>
+format-underline = ${colors.red}
+format-warn = <label-warn> <ramp>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.alert}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-foreground = ${colors.red}
 
 #########################################################
 
@@ -568,7 +612,7 @@ type = internal/xwindow
 label = %title:0:46:...%
 # label = "%title%"
 format-prefix = " "
-format-suffix = " "
+; format-suffix = " "
 # label-maxlen = 75
 # format-prefix = " "
 format-prefix-foreground = ${colors.green}
@@ -715,78 +759,61 @@ content = " %{F#7df059}  %{F-} Arch Linux "
 content-foreground = ${colors.white}
 content-underline = #7df059
 
-;----------------------------------------------------------
-;	          T E X T    M O D U L E S
-;----------------------------------------------------------
+# ###############################################################################
 
-[module/pipe]
-type = custom/text
-content = "|"
-content-foreground = ${colors.darkgrey}
-content-background = ${colors.xcolor0}
-content-padding = 1
+# [module/pipe]
+# type = custom/text
+# content = "|"
+# content-foreground = ${colors.darkgrey}
+# content-background = ${colors.xcolor0}
+# content-padding = 1
 
-[module/LeftStripe]
-type = custom/text
-content = "î²"
-content-foreground = ${colors.xcolor0}
-content-background = ${colors.xcolor1}
+# [module/LeftStripe]
+# type = custom/text
+# content = ""
+# content-foreground = ${colors.xcolor0}
+# content-background = ${colors.background}
 
-[module/arrow1]
-type = custom/text
-content = "î²"
-content-foreground = ${colors.xcolor1}
-content-background = ${colors.xcolor0}
+# [module/arrow1]
+# type = custom/text
+# content = ""
+# content-foreground = ${colors.xcolor8}
+# content-background = ${colors.background}
 
-[module/arrow2]
-type = custom/text
-content = " î²"
-content-foreground = ${colors.xcolor7}
-content-background = ${colors.xcolor1}
+# [module/arrow2]
+# type = custom/text
+# content = " "
+# content-foreground = ${colors.xcolor7}
+# content-background = ${colors.background}
 
-[module/arrow3]
-type = custom/text
-content = " î²"
-content-foreground = ${colors.xcolor1}
-content-background = ${colors.xcolor7}
+# [module/arrow3]
+# type = custom/text
+# content = " "
+# content-foreground = ${colors.xcolor8}
+# content-background = ${colors.background}
 
-[module/RightStripe]
-type = custom/text
-content = "î°"
-content-foreground = ${colors.xcolor0}
-content-background = ${colors.xcolor1}
+# [module/RightStripe]
+# type = custom/text
+# content = ""
+# content-foreground = ${colors.xcolor0}
+# content-background = ${colors.background}
 
-[module/RightArrow1]
-type = custom/text
-content = "î°"
-content-foreground = ${colors.xcolor1}
-content-background = ${colors.xcolor0}
+# [module/RightArrow1]
+# type = custom/text
+# content = ""
+# content-foreground = ${colors.xcolor8}
+# content-background = ${colors.background}
 
-[module/RightArrow2]
-type = custom/text
-content = "î°"
-content-foreground = ${colors.xcolor7}
-content-background = ${colors.xcolor1}
+# [module/MiddleArrowLeft]
+# type = custom/text
+# content = "◥"
+# content-foreground = ${colors.xcolor8}
+# content-background = ${colors.background}
+# ;◥ ◤◢ ◣
+# [module/MiddleArrowRight]
+# type = custom/text
+# content = "◢"
+# content-foreground = ${colors.xcolor0}
+# content-background = ${colors.background}
 
-[module/RightArrow3]
-type = custom/text
-content = "î°"
-content-foreground = ${colors.xcolor1}
-content-background = ${colors.xcolor7}
-
-[module/MiddleArrowLeft]
-type = custom/text
-content = ""
-content-foreground = ${colors.purple}
-content-background = ${colors.black}
-
-[module/MiddleArrowRight]
-type = custom/text
-content = ""
-content-foreground = ${colors.green}
-content-background = ${colors.black}
-
-
-
-
-; ; vim:ft=dosini
+# ; ; vim:ft=dosini
