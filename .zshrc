@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,8 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-EDITOR=/usr/bin/nvim
-export VISUAL=vim
-export EDITOR=vim
+if [ -d ~/.zshrc.d ]; then
+    for file in $(/bin/ls ~/.zshrc.d/*.zshrc); do
+        . $file;
+    done
+fi
 
-alias vi="nvim"
+if [ -d ~/.shrc.d ]; then
+    for file in $(/bin/ls ~/.shrc.d/*.shrc); do
+        . $file;
+    done
+fi
+
+[ -f ~/.local.zshrc ] && . ~/.local.zshrc
+
+export COLUMNS=250
+
+APPS=$HOME/Applications

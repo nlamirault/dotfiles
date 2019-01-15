@@ -15,14 +15,6 @@
 # limitations under the License.
 #
 
-alias fwlist="sudo /sbin/iptables -L -n -v --line-numbers"
-alias fwlistin="sudo /sbin/iptables -L INPUT -n -v --line-numbers"
-alias fwlistout="sudo /sbin/iptables -L OUTPUT -n -v --line-numbers"
-alias fwlistfw="sudo /sbin/iptables -L FORWARD -n -v --line-numbers"
-alias firewall=fwlist
-
-alias fwblockip="iptables -I INPUT -j DROP -s "
-alias fwunblockip="iptables -D INPUT -j DROP -s "
 
 function fw_open_ip_port() {
     if [ $# -ne 2 ]; then

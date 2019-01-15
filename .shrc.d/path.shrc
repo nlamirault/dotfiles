@@ -23,8 +23,8 @@ export PATH="$HOME/.cask/bin:$PATH"
 export PATH="$HOME/.evm/bin:$PATH"
 
 # Golang
-export GOROOT=$HOME/Apps/go
-export GOPATH=$HOME/Apps/golang
+export GOROOT=$HOME/Applications/go
+export GOPATH=$HOME/Applications/golang
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
 # Rust

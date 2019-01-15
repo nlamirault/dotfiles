@@ -21,9 +21,17 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 
+if [ -d ~/.shrc.d ]; then
+    for file in $(/bin/ls ~/.shrc.d/*.shrc); do
+        . $file;
+    done
+fi
+
+[ -f ~/.local.bashrc ] && . ~/.local.bashrc
+
 export COLUMNS=250
 
-APPS=$HOME/Apps
+APPS=$HOME/Applications
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -34,12 +42,3 @@ shopt -s checkwinsize
 
 export TERM=xterm-256color
 # export GDK_NATIVE_WINDOWS=1
-export GTK2_RC_FILES=/usr/share/themes/Arc-Dark/gtk-2.0/gtkrc
-export GTK_THEME=Arc:dark
-
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/nlamirault/Apps/google-cloud-sdk/path.bash.inc' ]; then source '/home/nlamirault/Apps/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/nlamirault/Apps/google-cloud-sdk/completion.bash.inc' ]; then source '/home/nlamirault/Apps/google-cloud-sdk/completion.bash.inc'; fi

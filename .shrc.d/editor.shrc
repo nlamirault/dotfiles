@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,19 +11,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-# don't put duplicate lines in the history. See bash(1) for more options
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoredups:ignorespace
+EDITOR=/usr/bin/nvim
+export VISUAL=vim
+export EDITOR=vim
 
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-shopt -s histreedit
-shopt -s histverify
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=5000
-HISTFILESIZE=2000
-export HISTTIMEFORMAT="%h/%d - %H:%M:%S "
+alias vi="nvim"

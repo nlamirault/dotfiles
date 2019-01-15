@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -58,11 +56,9 @@ alias lsi="devicons-ls"
 
 alias clean='find . \( -name ".*~" -o -name "*~" -o -name ".saves*" -o -name ".#*" \) -print -exec /bin/rm {} \;'
 
-
-alias untar='tar xvf'
 alias showmount='mount |column -t'
 
-alias now='date +"%T"'
+alias now='date +"%d/%m/%Y %T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
 
@@ -84,11 +80,14 @@ alias ipb='ip --color --brief'
 # Security
 # -----------------------------------------------------
 
-alias iptlist='sudo /sbin/iptables -L -n -v --line-numbers'
-alias iptlistin='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
-alias iptlistout='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
-alias iptlistfw='sudo /sbin/iptables -L FORWARD -n -v --line-numbers'
-alias firewall=iptlist
+alias fwlist="sudo /sbin/iptables -L -n -v --line-numbers"
+alias fwlistin="sudo /sbin/iptables -L INPUT -n -v --line-numbers"
+alias fwlistout="sudo /sbin/iptables -L OUTPUT -n -v --line-numbers"
+alias fwlistfw="sudo /sbin/iptables -L FORWARD -n -v --line-numbers"
+alias firewall=fwlist
+
+alias fwblockip="iptables -I INPUT -j DROP -s "
+alias fwunblockip="iptables -D INPUT -j DROP -s "
 
 alias lsports='sudo lsof -i -T -n'
 alias showports='netstat -tulanp'
@@ -116,8 +115,6 @@ alias psmy='ps -ef | grep $USER"'
 alias cpuinfo='lscpu'
 ## get GPU ram on desktop / laptop##
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
-
-
 
 
 # Web

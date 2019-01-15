@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,19 +11,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-# don't put duplicate lines in the history. See bash(1) for more options
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoredups:ignorespace
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-shopt -s histreedit
-shopt -s histverify
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTFILE=~/.zhistory
 HISTSIZE=5000
-HISTFILESIZE=2000
-export HISTTIMEFORMAT="%h/%d - %H:%M:%S "
+SAVEHIST=5000
+
+# Add commands to history as they are entered, don't wait for shell to exit
+setopt INC_APPEND_HISTORY
+# Also remember command start time and duration
+setopt EXTENDED_HISTORY
+# Do not keep duplicate commands in history
+setopt HIST_IGNORE_ALL_DUPS
+# Do not remember commands that start with a whitespace
+setopt HIST_IGNORE_SPACE
