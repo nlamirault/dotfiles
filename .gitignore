@@ -3,4 +3,6 @@
 .vscode
 
 # Fish
-.config/fish/functions/fisher.fish
+.config/fish/functions/
+.config/fish/completions
+.config/fish/conf.d
