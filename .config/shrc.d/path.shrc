@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# Copyright (C) 2016-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,45 +18,47 @@
 PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/bin/X11:/usr/sbin:/usr/lib/postgresql/bin/:$HOME/bin:/usr/games/:/usr/lib/openoffice/program/
 export PATH
 
+APPLICATIONS_HOME=${HOME}/Applications
+
 # Emacs lisp
 export PATH="$HOME/.cask/bin:$PATH"
 export PATH="$HOME/.evm/bin:$PATH"
 
 # Golang
-export GOROOT=$HOME/Applications/go
-export GOPATH=$HOME/Applications/golang
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+export GOROOT=${APPLICATIONS_HOME}/go
+export GOPATH=${APPLICATIONS_HOME}/golang
+export PATH=$PATH:${GOPATH}/bin:${GOROOT}/bin
 
 # Rust
-export RUST_SRC_PATH=$HOME/Apps/rust/src
-export PATH=$PATH:$RUST_SRC_PATH/usr/local/bin
-export PATH=$PATH:$HOME/.cargo/bin/
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$RUST_SRC_PATH/usr/local/lib
+export RUST_SRC_PATH=${APPLICATIONS_HOME}/rust/src
+export PATH=${PATH}:${RUST_SRC_PATH}/usr/local/bin
+export PATH=${PATH}:${HOME}/.cargo/bin/
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${RUST_SRC_PATH}/usr/local/lib
 
 # Erlang
-export ERLANG_HOME=$HOME/Apps/otp_src
-export PATH=$PATH:$ERLANG_HOME/bin/
+export ERLANG_HOME=${APPLICATIONS_HOME}/otp_src
+export PATH=$PATH:${ERLANG_HOME}/bin/
 
 # Java
-export JAVA_HOME=$APPS/jre
-export PATH=$PATH:$JAVA_HOME/bin
+export JAVA_HOME=${APPLICATIONS_HOME}/jre
+export PATH=$PATH:${JAVA_HOME}/bin
 
-export MAVEN_HOME=$APPS/apache-maven
-export PATH=$PATH:$MAVEN_HOME/bin
+export MAVEN_HOME=${APPLICATIONS_HOME}/apache-maven
+export PATH=$PATH:${MAVEN_HOME}/bin
 
-export ANT_HOME=$APPS/apache-ant
-export PATH=$PATH:$ANT_HOME/bin# LIBs and LD_LIBRARY_PATH
+export ANT_HOME=${APPLICATIONS_HOME}/apache-ant
+export PATH=$PATH:${ANT_HOME}/bin# LIBs and LD_LIBRARY_PATH
 
 if [ -d "${usr_local}/lib" ]; then
-    LD_LIBRARY_PATH="$usr_local/lib:$LD_LIBRARY_PATH"
+    LD_LIBRARY_PATH="$usr_local/lib:${LD_LIBRARY_PATH}"
 fi
 
 if [ -d "${home_local}/lib" ]; then
-    LD_LIBRARY_PATH="${home_local}/lib:$LD_LIBRARY_PATH"
+    LD_LIBRARY_PATH="${home_local}/lib:${LD_LIBRARY_PATH}"
 fi
 
 if [ -d /usr/lib/x86_64-linux-gnu ]; then
-    LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
+    LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}"
 fi
 
 export LD_LIBRARY_PATH
