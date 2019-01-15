@@ -20,6 +20,7 @@ if not functions -q fisher
 end
 
 source $HOME/.config/fish/plugins.fish
+source $HOME/.config/fish/prompt.fish
 
 # Load local configuration
 if test -e $HOME/.local.fish
