@@ -1,0 +1,820 @@
+; Copyright (C) 2016-2018 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+; Licensed under the Apache License, Version 2.0 (the "License");
+; you may not use this file except in compliance with the License.
+; You may obtain a copy of the License at
+;
+;     http://www.apache.org/licenses/LICENSE-2.0
+;
+; Unless required by applicable law or agreed to in writing, software
+; distributed under the License is distributed on an "AS IS" BASIS,
+; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+; See the License for the specific language governing permissions and
+; limitations under the License.
+
+;=====================================================
+;			C O L O R S
+;=====================================================
+
+[colors]
+background = #000000
+foreground = #ffffff
+accent = #fba922
+
+# black = ${colors.background}
+# white = ${colors.foreground}
+# transparent = #000000
+# red = #e31a1c
+# green = #31a354
+# blue = #3182bd
+# purple = #756bb1
+# orange = #de935f
+# yellow = #faee41
+
+xcolor0 = ${xrdb:color0}
+xcolor1 = ${xrdb:color1}
+xcolor2 = ${xrdb:color2}
+xcolor3 = ${xrdb:color3}
+xcolor4 = ${xrdb:color4}
+xcolor5 = ${xrdb:color5}
+xcolor6 = ${xrdb:color6}
+xcolor7 = ${xrdb:color7}
+xcolor8 = ${xrdb:color8}
+xcolor9 = ${xrdb:color9}
+xcolor10 = ${xrdb:color10}
+xcolor11 = ${xrdb:color11}
+xcolor12 = ${xrdb:color12}
+xcolor13 = ${xrdb:color13}
+xcolor14 = ${xrdb:color14}
+xcolor15 = ${xrdb:color15}
+
+;=====================================================
+;   variables
+;=====================================================
+
+[variables]
+
+;=====================================================
+;   fonts
+;=====================================================
+[fonts]
+
+font-0 = NotoSans-Regular:size=8;0
+font-1 = Unifont:size=5;-3
+font-2 = FontAwesome:size=8;0
+font-3 = NotoSans-Regular:size=8;-1
+; font-4 = Unifont:size=5;-4
+font-4 = Material Icons:size=8
+# font-4 = PowerlineSymbols:size=10;3
+font-5 = Termsynu:size=7;-3
+
+; See symbols: http://fontawesome.io/cheatsheet/
+
+
+;=====================================================
+;			B A R : TOP
+;=====================================================
+
+[bar/top]
+enable-ipc = true
+# monitor = eDP-1
+monitor = ${env:MONITOR}
+width = 100%
+height = 28
+
+background = ${colors.background}
+
+border-bottom-size = 1
+border-bottom-color = #333
+
+overline-size = 3
+overline-color = ${self.background}
+underline-size = 3
+underline-color = ${self.background}
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 2
+
+font-0 = ${fonts.font-0}
+font-1 = ${fonts.font-1}
+font-2 = ${fonts.font-2}
+font-3 = ${fonts.font-3}
+font-4 = ${fonts.font-4}
+font-5 = ${fonts.font-5}
+
+# font-0 = "Inconsolata Nerd Font:size=12:antialias=true;2"
+# font-1 = "Inconsolata for Powerline:size=14:antialias=true;3"
+# font-2 = "Inconsolata Nerd Font:size=14:antialias=true;3"
+
+; See symbols: http://fontawesome.io/cheatsheet/
+
+;----------------------------------------------------------
+;  	    M O D U L E    L A Y O U T S
+;----------------------------------------------------------
+
+modules-left = archlinux powermenu filesystem-slash filesystem-home
+modules-center = clock xkeyboard xwindow
+modules-right = backlight volume battery
+
+; tray-position = right
+
+;=====================================================
+;			B A R : BOTTOM
+;=====================================================
+
+[bar/bottom]
+# monitor = eDP-1
+monitor = ${env:MONITOR}
+bottom = true
+width = 100%
+height = 27
+
+background = #000000
+foreground = #ffffff
+
+overline-size = 3
+overline-color = ${colors.accent}
+underline-size = 3
+underline-color = ${colors.accent}
+
+border-top-size = 3
+border-top-color = #3d3d3d
+
+spacing = 3
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 6
+
+font-0 = ${fonts.font-0}
+font-1 = ${fonts.font-1}
+font-2 = ${fonts.font-2}
+font-3 = ${fonts.font-3}
+font-4 = ${fonts.font-4}
+font-5 = ${fonts.font-5}
+
+;----------------------------------------------------------
+;  	    M O D U L E    L A Y O U T S
+;----------------------------------------------------------
+
+modules-left = i3
+modules-center = vpncheck wireless-network wirelessspeeddown wirelessspeedup wired-network wiredspeedup wiredspeeddown
+modules-right = cpu memory
+
+
+#########################################################
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+
+format = <label> <bar>
+; format = <ramp> <label>
+label = ""
+format-prefix-foreground = ${colors.yellow}
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = ${colors.yellow}
+bar-indicator-font = 2
+bar-fill = ""
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ""
+bar-empty-font = 2
+
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
+;bar-empty-foreground = ${colors.foreground-alt}
+
+#########################################################
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+pin-workspaces = true
+; strip-wsnumbers = true
+ws-icon-default = 
+ws-icon-0 = "1;➊"
+ws-icon-1 = "2;➋"
+ws-icon-2 = "3;➌"
+ws-icon-3 = "4;➍"
+ws-icon-4 = "5;➎"
+ws-icon-5 = "6;➏"
+ws-icon-6 = "7;➐"
+ws-icon-7 = "8;➑"
+ws-icon-8 = "9;➒"
+ws-icon-9 = "10;➓"
+
+label-dimmed-underline = ${root.background}
+
+label-focused = %icon%  %name%
+label-focused-foreground = #f3f3f3
+label-focused-background = #3f3f3f
+;label-focused-underline = #${colors.accent}
+;label-focused-underline = #9f78e1
+label-focused-underline = #819FF7
+label-focused-font = 4
+label-focused-padding = 4
+
+label-unfocused = %icon% %name%
+label-unfocused-underline = #555555
+label-unfocused-font = 4
+label-unfocused-padding = 4
+
+label-urgent = %icon%  %name%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-underline = #9b0a20
+label-urgent-font = 4
+label-urgent-padding = 4
+
+label-visible = %icon%  %name%
+label-visible-foreground = #55ffffff
+label-visible-font = 4
+label-visible-padding = 4
+
+#########################################################
+
+[module/cpu]
+type = internal/cpu
+interval = 1.5
+
+format-prefix = " "
+format = <label> <ramp-coreload>
+label = CPU
+; label-font = 3
+; label-foreground = #99
+
+ramp-coreload-0 = ▁
+ramp-coreload-0-font = 2
+ramp-coreload-0-foreground = #aaff77
+ramp-coreload-1 = ▂
+ramp-coreload-1-font = 2
+ramp-coreload-1-foreground = #aaff77
+ramp-coreload-2 = ▃
+ramp-coreload-2-font = 2
+ramp-coreload-2-foreground = #aaff77
+ramp-coreload-3 = ▄
+ramp-coreload-3-font = 2
+ramp-coreload-3-foreground = #aaff77
+ramp-coreload-4 = ▅
+ramp-coreload-4-font = 2
+ramp-coreload-4-foreground = #fba922
+ramp-coreload-5 = ▆
+ramp-coreload-5-font = 2
+ramp-coreload-5-foreground = #fba922
+ramp-coreload-6 = ▇
+ramp-coreload-6-font = 2
+ramp-coreload-6-foreground = #ff5555
+ramp-coreload-7 = █
+ramp-coreload-7-font = 2
+ramp-coreload-7-foreground = #ff5555
+
+#########################################################
+
+[module/memory]
+type = internal/memory
+interval = 0.2
+format = <label> <bar-used>
+format-prefix = " "
+label = RAM
+; label-font = 3
+; label-foreground = #99
+
+bar-used-width = 30
+bar-used-gradient = true
+bar-used-foreground-0 = #449f3d
+bar-used-foreground-1 = #2f8419
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ed5456
+bar-used-indicator = █
+bar-used-indicator-font = 5
+bar-used-indicator-foreground = #fff
+bar-used-fill = █
+bar-used-fill-font = 5
+bar-used-empty = █
+bar-used-empty-font = 5
+bar-used-empty-foreground = #44
+
+#########################################################
+
+[module/vpncheck]
+type = custom/script
+interval = 10
+format = <label>
+if_exec = "pgrep openvpn"
+; To print tun0 ip address in label
+exec = "ip a | grep tun0 | tail -n 1 | awk '{print $2}'"
+; label = " vpn %output%"
+format-prefix = " "
+; format-prefix-foreground = ${colors.red}
+format-underline = ${colors.red}
+label = "vpn %output%"
+
+#########################################################
+
+[module/wireless-network]
+type = internal/network
+interface = ${env:WIFI_INTERFACE}
+interval = 2.0
+ping-interval = 10
+format-connected-underline = ${colors.red}
+format-connected = <ramp-signal> <label-connected>
+label-connected = %essid% %local_ip%
+label-disconnected = " not connected"
+format-disconnected-underline = ${colors.red}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.red}
+
+animation-packetloss-0 = 
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 
+animation-packetloss-1-foreground = ${bar/top.foreground}
+animation-packetloss-framerate = 500
+
+#########################################################
+
+[module/wirelessspeedup]
+type = internal/network
+interface = ${env:WIFI_INTERFACE}
+label-connected = "%upspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.blue}
+format-connected-underline = ${colors.blue}
+
+#########################################################
+
+[module/wirelessspeeddown]
+type = internal/network
+interface = ${env:WIFI_INTERFACE}
+label-connected = "%downspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.green}
+format-connected-underline = ${colors.green}
+
+#########################################################
+
+[module/wired-network]
+type = internal/network
+interface = ${env:ETH_INTERFACE}
+interval = 2.0
+format-connected-underline = ${colors.red}
+format-connected = <label-connected>
+label-connected =  %local_ip%
+label-disconnected = Ethernet disconnected
+label-disconnected-foreground = #66
+
+#########################################################
+
+[module/wiredspeedup]
+type = internal/network
+interface = ${env:ETH_INTERFACE}
+label-connected = "%upspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.blue}
+format-connected-underline = ${colors.blue}
+
+#########################################################
+
+[module/wiredspeeddown]
+type = internal/network
+interface = ${env:ETH_INTERFACE}
+label-connected = "%downspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.green}
+format-connected-underline = ${colors.green}
+
+#########################################################
+
+[module/mpd]
+type = internal/mpd
+format-online = <bar-progress>  <icon-prev> <icon-stop> <toggle> <icon-next>  <label-song>
+format-online-overline = ${root.background}
+format-online-underline = ${root.background}
+format-offline = <label-offline>
+label-offline = mpd is off
+
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-random = 
+icon-repeat = 
+
+toggle-on-foreground =
+toggle-off-foreground = #55
+
+bar-progress-width = 45
+bar-progress-format = %{+o +u}%fill%%{-o -u}%indicator%%{+o +u}%empty%%{-u -o}
+; bar-progress-indicator = |
+bar-progress-indicator = █
+bar-progress-indicator-foreground = #ff
+bar-progress-indicator-font = 3
+; bar-progress-fill = ─
+bar-progress-fill = █
+bar-progress-fill-foreground = #bb
+bar-progress-fill-font = 3
+; bar-progress-empty = ─
+bar-progress-empty = ▒
+bar-progress-empty-font = 3
+bar-progress-empty-foreground = #44
+
+#########################################################
+
+[module/clock]
+type = internal/date
+interval = 1
+; date-alt =   %A %H:%M
+date = " %a - %d.%m.%Y"
+time = " %H:%M:%S"
+time-alt = "%a - %d.%m.%Y - %I:%M %p"
+label = %date% %time%
+format-prefix-foreground = ${colors.purple}
+format-underline = ${colors.purple}
+; format-foreground = ${colors.purple}
+; format-background = ${colors.black}
+
+#########################################################
+
+# [module/volume]
+# type = internal/volume
+# speaker-mixer = Speaker
+# headphone-mixer = Headphone
+# headphone-id = 9
+# master-soundcard=default
+# speaker-soundcard = default
+# headphone-soundcard = default
+
+# format-volume = <ramp-volume> <label-volume> <bar-volume>
+
+# label-volume = %percentage%%
+# label-volume-foreground = #ff
+
+# label-muted = sound muted
+# label-muted-foreground = #99ffffff
+
+# ramp-volume-0 = 
+# ramp-volume-1 = 
+# ramp-volume-2 = 
+# ramp-volume-3 = 
+# ;ramp-volume-foreground = #9f78e1
+
+# ramp-headphones-0 = 
+# ramp-headphones-1 = 
+# ramp-headphones-foreground = #9f78e1
+
+# bar-volume-width = 10
+# bar-volume-foreground-0 = #5af78e
+# bar-volume-foreground-1 = #5af78e
+# bar-volume-foreground-2 = #5af78e
+# bar-volume-foreground-3 = #5af78e
+# bar-volume-foreground-4 = #5af78e
+# bar-volume-foreground-5 = #f3f99d
+# bar-volume-foreground-6 = #ff5c57
+# bar-volume-gradient = false
+# bar-volume-indicator = │
+# bar-volume-indicator-font = 2
+# bar-volume-indicator-foreground = #ff
+# bar-volume-fill = ─
+# bar-volume-fill-font = 2
+# bar-volume-empty = ─
+# bar-volume-empty-font = 2
+
+#########################################################
+
+[module/volume]
+type = internal/pulseaudio
+
+format-volume = <label-volume> <bar-volume>
+label-volume = " "
+label-volume-foreground = ${colors.white}
+
+format-muted-prefix = "  "
+format-muted-foreground = ${colors.blue}
+label-muted = "Mute"
+format-muted-underline = ${colors.blue}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.white}
+
+bar-volume-gradient = false
+bar-volume-indicator =
+bar-volume-indicator-font = 0
+bar-volume-fill = ""
+bar-volume-fill-font = 1
+bar-volume-empty = ""
+bar-volume-empty-font = 1
+bar-volume-empty-foreground = ${colors.blue}
+
+##########################################################
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 65
+
+format =  <label> <ramp>
+format-underline = ${colors.red}
+format-warn = <label-warn> <ramp>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.alert}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-foreground = ${colors.red}
+
+#########################################################
+
+[module/battery]
+type = internal/battery
+full-at = 98
+
+# label-full = %{F#31a354}%{F-} %percentage%% %{F#d7a645}%{F-}
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${colors.yellow}
+format-charging-foreground = ${colors.yellow}
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${colors.yellow}
+
+format-full-prefix = " "
+format-full-overline = ${colors.yellow}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${self.format-charging-underline}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${self.format-charging-underline}
+animation-charging-framerate = 750
+
+#########################################################
+
+[module/filesystem-home]
+type = internal/fs
+interval = 3600
+mount-0 = /home
+format-mounted-prefix = " "
+;label-mounted =  %{F-} %percentage_used%%
+label-mounted = "%{F-} %percentage_used%%"
+;label-mounted =  %mountpoint%: %percentage_used%% of %total%
+format-mounted-prefix-foreground = ${colors.yellow}
+format-mounted-underline = ${colors.yellow}
+
+#########################################################
+
+[module/filesystem-slash]
+type = internal/fs
+interval = 3600
+mount-0 = /
+format-mounted-prefix = " "
+label-mounted = "%{F-} %percentage_used%%"
+;label-mounted =  %mountpoint%: %percentage_used%% of %total%
+; label-mounted-foreground = ${colors.white}
+format-mounted-prefix-foreground = ${colors.yellow}
+format-mounted-underline = ${colors.yellow}
+
+#########################################################
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:46:...%
+# label = "%title%"
+format-prefix = " "
+; format-suffix = " "
+# label-maxlen = 75
+# format-prefix = " "
+format-prefix-foreground = ${colors.green}
+# format-prefix-underline = ${colors.green}
+format-suffix-foreground = ${colors.green}
+# format-suffix-underline = ${colors.green}
+format-underline = ${colors.green}
+# label-layout-underline = ${colors.green}
+# label-indicator-margin = 1
+# label-indicator-underline = ${colors.green}
+
+#########################################################
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+format-prefix = " "
+format-prefix-foreground = ${colors.red}
+format-prefix-underline = ${colors.red}
+label-layout = %layout%
+label-layout-underline = ${colors.red}
+label-indicator-padding = 2
+label-indicator-margin = 1
+;label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.red}
+
+#########################################################
+
+[module/powermenu]
+type = custom/menu
+
+format-padding = 3
+format-background = #000
+format-foreground = #fff
+
+label-open = 
+label-open-foreground = #ff5c56
+label-close =  cancel
+label-separator = " | "
+
+menu-0-0 =  reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 =  power off
+menu-0-1-exec = menu-open-2
+menu-0-2 = log out
+menu-0-2-exec = menu-open-3
+menu-0-3 =  lock
+menu-0-3-exec = "/usr/bin/slimlock &"
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = shutdown now
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+menu-3-0 = log out
+menu-3-0-exec = i3-msg exit
+menu-3-1 = cancel
+menu-3-1-exec = menu-open-0
+
+#########################################################
+
+[module/kernel]
+type = custom/script
+exec = uname -s -m -r
+format-foreground = #ff5c56
+
+#########################################################
+
+[module/github-prometheus]
+type = custom/script
+
+; Available tokens:
+;   %counter%
+; Command to be executed (using "/usr/bin/env sh -c [command]")
+exec = curl -s https://api.github.com/repos/prometheus/prometheus/releases/latest | grep tarball_url | grep -v RC | head -n 1 | cut -d '"' -f 4|cut -d "/" -f8|sed -es/^v//g
+
+; Conditional command that, if defined, needs to exit successfully
+; before the main exec command is invoked.
+; Default: ""
+;exec-if = pgrep -x myservice
+
+; Will the script output continous content?
+; Default: false
+;tail = true
+
+; Seconds to sleep between updates
+; Default: 2 (0 if `tail = true`)
+interval = 3600
+
+format = <label>
+;format-padding = 1
+;format-underline = #ff5c57
+format-prefix = " "
+click-left = xdg-open github.com/prometheus/prometheus/releases/latest
+
+#########################################################
+
+[module/pkg]
+type = custom/script
+interval = 1200
+format = <label>
+; format-underline = #dc322f
+label = "%output:0:30%"
+exec = ~/.config/polybar/pkg.sh
+exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+format-prefix = " "
+format-prefix-foreground = ${colors.yellow}
+format-underline = ${colors.yellow}
+
+#########################################################
+
+; [module/mail]
+; type = custom/script
+; interval = 10
+; format = <label>
+; format-prefix = "  "
+; format-prefix-foreground = ${colors.orange}
+; format-underline = ${colors.orange}
+; exec = ~/.config/polybar/mail.py
+
+#########################################################
+
+; [module/github]
+; type = internal/github
+; interval = 30
+; ; token = ${file:~/.config/polybar/github.token}
+; token = ${env:POLYBAR_GITHUB_ACCESS_TOKEN}
+; empty-notifications = true
+; format = <label>
+; format-prefix = " "
+; format-prefix-foreground = ${colors.white}
+; format-underline = {colors.white}
+
+###############################################################################
+
+[module/archlinux]
+type = custom/text
+content = " %{F#7df059}  %{F-} Arch Linux "
+content-foreground = ${colors.white}
+content-underline = #7df059
+
+# ###############################################################################
+
+# [module/pipe]
+# type = custom/text
+# content = "|"
+# content-foreground = ${colors.darkgrey}
+# content-background = ${colors.xcolor0}
+# content-padding = 1
+
+# [module/LeftStripe]
+# type = custom/text
+# content = ""
+# content-foreground = ${colors.xcolor0}
+# content-background = ${colors.background}
+
+# [module/arrow1]
+# type = custom/text
+# content = ""
+# content-foreground = ${colors.xcolor8}
+# content-background = ${colors.background}
+
+# [module/arrow2]
+# type = custom/text
+# content = " "
+# content-foreground = ${colors.xcolor7}
+# content-background = ${colors.background}
+
+# [module/arrow3]
+# type = custom/text
+# content = " "
+# content-foreground = ${colors.xcolor8}
+# content-background = ${colors.background}
+
+# [module/RightStripe]
+# type = custom/text
+# content = ""
+# content-foreground = ${colors.xcolor0}
+# content-background = ${colors.background}
+
+# [module/RightArrow1]
+# type = custom/text
+# content = ""
+# content-foreground = ${colors.xcolor8}
+# content-background = ${colors.background}
+
+# [module/MiddleArrowLeft]
+# type = custom/text
+# content = "◥"
+# content-foreground = ${colors.xcolor8}
+# content-background = ${colors.background}
+# ;◥ ◤◢ ◣
+# [module/MiddleArrowRight]
+# type = custom/text
+# content = "◢"
+# content-foreground = ${colors.xcolor0}
+# content-background = ${colors.background}
+
+# ; ; vim:ft=dosini
