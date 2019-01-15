@@ -1,0 +1,6 @@
+# Editors
+*~
+.vscode
+
+# Fish
+.config/fish/functions/fisher.fish
