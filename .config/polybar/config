@@ -122,9 +122,9 @@ font-5 = ${fonts.font-5}
 ;  	    M O D U L E    L A Y O U T S
 ;----------------------------------------------------------
 
-modules-left = my-text-label filesystem-slash filesystem-home
-modules-center = clock xkeyboard xwindow plctl music
-modules-right = backlight volume battery
+modules-left = my-text-label filesystem-slash filesystem-home xkeyboard
+modules-center = xwindow plctl music
+modules-right = volume battery clock
 
 ; tray-position = right
 
@@ -510,26 +510,37 @@ format-underline = ${colors.purple}
 [module/volume]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = " "
+# format-volume = <label-volume> <bar-volume>
+# label-volume = " "
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
 label-volume-foreground = ${colors.white}
-
+label-volume-underline = ${colors.blue}
+format-volume-underline = ${colors.blue}
 format-muted-prefix = "  "
 format-muted-foreground = ${colors.blue}
 label-muted = "Mute"
 format-muted-underline = ${colors.blue}
 
-bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.white}
+# bar-volume-width = 10
+# bar-volume-foreground-0 = ${colors.white}
 
-bar-volume-gradient = false
-bar-volume-indicator =
-bar-volume-indicator-font = 0
-bar-volume-fill = ""
-bar-volume-fill-font = 1
-bar-volume-empty = ""
-bar-volume-empty-font = 1
-bar-volume-empty-foreground = ${colors.blue}
+# bar-volume-gradient = false
+# bar-volume-indicator =
+# bar-volume-indicator-font = 0
+# bar-volume-fill = ""
+# bar-volume-fill-font = 1
+# bar-volume-empty = ""
+# bar-volume-empty-font = 1
+# bar-volume-empty-foreground = ${colors.blue}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+ramp-volume-5 = 
+ramp-volume-6 = 
 
 ##########################################################
 
@@ -780,7 +791,7 @@ label-close = " "
 label-separator = "  "
 format-foreground = #C3C7D1
 # format-background = #161925
-format-underline = ${colors.magenta}
+format-underline = ${colors.orange}
 
 menu-0-0 = 
 menu-0-0-exec = playerctl previous
@@ -798,7 +809,7 @@ type = custom/script
 exec = $HOME/.config/polybar/music.sh
 label = %output%
 label-foreground = ${colors.white}
-format-underline = ${colors.magenta}
+format-underline = ${colors.orange}
 tail = true
 interval = 5
 
