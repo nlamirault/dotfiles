@@ -158,9 +158,10 @@ bindsym $mod+Shift+ccedilla move container to workspace $tag9
 bindsym $mod+Shift+agrave move container to workspace $tag10
 
 # sound
-bindSym XF86AudioPlay exec mpc toggle
-bindSym XF86AudioPrev exec mpc prev
-bindSym XF86AudioNext exec mpc next
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
 bindSym Shift+XF86AudioPrev exec mpc seek -00:00:10
 bindSym Shift+XF86AudioNext exec mpc seek +00:00:10
 bindSym Control+XF86AudioMute exec pavucontrol
