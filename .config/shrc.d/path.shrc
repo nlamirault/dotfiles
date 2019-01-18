@@ -17,6 +17,7 @@ PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/bin/X11:/usr/sbin:/usr/lib/postgres
 export PATH
 
 APPLICATIONS_HOME=${HOME}/Applications
+PERSONAL_DIR=${HOME}/.config/personal
 
 # Emacs lisp
 export PATH="$HOME/.cask/bin:$PATH"
