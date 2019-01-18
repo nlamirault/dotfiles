@@ -51,7 +51,7 @@
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
 
-	autocrlf = input
+	autocrlf = false
 	safecrlf = true
 	quotepath = false
 
@@ -64,3 +64,4 @@
 
 [push]
 	default = simple
+[http]
