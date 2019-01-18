@@ -29,6 +29,8 @@ blue = #3182bd
 purple = #756bb1
 orange = #de935f
 yellow = #faee41
+magenta = #a363d5
+cyan = #52cbb0
 
 xcolor0 = ${xrdb:color0}
 xcolor1 = ${xrdb:color1}
@@ -68,6 +70,12 @@ font-4 = Material Icons:size=8
 font-5 = Termsynu:size=7;-3
 
 ; See symbols: http://fontawesome.io/cheatsheet/
+
+# font-0 = "Google Sans Medium:size=10;3"
+# font-1 = "Symbola:size=10;3"
+# font-2 = "Font Awesome 5 Brands:size=10;3"
+# font-3 = "Font Awesome 5 Free Solid:size=10;3"
+# font-4 = "Font Awesome 5 Free:size=10;3"
 
 
 ;=====================================================
@@ -114,8 +122,8 @@ font-5 = ${fonts.font-5}
 ;  	    M O D U L E    L A Y O U T S
 ;----------------------------------------------------------
 
-modules-left = my-text-label powermenu filesystem-slash filesystem-home
-modules-center = clock xkeyboard xwindow
+modules-left = my-text-label filesystem-slash filesystem-home
+modules-center = clock xkeyboard xwindow plctl
 modules-right = backlight volume battery
 
 ; tray-position = right
@@ -161,7 +169,7 @@ font-5 = ${fonts.font-5}
 
 modules-left = i3
 modules-center = vpncheck wireless-network wirelessspeeddown wirelessspeedup wired-network wiredspeedup wiredspeeddown
-modules-right = cpu memory
+modules-right = powermenu cpu memory
 
 
 #########################################################
@@ -552,16 +560,18 @@ ramp-foreground = ${colors.red}
 type = internal/battery
 full-at = 98
 
-# label-full = %{F#31a354}%{F-} %percentage%% %{F#d7a645}%{F-}
-
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = ${colors.yellow}
 format-charging-foreground = ${colors.yellow}
 
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${colors.yellow}
+# format-discharging-foreground = ${colors.yellow}
+# format-discharging-background = ${colors.black}
 
-format-full-prefix = " "
+# format-full-prefix = " "
+format-full-prefix = " "
+# format-full-prefix-padding = 1
 format-full-overline = ${colors.yellow}
 
 ramp-capacity-0 = 
@@ -758,6 +768,26 @@ type = custom/text
 content = " %{F#7df059}  %{F-} Arch Linux "
 content-foreground = ${colors.white}
 content-underline = #7df059
+
+# ###############################################################################
+
+[module/plctl]
+type = custom/menu
+format-padding = 2
+
+label-open = "Player  "
+label-close = "Player   "
+label-separator = "  "
+format-foreground = #C3C7D1
+# format-background = #161925
+format-underline = ${colors.magenta}
+
+menu-0-0 = 
+menu-0-0-exec = playerctl previous
+menu-0-1 = 
+menu-0-1-exec = playerctl stop
+menu-0-2 = 
+menu-0-2-exec = playerctl next
 
 # ###############################################################################
 
