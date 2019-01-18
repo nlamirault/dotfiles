@@ -123,7 +123,7 @@ font-5 = ${fonts.font-5}
 ;----------------------------------------------------------
 
 modules-left = my-text-label filesystem-slash filesystem-home
-modules-center = clock xkeyboard xwindow plctl
+modules-center = clock xkeyboard xwindow plctl music
 modules-right = backlight volume battery
 
 ; tray-position = right
@@ -775,8 +775,8 @@ content-underline = #7df059
 type = custom/menu
 format-padding = 2
 
-label-open = "Player  "
-label-close = "Player   "
+label-open = " "
+label-close = " "
 label-separator = "  "
 format-foreground = #C3C7D1
 # format-background = #161925
@@ -786,8 +786,28 @@ menu-0-0 = 
 menu-0-0-exec = playerctl previous
 menu-0-1 = 
 menu-0-1-exec = playerctl stop
-menu-0-2 = 
-menu-0-2-exec = playerctl next
+menu-0-2 = 
+menu-0-2-exec = playerctl play
+menu-0-3 = 
+menu-0-3-exec = playerctl next
+
+# ###############################################################################
+
+[module/music]
+type = custom/script
+exec = $HOME/.config/polybar/music.sh
+label = %output%
+label-foreground = ${colors.white}
+format-underline = ${colors.magenta}
+tail = true
+interval = 5
+
+# [module/music]
+# type = custom/script
+# interval = 1
+# format-padding = 2
+# format-underline = ${colors.magenta}
+# exec = ~/.config/polybar/music.sh
 
 # ###############################################################################
 
