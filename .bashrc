@@ -30,6 +30,19 @@ fi
 # Load local configuration
 [ -f ~/.local.bashrc ] && . ~/.local.bashrc
 
+# Load secret or personal configuration
+if [ -d "${PERSONAL_DIR}/bashrc.d" ]; then
+    for file in $(/bin/ls ${PERSONAL_DIR}/bashrc.d); do
+        # echo ${file}
+        rc=${PERSONAL_DIR}/bashrc.d/${file}
+        if [ -f "${rc}" ]; then
+            . $rc
+        else
+            echo "not found ${rc}"
+        fi
+    done
+fi
+
 export COLUMNS=250
 
 # check the window size after each command and, if necessary,
