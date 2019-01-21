@@ -61,13 +61,17 @@ xcolor15 = ${xrdb:color15}
 [fonts]
 
 font-0 = NotoSans-Regular:size=8;0
-font-1 = Unifont:size=5;-3
-font-2 = FontAwesome:size=8;0
-font-3 = NotoSans-Regular:size=8;-1
-; font-4 = Unifont:size=5;-4
+# font-1 = Unifont:size=5;-3
+# font-2 = FontAwesome:size=8;0
+# # font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
+font-1 = Font Awesome 5 Brands:size=10;0
+font-2 = Font Awesome 5 Free:style=Regular:size=10;0
+font-3 = Font Awesome 5 Free:style=Solid:size=10;0
+# font-4 = Font Awesome 5:size=12;2
+# font-3 = NotoSans-Regular:size=8;-1
+# ; font-4 = Unifont:size=5;-4
 font-4 = Material Icons:size=8
-# font-4 = PowerlineSymbols:size=10;3
-font-5 = Termsynu:size=7;-3
+font-5 = Hack Nerd Font 10
 
 ; See symbols: http://fontawesome.io/cheatsheet/
 
@@ -99,8 +103,8 @@ overline-color = ${self.background}
 underline-size = 3
 underline-color = ${self.background}
 
-padding-left = 2
-padding-right = 2
+# padding-left = 2
+# padding-right = 2
 
 module-margin-left = 2
 module-margin-right = 2
@@ -290,26 +294,28 @@ ramp-coreload-7-foreground = #ff5555
 [module/memory]
 type = internal/memory
 interval = 0.2
-format = <label> <bar-used>
 format-prefix = " "
-label = RAM
-; label-font = 3
-; label-foreground = #99
+# format = <label> <bar-used>
+# label = RAM
+label ="RAM %percentage_used%% "
+format-underline = ${colors.yellow}
 
-bar-used-width = 30
-bar-used-gradient = true
-bar-used-foreground-0 = #449f3d
-bar-used-foreground-1 = #2f8419
-bar-used-foreground-2 = #f5a70a
-bar-used-foreground-3 = #ed5456
-bar-used-indicator = █
-bar-used-indicator-font = 5
-bar-used-indicator-foreground = #fff
-bar-used-fill = █
-bar-used-fill-font = 5
-bar-used-empty = █
-bar-used-empty-font = 5
-bar-used-empty-foreground = #44
+# bar-used-width = 30
+# bar-used-gradient = true
+# bar-used-foreground-0 = #449f3d
+# bar-used-foreground-1 = #2f8419
+# bar-used-foreground-2 = #f5a70a
+# bar-used-foreground-3 = #ed5456
+# bar-used-indicator = █
+# bar-used-indicator-font = 5
+# bar-used-indicator-foreground = #fff
+# bar-used-fill = █
+# bar-used-fill-font = 5
+# bar-used-empty = █
+# bar-used-empty-font = 5
+# bar-used-empty-foreground = #44
+
+
 
 #########################################################
 
@@ -793,13 +799,15 @@ format-foreground = #C3C7D1
 # format-background = #161925
 format-underline = ${colors.orange}
 
-menu-0-0 = 
+# menu-0-0 = 
+menu-0-0 = 
 menu-0-0-exec = playerctl previous
 menu-0-1 = 
 menu-0-1-exec = playerctl stop
 menu-0-2 = 
 menu-0-2-exec = playerctl play
-menu-0-3 = 
+# menu-0-3 = 
+menu-0-3 = 
 menu-0-3-exec = playerctl next
 
 # ###############################################################################
@@ -821,6 +829,106 @@ interval = 5
 # exec = ~/.config/polybar/music.sh
 
 # ###############################################################################
+
+[module/larrow1]
+; grey to Blue
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = #84598D
+content-background = #1D2330
+
+[module/larrow2]
+; grey to Blue
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = ${colors.black}
+content-background = ${colors.blue}
+
+[module/larrow3]
+; grey to Blue
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = ${colors.blue}
+content-background = ${colors.black}
+
+[module/larrow4]
+; grey to Blue
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = #645377
+content-background = #92969D
+
+[module/larrow5]
+; grey to Blue
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = #AD69AF
+content-background = #645377
+
+[module/larrow6]
+; grey to Blue
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = #1D2330
+content-background = #AD69AF
+
+# ###############################################################################
+
+[module/rarrow1]
+; grey to Blue
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = #84598D
+content-background = #1D2330
+
+[module/rarrow2]
+; grey to Blue
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = #4B5665
+content-background = #84598D
+
+[module/rarrow3]
+; grey to Blue
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = #92969D
+content-background = #4B5665
+
+[module/rarrow4]
+; grey to Blue
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = #645377
+content-background = #92969D
+
+[module/rarrow5]
+; grey to Blue
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = #AD69AF
+content-background = #645377
+
+[module/rarrow6]
+; grey to Blue
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = #1D2330
+content-background = #AD69AF
+
+
 
 # [module/pipe]
 # type = custom/text
