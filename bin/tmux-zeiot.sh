@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-GO_PRJ="$HOME/Apps/golang/src/github.com/zeiot"
+ZEIOT_HOME="${PROJECTS_HOME}/Zeiot"
 
 SESSION="zeiot"
 
@@ -23,21 +23,7 @@ function tmux_zeiot {
     tmux start-server
     tmux new-session -s $SESSION -n Zeiot -d
     tmux new-window -n "Jarvis"
-    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/jarvis" C-m
-    tmux new-window -n "rpi-prometheus"
-    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-prometheus" C-m
-    tmux new-window -n "rpi-alertmanager"
-    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-alertmanager" C-m
-    tmux new-window -n "rpi-grafana"
-    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-grafana" C-m
-    tmux new-window -n "rpi-node_exporter"
-    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-node_exporter" C-m
-    tmux new-window -n "rpi-influxdb"
-    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-influxdb" C-m
-    tmux new-window -n "rpi-coredns"
-    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-coredns" C-m
-    tmux new-window -n "rpi-vault"
-    tmux send-keys -t $SESSION "cd ${HOME}/Perso/Zeiot/rpi-vault" C-m
+    tmux send-keys -t $SESSION "cd ${ZEIOT_HOME}/jarvis" C-m
     tmux attach-session -t $SESSION
 }
 
