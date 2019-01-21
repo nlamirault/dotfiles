@@ -64,18 +64,16 @@ xcolor15 = ${xrdb:color15}
 ; $ fc-match "Font Awesome 5 Free"
 
 font-0 = NotoSans-Regular:size=10;0
-# font-0 = Unifont:size=8;-3
-# font-2 = FontAwesome:size=8;0
-# # font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
-font-1 = Font Awesome 5 Brands:size=10;0
-font-2 = Font Awesome 5 Free:style=Regular:size=10;0
-font-3 = Font Awesome 5 Free:style=Solid:size=10;0
+font-1 = "FuraCode Nerd Font:size=12;3"
+font-2 = Font Awesome 5 Brands:size=10;0
+font-3 = Font Awesome 5 Free:style=Regular:size=10;0
+font-4 = Font Awesome 5 Free:style=Solid:size=10;0
 # font-4 = Font Awesome 5:size=12;2
 # font-3 = NotoSans-Regular:size=8;-1
 # ; font-4 = Unifont:size=5;-4
-font-4 = Material Icons:size=8
-font-5 = Hack Nerd Font 10
-font-6 = Iosevka:size=10:antialias=true;2
+font-5 = Material Icons:size=8
+font-6 = Hack Nerd Font 10
+font-7 = Iosevka:size=10:antialias=true;2
 
 
 ;=====================================================
@@ -94,10 +92,10 @@ background = ${colors.background}
 border-bottom-size = 1
 border-bottom-color = #333
 
-overline-size = 3
-overline-color = ${self.background}
+# overline-size = 3
+# overline-color = ${self.background}
 underline-size = 3
-underline-color = ${self.background}
+# underline-color = ${self.background}
 
 # padding-left = 2
 # padding-right = 2
@@ -112,14 +110,15 @@ font-3 = ${fonts.font-3}
 font-4 = ${fonts.font-4}
 font-5 = ${fonts.font-5}
 font-6 = ${fonts.font-6}
+font-7 = ${fonts.font-7}
 
 ;----------------------------------------------------------
 ;  	    M O D U L E    L A Y O U T S
 ;----------------------------------------------------------
 
 modules-left = powermenu filesystem-slash filesystem-home xkeyboard
-modules-center = xwindow plctl music
-modules-right = volume battery clock
+modules-center = xwindow music
+modules-right = notifications volume battery clock
 
 ; tray-position = right
 
@@ -158,6 +157,7 @@ font-3 = ${fonts.font-3}
 font-4 = ${fonts.font-4}
 font-5 = ${fonts.font-5}
 font-6 = ${fonts.font-6}
+font-7 = ${fonts.font-7}
 
 ;----------------------------------------------------------
 ;  	    M O D U L E    L A Y O U T S
@@ -165,7 +165,7 @@ font-6 = ${fonts.font-6}
 
 modules-left = i3
 modules-center = vpncheck wireless-network wirelessspeeddown wirelessspeedup wired-network wiredspeedup wiredspeeddown
-modules-right = cpu memory
+modules-right = plctl cpu memory
 
 #########################################################
 
@@ -257,6 +257,7 @@ label = CPU
 ; label-font = 3
 ; label-foreground = #99
 
+ramp-coreload-underline = ${colors.red}
 ramp-coreload-0 = ▁
 ramp-coreload-0-font = 2
 ramp-coreload-0-foreground = #aaff77
@@ -670,7 +671,8 @@ format-background = #000
 format-foreground = #fff
 format-underline = #7df059
 
-label-open = "%{F#7df059}  %{F-} Arch Linux "
+# label-open = "%{F#7df059}  %{F-} Arch Linux "
+label-open = "%{F#7df059}  %{F-} Arch Linux "
 # label-open-foreground = #7df059
 label-close =  cancel
 label-separator = " | "
@@ -815,5 +817,21 @@ interval = 5
 # format-padding = 2
 # format-underline = ${colors.magenta}
 # exec = ~/.config/polybar/music.sh
+
+# ###############################################################################
+
+[module/notifications]
+type = custom/script
+interval = 1
+label = %output%
+exec = $HOME/.config/polybar/notifications.sh
+# format-underline = ${colors.red}
+click-left = $HOME/.config/polybar/notifications.sh on
+# click-middle = $HOME/.config/polybar/notifications.sh
+click-right = $HOME/.config/polybar/notifications.sh off
+# label-padding = 2
+# label-foreground = ${colors.white}
+format-underline = ${colors.red}
+label-foreground = ${colors.red}
 
 # ###############################################################################
