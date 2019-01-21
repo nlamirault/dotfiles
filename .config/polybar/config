@@ -117,7 +117,7 @@ font-6 = ${fonts.font-6}
 ;  	    M O D U L E    L A Y O U T S
 ;----------------------------------------------------------
 
-modules-left = my-text-label filesystem-slash filesystem-home xkeyboard
+modules-left = powermenu filesystem-slash filesystem-home xkeyboard
 modules-center = xwindow plctl music
 modules-right = volume battery clock
 
@@ -165,7 +165,7 @@ font-6 = ${fonts.font-6}
 
 modules-left = i3
 modules-center = vpncheck wireless-network wirelessspeeddown wirelessspeedup wired-network wiredspeedup wiredspeeddown
-modules-right = powermenu cpu memory
+modules-right = cpu memory
 
 #########################################################
 
@@ -251,6 +251,8 @@ interval = 1.5
 
 format-prefix = " "
 format = <label> <ramp-coreload>
+format-prefix-foreground = ${colors.red}
+format-underline = ${colors.red}
 label = CPU
 ; label-font = 3
 ; label-foreground = #99
@@ -290,6 +292,7 @@ format-prefix = " "
 # label = RAM
 label ="RAM %percentage_used%% "
 format-underline = ${colors.yellow}
+format-prefix-foreground = ${colors.yellow}
 
 # bar-used-width = 30
 # bar-used-gradient = true
@@ -663,20 +666,21 @@ label-indicator-underline = ${colors.red}
 [module/powermenu]
 type = custom/menu
 
-format-padding = 3
 format-background = #000
 format-foreground = #fff
+format-underline = #7df059
 
-label-open = 
-label-open-foreground = #ff5c56
+label-open = "%{F#7df059}  %{F-} Arch Linux "
+# label-open-foreground = #7df059
 label-close =  cancel
 label-separator = " | "
+label-underline = #7df059
 
 menu-0-0 =  reboot
 menu-0-0-exec = menu-open-1
 menu-0-1 =  power off
 menu-0-1-exec = menu-open-2
-menu-0-2 = log out
+menu-0-2 =  log out
 menu-0-2-exec = menu-open-3
 menu-0-3 =  lock
 menu-0-3-exec = "/usr/bin/slimlock &"
@@ -769,14 +773,6 @@ format-underline = ${colors.yellow}
 ; format-prefix = " "
 ; format-prefix-foreground = ${colors.white}
 ; format-underline = {colors.white}
-
-###############################################################################
-
-[module/my-text-label]
-type = custom/text
-content = " %{F#7df059}  %{F-} Arch Linux "
-content-foreground = ${colors.white}
-content-underline = #7df059
 
 # ###############################################################################
 
