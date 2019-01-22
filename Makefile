@@ -65,6 +65,7 @@ install-binaries:
 	test -L ${HOME}/bin/tmux-pilotariak.sh || ln -fs ${BASE_DIR}/bin/tmux-pilotariak.sh ${HOME}/bin/tmux-pilotariak.sh
 
 install-apps:
+	test -L ${HOME}/.config/user-dirs.dirs || ln -s ${BASE_DIR}/.config/user-dirs.dirs ${HOME}/.config/user-dirs.dirs
 	test -L ${HOME}/.gitconfig || ln -fs ${BASE_DIR}/.gitconfig ${HOME}/.gitconfig
 	test -L ${HOME}/.config/i3 || ln -s ${BASE_DIR}/.config/i3 ${HOME}/.config/i3
 	test -L ${HOME}/.config/conky || ln -s ${BASE_DIR}/.config/conky ${HOME}/.config/conky
