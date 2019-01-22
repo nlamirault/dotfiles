@@ -14,17 +14,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 SESSION="lam"
+
+if [ -f "${HOME}/.config/shrc.d/path.shrc" ]; then
+    . ${HOME}/.config/shrc.d/path.shrc
+fi
 
 function tmux_lam {
     tmux start-server
     tmux new-session -s $SESSION -n lam -d
     tmux new-window -n "Divona"
     tmux send-keys -t $SESSION "cd ${PROJECTS_HOME}/divona" C-m
-    tmux new-window -n "Dotfile"
+    tmux new-window -n "Dotfiles"
     tmux send-keys -t $SESSION "cd ${PROJECTS_HOME}/dotfiles" C-m
     tmux new-window -n "Journal"
+    tmux send-keys -t $SESSION "cd ${HOME}" C-m
+    tmux new-window -n "Music"
     tmux send-keys -t $SESSION "cd ${HOME}" C-m
     tmux new-window -n "VPN"
     tmux send-keys -t $SESSION "cd ${HOME}" C-m
