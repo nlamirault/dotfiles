@@ -18,6 +18,8 @@ export PATH
 
 APPLICATIONS_HOME=${HOME}/Applications
 PERSONAL_DIR=${HOME}/.config/personal
+WORK_HOME=${HOME}/Work
+PROJECTS_HOME=${HOME}/Projects
 
 # Emacs lisp
 export PATH="$HOME/.cask/bin:$PATH"
