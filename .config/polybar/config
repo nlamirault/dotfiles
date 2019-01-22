@@ -12,6 +12,10 @@
 ; See the License for the specific language governing permissions and
 ; limitations under the License.
 
+# ; to include files:
+# include-file = $XDG_CONFIG_HOME/polybar/....
+
+
 ;=====================================================
 ;			C O L O R S
 ;=====================================================
