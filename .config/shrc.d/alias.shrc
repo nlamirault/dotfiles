@@ -34,6 +34,17 @@ if  [ -x "$(command -v exa)" ]; then
     alias lt='exa -agbhl --time-style=long-iso -s modified'
     alias lo='ls -la'
     alias tree='exa -abhlT'
+elif  [ -x "$(command -v lsd)" ]; then
+    alias ls='lsd'
+    alias la='lsd -a'
+    alias lt='lsd -alrt'
+    alias tree='ls -alrt --tree'
+#elif  [ -x "$(command -v exa)" ]; then
+#    alias ls='exa'
+#    alias la='exa -agbhl --time-style=long-iso'
+#    alias lt='exa -agbhl --time-style=long-iso -s modified'
+#    alias lo='ls -la'
+#    alias tree='exa -abhlT'
 else
     alias ls="command ls ${colorflag}"
     alias ls="ls -lF ${colorflag}"
