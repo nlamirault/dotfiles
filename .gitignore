@@ -2,6 +2,9 @@
 *~
 .vscode
 
+# Polybar
+.config/polybar/config
+
 # Fish
 .config/fish/functions/
 .config/fish/completions
