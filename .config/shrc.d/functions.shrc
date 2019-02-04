@@ -27,6 +27,7 @@ function extract(){
       *.zip) unzip "${1}" ;;
       *.Z) uncompress "${1}" ;;
       *.7z) 7z x "${1}" ;;
+      *.xz) tar xJf "${1}" ;;
       *) echo -e "Unknown format.\n${1}" ;;
     esac
   else
