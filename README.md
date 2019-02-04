@@ -25,6 +25,9 @@ Install configuration on a host:
     $ make install
 
 
+![Screenshot](desktop.png)
+
+
 ## License
 
 See [LICENSE](LICENSE) for the complete license.
