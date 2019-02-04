@@ -6,19 +6,19 @@
 
 Configuration for:
 
-[x] bash
-[x] zsh
-[x] fish
-[x] git
-[x] i3
-[x] polybar
-[x] conky
-[x] rofi
-[x] dunst
-[x] htop
-[x] termite
-[x] kitty
-[x] wal
+* [x] bash
+* [x] zsh
+* [x] fish
+* [x] git
+* [x] i3
+* [x] polybar
+* [x] conky
+* [x] rofi
+* [x] dunst
+* [x] htop
+* [x] termite
+* [x] kitty
+* [x] wal
 
 Install configuration on a host:
 
