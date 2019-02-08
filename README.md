@@ -17,6 +17,7 @@ Configuration for:
 * [x] dunst
 * [x] htop
 * [x] termite
+* [x] tmux
 * [x] kitty
 * [x] wal
 
