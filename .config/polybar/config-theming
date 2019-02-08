@@ -13,9 +13,14 @@
 # ; limitations under the License.
 
 # ; to include files:
-# include-file = $XDG_CONFIG_HOME/polybar/themes/nord
-# include-file = $XDG_CONFIG_HOME/polybar/themes/tron
-include-file = $XDG_CONFIG_HOME/polybar/themes/wal
+
+# Error with XDG_CONFIG_HOME
+# polybar|error: Invalid include file "/polybar/themes/wal" defined on line 18
+
+# include-file = $HOME/.config/polybar/themes/nord
+# include-file = $HOME/.config/polybar/themes/tron
+# include-file = $HOME/.config/polybar/themes/wal
+include-file = $HOME/.config/polybar/themes/wal
 
 ;=====================================================
 ;			G L O B A L
