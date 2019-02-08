@@ -15,6 +15,30 @@
 # ; to include files:
 # include-file = $XDG_CONFIG_HOME/polybar/....
 
+;=====================================================
+;			G L O B A L
+;=====================================================
+
+[global/wm]
+;https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
+margin-top = 0
+margin-bottom = 0
+
+;=====================================================
+;			S E T T I N G S
+;=====================================================
+
+[settings]
+;https://github.com/jaagr/polybar/wiki/Configuration#application-settings
+throttle-output = 5
+throttle-output-for = 10
+throttle-input-for = 30
+screenchange-reload = true
+compositing-background = over
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
 
 ;=====================================================
 ;			C O L O R S
@@ -24,6 +48,18 @@
 background = #000000
 foreground = #ffffff
 accent = #fba922
+alert = #bd2c40
+
+# ; Nord theme
+# background = #1D2330
+# foreground = #c0c5ce
+# alert = #bd2c40
+
+# ; Gotham theme
+# ; background = #0a0f14
+# ; foreground = #99d1ce
+# ; alert = #d26937
+
 black = ${colors.background}
 white = ${colors.foreground}
 transparent = #00ffffff
@@ -204,24 +240,45 @@ ramp-4 = 🌑
 
 [module/i3]
 type = internal/i3
-format = <label-state> <label-mode>
 pin-workspaces = true
+
+# ; http://fontawesome.io/cheatsheet/
+# ;       v     
+
 ; strip-wsnumbers = true
+# ws-icon-0 = "1;➊"
+# ws-icon-1 = "2;➋"
+# ws-icon-2 = "3;➌"
+# ws-icon-3 = "4;➍"
+# ws-icon-4 = "5;➎"
+# ws-icon-5 = "6;➏"
+# ws-icon-6 = "7;➐"
+# ws-icon-7 = "8;➑"
+# ws-icon-8 = "9;➒"
+# ws-icon-9 = "10;➓"
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+
 ws-icon-default = 
-ws-icon-0 = "1;➊"
-ws-icon-1 = "2;➋"
-ws-icon-2 = "3;➌"
-ws-icon-3 = "4;➍"
-ws-icon-4 = "5;➎"
-ws-icon-5 = "6;➏"
-ws-icon-6 = "7;➐"
-ws-icon-7 = "8;➑"
-ws-icon-8 = "9;➒"
-ws-icon-9 = "10;➓"
+
+format = <label-state> <label-mode>
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-foreground = #000000
+label-mode-background = #FFBB00
 
 label-dimmed-underline = ${root.background}
 
-label-focused = %icon%  %name%
+label-focused = %icon% %name%
 label-focused-foreground = #f3f3f3
 label-focused-background = #3f3f3f
 ;label-focused-underline = #${colors.accent}
@@ -235,14 +292,14 @@ label-unfocused-underline = #555555
 label-unfocused-font = 4
 label-unfocused-padding = 4
 
-label-urgent = %icon%  %name%
+label-urgent = %icon% %name%
 label-urgent-foreground = #000000
 label-urgent-background = #bd2c40
 label-urgent-underline = #9b0a20
 label-urgent-font = 4
 label-urgent-padding = 4
 
-label-visible = %icon%  %name%
+label-visible = %icon% %name%
 label-visible-foreground = #55ffffff
 label-visible-font = 4
 label-visible-padding = 4
@@ -338,7 +395,7 @@ interval = 2.0
 ping-interval = 10
 label-connected = "%essid% %local_ip%"
 format-connected = <ramp-signal> <label-connected>
-format-connected-prefix = <ramp-signal>
+# format-connected-prefix = "  "
 format-connected-prefix-foreground = ${colors.red}
 format-connected-underline = ${colors.red}
 label-disconnected = " not connected"
@@ -681,8 +738,8 @@ label-indicator-underline = ${colors.red}
 [module/powermenu]
 type = custom/menu
 
-format-background = #000
-format-foreground = #fff
+format-background = #000000
+format-foreground = #ffffff
 format-underline = #7df059
 
 # label-open = "%{F#7df059}  %{F-} Arch Linux "
@@ -849,3 +906,100 @@ format-underline = ${colors.red}
 label-foreground = ${colors.red}
 
 # ###############################################################################
+
+[module/larrow1]
+; grey to Blue
+type = custom/text
+content = "%{T1} %{T-}"
+content-font = 2
+content-foreground = #84598D
+content-background = #1D2330
+
+[module/larrow2]
+; grey to Blue
+type = custom/text
+content = "%{T1} %{T-}"
+content-font = 2
+content-foreground = #4B5665
+content-background = #84598D
+
+[module/larrow3]
+; grey to Blue
+type = custom/text
+content = "%{T1} %{T-}"
+content-font = 2
+content-foreground = #92969D
+content-background = #4B5665
+
+[module/larrow4]
+; grey to Blue
+type = custom/text
+content = "%{T1} %{T-}"
+content-font = 2
+content-foreground = #645377
+content-background = #92969D
+
+[module/larrow5]
+; grey to Blue
+type = custom/text
+content = "%{T1} %{T-}"
+content-font = 2
+content-foreground = #AD69AF
+content-background = #645377
+
+[module/larrow6]
+; grey to Blue
+type = custom/text
+content = "%{T1} %{T-}"
+content-font = 2
+content-foreground = #1D2330
+content-background = #AD69AF
+
+[module/rarrow1]
+; grey to Blue
+type = custom/text
+content = "%{T1} %{T-}"
+content-font = 2
+content-foreground = #84598D
+content-background = #1D2330
+
+[module/rarrow2]
+; grey to Blue
+type = custom/text
+content = "%{T1} %{T-}"
+content-font = 2
+content-foreground = #4B5665
+content-background = #84598D
+
+[module/rarrow3]
+; grey to Blue
+type = custom/text
+content = "%{T1} %{T-}"
+content-font = 2
+content-foreground = #92969D
+content-background = #4B5665
+
+[module/rarrow4]
+; grey to Blue
+type = custom/text
+content = "%{T1} %{T-}"
+content-font = 2
+content-foreground = #7df059
+content-background = ${colors.background}
+
+[module/rarrow5]
+; grey to Blue
+type = custom/text
+content = "%{T1} %{T-}"
+content-font = 2
+content-foreground = #AD69AF
+content-background = #645377
+
+[module/rarrow6]
+; grey to Blue
+type = custom/text
+content = "%{T1} %{T-}"
+content-font = 2
+content-foreground = #1D2330
+content-background = #AD69AF
+
