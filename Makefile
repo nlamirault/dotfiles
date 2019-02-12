@@ -16,6 +16,8 @@ APP = dotfiles
 
 SHELL = /bin/bash
 
+SHELLCHECK = koalaman/shellcheck:stable
+
 DIR = $(shell pwd)
 
 NO_COLOR=\033[0m
@@ -58,6 +60,19 @@ install-shell:
 	test -L ${HOME}/.zshrc || ln -fs ${BASE_DIR}/.zshrc ${HOME}/.zshrc
 	test -L ${HOME}/.config/zshrc.d || ln -fs ${BASE_DIR}/.config/zshrc.d/ ${HOME}/.config/zshrc.d
 	test -L ${HOME}/.config/fish || ln -fs ${BASE_DIR}/.config/fish ${HOME}/.config/fish
+
+lint-shell:
+	@echo -e "$(OK_COLOR)Lint Shell scripts$(NO_COLOR)"
+	@echo ".bashrc"
+	@docker run -v "$$PWD:/mnt" $(SHELLCHECK) /mnt/.bashrc
+	@echo ".bash_profile"
+	@docker run -v "$$PWD:/mnt" $(SHELLCHECK) /mnt/.bash_profile
+	@for file in $(shell ls .config/bashrc.d/); do \
+		echo $${file}; \
+		docker run -v "$$PWD:/mnt" $(SHELLCHECK) /mnt/.config/bashrc.d/$${file}; done
+	@for file in $(shell ls .config/shrc.d/); do \
+		echo $${file}; \
+		docker run -v "$$PWD:/mnt" $(SHELLCHECK) /mnt/.config/shrc.d/$${file}; done
 
 install-binaries:
 	mkdir -p ${HOME}/bin

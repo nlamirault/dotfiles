@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Copyright (C) 2016-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -13,10 +13,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/nlamirault/Apps/google-cloud-sdk/path.bash.inc' ]; then source '/home/nlamirault/Apps/google-cloud-sdk/path.bash.inc'; fi
+# shellcheck source=/dev/null
+[ -r "${HOME}/Applications/google-cloud-sdk/path.bash.inc" ] && \
+    . "${HOME}/Applications/google-cloud-sdk/path.bash.inc"
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/nlamirault/Apps/google-cloud-sdk/completion.bash.inc' ]; then source '/home/nlamirault/Apps/google-cloud-sdk/completion.bash.inc'; fi
+# # shellcheck source=/dev/null
+[ -r "${HOME}/Applications/google-cloud-sdk/completion.bash.inc" ] && \
+    . "${HOME}/Applications/google-cloud-sdk/completion.bash.inc"
