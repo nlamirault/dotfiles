@@ -16,13 +16,15 @@
 
 SESSION="perso"
 
+PROJECTS=${HOME}/Projects
+
 function tmux_perso {
     tmux start-server
     tmux new-session -s $SESSION -n Lam -d
     tmux new-window -n "Divona"
-    tmux send-keys -t $SESSION "cd ${PROJECTS_HOME}/divona" C-m
+    tmux send-keys -t $SESSION "cd ${PROJECTS}/divona" C-m
     tmux new-window -n "Dotfile"
-    tmux send-keys -t $SESSION "cd ${PROJECTS_HOME}/dotfiles" C-m
+    tmux send-keys -t $SESSION "cd ${PROJECTS}/dotfiles" C-m
 
     tmux attach-session -t $SESSION
 }

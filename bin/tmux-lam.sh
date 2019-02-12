@@ -17,7 +17,8 @@
 SESSION="lam"
 
 if [ -f "${HOME}/.config/shrc.d/path.shrc" ]; then
-    . ${HOME}/.config/shrc.d/path.shrc
+    # shellcheck source=/dev/null
+    . "${HOME}/.config/shrc.d/path.shrc"
 fi
 
 function tmux_lam {
