@@ -31,14 +31,20 @@ function ps1_powerline {
   NUM_JOBS=$(jobs -rp | wc -l)
   GIT_BRANCH=$(__git_ps1)
 
+  # shellcheck disable=SC2034
   local GREY="\[\e[48;5;240m\]\[\e[38;5;250m\]"
+  # shellcheck disable=SC2034
   local GREY_END="\[\e[48;5;2m\]\[\e[38;5;240m\]"
 
+  # shellcheck disable=SC2034
   local GREEN="\[\e[48;5;2m\]\[\e[38;5;255m\]"
+  # shellcheck disable=SC2034
   local GREEN_END="\[\e[48;5;27m\]\[\e[38;5;2m\]"
 
   local ORANGE="\[\e[48;5;208m\]\[\e[38;5;255m\]"
+  # shellcheck disable=SC2034
   local ORANGE_END="\[\e[48;5;236m\]\[\e[38;5;208m\]"
+  # shellcheck disable=SC2034
   local ORANGE_RET_END="\[\e[48;5;160m\]\[\e[38;5;208m\]" # when next segment is prompt with return code
 
   local BLUE="\[\e[48;5;27m\]\[\e[38;5;255m\]"
@@ -55,8 +61,8 @@ function ps1_powerline {
   local RET="\[\e[48;5;160m\]\[\e[38;5;255m\]"
   local RET_END="\[\e[0m\]\[\e[38;5;160m\]\[\e[0m\] "
 
-  local PROMPT="$(kube_ps1)\[\e[48;5;236m\]\[\e[38;5;255m\]"
-  local PROMPT_END="\[\e[0m\]\[\e[38;5;236m\]\[\e[0m\] "
+  local -r PROMPT="$(kube_ps1)\[\e[48;5;236m\]\[\e[38;5;255m\]"
+  local -r PROMPT_END="\[\e[0m\]\[\e[38;5;236m\]\[\e[0m\] "
 
   local HOST="\[\e[48;5;236m\]\[\e[38;5;255m\]"
   local HOST_END="\[\e[48;5;27m\]\[\e[38;5;236m\]"
@@ -94,10 +100,10 @@ function ps1_powerline {
     fi
   else
     # Is a git repo
-    local NUM_MODIFIED=$(git diff --name-only --diff-filter=M | wc -l)
-    local NUM_STAGED=$(git diff --staged --name-only --diff-filter=AM | wc -l)
-    local NUM_CONFLICT=$(git diff --name-only --diff-filter=U | wc -l)
-    local GIT_STATUS="\[\e[48;5;255m\]\[\e[38;5;208m\]\[\e[38;5;27m\]  $NUM_MODIFIED \[\e[38;5;208m\]\[\e[38;5;2m\]  $NUM_STAGED \[\e[38;5;208m\]\[\e[38;5;9m\] ✘ $NUM_CONFLICT "
+    local -r NUM_MODIFIED=$(git diff --name-only --diff-filter=M | wc -l)
+    local -r NUM_STAGED=$(git diff --staged --name-only --diff-filter=AM | wc -l)
+    local -r NUM_CONFLICT=$(git diff --name-only --diff-filter=U | wc -l)
+    local -r GIT_STATUS="\[\e[48;5;255m\]\[\e[38;5;208m\]\[\e[38;5;27m\]  $NUM_MODIFIED \[\e[38;5;208m\]\[\e[38;5;2m\]  $NUM_STAGED \[\e[38;5;208m\]\[\e[38;5;9m\] ✘ $NUM_CONFLICT "
     if [ "$RETCODE" -eq 0 ]; then
       GIT_STATUS+="\[\e[38;5;255m\]\[\e[48;5;236m\]"
     else
@@ -144,15 +150,15 @@ function display_profile {
 
 
 function _update_ps1() {
-    PS1="$($HOME/bin/powerline-go -error $?)"
+    PS1=$("${HOME}"/bin/powerline-go -error $?)
 }
 
 
-if [  "$TERM" != "linux" ]; then
-  if [ -f "$HOME/bin/powerline-go" ]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+if [  "${TERM}" != "linux" ]; then
+  if [ -r "${HOME}/bin/powerline-go" ]; then
+    PROMPT_COMMAND="_update_ps1; ${PROMPT_COMMAND}"
   else
-    PROMPT_COMMAND="ps1_powerline; $PROMPT_COMMAND"
+    PROMPT_COMMAND="ps1_powerline; ${PROMPT_COMMAND}"
   fi
 fi
 

@@ -14,15 +14,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# shellcheck source=/dev/null
+[ -r /usr/share/bash-completion/bash_completion ] \
+    && . /usr/share/bash-completion/bash_completion
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+if [ -d /etc/bash_completion.d ]; then
+    for file in $(/bin/ls /etc/bash_completion.d/*); do
+        # shellcheck source=/dev/null
+        . "$file";
+    done
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# shellcheck source=/dev/null
+[ -r ~/.fzf.bash ] && . ~/.fzf.bash
 
-[ -f /usr/share/bash-completion/completions/git ] \
-    && source /usr/share/bash-completion/completions/git
+# shellcheck source=/dev/null
+[ -r /usr/share/bash-completion/completions/git ] && \
+    . /usr/share/bash-completion/completions/git
