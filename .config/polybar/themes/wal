@@ -130,7 +130,7 @@ alert = ${colors.xcolor1}
 accent = ${colors.xcolor5}
 
 i3-mode-foreground = ${colors.xcolor2}
-i3-focused-foreground = ${colors.xcolor3}
+i3-focused-foreground = ${colors.xcolor1}
 i3-visible-foreground = ${colors.xcolor2}
 
 xwindow-prefix-foreground = ${colors.xcolor10}
