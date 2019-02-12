@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Copyright (C) 2016-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
@@ -18,6 +18,6 @@
 [ -r "${HOME}/Applications/google-cloud-sdk/path.bash.inc" ] && \
     . "${HOME}/Applications/google-cloud-sdk/path.bash.inc"
 
-# shellcheck source=/dev/null
+# # shellcheck source=/dev/null
 [ -r "${HOME}/Applications/google-cloud-sdk/completion.bash.inc" ] && \
     . "${HOME}/Applications/google-cloud-sdk/completion.bash.inc"

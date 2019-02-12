@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 # Copyright (C) 2016-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,50 +19,15 @@
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
-(/usr/bin/cat ~/.cache/wal/sequences &)
+(/usr/bin/cat "${HOME}"/.cache/wal/sequences &)
 
 # Alternative (blocks terminal for 0-3ms)
-/usr/bin/cat ~/.cache/wal/sequences
+/usr/bin/cat "${HOME}"/.cache/wal/sequences
 
+# BUG when bash is configure with "set -e"
 # To add support for TTYs this line can be optionally added.
-source ~/.cache/wal/colors-tty.sh
+# [ -r ${HOME}/.cache/wal/colors-tty.sh ] && . ${HOME}/.cache/wal/colors-tty.sh
 
 # GTK Themes
-gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Darker'
-gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
-
-# Colors for man pages
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
-
-
-FOREGROUND_STYLE="38;5"
-BACKGROUND_STYLE="48;5"
-
-function colors_ls() {
-    local style=$1
-    for COLOR in {0..255}
-    do
-        for STYLE in $style
-        do
-            TAG="\033[${STYLE};${COLOR}m"
-            STR="${STYLE};${COLOR}"
-            echo -ne "${TAG}${STR}${NONE}  "
-        done
-        echo
-    done
-}
-
-function colors_foreground_ls() {
-    colors_ls $FOREGROUND_STYLE
-}
-
-function colors_background_ls() {
-    colors_ls $BACKGROUND_STYLE
-}
-
+# gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Darker'
+# gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'

@@ -70,9 +70,9 @@ lint-shell:
 	@for file in $(shell ls .config/bashrc.d/); do \
 		echo $${file}; \
 		docker run -v "$$PWD:/mnt" $(SHELLCHECK) /mnt/.config/bashrc.d/$${file}; done
-	# @for file in $(shell ls .config/shrc.d/); do \
-	# 	echo $${file}; \
-	# 	docker run -v "$$PWD:/mnt" $(SHELLCHECK) /mnt/.config/shrc.d/$${file}; done
+	@for file in $(shell ls .config/shrc.d/); do \
+		echo $${file}; \
+		docker run -v "$$PWD:/mnt" $(SHELLCHECK) /mnt/.config/shrc.d/$${file}; done
 
 install-binaries:
 	mkdir -p ${HOME}/bin

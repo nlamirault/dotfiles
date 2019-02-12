@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 # Copyright (C) 2016-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,10 +18,10 @@
 PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/bin/X11:/usr/sbin:/usr/lib/postgresql/bin/:$HOME/bin:/usr/games/:/usr/lib/openoffice/program/
 export PATH
 
-APPLICATIONS_HOME=${HOME}/Applications
-PERSONAL_DIR=${HOME}/.config/personal
-WORK_HOME=${HOME}/Work
-PROJECTS_HOME=${HOME}/Projects
+export APPLICATIONS_HOME=${HOME}/Applications
+export PERSONAL_DIR=${HOME}/.config/personal
+export WORK_HOME=${HOME}/Work
+export PROJECTS_HOME=${HOME}/Projects
 
 # Emacs lisp
 export PATH="$HOME/.cask/bin:$PATH"
@@ -50,16 +52,18 @@ export PATH=$PATH:${MAVEN_HOME}/bin
 export ANT_HOME=${APPLICATIONS_HOME}/apache-ant
 export PATH=$PATH:${ANT_HOME}/bin# LIBs and LD_LIBRARY_PATH
 
-if [ -d "${usr_local}/lib" ]; then
-    LD_LIBRARY_PATH="$usr_local/lib:${LD_LIBRARY_PATH}"
+export USER_LOCAL=/usr/local
+if [ -d "${USER_LOCAL}"/lib ]; then
+    LD_LIBRARY_PATH="${USER_LOCAL}"/lib:"${LD_LIBRARY_PATH}"
 fi
 
-if [ -d "${home_local}/lib" ]; then
-    LD_LIBRARY_PATH="${home_local}/lib:${LD_LIBRARY_PATH}"
+export HOME_LOCAL=/home
+if [ -d "${HOME_LOCAL}/lib" ]; then
+    LD_LIBRARY_PATH="${HOME_LOCAL}"/lib:"${LD_LIBRARY_PATH}"
 fi
 
 if [ -d /usr/lib/x86_64-linux-gnu ]; then
-    LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}"
+    LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:"${LD_LIBRARY_PATH}"
 fi
 
 export LD_LIBRARY_PATH

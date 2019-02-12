@@ -14,20 +14,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# shellcheck source=/dev/null
-[ -r /usr/share/bash-completion/bash_completion ] \
-    && . /usr/share/bash-completion/bash_completion
-
+# Do not load system
 if [ -d /etc/bash_completion.d ]; then
-    for file in $(/bin/ls /etc/bash_completion.d/*); do
+    for file in $(/bin/ls /etc/bash_completion.d/); do
         # shellcheck source=/dev/null
-        . "$file";
+        . /etc/bash_completion.d/"$file";
     done
 fi
 
 # shellcheck source=/dev/null
-[ -r ~/.fzf.bash ] && . ~/.fzf.bash
+[ -r "${HOME}"/.fzf.bash ] && . "${HOME}"/.fzf.bash
 
-# shellcheck source=/dev/null
-[ -r /usr/share/bash-completion/completions/git ] && \
-    . /usr/share/bash-completion/completions/git
+
+K8S_BINARIES=("kubectl" "minikube")
+
+for BIN in "${K8S_BINARIES[@]}"; do
+  if command -v "${BIN}" > /dev/null 2>&1; then
+    # shellcheck source=/dev/null
+    . <("${BIN}" completion bash)
+  fi
+done

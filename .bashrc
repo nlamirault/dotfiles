@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Copyright (C) 2016-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,34 +14,50 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# set -e
-# set -x
+# Usage:
+# set -x			# activate debugging from here
+# w
+# set +x			# stop debugging from here
 
-if [ -d ~/.config/bashrc.d ]; then
-    for file in $(/bin/ls ~/.config/bashrc.d/*.bashrc); do
-        . $file;
+
+set -e
+# set -x
+# set -v
+
+if [ -d "${HOME}/.config/shells_vendor" ]; then
+    for file in $(/bin/ls "${HOME}"/.config/shells_vendor/*.sh); do
+        # echo ${file}
+        # shellcheck source=/dev/null
+        [ -r "${file}" ] && . "${file}";
     done
 fi
 
-if [ -d ~/.config/shrc.d ]; then
-    for file in $(/bin/ls ~/.config/shrc.d/*.shrc); do
-        . $file;
+if [ -d "${HOME}/.config/bashrc.d" ]; then
+    for file in $(/bin/ls "${HOME}"/.config/bashrc.d/*.bashrc); do
+        # echo ${file}
+        # shellcheck source=/dev/null
+        [ -r "${file}" ] && . "${file}";
+    done
+fi
+
+if [ -d "${HOME}/.config/shrc.d" ]; then
+    for file in $(/bin/ls "${HOME}"/.config/shrc.d/*.shrc); do
+        # echo ${file}
+        # shellcheck source=/dev/null
+        [ -r "${file}" ] && . "${file}";
     done
 fi
 
 # Load local configuration
-[ -f ~/.local.bashrc ] && . ~/.local.bashrc
+# shellcheck source=/dev/null
+[ -r "${HOME}"/.local.bashrc ] && . "${HOME}"/.local.bashrc
 
 # Load secret or personal configuration
-if [ -d "${PERSONAL_DIR}/bashrc.d" ]; then
-    for file in $(/bin/ls ${PERSONAL_DIR}/bashrc.d); do
+if [ -d "${PERSONAL_DIR}"/bashrc.d ]; then
+    for file in $(/bin/ls "${PERSONAL_DIR}"/bashrc.d/*.bashrc); do
         # echo ${file}
-        rc=${PERSONAL_DIR}/bashrc.d/${file}
-        if [ -f "${rc}" ]; then
-            . $rc
-        else
-            echo "not found ${rc}"
-        fi
+        # shellcheck source=/dev/null
+        [ -r "${file}" ] && . "${file}";
     done
 fi
 
@@ -54,3 +72,8 @@ shopt -s checkwinsize
 
 export TERM=xterm-256color
 # export GDK_NATIVE_WINDOWS=1
+
+
+if [[ "$-" == *x* ]]; then
+  echo "DEBUG MODE is ON ========================== Bash setup finished."
+fi

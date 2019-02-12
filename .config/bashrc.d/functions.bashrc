@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Copyright (C) 2016-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,20 +39,31 @@ function extract(){
 }
 
 function weather() {
-    curl http://wttr.in/${1:-bordeaux}
+    curl http://wttr.in/"${1:-bordeaux}"
 }
 
 function coin() {
-    curl http://rate.sx/${1}
+    curl http://rate.sx/"${1}"
 }
 
 function ip_info() {
-    curl ipinfo.io/${1:-8.8.8.8}
+    curl ipinfo.io/"${1:-8.8.8.8}"
 }
 
 function print_colors() {
   for i in {0..255};
   do
-    printf "\x1b[38;5;${i}mcolour${i}\x1b[0m\n"
+    printf "\x1b[38;5;%smcolour%s\x1b[0m\n" ${i} ${i}
   done
+}
+
+
+function fw_open_ip_port() {
+    if [ $# -ne 2 ]; then
+        echo "usage: fw_open_ip_port <source> <port>"
+        exit 1
+    fi
+    source=$1
+    port=$2
+    sudo iptables -A INPUT -s "${source}" -p tcp --dport "${port}" -j ACCEPT
 }
