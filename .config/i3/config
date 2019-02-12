@@ -18,6 +18,11 @@
 
 set $mod Mod4
 
+# Your preferred terminal emulator
+# i3-sensible-terminal
+# xfce4-terminal
+set $term termite
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -31,10 +36,11 @@ font pango: Monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# =======================================================
+# Key bindings
+
 # start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
-#bindsym $mod+Return exec xfce4-terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec $term
 
 # Lock screen
 bindsym $mod+a exec slimlock
@@ -50,38 +56,69 @@ bindsym $mod+Shift+q kill
 # installed.
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# Quickswitch
-# bindsym $mod+w exec quickswitch.py
-
 # Rofi
 # bindsym $mod+Tab exec rofi -show window -bg "#000000" -fg "#ff5500" -hlbg "#000000" -hlfg "#6fc3df" -bc "#ffe64d" -font monospace\ 10
 # bindsym $mod+d exec rofi -show run -bg "#000000" -fg "#ff5500" -hlbg "#000000" -hlfg "#6fc3df" -bc "#ffe64d" -font monospace\ 10
 bindsym $mod+Tab exec rofi -show window -font monospace\ 10
 bindsym $mod+d exec rofi -show run -font monospace\ 10
 
-# =======================================================
-# Requirements : tt-font-awesome
-# set $tag1 "1: "
-# set $tag2 "2: "
-# set $tag3 "3: "
-# set $tag4 "4: "
-# set $tag6 "6: "
-# set $tag7 "7: "
-# set $tag8 "8: "
-#
-set $tag1 "1 "
-set $tag2 "2 "
-set $tag3 "3 "
-set $tag4 "4:"
-set $tag5 "5 "
-set $tag6 "6 "
-set $tag7 "7 "
-set $tag8 "8 "
-set $tag9 "9 "
-set $tag10 "10 "
-set $tag11 "11 "
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # =======================================================
+# Workspaces
+
+# Requirements : tt-font-awesome
+# set $wm1 "1: "
+# set $wm2 "2: "
+# set $wm3 "3: "
+# set $wm4 "4: "
+# set $wm6 "6: "
+# set $wm7 "7: "
+# set $wm8 "8: "
+#
+set $wm1 "1 "
+set $wm2 "2 "
+set $wm3 "3 "
+set $wm4 "4 "
+set $wm5 "5 "
+set $wm6 "6 "
+set $wm7 "7 "
+set $wm8 "8 "
+set $wm9 "9 "
+set $wm10 "10 "
+set $wm11 "11 "
+
+# switch to workspace
+bindsym $mod+ampersand workspace $wm1
+bindsym $mod+eacute workspace $wm2
+bindsym $mod+quotedbl workspace $wm3
+bindsym $mod+apostrophe workspace $wm4
+bindsym $mod+parenleft workspace $wm5
+bindsym $mod+minus workspace $wm6
+bindsym $mod+egrave workspace $wm7
+bindsym $mod+underscore workspace $wm8
+bindsym $mod+ccedilla workspace $wm9
+bindsym $mod+agrave workspace $wm10
+
+# move focused container to workspace
+bindsym $mod+Shift+ampersand move container to workspace $wm1
+bindsym $mod+Shift+eacute move container to workspace $wm2
+bindsym $mod+Shift+quotedbl move container to workspace $wm3
+bindsym $mod+Shift+apostrophe move container to workspace $wm4
+bindsym $mod+Shift+5 move container to workspace $wm5
+bindsym $mod+Shift+minus move container to workspace $wm6
+bindsym $mod+Shift+egrave move container to workspace $wm7
+bindsym $mod+Shift+underscore move container to workspace $wm8
+bindsym $mod+Shift+ccedilla move container to workspace $wm9
+bindsym $mod+Shift+agrave move container to workspace $wm10
+
+# =======================================================
+# Moving around
 
 # change focus
 bindsym $mod+j focus left
@@ -106,6 +143,9 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+# =======================================================
+# Layouts
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -133,29 +173,8 @@ bindsym $mod+q focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# switch to workspace
-bindsym $mod+ampersand workspace $tag1
-bindsym $mod+eacute workspace $tag2
-bindsym $mod+quotedbl workspace $tag3
-bindsym $mod+apostrophe workspace $tag4
-bindsym $mod+parenleft workspace $tag5
-bindsym $mod+minus workspace $tag6
-bindsym $mod+egrave workspace $tag7
-bindsym $mod+underscore workspace $tag8
-bindsym $mod+ccedilla workspace $tag9
-bindsym $mod+agrave workspace $tag10
-
-# move focused container to workspace
-bindsym $mod+Shift+ampersand move container to workspace $tag1
-bindsym $mod+Shift+eacute move container to workspace $tag2
-bindsym $mod+Shift+quotedbl move container to workspace $tag3
-bindsym $mod+Shift+apostrophe move container to workspace $tag4
-bindsym $mod+Shift+5 move container to workspace $tag5
-bindsym $mod+Shift+minus move container to workspace $tag6
-bindsym $mod+Shift+egrave move container to workspace $tag7
-bindsym $mod+Shift+underscore move container to workspace $tag8
-bindsym $mod+Shift+ccedilla move container to workspace $tag9
-bindsym $mod+Shift+agrave move container to workspace $tag10
+# =======================================================
+# Multimedia
 
 # sound
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -175,12 +194,8 @@ bindSym Control+XF86AudioMute exec pavucontrol
 
 bindsym Ctrl+Shift+Print exec "flameshot gui"
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# =======================================================
+# Resize
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -206,6 +221,9 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+# =======================================================
+# Menus
 
 set $sysmenu "System: (l)ock , l(o)gout , (r)estart , (s)uspend , (h)ibernate , re(b)oot , s(h)utdown "
 bindsym $mod+Delete      mode $sysmenu
@@ -282,9 +300,12 @@ client.urgent           #2f343a #900000 #DF740C #900000
 #     }
 # }
 
+# =======================================================
+# Start
+
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # autostart
-exec feh --bg-scale ~/.config/i3/archlinux-simplyblack.png
+exec feh --bg-scale $HOME/.config/i3/archlinux-simplyblack.png
 # exec --no-startup-id light-locker
 exec --no-startup-id /usr/lib/gsd-xsettings

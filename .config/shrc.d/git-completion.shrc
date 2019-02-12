@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 # Copyright (C) 2016-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,9 +16,11 @@
 
 case "${SHELL}" in
     "zsh")
-		source /usr/share/git/completion/git-completion.zsh
+		# shellcheck source=/dev/null
+		. /usr/share/git/completion/git-completion.zsh
 		;;
     "bash")
-		source /usr/share/git/completion/git-completion.bash
+		# shellcheck source=/dev/null
+		. /usr/share/git/completion/git-completion.bash
 		;;
 esac

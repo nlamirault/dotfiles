@@ -1,0 +1,728 @@
+# ; Copyright (C) 2016-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+# ; Licensed under the Apache License, Version 2.0 (the "License");
+# ; you may not use this file except in compliance with the License.
+# ; You may obtain a copy of the License at
+# ;
+# ;     http://www.apache.org/licenses/LICENSE-2.0
+# ;
+# ; Unless required by applicable law or agreed to in writing, software
+# ; distributed under the License is distributed on an "AS IS" BASIS,
+# ; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# ; See the License for the specific language governing permissions and
+# ; limitations under the License.
+
+# ; to include files:
+
+# Error with XDG_CONFIG_HOME
+# polybar|error: Invalid include file "/polybar/themes/wal" defined on line 18
+
+# include-file = $HOME/.config/polybar/themes/nord
+# include-file = $HOME/.config/polybar/themes/tron
+# include-file = $HOME/.config/polybar/themes/wal
+include-file = $HOME/.config/polybar/themes/wal
+
+;=====================================================
+;			G L O B A L
+;=====================================================
+
+[global/wm]
+;https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
+margin-top = 0
+margin-bottom = 0
+
+;=====================================================
+;			S E T T I N G S
+;=====================================================
+
+[settings]
+;https://github.com/jaagr/polybar/wiki/Configuration#application-settings
+throttle-output = 5
+throttle-output-for = 10
+throttle-input-for = 30
+screenchange-reload = true
+compositing-background = over
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+
+;=====================================================
+;   variables
+;=====================================================
+
+[variables]
+
+
+;=====================================================
+;   fonts
+;=====================================================
+[fonts]
+; See symbols: http://fontawesome.io/cheatsheet/
+; $ fc-list
+; $ fc-match "Font Awesome 5 Free"
+
+font-0 = NotoSans-Regular:size=10;0
+font-1 = "FuraCode Nerd Font:size=12;0"
+font-2 = Font Awesome 5 Brands:size=10;0
+font-3 = Font Awesome 5 Free:style=Regular:size=10;0
+font-4 = Font Awesome 5 Free:style=Solid:size=10;0
+# font-4 = Font Awesome 5:size=12;2
+# font-3 = NotoSans-Regular:size=8;-1
+# ; font-4 = Unifont:size=5;-4
+font-5 = Material Icons:size=8
+font-6 = Hack Nerd Font 10
+font-7 = Iosevka:size=10:antialias=true;2
+
+;=====================================================
+;			B A R : TOP
+;=====================================================
+
+[bar/top]
+enable-ipc = true
+# monitor = eDP-1
+monitor = ${env:MONITOR}
+width = 100%
+height = 27
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 2
+
+background = ${theme.background}
+foreground = ${theme.foreground}
+
+font-0 = ${fonts.font-0}
+font-1 = ${fonts.font-1}
+font-2 = ${fonts.font-2}
+font-3 = ${fonts.font-3}
+font-4 = ${fonts.font-4}
+font-5 = ${fonts.font-5}
+font-6 = ${fonts.font-6}
+font-7 = ${fonts.font-7}
+
+;----------------------------------------------------------
+;  	    M O D U L E    L A Y O U T S
+;----------------------------------------------------------
+
+modules-left = powermenu filesystem-slash filesystem-home xkeyboard
+modules-center = xwindow music
+modules-right = notifications volume battery clock
+# modules-right = notifications volume battery clock
+
+; tray-position = right
+
+
+;=====================================================
+;			B A R : BOTTOM
+;=====================================================
+
+[bar/bottom]
+# monitor = eDP-1
+monitor = ${env:MONITOR}
+bottom = true
+width = 100%
+height = 27
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 2
+
+background =  ${theme.background}
+foreground = ${theme.foreground}
+
+font-0 = ${fonts.font-0}
+font-1 = ${fonts.font-1}
+font-2 = ${fonts.font-2}
+font-3 = ${fonts.font-3}
+font-4 = ${fonts.font-4}
+font-5 = ${fonts.font-5}
+font-6 = ${fonts.font-6}
+font-7 = ${fonts.font-7}
+
+;----------------------------------------------------------
+;  	    M O D U L E    L A Y O U T S
+;----------------------------------------------------------
+
+modules-left = i3
+modules-center = vpncheck wireless-network wirelessspeeddown wirelessspeedup wired-network wiredspeedup wiredspeeddown
+modules-right = plctl cpu memory
+
+
+
+;=====================================================
+;			M O D U L E S
+;=====================================================
+
+########################################################
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+
+# ; http://fontawesome.io/cheatsheet/
+# ;       v     
+
+; strip-wsnumbers = true
+# ws-icon-0 = "1;➊"
+# ws-icon-1 = "2;➋"
+# ws-icon-2 = "3;➌"
+# ws-icon-3 = "4;➍"
+# ws-icon-4 = "5;➎"
+# ws-icon-5 = "6;➏"
+# ws-icon-6 = "7;➐"
+# ws-icon-7 = "8;➑"
+# ws-icon-8 = "9;➒"
+# ws-icon-9 = "10;➓"
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+
+ws-icon-default = 
+
+format = <label-state> <label-mode>
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-foreground = ${theme.i3-mode-foreground}
+label-mode-background = ${theme.background}
+
+# label-dimmed-underline = ${root.background}
+
+label-focused = %icon% %name%
+label-focused-foreground = ${theme.i3-focused-foreground}
+label-focused-background = ${theme.background}
+# label-focused-underline = #819FF7
+label-focused-font = 4
+label-focused-padding = 4
+
+label-unfocused = %icon% %name%
+# label-unfocused-underline = #555555
+label-unfocused-font = 4
+label-unfocused-padding = 4
+
+label-urgent = %icon% %name%
+label-urgent-foreground = ${theme.alert}
+label-urgent-background = ${theme.background}
+# label-urgent-underline = #9b0a20
+label-urgent-font = 4
+label-urgent-padding = 4
+
+label-visible = %icon% %name%
+label-visible-foreground = ${theme.i3-visible-foreground}
+label-visible-font = 4
+label-visible-padding = 4
+
+#########################################################
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:46:...%
+# label = "%title%"
+format-prefix = " "
+; format-suffix = " "
+# label-maxlen = 75
+# format-prefix = " "
+format-prefix-foreground = ${theme.xwindow-prefix-foreground}
+# format-prefix-underline = ${colors.green}
+format-suffix-foreground = ${theme.xwindow-prefix-foreground}
+# format-suffix-underline = ${colors.green}
+# format-underline = ${colors.green}
+# label-layout-underline = ${colors.green}
+# label-indicator-margin = 1
+# label-indicator-underline = ${colors.green}
+
+#########################################################
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+format-prefix = " "
+format-prefix-foreground = ${theme.xkeyboard-prefix-foreground}
+# format-prefix-underline = ${colors.red}
+label-layout = %layout%
+# label-layout-underline = ${colors.red}
+label-indicator-padding = 2
+label-indicator-margin = 1
+;label-indicator-background = ${colors.secondary}
+# label-indicator-underline = ${colors.red}
+
+#########################################################
+
+[module/cpu]
+type = internal/cpu
+interval = 1.5
+
+format-prefix = " "
+format = <label> <ramp-coreload>
+format-prefix-foreground = ${theme.cpu-prefix-foreground}
+# format-underline = ${colors.red}
+label = CPU
+; label-font = 3
+; label-foreground = #99
+
+# ramp-coreload-underline = ${colors.red}
+ramp-coreload-0 = ▁
+ramp-coreload-0-font = 2
+ramp-coreload-0-foreground = #aaff77
+ramp-coreload-1 = ▂
+ramp-coreload-1-font = 2
+ramp-coreload-1-foreground = #aaff77
+ramp-coreload-2 = ▃
+ramp-coreload-2-font = 2
+ramp-coreload-2-foreground = #aaff77
+ramp-coreload-3 = ▄
+ramp-coreload-3-font = 2
+ramp-coreload-3-foreground = #aaff77
+ramp-coreload-4 = ▅
+ramp-coreload-4-font = 2
+ramp-coreload-4-foreground = #fba922
+ramp-coreload-5 = ▆
+ramp-coreload-5-font = 2
+ramp-coreload-5-foreground = #fba922
+ramp-coreload-6 = ▇
+ramp-coreload-6-font = 2
+ramp-coreload-6-foreground = #ff5555
+ramp-coreload-7 = █
+ramp-coreload-7-font = 2
+ramp-coreload-7-foreground = #ff5555
+
+#########################################################
+
+[module/memory]
+type = internal/memory
+interval = 0.2
+format-prefix = " "
+# format = <label> <bar-used>
+# label = RAM
+label ="RAM %percentage_used%% "
+# format-underline = ${colors.xcolor12}
+format-prefix-foreground = ${theme.memory-prefix-foreground}
+
+# bar-used-width = 30
+# bar-used-gradient = true
+# bar-used-foreground-0 = #449f3d
+# bar-used-foreground-1 = #2f8419
+# bar-used-foreground-2 = #f5a70a
+# bar-used-foreground-3 = #ed5456
+# bar-used-indicator = █
+# bar-used-indicator-font = 5
+# bar-used-indicator-foreground = #fff
+# bar-used-fill = █
+# bar-used-fill-font = 5
+# bar-used-empty = █
+# bar-used-empty-font = 5
+# bar-used-empty-foreground = #44
+
+#########################################################
+
+[module/filesystem-home]
+type = internal/fs
+interval = 3600
+mount-0 = /home
+format-mounted-prefix = " "
+;label-mounted =  %{F-} %percentage_used%%
+label-mounted = "%{F-} %mountpoint%: %percentage_used%%"
+;label-mounted =  %mountpoint%: %percentage_used%% of %total%
+format-mounted-prefix-foreground = ${theme.fs-mounted-prefix-foreground}
+# format-mounted-underline = ${colors.yellow}
+
+#########################################################
+
+[module/filesystem-slash]
+type = internal/fs
+interval = 3600
+mount-0 = /
+format-mounted-prefix = " "
+# format-mounted-prefix = " "
+label-mounted = "%{F-} %mountpoint%: %percentage_used%%"
+;label-mounted =  %mountpoint%: %percentage_used%% of %total%
+; label-mounted-foreground = ${colors.white}
+format-mounted-prefix-foreground = ${theme.fs-mounted-prefix-foreground}
+# format-mounted-underline = ${colors.yellow}
+
+#########################################################
+
+[module/wired-network]
+type = internal/network
+interface = ${env:ETH_INTERFACE}
+interval = 2.0
+label-connected = "%local_ip%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${theme.wired-connected-prefix-foreground}
+# format-connected-underline = ${colors.red}
+label-disconnected = " disconnected"
+label-disconnected-foreground = #66
+
+#########################################################
+
+[module/wiredspeedup]
+type = internal/network
+interface = ${env:ETH_INTERFACE}
+label-connected = "%upspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${theme.wired-speedup-prefix-foreground}
+# format-connected-underline = ${colors.blue}
+
+#########################################################
+
+[module/wiredspeeddown]
+type = internal/network
+interface = ${env:ETH_INTERFACE}
+label-connected = "%downspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${theme.wired-speeddown-prefix-foreground}
+# format-connected-underline = ${colors.green}
+
+#########################################################
+
+[module/wireless-network]
+type = internal/network
+interface = ${env:WIFI_INTERFACE}
+interval = 2.0
+ping-interval = 10
+label-connected = "%essid% %local_ip%"
+format-connected = <ramp-signal> <label-connected>
+# format-connected-prefix = "  "
+format-connected-prefix-foreground = ${theme.wireless-connected-prefix-foreground}
+# format-connected-underline = ${colors.red}
+# label-disconnected = " not connected"
+label-disconnected = "not connected"
+format-disconnected = <label-disconnected>
+format-disconnected-prefix = " "
+format-disconnected-prefix-foreground = ${theme.wireless-disconnected-prefix-foreground}
+# format-disconnected-underline = ${colors.red}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${theme.wireless-connected-prefix-foreground}
+
+animation-packetloss-0 = 
+animation-packetloss-0-foreground = ${theme.alert}
+animation-packetloss-1 = 
+animation-packetloss-1-foreground = ${theme.alert}
+animation-packetloss-framerate = 500
+
+#########################################################
+
+[module/wirelessspeedup]
+type = internal/network
+interface = ${env:WIFI_INTERFACE}
+label-connected = "%upspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${theme.wireless-speedup-prefix-foreground}
+# format-connected-underline = ${colors.blue}
+
+#########################################################
+
+[module/wirelessspeeddown]
+type = internal/network
+interface = ${env:WIFI_INTERFACE}
+label-connected = "%downspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${theme.wireless-speeddown-prefix-foreground}
+# format-connected-underline = ${colors.green}
+
+#########################################################
+
+[module/vpncheck]
+type = custom/script
+interval = 10
+format = <label>
+if_exec = "pgrep openvpn"
+; To print tun0 ip address in label
+exec = "ip a | grep tun0 | tail -n 1 | awk '{print $2}'"
+; label = " vpn %output%"
+format-prefix = " "
+format-prefix-foreground = ${theme.vpn-connected-prefix-foreground}
+# format-underline = ${colors.red}
+label = "vpn %output%"
+
+#########################################################
+
+[module/mpd]
+type = internal/mpd
+format-online = <bar-progress>  <icon-prev> <icon-stop> <toggle> <icon-next>  <label-song>
+format-online-overline = ${root.background}
+format-online-underline = ${root.background}
+format-offline = <label-offline>
+label-offline = mpd is off
+
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-random = 
+icon-repeat = 
+
+toggle-on-foreground =
+toggle-off-foreground = #55
+
+bar-progress-width = 45
+bar-progress-format = %{+o +u}%fill%%{-o -u}%indicator%%{+o +u}%empty%%{-u -o}
+; bar-progress-indicator = |
+bar-progress-indicator = █
+bar-progress-indicator-foreground = #ff
+bar-progress-indicator-font = 3
+; bar-progress-fill = ─
+bar-progress-fill = █
+bar-progress-fill-foreground = #bb
+bar-progress-fill-font = 3
+; bar-progress-empty = ─
+bar-progress-empty = ▒
+bar-progress-empty-font = 3
+bar-progress-empty-foreground = #44
+
+# ###############################################################################
+
+[module/plctl]
+type = custom/menu
+format-padding = 2
+
+label-open = " "
+label-close = " "
+label-separator = "  "
+format-foreground = ${theme.playctl-foreground}
+# format-background = #161925
+# format-underline = ${colors.orange}
+
+# menu-0-0 = 
+menu-0-0 = 
+menu-0-0-exec = playerctl previous
+menu-0-1 = 
+menu-0-1-exec = playerctl stop
+menu-0-2 = 
+menu-0-2-exec = playerctl play
+# menu-0-3 = 
+menu-0-3 = 
+menu-0-3-exec = playerctl next
+
+#########################################################
+
+[module/powermenu]
+type = custom/menu
+
+format-background = ${theme.background}
+format-foreground = ${theme.powermenu-foreground}
+# format-underline = #7df059
+
+# label-open = "%{F#7df059}  %{F-} Arch Linux "
+label-open = "%{F#7df059}  %{F-} Arch Linux "
+# label-open-foreground = #7df059
+label-close =  cancel
+label-separator = " | "
+# label-underline = #7df059
+
+menu-0-0 =  reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 =  power off
+menu-0-1-exec = menu-open-2
+menu-0-2 =  log out
+menu-0-2-exec = menu-open-3
+menu-0-3 =  lock
+menu-0-3-exec = "/usr/bin/slimlock &"
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = shutdown now
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+menu-3-0 = log out
+menu-3-0-exec = i3-msg exit
+menu-3-1 = cancel
+menu-3-1-exec = menu-open-0
+
+# ###############################################################################
+
+[module/music]
+type = custom/script
+exec = $HOME/.config/polybar/music.sh
+label = %output%
+label-foreground = ${theme.music-foreground}
+# format-underline = ${colors.orange}
+tail = true
+interval = 5
+
+# [module/music]
+# type = custom/script
+# interval = 1
+# format-padding = 2
+# format-underline = ${colors.magenta}
+# exec = ~/.config/polybar/music.sh
+
+# ###############################################################################
+
+[module/notifications]
+type = custom/script
+interval = 1
+label = %output%
+exec = $HOME/.config/polybar/notifications.sh
+# format-underline = ${colors.red}
+click-left = $HOME/.config/polybar/notifications.sh on
+# click-middle = $HOME/.config/polybar/notifications.sh
+click-right = $HOME/.config/polybar/notifications.sh off
+# label-padding = 2
+# label-foreground = ${colors.white}
+# format-underline = ${colors.red}
+label-foreground = ${theme.notifications-foreground}
+
+# ###############################################################################
+
+# [module/volume]
+# type = internal/volume
+# speaker-mixer = Speaker
+# headphone-mixer = Headphone
+# headphone-id = 9
+# master-soundcard=default
+# speaker-soundcard = default
+# headphone-soundcard = default
+
+# format-volume = <ramp-volume> <label-volume> <bar-volume>
+
+# label-volume = %percentage%%
+# label-volume-foreground = #ff
+
+# label-muted = sound muted
+# label-muted-foreground = #99ffffff
+
+# ramp-volume-0 = 
+# ramp-volume-1 = 
+# ramp-volume-2 = 
+# ramp-volume-3 = 
+# ;ramp-volume-foreground = #9f78e1
+
+# ramp-headphones-0 = 
+# ramp-headphones-1 = 
+# ramp-headphones-foreground = #9f78e1
+
+# bar-volume-width = 10
+# bar-volume-foreground-0 = #5af78e
+# bar-volume-foreground-1 = #5af78e
+# bar-volume-foreground-2 = #5af78e
+# bar-volume-foreground-3 = #5af78e
+# bar-volume-foreground-4 = #5af78e
+# bar-volume-foreground-5 = #f3f99d
+# bar-volume-foreground-6 = #ff5c57
+# bar-volume-gradient = false
+# bar-volume-indicator = │
+# bar-volume-indicator-font = 2
+# bar-volume-indicator-foreground = #ff
+# bar-volume-fill = ─
+# bar-volume-fill-font = 2
+# bar-volume-empty = ─
+# bar-volume-empty-font = 2
+
+#########################################################
+
+[module/volume]
+type = internal/pulseaudio
+
+# format-volume = <label-volume> <bar-volume>
+# label-volume = " "
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${theme.volume-foreground}
+# label-volume-underline = ${colors.blue}
+# format-volume-underline = ${colors.blue}
+format-muted-prefix = "  "
+format-muted-foreground = ${theme.volume-muted-foreground}
+label-muted = "Mute"
+# format-muted-underline = ${colors.blue}
+
+# bar-volume-width = 10
+# bar-volume-foreground-0 = ${colors.white}
+
+# bar-volume-gradient = false
+# bar-volume-indicator =
+# bar-volume-indicator-font = 0
+# bar-volume-fill = ""
+# bar-volume-fill-font = 1
+# bar-volume-empty = ""
+# bar-volume-empty-font = 1
+# bar-volume-empty-foreground = ${colors.blue}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+ramp-volume-5 = 
+ramp-volume-6 = 
+
+##########################################################
+
+[module/battery]
+type = internal/battery
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+# format-charging-underline = ${colors.xcolor13}
+format-charging-foreground = ${theme.battery-full-foreground}
+
+format-discharging = <ramp-capacity> <label-discharging>
+# format-discharging-underline = ${colors.xcolor13}
+# format-discharging-foreground = ${colors.yellow}
+# format-discharging-background = ${colors.black}
+
+# format-full-prefix = " "
+format-full-prefix = " "
+# format-full-prefix-padding = 1
+format-full-overline = ${theme.battery-full-foreground}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${self.format-charging-foreground}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${self.format-charging-foreground}
+animation-charging-framerate = 750
+
+#########################################################
+
+[module/clock]
+type = internal/date
+interval = 1
+; date-alt =   %A %H:%M
+date = "%a - %d.%m.%Y"
+time = " %H:%M:%S"
+time-alt = "%a - %d.%m.%Y - %I:%M %p"
+label = %date% %time%
+format-prefix = "  "
+format-prefix-foreground = ${theme.clock-foreground}
+# format-underline = ${colors.purple}
+; format-foreground = ${colors.purple}
+; format-background = ${colors.black}
+
+#########################################################

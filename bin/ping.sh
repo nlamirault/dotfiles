@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if sudo ping -c 1 -W 2 $1 > /dev/null;
+if sudo ping -c 1 -W 2 "$1" > /dev/null;
 then
 	echo "1"
 else

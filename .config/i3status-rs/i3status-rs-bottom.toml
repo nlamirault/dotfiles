@@ -11,15 +11,47 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
+theme = "solarized-dark"
+icons = "awesome"
 
-function fw_open_ip_port() {
-    if [ $# -ne 2 ]; then
-        echo "usage: fw_open_ip_port <source> <port>"
-        exit 1
-    fi
-    source=$1
-    port=$2
-    sudo iptables -A INPUT -s ${source} -p tcp --dport ${port} -j ACCEPT
-}
+[[block]]
+block = "net"
+device = "enp0s25"
+ip = true
+speed_up = true
+graph_up = true
+speed_down = true
+graph_down = true
+interval = 5
+
+[[block]]
+block = "net"
+device = "wlp3s0"
+ssid = true
+ip = true
+speed_up = true
+graph_up = true
+speed_down = true
+graph_down = true
+interval = 5
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage}% "
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{Mup}%"
+format_swap = "{SUp}%"
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "load"
+interval = 1
+format = "{1m}"

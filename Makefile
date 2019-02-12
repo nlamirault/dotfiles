@@ -16,6 +16,8 @@ APP = dotfiles
 
 SHELL = /bin/bash
 
+SHELLCHECK = koalaman/shellcheck:stable
+
 DIR = $(shell pwd)
 
 NO_COLOR=\033[0m
@@ -28,6 +30,8 @@ MAKE_COLOR=\033[33;01m%-20s\033[0m
 .DEFAULT_GOAL := help
 
 BASE_DIR=$(shell echo `pwd`)
+
+POLYBAR_FILE ?= config-theming
 
 .PHONY: help
 help:
@@ -57,12 +61,27 @@ install-shell:
 	test -L ${HOME}/.config/zshrc.d || ln -fs ${BASE_DIR}/.config/zshrc.d/ ${HOME}/.config/zshrc.d
 	test -L ${HOME}/.config/fish || ln -fs ${BASE_DIR}/.config/fish ${HOME}/.config/fish
 
+lint-shell:
+	@echo -e "$(OK_COLOR)Lint Shell scripts$(NO_COLOR)"
+	@echo ".bashrc"
+	@docker run -v "$$PWD:/mnt" $(SHELLCHECK) /mnt/.bashrc
+	@echo ".bash_profile"
+	@docker run -v "$$PWD:/mnt" $(SHELLCHECK) /mnt/.bash_profile
+	@for file in $(shell ls .config/bashrc.d/); do \
+		echo $${file}; \
+		docker run -v "$$PWD:/mnt" $(SHELLCHECK) /mnt/.config/bashrc.d/$${file}; done
+	@for file in $(shell ls .config/shrc.d/); do \
+		echo $${file}; \
+		docker run -v "$$PWD:/mnt" $(SHELLCHECK) /mnt/.config/shrc.d/$${file}; done
+
 install-binaries:
 	mkdir -p ${HOME}/bin
 	test -L ${HOME}/bin/tmux-lam.sh || ln -fs ${BASE_DIR}/bin/tmux-lam.sh ${HOME}/bin/tmux-lam.sh
 	test -L ${HOME}/bin/tmux-perso.sh || ln -fs ${BASE_DIR}/bin/tmux-perso.sh ${HOME}/bin/tmux-perso.sh
 	test -L ${HOME}/bin/tmux-zeiot.sh || ln -fs ${BASE_DIR}/bin/tmux-zeiot.sh ${HOME}/bin/tmux-zeiot.sh
 	test -L ${HOME}/bin/tmux-pilotariak.sh || ln -fs ${BASE_DIR}/bin/tmux-pilotariak.sh ${HOME}/bin/tmux-pilotariak.sh
+
+install-polybar:
 
 install-apps:
 	test -L ${HOME}/.config/user-dirs.dirs || ln -s ${BASE_DIR}/.config/user-dirs.dirs ${HOME}/.config/user-dirs.dirs
@@ -72,10 +91,14 @@ install-apps:
 	test -L ${HOME}/.config/conky || ln -s ${BASE_DIR}/.config/conky ${HOME}/.config/conky
 	test -L ${HOME}/.config/rofi || ln -s ${BASE_DIR}/.config/rofi ${HOME}/.config/rofi
 	test -L ${HOME}/.config/polybar || ln -s ${BASE_DIR}/.config/polybar ${HOME}/.config/polybar
+	rm -f ${HOME}/.config/polybar/config && \
+		ln -s ${BASE_DIR}/.config/polybar/$(POLYBAR_FILE) ${HOME}/.config/polybar/config
+	test -L ${HOME}/.config/sway || ln -s ${BASE_DIR}/.config/sway ${HOME}/.config/sway
+	test -L ${HOME}/.config/i3status-rs || ln -s ${BASE_DIR}/.config/i3status-rs ${HOME}/.config/i3status-rs
 	test -L  ${HOME}/.config/tmux|| ln -s ${BASE_DIR}/.config/tmux ${HOME}/.config/tmux
 	test -L ${HOME}/.config/termite || ln -s ${BASE_DIR}/.config/termite ${HOME}/.config/termite
 	test -L ${HOME}/.config/kitty || ln -s ${BASE_DIR}/.config/termite ${HOME}/.config/kitty
-	test -L ${HOME}/.config/dunst || ln -s ${BASE_DIR}/.config/dunst ${HOME}/.config/dunst
+	test -L ${HOME}/.config/wal || ln -s ${BASE_DIR}/.config/wal ${HOME}/.config/wal
 
 uninstall-shell:
 	@echo -e "$(OK_COLOR)Install Shell configurations$(NO_COLOR)"

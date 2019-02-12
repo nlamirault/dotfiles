@@ -1,0 +1,162 @@
+; Copyright (C) 2016-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+; Licensed under the Apache License, Version 2.0 (the "License");
+; you may not use this file except in compliance with the License.
+; You may obtain a copy of the License at
+;
+;     http://www.apache.org/licenses/LICENSE-2.0
+;
+; Unless required by applicable law or agreed to in writing, software
+; distributed under the License is distributed on an "AS IS" BASIS,
+; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+; See the License for the specific language governing permissions and
+; limitations under the License.
+
+;=====================================================
+;			C O L O R S
+;=====================================================
+
+# https://github.com/arcticicestudio/nord
+
+# Polar Night   : nord0 - nord3
+# Snow Storm    : nord4 - nord6
+# Frost         : nord7 - nord10
+# Aurora        : nord11 - nord15
+
+[colors]
+
+xcolor0 = #2E3440
+xcolor1 = #3B4252
+xcolor2 = #434C5E
+xcolor3 = #4C566A
+xcolor4 = #D8DEE9
+xcolor5 = #E5E9F0
+xcolor6 = #ECEFF4
+xcolor7 = #8FBCBB
+xcolor8 = #88C0D0
+xcolor9 = #81A1C1
+xcolor10 = #5E81AC
+xcolor11 = #BF616A
+xcolor12 = #D08770
+xcolor13 = #EBCB8B
+xcolor14 = #A3BE8C
+xcolor15 = #B48EAD
+
+;=====================================================
+;			T H E M E
+;=====================================================
+
+# Colors to set:
+#
+# - background
+# - foreground
+# - alert
+# - accent
+#
+# module/i3:
+# - i3-mode-foreground
+# - i3-focused-foreground
+# - i3-visible-foreground
+#
+# module/xwindow
+# - xwindow-prefix-foreground
+#
+# module/xkeyboard
+# - xkeyboard-prefix-foreground
+#
+# module/cpu
+# - cpu-prefix-foreground
+#
+# module/memory
+# - memory-prefix-foreground
+#
+# module/filesystem
+# - fs-mounted-prefix-foreground
+
+# modume/wired-network
+# - wired-connected-prefix-foreground
+# - wired-disconnected-prefix-foreground
+# - wired-speedup-prefix-foreground
+# - wired-speeddown-prefix-foreground
+
+# module/wireless-network
+# - wireless-connected-prefix-foreground
+# - wireless-disconnected-prefix-foreground
+# - wireless-speedup-prefix-foreground
+# - wireless-speeddown-prefix-foreground
+
+# module/vpncheck
+# - vpn-connected-prefix-foreground
+
+# module/playctl
+# - playctl-foreground
+
+# module/powermenu
+# - powermenu-foreground
+
+# module/music
+# - music-foreground
+
+# module/notifications
+# - notifications-foreground
+
+# module/volume
+# - volume-muted-foreground
+# - volume-foreground
+
+# module/battery
+# - battery-charging-foreground
+# - battery-full-foreground
+
+# module/clock
+# - clock-foreground
+
+
+[theme]
+
+background = ${colors.xcolor0}
+foreground = ${colors.xcolor4}
+alert = #4c566a
+accent = #d8dee9
+
+i3-mode-foreground = ${colors.xcolor11}
+i3-focused-foreground = ${colors.xcolor11}
+i3-visible-foreground = ${colors.xcolor14}
+
+xwindow-prefix-foreground = ${colors.xcolor8}
+
+xkeyboard-prefix-foreground = ${colors.xcolor11}
+
+cpu-prefix-foreground = ${colors.xcolor11}
+
+memory-prefix-foreground = ${colors.xcolor13}
+
+fs-mounted-prefix-foreground = ${colors.xcolor13}
+
+wired-connected-prefix-foreground = ${colors.xcolor7}
+wired-disconnected-prefix-foreground = ${colors.xcolor10}
+wired-speedup-prefix-foreground = ${colors.xcolor14}
+wired-speeddown-prefix-foreground = ${colors.xcolor11}
+
+wireless-connected-prefix-foreground = ${colors.xcolor7}
+wireless-disconnected-prefix-foreground = ${colors.xcolor10}
+wireless-speedup-prefix-foreground = ${colors.xcolor14}
+wireless-speeddown-prefix-foreground = ${colors.xcolor11}
+
+vpn-connected-prefix-foreground = ${colors.xcolor7}
+
+playctl-foreground = ${colors.xcolor7}
+
+powermenu-foreground = ${colors.xcolor5}
+
+music-foreground = ${colors.xcolor10}
+
+notifications-foreground = ${colors.xcolor11}
+
+volume-foreground = ${colors.xcolor5}
+volume-muted-foreground = ${colors.xcolor5}
+
+battery-charging-foreground = ${colors.xcolor13}
+battery-full-foreground = ${colors.xcolor13}
+
+clock-foreground = ${colors.xcolor5}

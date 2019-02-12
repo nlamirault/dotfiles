@@ -1,0 +1,278 @@
+# Copyright (C) 2016-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+
+set $mod Mod4
+
+# Your preferred terminal emulator
+# i3-sensible-terminal
+# xfce4-terminal
+set $term termite
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below. ISO 10646 = Unicode
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font pango: Monospace 8
+
+set $monitor-left DP-2-3
+set $monitor-center DP-2-1
+set $monitor-right eDP-1
+
+# =======================================================
+# Outputs
+
+output $monitor-1 pos 0 0 res 1920x1080@Hz
+output $monitor-2 pos 1920 0 res 1920x1080@144Hz
+output $monitor-3 pos 3840 0
+
+# =======================================================
+# Inputs
+
+input * {
+	xkb_layout fr
+#	xkb_variant altgr-intl
+#	xkb_options caps:escape,compose:menu,level3:ralt_switch
+}
+
+# =======================================================
+# Key bindings
+
+# start a terminal
+bindsym $mod+Return exec $term
+
+# Lock screen : swaylock
+bindsym Alt+l exec  swaylock -i $HOME/.config/i3/archlinux-simplyblack.png
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# reload the configuration file
+bindsym $mod+Shift+r reload
+
+# restart sway (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit sway (logs you out of your wayland session)
+bindsym $mod+Shift+e exit
+
+# Rofi
+# bindsym $mod+Tab exec rofi -show window -bg "#000000" -fg "#ff5500" -hlbg "#000000" -hlfg "#6fc3df" -bc "#ffe64d" -font monospace\ 10
+# bindsym $mod+d exec rofi -show run -bg "#000000" -fg "#ff5500" -hlbg "#000000" -hlfg "#6fc3df" -bc "#ffe64d" -font monospace\ 10
+bindsym $mod+Tab exec rofi -show window -font monospace\ 10
+bindsym $mod+d exec rofi -show run -font monospace\ 10
+
+# =======================================================
+# Workspaces
+
+# Requirements : tt-font-awesome
+# set $tag1 "1: "
+# set $tag2 "2: "
+# set $tag3 "3: "
+# set $tag4 "4: "
+# set $tag6 "6: "
+# set $tag7 "7: "
+# set $tag8 "8: "
+#
+set $tag1 "1 "
+set $tag2 "2 "
+set $tag3 "3 "
+set $tag4 "4 "
+set $tag5 "5 "
+set $tag6 "6 "
+set $tag7 "7 "
+set $tag8 "8 "
+set $tag9 "9 "
+set $tag10 "10 "
+set $tag11 "11 "
+
+# switch to workspace
+bindsym $mod+ampersand workspace $tag1
+bindsym $mod+eacute workspace $tag2
+bindsym $mod+quotedbl workspace $tag3
+bindsym $mod+apostrophe workspace $tag4
+bindsym $mod+parenleft workspace $tag5
+bindsym $mod+minus workspace $tag6
+bindsym $mod+egrave workspace $tag7
+bindsym $mod+underscore workspace $tag8
+bindsym $mod+ccedilla workspace $tag9
+bindsym $mod+agrave workspace $tag10
+
+# move focused container to workspace
+bindsym $mod+Shift+ampersand move container to workspace $tag1
+bindsym $mod+Shift+eacute move container to workspace $tag2
+bindsym $mod+Shift+quotedbl move container to workspace $tag3
+bindsym $mod+Shift+apostrophe move container to workspace $tag4
+bindsym $mod+Shift+5 move container to workspace $tag5
+bindsym $mod+Shift+minus move container to workspace $tag6
+bindsym $mod+Shift+egrave move container to workspace $tag7
+bindsym $mod+Shift+underscore move container to workspace $tag8
+bindsym $mod+Shift+ccedilla move container to workspace $tag9
+bindsym $mod+Shift+agrave move container to workspace $tag10
+
+# =======================================================
+# Moving around
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+m focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+m move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# =======================================================
+# Layouts
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+z layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+q focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# =======================================================
+# Multimedia
+
+# sound
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Show sinks: pacmd list-sinks | grep -e 'name:' -e 'index:'
+bindSym XF86AudioLowerVolume exec pactl set-sink-volume 2 '-5%'
+bindSym XF86AudioRaiseVolume exec pactl set-sink-volume 2 '+5%'
+bindSym Control+XF86AudioMute exec pavucontrol
+
+# bindSym Shift+XF86AudioPrev exec mpc seek -00:00:10
+# bindSym Shift+XF86AudioNext exec mpc seek +00:00:10
+# bindSym XF86AudioMute exec pactl set-sink-mute 0 toggle
+# bindSym Shift+XF86AudioLowerVolume exec mpc volume -5
+# bindSym Shift+XF86AudioRaiseVolume exec mpc volume +5
+
+bindsym Ctrl+Shift+Print exec "flameshot gui"
+bindsym Shift+Print exec slurp | grim -g - "/tmp/screenshot_`date +%Y-%m-%d-%T`.png"
+
+# =======================================================
+# Resize
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym m resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# =======================================================
+# Bars
+
+bar {
+    font pango:DejaVu Sans Mono, FontAwesome 10
+    position top
+    status_command $HOME/bin/i3status-rs $HOME/.config/i3status-rs/i3status-rs-top.toml
+    colors {
+        separator #666666
+        background #222222
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
+    }
+}
+
+bar {
+    font pango:DejaVu Sans Mono, FontAwesome 10
+    position bottom
+    status_command $HOME/bin/i3status-rs $HOME/.config/i3status-rs/i3status-rs-bottom.toml
+    colors {
+        separator #666666
+        background #222222
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
+    }
+}
+
+# With a more recent Sway:
+# bar {
+#     swaybar_command waybar
+# }
+
+# =======================================================
+# Start
+
+# exec swayidle timeout 350 "swaylock -c 000000f0" before-sleep "swaylock -c 000000f0"
+# exec mako
+exec --no-startup-id /usr/lib/gsd-xsettings
+
+# exec_always --no-startup-id $HOME/.config/waybar/launch.sh

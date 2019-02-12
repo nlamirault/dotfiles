@@ -14,15 +14,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+# Do not load system
+if [ -d /etc/bash_completion.d ]; then
+    for file in $(/bin/ls /etc/bash_completion.d/); do
+        # shellcheck source=/dev/null
+        . /etc/bash_completion.d/"$file";
+    done
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# shellcheck source=/dev/null
+[ -r "${HOME}"/.fzf.bash ] && . "${HOME}"/.fzf.bash
 
-[ -f /usr/share/bash-completion/completions/git ] \
-    && source /usr/share/bash-completion/completions/git
+
+K8S_BINARIES=("kubectl" "minikube")
+
+for BIN in "${K8S_BINARIES[@]}"; do
+  if command -v "${BIN}" > /dev/null 2>&1; then
+    # shellcheck source=/dev/null
+    . <("${BIN}" completion bash)
+  fi
+done
