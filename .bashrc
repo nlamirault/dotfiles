@@ -19,8 +19,7 @@
 # w
 # set +x			# stop debugging from here
 
-
-set -e
+# set -e
 # set -x
 # set -v
 
