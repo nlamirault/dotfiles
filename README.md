@@ -26,7 +26,8 @@ Install configuration on a host:
     $ make install
 
 
-![Screenshot](desktop.png)
+![Desktop](desktop.png)
+![Conky](conky.png)
 
 
 ## License
