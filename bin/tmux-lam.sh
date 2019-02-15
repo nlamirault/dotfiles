@@ -21,13 +21,15 @@ if [ -f "${HOME}/.config/shrc.d/path.shrc" ]; then
     . "${HOME}/.config/shrc.d/path.shrc"
 fi
 
+PROJECTS=${HOME}/Projects
+
 function tmux_lam {
     tmux start-server
     tmux new-session -s $SESSION -n lam -d
     tmux new-window -n "Divona"
-    tmux send-keys -t $SESSION "cd ${PROJECTS_HOME}/divona" C-m
+    tmux send-keys -t $SESSION "cd ${PROJECTS}/divona" C-m
     tmux new-window -n "Dotfiles"
-    tmux send-keys -t $SESSION "cd ${PROJECTS_HOME}/dotfiles" C-m
+    tmux send-keys -t $SESSION "cd ${PROJECTS}/dotfiles" C-m
     tmux new-window -n "Journal"
     tmux send-keys -t $SESSION "cd ${HOME}" C-m
     tmux new-window -n "Music"
