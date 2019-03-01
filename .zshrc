@@ -12,34 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if [ -d ~/.config/zshrc.d ]; then
-    for file in $(/bin/ls ~/.config/zshrc.d/*.zshrc); do
-        . $file;
+if [ -d ${HOME}/.config/zshrc.d ]; then
+    for file in $(/bin/ls ${HOME}/.config/zshrc.d/*.zshrc); do
+        . ${file};
     done
 fi
 
-if [ -d ~/.config/shrc.d ]; then
-    for file in $(/bin/ls ~/.config/shrc.d/*.shrc); do
-        . $file;
+if [ -d ${HOME}/.config/shrc.d ]; then
+    for file in $(/bin/ls ${HOME}/.config/shrc.d/*.shrc); do
+        . ${file};
     done
 fi
 
 # Load local configuration
-[ -f ~/.local.zshrc ] && . ~/.local.zshrc
+[ -f ${HOME}/.local.zshrc ] && . ${HOME}/.local.zshrc
 
-# Load secret or personal configuration
-if [ -d "${PERSONAL_DIR}/bashrc.d" ]; then
-    for file in $(/bin/ls ${PERSONAL_DIR}/bashrc.d); do
+# Load secret or personal configuration (PERSONAL_DIR loaded from path.shrc)
+if [ -d "${PERSONAL_DIR}/zshrc.d" ]; then
+    for file in $(/bin/ls ${PERSONAL_DIR}/zshrc.d/*.zshrc); do
         # echo ${file}
-        rc=${PERSONAL_DIR}/bashrc.d/${file}
-        if [ -f "${rc}" ]; then
-            . $rc
-        else
-            echo "not found ${rc}"
-        fi
+        [ -r "${file}" ] && . "${file}";
     done
 fi
 
-export COLUMNS=250
-
-APPS=$HOME/Applications

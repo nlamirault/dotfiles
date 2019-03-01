@@ -51,7 +51,7 @@ fi
 # shellcheck source=/dev/null
 [ -r "${HOME}"/.local.bashrc ] && . "${HOME}"/.local.bashrc
 
-# Load secret or personal configuration
+# Load secret or personal configuration (PERSONAL_DIR loaded from path.shrc)
 if [ -d "${PERSONAL_DIR}"/bashrc.d ]; then
     for file in $(/bin/ls "${PERSONAL_DIR}"/bashrc.d/*.bashrc); do
         # echo ${file}
@@ -60,17 +60,6 @@ if [ -d "${PERSONAL_DIR}"/bashrc.d ]; then
     done
 fi
 
-export COLUMNS=250
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-export TERM=xterm-256color
-# export GDK_NATIVE_WINDOWS=1
 
 
 if [[ "$-" == *x* ]]; then
