@@ -15,7 +15,7 @@
 [user]
 	email = nicolas.lamirault@gmail.com
 	name = Nicolas Lamirault
-	signingkey = 6FCA437C
+	signingkey = 5F99269A6FCA437C
 
 [color]
     ui = true
@@ -64,3 +64,5 @@
 
 [push]
 	default = simple
+[gpg]
+	program = gpg2
