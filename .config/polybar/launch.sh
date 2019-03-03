@@ -21,7 +21,7 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
-export WIFI_INTERFACE="wlp3s0"
+export WIFI_INTERFACE="wlp2s0"
 export ETH_INTERFACE="enp0s25"
 
 # Launch bar1 and bar2
