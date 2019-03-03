@@ -34,4 +34,3 @@ if [ -d "${PERSONAL_DIR}/zshrc.d" ]; then
         [ -r "${file}" ] && . "${file}";
     done
 fi
-
