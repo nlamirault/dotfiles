@@ -14,7 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-exec ck-launch-session dbus-launch i3
+# exec ck-launch-session dbus-launch i3
+exec i3
 
 # Restore the last colorscheme that was in use
 wal -R
