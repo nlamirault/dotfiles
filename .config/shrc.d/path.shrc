@@ -18,6 +18,9 @@
 PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/bin/X11:/usr/sbin:/usr/lib/postgresql/bin/:$HOME/bin:/usr/games/:/usr/lib/openoffice/program/
 export PATH
 
+PATH=${PATH}:${HOME}/.local/bin
+export PATH
+
 export APPLICATIONS_HOME=${HOME}/Applications
 export PERSONAL_DIR=${HOME}/.config/personal
 export WORK_HOME=${HOME}/Work
