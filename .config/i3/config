@@ -43,7 +43,8 @@ floating_modifier $mod
 bindsym $mod+Return exec $term
 
 # Lock screen
-bindsym $mod+a exec slimlock
+# bindsym $mod+a exec slimlock
+bindsym $mod+a exec i3lock -i $HOME/.local/share/backgrounds/archlinux-lock.png
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -306,6 +307,6 @@ client.urgent           #2f343a #900000 #DF740C #900000
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # autostart
-exec feh --bg-scale $HOME/.config/i3/archlinux-simplyblack.png
+exec feh --bg-scale $HOME/.local/share/backgrounds/archlinux-simplyblack.png
 # exec --no-startup-id light-locker
 exec --no-startup-id /usr/lib/gsd-xsettings
