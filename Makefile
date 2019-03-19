@@ -81,21 +81,25 @@ install-binaries:
 	test -L ${HOME}/bin/tmux-zeiot.sh || ln -fs ${BASE_DIR}/bin/tmux-zeiot.sh ${HOME}/bin/tmux-zeiot.sh
 	test -L ${HOME}/bin/tmux-pilotariak.sh || ln -fs ${BASE_DIR}/bin/tmux-pilotariak.sh ${HOME}/bin/tmux-pilotariak.sh
 
-install-polybar:
+install-backgrounds:
+	test -L ${HOME}/.local/share/backgrounds || ln -s ${BASE_DIR}/.local/share/backgrounds ${HOME}/.local/share/backgrounds
 
 install-apps:
 	test -L ${HOME}/.config/user-dirs.dirs || ln -s ${BASE_DIR}/.config/user-dirs.dirs ${HOME}/.config/user-dirs.dirs
 	test -L ${HOME}/.config/user-dirs.locale || ln -s ${BASE_DIR}/.config/user-dirs.locale ${HOME}/.config/user-dirs.locale
+	test -L ${HOME}/.xinitrc || ln -fs ${BASE_DIR}/.xinitrc ${HOME}/.xinitrc
 	test -L ${HOME}/.gitconfig || ln -fs ${BASE_DIR}/.gitconfig ${HOME}/.gitconfig
 	test -L ${HOME}/.config/i3 || ln -s ${BASE_DIR}/.config/i3 ${HOME}/.config/i3
 	test -L ${HOME}/.config/conky || ln -s ${BASE_DIR}/.config/conky ${HOME}/.config/conky
 	test -L ${HOME}/.config/rofi || ln -s ${BASE_DIR}/.config/rofi ${HOME}/.config/rofi
+	test -L ${HOME}/.config/dunst || ln -s ${BASE_DIR}/.config/dunst ${HOME}/.config/dunst
 	test -L ${HOME}/.config/polybar || ln -s ${BASE_DIR}/.config/polybar ${HOME}/.config/polybar
 	rm -f ${HOME}/.config/polybar/config && \
 		ln -s ${BASE_DIR}/.config/polybar/$(POLYBAR_FILE) ${HOME}/.config/polybar/config
 	test -L ${HOME}/.config/sway || ln -s ${BASE_DIR}/.config/sway ${HOME}/.config/sway
 	test -L ${HOME}/.config/i3status-rs || ln -s ${BASE_DIR}/.config/i3status-rs ${HOME}/.config/i3status-rs
-	test -L  ${HOME}/.config/tmux|| ln -s ${BASE_DIR}/.config/tmux ${HOME}/.config/tmux
+	test -L ${HOME}/.config/tmux|| ln -s ${BASE_DIR}/.config/tmux ${HOME}/.config/tmux
+	test -L ${HOME}/.tmux.conf|| ln -s ${BASE_DIR}/.config/tmux/tmux.conf ${HOME}/.tmux.conf
 	test -L ${HOME}/.config/termite || ln -s ${BASE_DIR}/.config/termite ${HOME}/.config/termite
 	test -L ${HOME}/.config/kitty || ln -s ${BASE_DIR}/.config/termite ${HOME}/.config/kitty
 	test -L ${HOME}/.config/wal || ln -s ${BASE_DIR}/.config/wal ${HOME}/.config/wal
