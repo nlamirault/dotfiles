@@ -13,9 +13,12 @@
 # limitations under the License.
 
 [user]
-	email = nicolas.lamirault@gmail.com
-	name = Nicolas Lamirault
-	signingkey = 5F99269A6FCA437C
+    email = nicolas.lamirault@gmail.com
+    name = Nicolas Lamirault
+    signingkey = 5F99269A6FCA437C
+
+[includeIf "gitdir:~/Work/"]
+    path = ~/Work/.gitconfig
 
 [color]
     ui = true
