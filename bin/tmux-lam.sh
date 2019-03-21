@@ -25,16 +25,14 @@ PROJECTS=${HOME}/Projects
 
 function tmux_lam {
     tmux start-server
-    tmux new-session -s $SESSION -n lam -d
-    tmux new-window -n "Divona"
-    tmux send-keys -t $SESSION "cd ${PROJECTS}/divona" C-m
-    tmux new-window -n "Dotfiles"
-    tmux send-keys -t $SESSION "cd ${PROJECTS}/dotfiles" C-m
+    tmux new-session -s $SESSION -n Lam -d
     tmux new-window -n "Journal"
     tmux send-keys -t $SESSION "cd ${HOME}" C-m
-    tmux new-window -n "Music"
-    tmux send-keys -t $SESSION "cd ${HOME}" C-m
-    tmux new-window -n "VPN"
+    tmux new-window -n "Dotfiles"
+    tmux send-keys -t $SESSION "cd ${PROJECTS}/dotfiles" C-m
+    tmux new-window -n "Divona"
+    tmux send-keys -t $SESSION "cd ${PROJECTS}/divona" C-m
+    tmux new-window -n "Network"
     tmux send-keys -t $SESSION "cd ${HOME}" C-m
     tmux attach-session -t $SESSION
 }
