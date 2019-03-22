@@ -21,6 +21,9 @@ export PATH
 PATH=${PATH}:${HOME}/.local/bin
 export PATH
 
+MANPATH=${HOME}/.local/share/man:${MANPATH}
+export MANPATH
+
 export APPLICATIONS_HOME=${HOME}/Applications
 export PERSONAL_DIR=${HOME}/.config/personal
 export WORK_HOME=${HOME}/Work
