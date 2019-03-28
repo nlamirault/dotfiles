@@ -81,8 +81,9 @@ install-binaries:
 	test -L ${HOME}/bin/tmux-zeiot.sh || ln -fs ${BASE_DIR}/bin/tmux-zeiot.sh ${HOME}/bin/tmux-zeiot.sh
 	test -L ${HOME}/bin/tmux-pilotariak.sh || ln -fs ${BASE_DIR}/bin/tmux-pilotariak.sh ${HOME}/bin/tmux-pilotariak.sh
 
-install-backgrounds:
+install-share:
 	test -L ${HOME}/.local/share/backgrounds || ln -s ${BASE_DIR}/.local/share/backgrounds ${HOME}/.local/share/backgrounds
+	test -L ${HOME}/.local/share/man|| ln -s ${BASE_DIR}/.local/share/man ${HOME}/.local/share/man
 
 install-apps:
 	test -L ${HOME}/.config/user-dirs.dirs || ln -s ${BASE_DIR}/.config/user-dirs.dirs ${HOME}/.config/user-dirs.dirs
