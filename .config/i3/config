@@ -22,6 +22,7 @@ set $mod Mod4
 # i3-sensible-terminal
 # xfce4-terminal
 set $term termite
+set $fm thunar
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -45,6 +46,8 @@ bindsym $mod+Return exec $term
 # Lock screen
 # bindsym $mod+a exec slimlock
 bindsym $mod+a exec i3lock -i $HOME/.local/share/backgrounds/archlinux-lock.png
+bindsym $mod+t exec $fm
+bindsym $mod+Shift+p exec CM_LAUNCHER=rofi clipmenu
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -81,7 +84,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # set $wm6 "6: "
 # set $wm7 "7: "
 # set $wm8 "8: "
-#
+
 set $wm1 "1 "
 set $wm2 "2 "
 set $wm3 "3 "
@@ -117,6 +120,12 @@ bindsym $mod+Shift+egrave move container to workspace $wm7
 bindsym $mod+Shift+underscore move container to workspace $wm8
 bindsym $mod+Shift+ccedilla move container to workspace $wm9
 bindsym $mod+Shift+agrave move container to workspace $wm10
+
+# navigate workspaces
+bindsym $mod+Ctrl+Left workspace prev_on_output
+bindsym $mod+Ctrl+Right workspace next_on_output
+bindsym $mod+Ctrl+Down workspace prev
+bindsym $mod+Ctrl+Up workspace next
 
 # =======================================================
 # Moving around
@@ -304,9 +313,17 @@ client.urgent           #2f343a #900000 #DF740C #900000
 # =======================================================
 # Start
 
+# Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# autostart
+# Wallpaper
 exec feh --bg-scale $HOME/.local/share/backgrounds/archlinux-simplyblack.png
+
 # exec --no-startup-id light-locker
 exec --no-startup-id /usr/lib/gsd-xsettings
+exec --no-startup-id /usr/bin/clipmenud
+
+# Applications
+# exec --no-startup-id i3-msg "workspace $ws1; exec $term"
+# exec --no-startup-id i3-msg "workspace $ws9; exec conky"
+
