@@ -235,14 +235,16 @@ bindsym $mod+r mode "resize"
 # =======================================================
 # Menus
 
-set $sysmenu "System: (l)ock , l(o)gout , (r)estart , (s)uspend , (h)ibernate , re(b)oot , s(h)utdown "
+set $sysmenu "System: (l)ock , l(o)gout , (r)estart , (s)uspend , (h)ibernate , re(b)oot , shutdo(w)n "
 bindsym $mod+Delete      mode $sysmenu
 mode $sysmenu {
-    bindsym r         restart
     bindsym l         exec slimlock
     bindsym o         exit
-    bindsym h         exec shutdown -P now
-    bindsym b         exec shutdown -r now
+    bindsym r         restart
+    bindsym s         exec sudo systemctl suspend
+    bindsym h         exec sudo systemctl hibernate
+    bindsym b         exec sudo systemctl reboot
+    bindsym w         exec sudo systemctl poweroff
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
