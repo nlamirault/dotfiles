@@ -192,9 +192,9 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Show sinks: pacmd list-sinks | grep -e 'name:' -e 'index:'
-bindSym XF86AudioLowerVolume exec pactl set-sink-volume 2 '-5%'
-bindSym XF86AudioRaiseVolume exec pactl set-sink-volume 2 '+5%'
-bindSym Control+XF86AudioMute exec pavucontrol
+bindSym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ '-5%'
+bindSym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ '+5%'
+bindSym Control+XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # bindSym Shift+XF86AudioPrev exec mpc seek -00:00:10
 # bindSym Shift+XF86AudioNext exec mpc seek +00:00:10
@@ -252,11 +252,11 @@ mode $sysmenu {
 set $audiomenu "Volume:  [+]10%  [-]10%  [m]ute  [r]eset"
 bindsym $mod+F12         mode $audiomenu
 mode $audiomenu {
-    bindsym r             exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -- 100%
-    bindsym plus          exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -- +10%
-    bindsym KP_Add        exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -- +10%
-    bindsym minus         exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -- -10%
-    bindsym KP_Subtract   exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -- -10%
+    bindsym r             exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 100%
+    bindsym plus          exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+    bindsym KP_Add        exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+    bindsym minus         exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+    bindsym KP_Subtract   exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
     bindsym m             exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
     bindsym Return        mode "default"
     bindsym Escape        mode "default"
