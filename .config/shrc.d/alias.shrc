@@ -22,23 +22,23 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 # Modern tools
 # -----------------------------------------------------
 
-if  [ -x "$(command -v exa)" ]; then
-    alias ls='exa'
-    alias la='exa -agbhl --time-style=long-iso'
-    alias lt='exa -agbhl --time-style=long-iso -s modified'
-    alias lo='ls -la'
-    alias tree='exa -abhlT'
-elif  [ -x "$(command -v lsd)" ]; then
-    alias ls='lsd'
-    alias la='lsd -a'
-    alias lt='lsd -alrt'
-    alias tree='ls -alrt --tree'
-#elif  [ -x "$(command -v exa)" ]; then
+#if  [ -x "$(command -v exa)" ]; then
 #    alias ls='exa'
 #    alias la='exa -agbhl --time-style=long-iso'
 #    alias lt='exa -agbhl --time-style=long-iso -s modified'
 #    alias lo='ls -la'
 #    alias tree='exa -abhlT'
+if  [ -x "$(command -v lsd)" ]; then
+    alias ls='lsd'
+    alias la='lsd -a'
+    alias lt='lsd -alrt'
+    alias tree='ls -alrt --tree'
+elif  [ -x "$(command -v exa)" ]; then
+    alias ls='exa'
+    alias la='exa -agbhl --time-style=long-iso'
+    alias lt='exa -agbhl --time-style=long-iso -s modified'
+    alias lo='ls -la'
+    alias tree='exa -abhlT'
 else
     myos="$(uname)"
     # shellcheck disable=SC2034
