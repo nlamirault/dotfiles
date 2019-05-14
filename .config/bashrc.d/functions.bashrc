@@ -56,3 +56,8 @@ function print_colors() {
     printf "\x1b[38;5;%smcolour%s\x1b[0m\n" ${i} ${i}
   done
 }
+
+function ssh_proxy_socks() {
+    ip_addr=$1
+    ssh -D 8888 -q -C -N ${ip_addr}
+}
