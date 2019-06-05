@@ -15,5 +15,7 @@
 # limitations under the License.
 
 # shellcheck source=/dev/null
-[ -r "$HOME"/.bashrc ] && . "${HOME}"/.bashrc
+[ -r "${HOME}"/.bashrc ] && . "${HOME}"/.bashrc
 
+
+export PATH="${HOME}/.poetry/bin:${PATH}"
