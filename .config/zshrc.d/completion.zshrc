@@ -28,5 +28,17 @@ zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' verbose true
 zstyle :compinstall filename '/home/'"${USER}"'/.zshrc.d/completion.zshrc'
 
+[ -r "${HOME}"/.fzf.zsh ] && . "${HOME}"/.fzf.zsh
+
 autoload -Uz compinit
 compinit
+
+
+K8S_BINARIES=("kubectl" "minikube")
+
+for BIN in "${K8S_BINARIES[@]}"; do
+  if command -v "${BIN}" > /dev/null 2>&1; then
+    # shellcheck source=/dev/null
+    source <(command kubectl completion zsh)
+  fi
+done

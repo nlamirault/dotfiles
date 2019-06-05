@@ -31,3 +31,41 @@
 # GTK Themes
 # gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Darker'
 # gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+
+TERM=xterm-256color
+
+
+# # Colors for man pages
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
+
+
+function colors_ls() {
+    local style=$1
+    for COLOR in {0..255}
+    do
+        for STYLE in $style
+        do
+            TAG="\033[${STYLE};${COLOR}m"
+            STR="${STYLE};${COLOR}"
+            echo -ne "${TAG}${STR}${NONE}  "
+        done
+        echo
+    done
+}
+
+function colors_foreground_ls() {
+    local FOREGROUND_STYLE="38;5"
+    colors_ls $FOREGROUND_STYLE
+}
+
+function colors_background_ls() {
+    local BACKGROUND_STYLE="48;5"
+    colors_ls $BACKGROUND_STYLE
+}
+
