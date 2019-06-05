@@ -58,6 +58,7 @@ install-shell:
 	test -L ${HOME}/.bash_profile || ln -fs ${BASE_DIR}/.bash_profile ${HOME}/.bash_profile
 	test -L ${HOME}/.config/bashrc.d || ln -fs ${BASE_DIR}/.config/bashrc.d/ ${HOME}/.config/bashrc.d
 	test -L ${HOME}/.zshrc || ln -fs ${BASE_DIR}/.zshrc ${HOME}/.zshrc
+	test -L ${HOME}/.zprofile || ln -fs ${BASE_DIR}/.zprofile ${HOME}/.zprofile
 	test -L ${HOME}/.config/zshrc.d || ln -fs ${BASE_DIR}/.config/zshrc.d/ ${HOME}/.config/zshrc.d
 	test -L ${HOME}/.config/fish || ln -fs ${BASE_DIR}/.config/fish ${HOME}/.config/fish
 
@@ -80,14 +81,17 @@ install-binaries:
 	test -L ${HOME}/bin/tmux-perso.sh || ln -fs ${BASE_DIR}/bin/tmux-perso.sh ${HOME}/bin/tmux-perso.sh
 	test -L ${HOME}/bin/tmux-zeiot.sh || ln -fs ${BASE_DIR}/bin/tmux-zeiot.sh ${HOME}/bin/tmux-zeiot.sh
 	test -L ${HOME}/bin/tmux-pilotariak.sh || ln -fs ${BASE_DIR}/bin/tmux-pilotariak.sh ${HOME}/bin/tmux-pilotariak.sh
+	test -L ${HOME}/bin/wifi-network.sh || ln -fs ${BASE_DIR}/bin/wifi-network.sh ${HOME}/bin/wifi-network.sh
 
 install-share:
 	test -L ${HOME}/.local/share/backgrounds || ln -s ${BASE_DIR}/.local/share/backgrounds ${HOME}/.local/share/backgrounds
-	test -L ${HOME}/.local/share/man|| ln -s ${BASE_DIR}/.local/share/man ${HOME}/.local/share/man
+	test -L ${HOME}/.local/share/man || ln -s ${BASE_DIR}/.local/share/man ${HOME}/.local/share/man
+	test -L ${HOME}/.local/share/icons || ln -s ${BASE_DIR}/.local/share/icons ${HOME}/.local/share/icons
 
 install-apps:
 	test -L ${HOME}/.config/user-dirs.dirs || ln -s ${BASE_DIR}/.config/user-dirs.dirs ${HOME}/.config/user-dirs.dirs
 	test -L ${HOME}/.config/user-dirs.locale || ln -s ${BASE_DIR}/.config/user-dirs.locale ${HOME}/.config/user-dirs.locale
+	test -L ${HOME}/.config/mimeapps.list || ln -s ${BASE_DIR}/.config/mimeapps.list ${HOME}/.config/mimeapps.list
 	test -L ${HOME}/.xinitrc || ln -fs ${BASE_DIR}/.xinitrc ${HOME}/.xinitrc
 	test -L ${HOME}/.gitconfig || ln -fs ${BASE_DIR}/.gitconfig ${HOME}/.gitconfig
 	test -L ${HOME}/.config/i3 || ln -s ${BASE_DIR}/.config/i3 ${HOME}/.config/i3
@@ -104,6 +108,12 @@ install-apps:
 	test -L ${HOME}/.config/termite || ln -s ${BASE_DIR}/.config/termite ${HOME}/.config/termite
 	test -L ${HOME}/.config/kitty || ln -s ${BASE_DIR}/.config/termite ${HOME}/.config/kitty
 	test -L ${HOME}/.config/wal || ln -s ${BASE_DIR}/.config/wal ${HOME}/.config/wal
+
+install-ssh:
+	mkdir -p ${HOME}/.ssh
+	test -L ${HOME}/.ssh/config || ln -s ${BASE_DIR}/.ssh/config ${HOME}/.ssh/config
+	test -L ${HOME}/.ssh/personal || ln -s ${BASE_DIR}/.ssh/personal ${HOME}/.ssh/personal
+
 
 uninstall-shell:
 	@echo -e "$(OK_COLOR)Install Shell configurations$(NO_COLOR)"
