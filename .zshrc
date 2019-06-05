@@ -12,14 +12,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if [ -d ${HOME}/.config/zshrc.d ]; then
+# Usage:
+# set -x			# activate debugging from here
+# w
+# set +x			# stop debugging from here
+
+# set -e
+# set -x
+# set -v
+
+if [ -d "${HOME}/.config/shells_vendor" ]; then
+    for file in $(/bin/ls "${HOME}"/.config/shells_vendor/*.sh); do
+        # echo ${file}
+        # shellcheck source=/dev/null
+        [ -r "${file}" ] && . "${file}";
+    done
+fi
+
+if [ -d "${HOME}/.config/zshrc.d" ]; then
     for file in $(/bin/ls ${HOME}/.config/zshrc.d/*.zshrc); do
+        # shellcheck source=/dev/null
         . ${file};
     done
 fi
 
-if [ -d ${HOME}/.config/shrc.d ]; then
+if [ -d "${HOME}/.config/shrc.d" ]; then
     for file in $(/bin/ls ${HOME}/.config/shrc.d/*.shrc); do
+        # shellcheck source=/dev/null
         . ${file};
     done
 fi
@@ -31,6 +50,11 @@ fi
 if [ -d "${PERSONAL_DIR}/zshrc.d" ]; then
     for file in $(/bin/ls ${PERSONAL_DIR}/zshrc.d/*.zshrc); do
         # echo ${file}
+        # shellcheck source=/dev/null
         [ -r "${file}" ] && . "${file}";
     done
+fi
+
+if [[ "$-" == *x* ]]; then
+  echo "DEBUG MODE is ON ========================== Zsh setup finished."
 fi
