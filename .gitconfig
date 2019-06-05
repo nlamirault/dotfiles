@@ -39,7 +39,7 @@
         undo = revert HEAD
         diffstat = diff --stat -r
         whatsnew = !sh -c 'git log $1@{1}..$1@{0} "$@"'
-
+        who = shortlog -sne
         difforigin = diff origin/master..master
 
 [giggle]
