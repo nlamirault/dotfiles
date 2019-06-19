@@ -139,6 +139,13 @@ alias cpuinfo='lscpu'
 ## get GPU ram on desktop / laptop##
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 
+# Display
+# -----------------------------------------------------
+
+alias xrandr_ls="xrandr -q|awk '/connected/ {print \$1}'"
+alias xrandr_on="xrandr -q|awk '/ connected/ {print \$1}'"
+alias xrandr_off="xrandr -q|awk '/disconnected/ {print \$1}'"
+alias xrandr_cfg="xrandr -q | awk '/connected/{d=\$1}/*/{print d \"\t\" \$1}'"
 
 # Web
 # -----------------------------------------------------
