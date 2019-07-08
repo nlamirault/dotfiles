@@ -1,0 +1,92 @@
+.TH Elasticsearch Cheatsheet 7 2019-07-06 "Elasticsearch Cheatsheet" "Nicolas Lamirault"
+.SH NAME
+Elasticsearch \- Cheatsheet
+.SH SYNOPSIS
+.PP
+Cheatsheet for Elasticsearch
+.\" .SH NOTE
+.\" .PP
+.\" .SH DESCRIPTION
+.\" .PP
+
+.\" -------------------------------------------------------------------------
+
+.SH Cluster
+
+.SS Version
+.PP
+curl -XGET 'http://localhost:9200'
+
+.SS Retrieve simple status on the health of the cluster
+.PP
+curl -XGET http://localhost:9200/_cluster/health?pretty
+
+.SS Access to metadata representing the state of the whole cluste
+.PP
+curl -XGET http://localhost:9200/_cluster/State
+
+.SS Retrieve statistics from a cluster wide perspective
+.PP
+curl -XGET http://localhost:9200/_cluster/stats?human&pretty
+
+.SS Retrieve one or more (or all) of the cluster nodes information
+.PP
+curl -XGET http://localhost:9200/_nodes
+.PP
+curl -XGET http://localhost:9200/_nodes/nodeId1,nodeId2
+
+.SS Retrieve one or more (or all) of the cluster nodes statistics
+.PP
+curl -XGET http://localhost:9200/_nodes/stats
+.PP
+curl -XGET http://localhost:9200/_nodes/nodeId1,nodeId2/stats
+
+.\" -------------------------------------------------------------------------
+
+.SH Cat commands
+
+.SS Health
+.PP
+curl -XGET http://localhost:9200/_cat/health?v
+
+.SS Nodes
+.PP
+curl -XGET http://localhost:9200/_cat/nodes?v
+
+.SS Which indices are yellow
+.PP
+curl -XGET http://localhost:9200/_cat/indices?v&health=yellow
+
+.SS Which index has the largest number of documents
+.PP
+curl -XGET http://localhost:9200/_cat/indices?v&s=docs.count:desc
+
+.\" -------------------------------------------------------------------------
+
+.SS List indexes and sort them by size
+.PP
+curl -XGET 'http://localhost:9200/_cat/indices?v&s=store.size:desc'
+
+.SS Retrieve index conf
+.PP
+curl -XGET http://localhost:9200/_cat/indices/logstash-2019.03.13?v\&s=index
+
+.SS Retrieve yellow index conf
+.PP
+curl -XGET http://localhost:9200/_cat/indices?v\&health=yellow
+
+.SS Delete index
+.PP
+curl -XDELETE "http://localhost:9200/logstash-2019.03.13"
+
+.\" -------------------------------------------------------------------------
+
+.SS Disk space usage
+.PP
+curl -XGET http://localhost:9200/_cat/allocation?v
+
+.\" -------------------------------------------------------------------------
+
+.SH SEE ALSO
+.I \%https://elastic.co
+.I \%https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html
