@@ -37,8 +37,8 @@ compinit
 K8S_BINARIES=("kubectl" "minikube")
 
 for BIN in "${K8S_BINARIES[@]}"; do
-  if command -v "${BIN}" > /dev/null 2>&1; then
+  if command "${BIN}" > /dev/null 2>&1; then
     # shellcheck source=/dev/null
-    source <(command kubectl completion zsh)
+    source <("${BIN}" completion zsh)
   fi
 done

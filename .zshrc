@@ -21,6 +21,13 @@
 # set -x
 # set -v
 
+if [ -d "${HOME}/.config/shrc.d" ]; then
+    for file in $(/bin/ls ${HOME}/.config/shrc.d/*.shrc); do
+        # shellcheck source=/dev/null
+        . ${file};
+    done
+fi
+
 if [ -d "${HOME}/.config/shells_vendor" ]; then
     for file in $(/bin/ls "${HOME}"/.config/shells_vendor/*.sh); do
         # echo ${file}
@@ -31,13 +38,7 @@ fi
 
 if [ -d "${HOME}/.config/zshrc.d" ]; then
     for file in $(/bin/ls ${HOME}/.config/zshrc.d/*.zshrc); do
-        # shellcheck source=/dev/null
-        . ${file};
-    done
-fi
-
-if [ -d "${HOME}/.config/shrc.d" ]; then
-    for file in $(/bin/ls ${HOME}/.config/shrc.d/*.shrc); do
+        # echo "${file}"
         # shellcheck source=/dev/null
         . ${file};
     done
