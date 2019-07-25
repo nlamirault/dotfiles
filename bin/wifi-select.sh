@@ -13,11 +13,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
+DEVICE="wlp2s0"
 
 choice=`find /etc/netctl -maxdepth 1 -type f -printf "%f\n" | rofi -dmenu`;
 if [ -n "$choice" ]; then
-    sudo ip link set wlp3s0 down
-    sudo netctl switch-to $choice
+    sudo ip link set ${DEVICE} down
+    sudo netctl switch-to ${choice}
 fi
 
