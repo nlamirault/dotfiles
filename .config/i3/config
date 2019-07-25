@@ -187,14 +187,13 @@ bindsym $mod+q focus parent
 # Multimedia
 
 # sound
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-
+bindsym Shift+XF86AudioPlay exec playerctl play-pause
+bindsym Shift+XF86AudioNext exec playerctl next
+bindsym Shift+XF86AudioPrev exec playerctl previous
 # Show sinks: pacmd list-sinks | grep -e 'name:' -e 'index:'
-bindSym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ '-5%'
-bindSym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ '+5%'
-bindSym Control+XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindSym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ '-5%'
+bindSym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ '+5%'
+bindSym Shift+XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # bindSym Shift+XF86AudioPrev exec mpc seek -00:00:10
 # bindSym Shift+XF86AudioNext exec mpc seek +00:00:10
