@@ -123,6 +123,7 @@ alias shutdown='sudo /sbin/shutdown'
 # -----------------------------------------------------
 
 alias showmount='mount |column -t'
+alias mount_sdcard='sudo mount /dev/mmcblk0p1 /tmp/mmc0'
 
 alias meminfo='free -m -l -t'
 
