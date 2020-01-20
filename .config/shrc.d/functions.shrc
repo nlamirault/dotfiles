@@ -59,5 +59,6 @@ function print_colors() {
 
 function ssh_proxy_socks() {
     ip_addr=$1
-    ssh -D 8888 -q -C -N ${ip_addr}
+    port=${2:-8888}
+    ssh -D ${port} -q -C -N -vvv ${ip_addr}
 }
