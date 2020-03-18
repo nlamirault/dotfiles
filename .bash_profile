@@ -19,3 +19,4 @@
 
 
 export PATH="${HOME}/.poetry/bin:${PATH}"
+export PATH="${HOME}/.kzenv/bin:$PATH"
