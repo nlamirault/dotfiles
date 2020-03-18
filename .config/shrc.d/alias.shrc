@@ -32,7 +32,8 @@ if  [ -x "$(command -v lsd)" ]; then
     alias ls='lsd'
     alias la='lsd -a'
     alias lt='lsd -alrt'
-    alias tree='ls -alrt --tree'
+    alias tree='ls --tree'
+    alias tree_ng='ls -alrt --tree'
 elif  [ -x "$(command -v exa)" ]; then
     alias ls='exa'
     alias la='exa -agbhl --time-style=long-iso'
@@ -123,7 +124,8 @@ alias shutdown='sudo /sbin/shutdown'
 # -----------------------------------------------------
 
 alias showmount='mount |column -t'
-alias mount_sdcard='sudo mount /dev/mmcblk0p1 /tmp/mmc0'
+alias mount_sdcard='sudo mount /dev/mmcblk0p1 /mnt/sdcard'
+alias mount_usbdisk='sudo mount -t ntfs /dev/sda1 /mnt/usb-drive'
 
 alias meminfo='free -m -l -t'
 

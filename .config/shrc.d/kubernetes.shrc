@@ -44,9 +44,12 @@ alias kcdpvc="kubectl delete pvc"
 alias kcl="kubectl logs"
 alias kclf="kubectl logs -f"
 
-alias kkgpn="kubectl get pods -o wide --sort-by="{.spec.nodeName}""
+alias kkgpn="kubectl get pods -o wide --sort-by='{.spec.nodeName}'"
 
 alias kcdp="kubectl describe pod"
 alias kcds="kubectl describe service"
 alias kcdpvc="kubectl describe pvc"
 alias kcdpv="kubectl describe pv"
+
+# List all images into a cluster
+alias kgali="kubectl get pods --all-namespaces -o jsonpath='{..image}' | tr -s '[[:space:]]' '\n' | sort | uniq -c"
