@@ -16,7 +16,10 @@
 
 DEVICE="wlp2s0"
 
-choice=`find /etc/netctl -maxdepth 1 -type f -printf "%f\n" | sort -u | rofi -dmenu`;
+# ROFI="rofi -dmenu -theme ${HOME}/Applications/rofi-scripts/themes/time.rasi"
+ROFI="rofi -dmenu"
+
+choice=`find /etc/netctl -maxdepth 1 -type f -printf "%f\n" | sort -u | ${ROFI}`;
 if [ -n "$choice" ]; then
     sudo ip link set ${DEVICE} down
     sudo netctl switch-to ${choice}
