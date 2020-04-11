@@ -41,6 +41,10 @@ curl -XGET http://localhost:9200/_nodes/stats
 .PP
 curl -XGET http://localhost:9200/_nodes/nodeId1,nodeId2/stats
 
+.SS Show Garbage collector informations
+.PP
+curl -XGET "http://localhost:9200/_cat/nodes?h=heap*&v"
+
 .\" -------------------------------------------------------------------------
 
 .SH Cat commands
