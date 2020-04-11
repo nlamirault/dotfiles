@@ -27,23 +27,30 @@
     branch = auto
 
 [alias]
-        lgtree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-        lg = log --graph --format='%Cred%h%Creset %ad %C(bold cyan)%an%Creset - %s - %C(yellow)%d%Creset' --date=short --abbrev-commit
-        lga = log --format='%Cred%h%Creset %ad %C(bold cyan)%an%Creset - %s%C(yellow)%d%Creset' --graph --date=short --abbrev-commit --all
-        #lgme = log --since yesterday --oneline --author 'Nicolas Lamirault'
-        lgme = log --oneline --author 'Your User'
-        ucommits = shortlog -sn
-        contributors = shortlog --summary --numbered
+    aliases = config --get-regexp alias
+    lgtree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    lg = log --graph --format='%Cred%h%Creset %ad %C(bold cyan)%an%Creset - %s - %C(yellow)%d%Creset' --date=short --abbrev-commit
+    lga = log --format='%Cred%h%Creset %ad %C(bold cyan)%an%Creset - %s%C(yellow)%d%Creset' --graph --date=short --abbrev-commit --all
+    #lgme = log --since yesterday --oneline --author 'Nicolas Lamirault'
+    lgme = log --oneline --author 'Your User'
 
-        cancel = reset --hard
-        undo = revert HEAD
-        diffstat = diff --stat -r
-        whatsnew = !sh -c 'git log $1@{1}..$1@{0} "$@"'
-        who = shortlog -sne
-        difforigin = diff origin/master..master
+    cancel = reset --hard
+    undo = revert HEAD
+    diffstat = diff --stat -r
+    whatsnew = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+    who = shortlog -sne
 
+    current = rev-parse --abbrev-ref HEAD
+    pto = !CURRENT=$(git current) && git push --set-upstream origin $CURRENT
+    pfo = !CURRENT=$(git current) && git pull --set-upstream origin $CURRENT
+    dto = diff origin/master..master
+
+   # Gitlab
+    glpbmr = !CURRENT=$(git current) && git push --set-upstream origin $CURRENT -o merge_request.create -o merge_request.target=master -o merge_request.merge_when_pipeline_succeeds
+    glpbmrd = !CURRENT=$(git current) && git  push --set-upstream origin $CURRENT -o merge_request.create -o merge_request.target=master -o merge_request.merge_when_pipeline_succeeds -o merge_request.remove_source_branch
+    
 [giggle]
-    main-window-maximized = false
+        main-window-maximized = false
 	main-window-geometry = 1262x772+1861+210
 	history-view-vpane-position = 301
 	file-view-vpane-position = 346
@@ -69,3 +76,5 @@
 	default = simple
 [gpg]
 	program = gpg2
+[diff]
+	noprefix = true
