@@ -23,9 +23,22 @@ autoload -U colors && colors
 # # Allow command substitution in the prompt
 setopt prompt_subst
 
+# Replace prompt using Starship
+# eval "$(starship init bash)"
 
+POWERLINE_GO_MODULES="user,host,ssh,cwd,perms,git,kube,root,exit"
 
 DIRECTORY_END=""
+
+function kube_prompt() {
+
+  # Get current context
+  CONTEXT=$(cat ~/.kube/config | grep "current-context:" | sed "s/current-context: //")
+  if [ -n "$CONTEXT" ]; then
+      echo "(k8s: ${CONTEXT})"
+  fi
+}
+
 
 function git_prompt() {
     GIT_BRANCH=$(__git_ps1)
@@ -77,7 +90,7 @@ function git_color_status() {
 }
 
 function powerline_precmd() {
-    PS1="$($HOME/bin/powerline-go -error $? -shell zsh)"
+    PS1="$($HOME/bin/powerline-go -error $? -shell zsh -shorten-gke-names -shorten-eks-names -modules ${POWERLINE_GO_MODULES} -truncate-segment-width 5)"
 }
 
 function install_powerline_precmd() {
@@ -92,10 +105,11 @@ function install_powerline_precmd() {
 # Custom prompt
 
 if [  "$TERM" != "linux" ]; then
-  if [ -f "$HOME/bin/powerline-go" ]; then
+  if [ -f "${HOME}/.asdf/shims/starship" ]; then
+    eval "$(starship init bash)"
+  elif [ -f "$HOME/bin/powerline-go" ]; then
     install_powerline_precmd
   else
-    PROMPT='%F{255}%K{0}  %M %k%f%F{0}%K{27} %F{255}%K{27} %2~ %k%f%F{27}%K{208} $(git_prompt) %k%f%F{208}%K{0}%F{255}%K{0}  %F{0}%K{232}%{$reset_color%} '
+    PROMPT='%F{255}%K{0}  %M %k%f%F{0}%K{27} %F{255}%K{27} %2~ %k%f%F{27}%K{208} $(git_prompt) %k%f%F{208}%K{0}%F{255}%K{0}  %F{0}%K{232} $(kube_prompt) %{$reset_color%} '
   fi
 fi
-

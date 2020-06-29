@@ -50,9 +50,11 @@ fi
 if [ -f "${HOME}/Applications/aws-cli/venv/bin/activate" ]; then
     source ${HOME}/Applications/aws-cli/venv/bin/activate
     source aws_zsh_completer.sh
+    deactivate
 fi
 
 if [ -f "${HOME}/Applications/azure-cli/venv/bin/activate" ]; then
     source ${HOME}/Applications/azure-cli/venv/bin/activate
     source az.completion.sh
+    deactivate
 fi
