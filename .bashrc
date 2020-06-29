@@ -65,3 +65,6 @@ fi
 if [[ "$-" == *x* ]]; then
   echo "DEBUG MODE is ON ========================== Bash setup finished."
 fi
+
+complete -C /home/nicolas/bin/aliyun aliyun
+complete -C /usr/local/lib/kzenv/versions/3.5.0/kustomize kustomize

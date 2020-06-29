@@ -32,6 +32,9 @@ export PERSONAL_DIR=${HOME}/.config/personal
 export WORK_HOME=${HOME}/Work
 export PROJECTS_HOME=${HOME}/Projects
 
+# ASDF-VM
+[ -f /opt/asdf-vm/asdf.sh ] && . /opt/asdf-vm/asdf.sh
+
 # Emacs lisp
 export PATH="$HOME/.cask/bin:$PATH"
 export PATH="$HOME/.evm/bin:$PATH"
@@ -47,6 +50,9 @@ export PATH=${PATH}:${RUST_SRC_PATH}/usr/local/bin
 export PATH=${PATH}:${HOME}/.cargo/bin/
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${RUST_SRC_PATH}/usr/local/lib
 
+# Python
+export PATH="$HOME/.poetry/bin:$PATH"
+
 # Erlang
 export ERLANG_HOME=${APPLICATIONS_HOME}/otp_src
 export PATH=$PATH:${ERLANG_HOME}/bin/
@@ -59,8 +65,10 @@ export PATH=$PATH:${MAVEN_HOME}/bin
 export ANT_HOME=${APPLICATIONS_HOME}/apache-ant
 export PATH=$PATH:${ANT_HOME}/bin# LIBs and LD_LIBRARY_PATH
 
-# Kubernetes Krew
+# Kubernetes
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="${HOME}/.kzenv/bin:$PATH"
+
 
 export USER_LOCAL=/usr/local
 if [ -d "${USER_LOCAL}"/lib ]; then
