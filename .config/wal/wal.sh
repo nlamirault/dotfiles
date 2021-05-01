@@ -14,6 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#
+# Theme used: 
+# - sexy-belge
+# - base16-materialer
+# - base16-irblack
+# - base16-google
+# 
+
 source "${HOME}/.cache/wal/colors.sh"
 
 # mkdir -p  "${HOME}/.config/termite"

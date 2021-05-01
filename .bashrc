@@ -68,3 +68,11 @@ fi
 
 complete -C /home/nicolas/bin/aliyun aliyun
 complete -C /usr/local/lib/kzenv/versions/3.5.0/kustomize kustomize
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# BEGIN ANSIBLE MANAGED BLOCK: asdf
+if [ -e "$HOME/.asdf/asdf.sh" ]; then
+  source $HOME/.asdf/asdf.sh
+  source $HOME/.asdf/completions/asdf.bash
+fi
+# END ANSIBLE MANAGED BLOCK: asdf

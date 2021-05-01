@@ -106,7 +106,7 @@ function install_powerline_precmd() {
 
 if [  "$TERM" != "linux" ]; then
   if [ -f "${HOME}/.asdf/shims/starship" ]; then
-    eval "$(starship init bash)"
+    eval "$(starship init zsh)"
   elif [ -f "$HOME/bin/powerline-go" ]; then
     install_powerline_precmd
   else

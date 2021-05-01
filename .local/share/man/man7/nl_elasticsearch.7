@@ -57,9 +57,9 @@ curl -XGET http://localhost:9200/_cat/health?v
 .PP
 curl -XGET http://localhost:9200/_cat/nodes?v
 
-.SS Which indices are yellow
+.SS Which indices are red or yellow
 .PP
-curl -XGET http://localhost:9200/_cat/indices?v&health=yellow
+curl -XGET http://localhost:9200/_cat/indices?v&health=red (or yellow)
 
 .SS Which index has the largest number of documents
 .PP

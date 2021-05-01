@@ -29,16 +29,22 @@ set $term termite
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 font pango: Monospace 8
 
-set $monitor-left DP-2-3
-set $monitor-center DP-2-1
-set $monitor-right eDP-1
+for_window [app_id="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 1
+
+#smart_borders on
 
 # =======================================================
 # Outputs
 
-output $monitor-1 pos 0 0 res 1920x1080@Hz
-output $monitor-2 pos 1920 0 res 1920x1080@144Hz
-output $monitor-3 pos 3840 0
+# set $monitor-left DP-2-3
+# set $monitor-center DP-2-1
+set $monitor-center eDP-1
+
+output eDP-1 resolution 1920x1080 position 0,0
+output HDMI-A-1 resolution 1920x1080 position 1920,0
+# output HDMI-0 resolution 1920x1080 position 1920,0
+
 output "*" bg $HOME/.local/share/backgrounds/archlinux-lock.png fill
 
 # =======================================================

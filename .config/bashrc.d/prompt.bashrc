@@ -156,7 +156,7 @@ function _update_ps1() {
 
 if [  "${TERM}" != "linux" ]; then
   if [ -f "${HOME}/.asdf/shims/starship" ]; then
-    eval "$(starship init zsh)"
+    eval "$(starship init bash)"
   elif [ -r "${HOME}/bin/powerline-go" ]; then
     PROMPT_COMMAND="_update_ps1; ${PROMPT_COMMAND}"
   else

@@ -1,0 +1,56 @@
+.TH Archlinux Pacman 7 2020-09-18 "Archlinux Pacman" "Nicolas Lamirault"
+.SH NAME
+Archlinux \- Pacaman
+.SH SYNOPSIS
+.PP
+Checklist to analyse a Linux system
+.SH NOTE
+.PP
+.SH DESCRIPTION
+.PP
+Archlinux updated
+
+.\" -------------------------------------------------------------------------
+
+.SH Install, uninstall or search
+
+.SS sudo pacman -S [package]
+.PP
+Install package
+
+.SS sudo pacman -Rns [package]
+.PP
+Uinstall package and all dependencies
+
+.SS sudo pacman -Ss [package]
+.PP
+Search for package
+
+.SS sudo pacman -Qs [package]
+.PP
+Search for already installed packages
+
+.\" -------------------------------------------------------------------------
+
+.SH Update the system
+
+.SS sudo pacman -Syu
+.PP
+Upgrade the entire system
+
+.SS sudo pacman -Sc
+.PP
+Delete unsued and obsolete packages from /var/cache/pacman/pkg
+
+.SS sudo pacman-optimize
+.PP
+Optimize pacman’s database to work faster
+
+.SS sudo pacman -Rsn `pacman -Qdtq`
+.PP
+Delete all orphaned packages
+
+.\" -------------------------------------------------------------------------
+
+.SH SEE ALSO
+.I \%https://nicolas.lamirault.xyz

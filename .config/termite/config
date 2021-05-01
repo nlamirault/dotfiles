@@ -3,37 +3,40 @@ font = Hack Nerd Font 11
 # font = Hack 11
 # font = DejaVu Sans Mono 10
 
-[colors]
-foreground = #ffffff
-foreground_bold = #ffffff
-# foreground_dim = #888888
-background = #000000
-cursor = #999999
+#====================================================================
 
-# if unset, will reverse foreground and background
-#highlight = #2f2f2f
+# [colors]
+# foreground = #ffffff
+# foreground_bold = #ffffff
+# # foreground_dim = #888888
+# background = #000000
+# cursor = #999999
 
-# colors from color0 to color254 can be set
-color0 = #666666
-color1 = #CC6699
-color2 = #99CC66
-color3 = #CC9966
-color4 = #6699CC
-color5 = #9966CC
-color6 = #66CC99
-color7 = #CCCCCC
-color8 = #999999
-# color9 = #FF99CC
-color9 = #CF062B
-color10 = #CCFF99
-color11 = #FFCC99
-color12 = #99CCFF
-color13 = #CC99FF
-color14 = #99FFCC
-color15 = #FFFFFF
+# # if unset, will reverse foreground and background
+# #highlight = #2f2f2f
+
+# # colors from color0 to color254 can be set
+# color0 = #666666
+# color1 = #CC6699
+# color2 = #99CC66
+# color3 = #CC9966
+# color4 = #6699CC
+# color5 = #9966CC
+# color6 = #66CC99
+# color7 = #CCCCCC
+# color8 = #999999
+# # color9 = #FF99CC
+# color9 = #CF062B
+# color10 = #CCFF99
+# color11 = #FFCC99
+# color12 = #99CCFF
+# color13 = #CC99FF
+# color14 = #99FFCC
+# color15 = #FFFFFF
 
 
-# From terminal.sexy : Matrix
+#====================================================================
+# # From terminal.sexy : Matrix
 # [colors]
 
 # # special
@@ -73,3 +76,36 @@ color15 = #FFFFFF
 # # white
 # color7  = #00cc00
 # color15 = #00cc00
+
+
+#====================================================================
+# Project:    Nord Termite
+# Repository: https://github.com/arcticicestudio/nord-termite
+# License:    MIT
+
+# [colors]
+# cursor = #d8dee9
+# cursor_foreground = #2e3440
+
+# foreground = #d8dee9
+# foreground_bold = #d8dee9
+# background = #2e3440
+
+# highlight = #4c566a
+
+# color0  = #3b4252
+# color1  = #bf616a
+# color2  = #a3be8c
+# color3  = #ebcb8b
+# color4  = #81a1c1
+# color5  = #b48ead
+# color6  = #88c0d0
+# color7  = #e5e9f0
+# color8  = #4c566a
+# color9  = #bf616a
+# color10 = #a3be8c
+# color11 = #ebcb8b
+# color12 = #81a1c1
+# color13 = #b48ead
+# color14 = #8fbcbb
+# color15 = #eceff4

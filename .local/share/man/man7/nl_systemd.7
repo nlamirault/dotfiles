@@ -1,4 +1,4 @@
-.TH Systeld Cheatsheet 7 2019-03-28 "Kubernetes Cheatsheet" "Nicolas Lamirault"
+.TH Systemd Cheatsheet 7 2019-03-28 "Systemd Cheatsheet" "Nicolas Lamirault"
 .SH NAME
 Systemd \- Cheatsheet
 .SH SYNOPSIS
@@ -70,6 +70,13 @@ systemctl list-dependencies unit
 .PP
 systemctl show unit
 
+.SS Analyze chain
+.PP
+systemd-analyze critical-chain
+
+.SS Plot services
+.PP
+systemd-analyze plot
 
 .\" -------------------------------------------------------------------------
 
