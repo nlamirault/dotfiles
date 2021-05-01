@@ -58,7 +58,21 @@ function print_colors() {
 }
 
 function ssh_proxy_socks() {
-    ip_addr=$1
-    port=${2:-8888}
-    ssh -D ${port} -q -C -N -vvv ${ip_addr}
+  ip_addr=$1
+  port=${2:-8888}
+  ssh -D ${port} -q -C -N -vvv ${ip_addr}
 }
+
+function format_sdcard() {
+  if [ -f "${1}" ] ; then
+    case "${1}" in
+        fat32)
+            sudo mkfs.vfat /dev/mmcblk0p1
+            ;;
+        *)
+            echo "Please specify filesystem"
+            ;;
+    esac
+  fi
+}
+
