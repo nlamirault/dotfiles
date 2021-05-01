@@ -43,6 +43,7 @@
     current = rev-parse --abbrev-ref HEAD
     pto = !CURRENT=$(git current) && git push --set-upstream origin $CURRENT
     pfo = !CURRENT=$(git current) && git pull --set-upstream origin $CURRENT
+    pdc = !CURRENT=$(git current) && git switch master && git pull --set-upstream origin && git branch -D $CURRENT
     dto = diff origin/master..master
 
    # Gitlab
@@ -58,15 +59,16 @@
 
 [core]
     editor = nvim
-	excludesfile = ~/.gitignore
-	attributesfile = ~/.gitattributes
+    pager = delta
 
-	autocrlf = false
-	safecrlf = true
-	quotepath = false
+    excludesfile = ~/.gitignore
+    attributesfile = ~/.gitattributes
+    autocrlf = false
+    safecrlf = true
+    quotepath = false
 
 [commit]
-	gpgsign = true
+    gpgsign = true
 
 [merge]
 	# Include summaries of merged commits in newly created merge commit messages
@@ -78,3 +80,15 @@
 	program = gpg2
 [diff]
 	noprefix = true
+
+[delta]
+    plus-color = "#012800"
+    minus-color = "#340001"
+    syntax-theme = Nord # delta --list-syntax-themes
+    line-numbers = true
+    # side-by-side = true
+
+[interactive]
+    diffFilter = delta --color-only
+[pull]
+	rebase = true
