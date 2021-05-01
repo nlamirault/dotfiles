@@ -43,3 +43,9 @@ repos:
         args:
         - --license-filepath
         - hack/config/licence.txt
+    -   id: insert-license
+        files: \.bashrc
+        args:
+        - --license-filepath
+        - hack/config/licence.txt
+    
