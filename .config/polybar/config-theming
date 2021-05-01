@@ -1,16 +1,16 @@
-# ; Copyright (C) 2016-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
-
-# ; Licensed under the Apache License, Version 2.0 (the "License");
-# ; you may not use this file except in compliance with the License.
-# ; You may obtain a copy of the License at
-# ;
-# ;     http://www.apache.org/licenses/LICENSE-2.0
-# ;
-# ; Unless required by applicable law or agreed to in writing, software
-# ; distributed under the License is distributed on an "AS IS" BASIS,
-# ; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# ; See the License for the specific language governing permissions and
-# ; limitations under the License.
+# Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 # ; to include files:
 
@@ -110,10 +110,9 @@ font-7 = ${fonts.font-7}
 modules-left = powermenu filesystem-slash filesystem-home xkeyboard
 modules-center = xwindow music
 modules-right = notifications volume battery clock
-# modules-right = notifications volume battery clock
+# TODO(nlamirault) : add backlight
 
 ; tray-position = right
-
 
 ;=====================================================
 ;			B A R : BOTTOM
@@ -324,6 +323,42 @@ format-prefix-foreground = ${theme.memory-prefix-foreground}
 # bar-used-empty = █
 # bar-used-empty-font = 5
 # bar-used-empty-foreground = #44
+
+#########################################################
+
+[module/backlight]
+type = internal/xbacklight
+
+; XRandR output to get get values from
+; Default: the monitor defined for the running bar
+output = ${env:MONITOR}
+
+; Create scroll handlers used to set the backlight value
+; Default: true
+enable-scroll = false
+
+; Available tags:
+;   <label> (default)
+;   <ramp>
+;   <bar>
+format = <label>
+
+; Available tokens:
+;   %percentage% (default)
+label = %percentage%%
+
+; Only applies if <ramp> is used
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
+; Only applies if <bar> is used
+bar-width = 10
+bar-indicator = |
+bar-fill = ─
+bar-empty = ─
 
 #########################################################
 

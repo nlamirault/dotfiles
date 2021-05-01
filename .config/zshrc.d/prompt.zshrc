@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-# Copyright (C) 2016-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
-
+# Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -106,7 +106,7 @@ function install_powerline_precmd() {
 
 if [  "$TERM" != "linux" ]; then
   if [ -f "${HOME}/.asdf/shims/starship" ]; then
-    eval "$(starship init bash)"
+    eval "$(starship init zsh)"
   elif [ -f "$HOME/bin/powerline-go" ]; then
     install_powerline_precmd
   else

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Copyright (C) 2016-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
-
+# Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -23,8 +23,12 @@ function tmux_perso {
     tmux new-session -s $SESSION -n Lam -d
     tmux new-window -n "Divona"
     tmux send-keys -t $SESSION "cd ${PROJECTS}/divona" C-m
-    tmux new-window -n "Dotfile"
+    tmux new-window -n "Dotfiles"
     tmux send-keys -t $SESSION "cd ${PROJECTS}/dotfiles" C-m
+    tmux new-window -n "Galactus"
+    tmux send-keys -t $SESSION "cd ${PROJECTS}/galactus" C-m
+    tmux new-window -n "Portefaix"
+    tmux send-keys -t $SESSION "cd ${PROJECTS}/portefaix" C-m
 
     tmux attach-session -t $SESSION
 }

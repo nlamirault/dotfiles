@@ -1,0 +1,173 @@
+# Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+prompt_order = [
+    "username",
+    "hostname",
+    "directory",
+    "kubernetes",
+    "terraform",
+    "git_branch",
+    "git_commit",
+    "git_state",
+    "git_status",
+    # "hg_branch",
+    # "docker_context",
+    # "package",
+    # "dotnet",
+    # "elixir",
+    # "elm",
+    # "erlang",
+    # "golang",
+    # "haskell",
+    # "java",
+    # "julia",
+    # "nim",
+    # "nodejs",
+    # "ocaml",
+    # "php",
+    # "purescript",
+    # "python",
+    # "ruby",
+    # "rust",
+    # "terraform",
+    # "zig",
+    # "nix_shell",
+    # "conda",
+    # "memory_usage",
+    # "aws",
+    # "env_var",
+    # "crystal",
+    "cmd_duration",
+    "custom",
+    "line_break",
+    "jobs",
+    # "battery",
+    # "status",
+    "time",
+    "character",
+]
+
+# format = """\
+#     $username\
+#     $hostname\
+#     $directory\
+#     $kubernetes\
+#     $git_branch\
+#     $git_commit\
+#     $git_state\
+#     $git_status\
+#     # $hg_branch\
+#     # $docker_context\
+#     $package\
+#     # $dotnet\
+#     # $elixir\
+#     # $elm\
+#     # $erlang\
+#     $golang\
+#     # $haskell\
+#     # $java\
+#     # $julia\
+#     # $nim\
+#     # $nodejs\
+#     # $ocaml\
+#     # $php\
+#     # $purescript\
+#     $python\
+#     # $ruby\
+#     $rust\
+#     $terraform\
+#     # $zig\
+#     $nix_shell\
+#     # $conda\
+#     # $memory_usage\
+#     $aws\
+#     $env_var\
+#     # $crystal\
+#     $cmd_duration\
+#     $custom\
+#     $line_break\
+#     $jobs\
+#     # $battery\
+#     $time\
+#     $character\
+#     """
+
+[hostname]
+ssh_only = false
+prefix = "❮"
+suffix = "❯"
+# format = "❮$hostname($style)❯ "
+trim_at = ""
+disabled = false
+
+[character]
+symbol = "❯"
+error_symbol = "✖"
+use_symbol_for_status = false
+vicmd_symbol = "❮"
+style_success = "bold green"
+style_failure = "bold red"
+
+[username]
+disabled = false
+show_always = true
+
+[directory]
+truncation_length = 8
+truncate_to_repo = true
+disabled = false
+fish_style_pwd_dir_length = 1
+style = "bold green"
+
+[git_status]
+ahead = "↑"
+behind = "↓"
+diverged = "⤮ "
+staged = "✮"
+conflicted = "🏳"
+# ahead = "🏎💨"
+# behind = "😰"
+# diverged = "😵"
+# untracked = "🤷‍"
+# stashed = "📦"
+# modified = "📝"
+# staged.value = "++"
+# staged.style = "green"
+# staged_count.enabled = true
+# staged_count.style = "green"
+renamed = "👅"
+deleted = "🗑"
+
+[kubernetes]
+symbol = "☸ "
+style = "red"
+disabled = false
+
+# [terraform]
+# format = "[🏎💨 $version]($style) "
+
+# [status]
+# style = "bg:blue"
+# symbol = "🔴"
+# format = '[\[$symbol $common_meaning$signal_name$maybe_int\]]($style) '
+# map_symbol = true
+# disabled = false
+
+[python]
+prefix = "🐍 "
+# format = "🐍 "

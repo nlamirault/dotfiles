@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Copyright (C) 2016-2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
-
+# Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -156,11 +156,10 @@ function _update_ps1() {
 
 if [  "${TERM}" != "linux" ]; then
   if [ -f "${HOME}/.asdf/shims/starship" ]; then
-    eval "$(starship init zsh)"
+    eval "$(starship init bash)"
   elif [ -r "${HOME}/bin/powerline-go" ]; then
     PROMPT_COMMAND="_update_ps1; ${PROMPT_COMMAND}"
   else
     PROMPT_COMMAND="ps1_powerline; ${PROMPT_COMMAND}"
   fi
 fi
-
