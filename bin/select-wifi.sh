@@ -24,4 +24,3 @@ if [ -n "$choice" ]; then
     sudo ip link set ${DEVICE} down
     sudo netctl switch-to ${choice}
 fi
-

@@ -63,5 +63,3 @@ fi
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -F /home/nicolas/bin/aliyun aliyun
 autoload -U +X bashcompinit && bashcompinit
-
-

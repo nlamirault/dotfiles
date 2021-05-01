@@ -143,5 +143,3 @@ battery-charging-foreground = ${colors.xcolor2}
 battery-full-foreground = ${colors.xcolor2}
 
 clock-foreground = ${colors.xcolor3}
-
-

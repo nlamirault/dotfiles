@@ -163,4 +163,3 @@ if [  "${TERM}" != "linux" ]; then
     PROMPT_COMMAND="ps1_powerline; ${PROMPT_COMMAND}"
   fi
 fi
-

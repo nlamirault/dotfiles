@@ -48,4 +48,3 @@ case $1 in
     usage
     ;;
 esac
-

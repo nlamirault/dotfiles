@@ -68,4 +68,3 @@ function colors_background_ls() {
     local BACKGROUND_STYLE="48;5"
     colors_ls $BACKGROUND_STYLE
 }
-

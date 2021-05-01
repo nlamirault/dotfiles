@@ -48,7 +48,7 @@
    # Gitlab
     glpbmr = !CURRENT=$(git current) && git push --set-upstream origin $CURRENT -o merge_request.create -o merge_request.target=master -o merge_request.merge_when_pipeline_succeeds
     glpbmrd = !CURRENT=$(git current) && git  push --set-upstream origin $CURRENT -o merge_request.create -o merge_request.target=master -o merge_request.merge_when_pipeline_succeeds -o merge_request.remove_source_branch
-    
+
 [giggle]
         main-window-maximized = false
 	main-window-geometry = 1262x772+1861+210

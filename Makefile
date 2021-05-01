@@ -140,5 +140,3 @@ uninstall-apps:
 	@rm -fr ${HOME}/.config/tmux
 	@rm -fr ${HOME}/.config/termite
 	@rm -fr ${HOME}/.config/kitty
-
-
