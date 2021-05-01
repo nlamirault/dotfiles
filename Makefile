@@ -106,8 +106,10 @@ install-apps:
 	test -L ${HOME}/.config/tmux|| ln -s ${BASE_DIR}/.config/tmux ${HOME}/.config/tmux
 	test -L ${HOME}/.tmux.conf|| ln -s ${BASE_DIR}/.config/tmux/tmux.conf ${HOME}/.tmux.conf
 	test -L ${HOME}/.config/termite || ln -s ${BASE_DIR}/.config/termite ${HOME}/.config/termite
+	test -L ${HOME}/.config/alacritty || ln -s ${BASE_DIR}/.config/alacritty ${HOME}/.config/alacritty
 	test -L ${HOME}/.config/kitty || ln -s ${BASE_DIR}/.config/termite ${HOME}/.config/kitty
 	test -L ${HOME}/.config/wal || ln -s ${BASE_DIR}/.config/wal ${HOME}/.config/wal
+	test -L ${HOME}/.config/starship.toml || ln -s ${BASE_DIR}/.config/starship.toml ${HOME}/.config/starship.toml
 
 install-ssh:
 	mkdir -p ${HOME}/.ssh
