@@ -15,12 +15,12 @@
 # limitations under the License.
 
 #
-# Theme used: 
+# Theme used:
 # - sexy-belge
 # - base16-materialer
 # - base16-irblack
 # - base16-google
-# 
+#
 
 source "${HOME}/.cache/wal/colors.sh"
 
