@@ -33,6 +33,8 @@
     lga = log --format='%Cred%h%Creset %ad %C(bold cyan)%an%Creset - %s%C(yellow)%d%Creset' --graph --date=short --abbrev-commit --all
     #lgme = log --since yesterday --oneline --author 'Nicolas Lamirault'
     lgme = log --oneline --author 'Your User'
+    
+    meld = !"git difftool -d --tool=meld" 2> /dev/null 
 
     b = branch
     bd = branch -D
@@ -46,10 +48,13 @@
     shp = stash pop
     sw = switch
     swc = switch -c
+    
     t = tag
     ta = tag -a
     td = tag -d
-    
+    # ts = tag --format='%(creatordate:short)%09%(objectname:short)%09%(refname:strip=2)%09%(contents:subject)' --sort=creatordate
+    ts = tag --format='%(creatordate:short)%09%(objectname:short)%09%(refname:strip=2)%09%(contents:subject)' --sort=taggerdate
+
     cancel = reset --hard
     undo = revert HEAD
     diffstat = diff --stat -r
@@ -62,6 +67,7 @@
     pfo = !CURRENT=$(git current) && git pull --set-upstream origin $CURRENT
     pdc = !CURRENT=$(git current) && git switch master && git pull --set-upstream origin && git branch -D $CURRENT
     dto = diff origin/master..master
+    dtm = !CURRENT=$(git current) && git diff master...$CURRENT
 
    # Gitlab
     glpbmr = !CURRENT=$(git current) && git push --set-upstream origin $CURRENT -o merge_request.create -o merge_request.target=master -o merge_request.merge_when_pipeline_succeeds
