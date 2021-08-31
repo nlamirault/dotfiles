@@ -14,10 +14,11 @@
 
 # theme = "gruvbox-dark"
 icons = "awesome"
-# icons = "material-nf"
+# icons = "material"
 
 [theme]
 name = "plain"
+# name = "native"
 
 [theme.overrides]
 idle_bg = "#000000"
@@ -59,7 +60,7 @@ critical_swap = 95
 [[block]]
 block = "cpu"
 interval = 1
-format = "{barchart} {utilization}% {frequency}GHz"
+format = "{barchart} {utilization} {frequency}"
 
 [[block]]
 block = "load"
