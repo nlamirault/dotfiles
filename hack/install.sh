@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-BASE_DIR=$(shell echo `pwd`)
+BASE_DIR=$(pwd)
 
 function install_shell {
     test -L ${HOME}/.config/shrc.d || ln -fs ${BASE_DIR}/.config/shrc.d/ ${HOME}/.config/shrc.d
@@ -27,7 +27,7 @@ function install_shell {
 	test -L ${HOME}/.config/fish || ln -fs ${BASE_DIR}/.config/fish ${HOME}/.config/fish
 }
 
-function install-binaries {
+function install_binaries {
 	mkdir -p ${HOME}/bin
 	test -L ${HOME}/bin/tmux-lam.sh || ln -fs ${BASE_DIR}/bin/tmux-lam.sh ${HOME}/bin/tmux-lam.sh
 	test -L ${HOME}/bin/tmux-perso.sh || ln -fs ${BASE_DIR}/bin/tmux-perso.sh ${HOME}/bin/tmux-perso.sh
@@ -36,13 +36,13 @@ function install-binaries {
 	test -L ${HOME}/bin/wifi-network.sh || ln -fs ${BASE_DIR}/bin/wifi-network.sh ${HOME}/bin/wifi-network.sh
 }
 
-function install-share {
+function install_share {
 	test -L ${HOME}/.local/share/backgrounds || ln -s ${BASE_DIR}/.local/share/backgrounds ${HOME}/.local/share/backgrounds
 	test -L ${HOME}/.local/share/man || ln -s ${BASE_DIR}/.local/share/man ${HOME}/.local/share/man
 	test -L ${HOME}/.local/share/icons || ln -s ${BASE_DIR}/.local/share/icons ${HOME}/.local/share/icons
 }
 
-function install-apps {
+function install_apps {
 	test -L ${HOME}/.config/user-dirs.dirs || ln -s ${BASE_DIR}/.config/user-dirs.dirs ${HOME}/.config/user-dirs.dirs
 	test -L ${HOME}/.config/user-dirs.locale || ln -s ${BASE_DIR}/.config/user-dirs.locale ${HOME}/.config/user-dirs.locale
 	test -L ${HOME}/.config/mimeapps.list || ln -s ${BASE_DIR}/.config/mimeapps.list ${HOME}/.config/mimeapps.list
@@ -62,10 +62,15 @@ function install-apps {
 	test -L ${HOME}/.config/termite || ln -s ${BASE_DIR}/.config/termite ${HOME}/.config/termite
 	test -L ${HOME}/.config/kitty || ln -s ${BASE_DIR}/.config/termite ${HOME}/.config/kitty
 	test -L ${HOME}/.config/wal || ln -s ${BASE_DIR}/.config/wal ${HOME}/.config/wal
+}
 
-
-function install-ssh {
+function install_ssh {
 	mkdir -p ${HOME}/.ssh
 	test -L ${HOME}/.ssh/config || ln -s ${BASE_DIR}/.ssh/config ${HOME}/.ssh/config
 	test -L ${HOME}/.ssh/personal || ln -s ${BASE_DIR}/.ssh/personal ${HOME}/.ssh/personal
 }
+
+install_shell
+install_binaries
+install_apps
+install_ssh
