@@ -63,8 +63,8 @@ bindsym $mod+Shift+q kill
 # Rofi
 # bindsym $mod+Tab exec rofi -show window -bg "#000000" -fg "#ff5500" -hlbg "#000000" -hlfg "#6fc3df" -bc "#ffe64d" -font monospace\ 10
 # bindsym $mod+d exec rofi -show run -bg "#000000" -fg "#ff5500" -hlbg "#000000" -hlfg "#6fc3df" -bc "#ffe64d" -font monospace\ 10
-bindsym $mod+Tab exec rofi -show window -font monospace\ 10
-bindsym $mod+d exec rofi -show run -font monospace\ 10
+bindsym $mod+Tab exec rofi -show window
+bindsym $mod+d exec rofi -show run
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
