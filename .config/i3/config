@@ -21,7 +21,7 @@ set $mod Mod4
 # Your preferred terminal emulator
 # i3-sensible-terminal
 # xfce4-terminal
-set $term termite
+set $term alacritty
 set $fm thunar
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -309,7 +309,8 @@ bar {
 
 bar {
     status_command i3status-rs ~/.config/i3status-rs/config-top.toml
-    font pango:DejaVu Sans Mono, FontAwesome 12
+    # font pango:DejaVu Sans Mono, FontAwesome 12
+    font pango:Hack Nerd Font Mono, FontAwesome 11
 #     status_command ~/.config/i3/i3-conky.sh
 #     workspace_buttons no
     position top
