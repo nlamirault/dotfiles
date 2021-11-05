@@ -283,7 +283,7 @@ bar {
 
 bar {
   position top
-  separator_symbol .
+  # separator_symbol .
   font pango:DejaVu Sans Mono, FontAwesome 12
   status_command i3status-rs $HOME/.config/i3status-rs/config-top.toml
 }
@@ -295,4 +295,4 @@ bar {
 # exec mako
 # exec --no-startup-id /usr/lib/gsd-xsettings
 
-exec_always --no-startup-id $HOME/.config/waybar/launch.sh
+# exec_always --no-startup-id $HOME/.config/waybar/launch.sh
