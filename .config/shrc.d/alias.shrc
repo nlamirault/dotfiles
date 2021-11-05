@@ -161,3 +161,6 @@ alias httpdump="sudo tcpdump -i enp0s25 -n -s 0 -w - | grep -a -o -E \"Host\: .*
 
 alias clean='find . \( -name ".*~" -o -name "*~" -o -name ".saves*" -o -name ".#*" \) -print -exec /bin/rm {} \;'
 alias ssh_wk="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+
+alias my_motd="rust-motd"
+alias my_fetch="freshfetch"
