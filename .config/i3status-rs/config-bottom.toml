@@ -13,8 +13,8 @@
 # limitations under the License.
 
 # theme = "gruvbox-dark"
-icons = "awesome"
-# icons = "material"
+icons = "awesome5"
+# icons = "material-nf"
 
 [theme]
 name = "plain"
@@ -25,6 +25,11 @@ idle_bg = "#000000"
 idle_fg = "#8CD1F9"
 #separator = "|"
 #separator_bg = "#ffffff"
+
+[[block]]
+block = "custom"
+command = "echo '\uf0ac ' `curl ifconfig.io`" # assumes fontawesome icons
+interval = 60
 
 [[block]]
 block = "net"
@@ -42,27 +47,4 @@ interval = 5
 [[block]]
 block = "battery"
 interval = 10
-format = "{percentage}% {time}"
-
-[[block]]
-block = "memory"
-format_mem = "{mem_used;G}/{mem_total;G}"
-format_swap = "{swap_used;G}/{swap_total;G}"
-display_type = "memory"
-icons = true
-clickable = true
-interval = 5
-warning_mem = 80
-warning_swap = 80
-critical_mem = 95
-critical_swap = 95
-
-[[block]]
-block = "cpu"
-interval = 1
-format = "{barchart} {utilization} {frequency}"
-
-[[block]]
-block = "load"
-interval = 1
-format = "{1m} {5m} {15m}"
+format = "{percentage} {time}"
