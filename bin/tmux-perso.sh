@@ -28,7 +28,7 @@ function tmux_perso {
     tmux new-window -n "Galactus"
     tmux send-keys -t $SESSION "cd ${PROJECTS}/galactus" C-m
     tmux new-window -n "Portefaix"
-    tmux send-keys -t $SESSION "cd ${PROJECTS}/portefaix" C-m
+    tmux send-keys -t $SESSION "cd ${PROJECTS}/Portefaix/portefaix" C-m
 
     tmux attach-session -t $SESSION
 }
