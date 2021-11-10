@@ -66,6 +66,7 @@
     pto = !CURRENT=$(git current) && git push --set-upstream origin $CURRENT
     pfo = !CURRENT=$(git current) && git pull --set-upstream origin $CURRENT
     pdc = !CURRENT=$(git current) && git switch master && git pull --set-upstream origin && git branch -D $CURRENT
+    pdc2 = !CURRENT=$(git current) && git switch main && git pull --set-upstream origin && git branch -D $CURRENT
     dto = diff origin/master..master
     dtm = !CURRENT=$(git current) && git diff master...$CURRENT
 
