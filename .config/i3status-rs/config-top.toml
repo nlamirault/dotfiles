@@ -52,15 +52,21 @@ block = "load"
 interval = 1
 format = "{1m} / {5m} / {15m}"
 
+# [[block]]
+# block = "disk_space"
+# path = "/"
+# alias = "/"
+# info_type = "available"
+# unit = "GB"
+# interval = 20
+# warning = 20.0
+# alert = 10.0
 [[block]]
 block = "disk_space"
 path = "/"
-alias = "/"
-info_type = "available"
-unit = "GB"
-interval = 20
-warning = 20.0
-alert = 10.0
+info_type = "used"
+format = "{icon} {used}/{total} ({available} free)"
+
 
 # [[block]]
 # block = "disk_space"
