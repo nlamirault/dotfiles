@@ -15,113 +15,51 @@
 # Don't print a new line at the start of the prompt
 add_newline = false
 
-prompt_order = [
-    "username",
-    "hostname",
-    "directory",
-    "kubernetes",
-    "terraform",
-    "git_branch",
-    "git_commit",
-    "git_state",
-    "git_status",
-    # "hg_branch",
-    # "docker_context",
-    # "package",
-    # "dotnet",
-    # "elixir",
-    # "elm",
-    # "erlang",
-    # "golang",
-    # "haskell",
-    # "java",
-    # "julia",
-    # "nim",
-    # "nodejs",
-    # "ocaml",
-    # "php",
-    # "purescript",
-    # "python",
-    # "ruby",
-    # "rust",
-    # "terraform",
-    # "zig",
-    # "nix_shell",
-    # "conda",
-    # "memory_usage",
-    # "aws",
-    # "env_var",
-    # "crystal",
-    "cmd_duration",
-    "custom",
-    "line_break",
-    "jobs",
-    # "battery",
-    # "status",
-    "time",
-    "character",
-]
+# format = """
+#     $all\
+# """
 
-# format = """\
-#     $username\
-#     $hostname\
-#     $directory\
-#     $kubernetes\
-#     $git_branch\
-#     $git_commit\
-#     $git_state\
-#     $git_status\
-#     # $hg_branch\
-#     # $docker_context\
-#     $package\
-#     # $dotnet\
-#     # $elixir\
-#     # $elm\
-#     # $erlang\
-#     $golang\
-#     # $haskell\
-#     # $java\
-#     # $julia\
-#     # $nim\
-#     # $nodejs\
-#     # $ocaml\
-#     # $php\
-#     # $purescript\
-#     $python\
-#     # $ruby\
-#     $rust\
-#     $terraform\
-#     # $zig\
-#     $nix_shell\
-#     # $conda\
-#     # $memory_usage\
-#     $aws\
-#     $env_var\
-#     # $crystal\
-#     $cmd_duration\
-#     $custom\
-#     $line_break\
-#     $jobs\
-#     # $battery\
-#     $time\
-#     $character\
-#     """
+format = """\
+    $username\
+    $hostname\
+    $directory\
+    $kubernetes\
+    $terraform\
+    $git_branch\
+    $git_commit\
+    $git_state\
+    $git_metrics\
+    $git_status\
+    $package\
+    $cmd_duration\
+    $custom\
+    $line_break\
+    $jobs\
+    $time\
+    $character\
+    """
 
 [hostname]
 ssh_only = false
-prefix = "❮"
-suffix = "❯"
-# format = "❮$hostname($style)❯ "
-trim_at = ""
+# format =  "on [$hostname](bold red) "
 disabled = false
 
+# ssh_only = false
+# prefix = "❮"
+# suffix = "❯"
+# # format = "❮$hostname($style)❯ "
+# trim_at = ""
+# disabled = false
+
 [character]
-symbol = "❯"
-error_symbol = "✖"
-use_symbol_for_status = false
-vicmd_symbol = "❮"
-style_success = "bold green"
-style_failure = "bold red"
+success_symbol = "[❯](bold green) "
+error_symbol = "[✖](bold red) "
+# symbol = "❯"
+# error_symbol = "✖"
+# use_symbol_for_status = false
+# vicmd_symbol = "❮"
+# style_success = "bold green"
+# style_failure = "bold red"
 
 [username]
 disabled = false
@@ -153,6 +91,10 @@ conflicted = "🏳"
 renamed = "👅"
 deleted = "🗑"
 
+[git_metrics]
+added_style = "bold blue"
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+
 [kubernetes]
 symbol = "☸ "
 style = "red"
@@ -168,6 +110,5 @@ disabled = false
 # map_symbol = true
 # disabled = false
 
-[python]
-prefix = "🐍 "
+# [python]
 # format = "🐍 "
