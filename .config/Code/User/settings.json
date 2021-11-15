@@ -1,0 +1,15 @@
+{
+    "editor.fontFamily": "'Cascadia Code', Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.minimap.enabled": false,
+    "window.menuBarVisibility": "toggle",
+    "workbench.editor.enablePreview": false,
+    "files.associations": {
+        "*.mk": "makefile"
+    },
+    "[makefile]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": false
+    },
+    "terminal.integrated.fontFamily": "'Hack Nerd Font Mono'",
+}
