@@ -34,7 +34,7 @@ autoload -Uz compinit
 compinit
 
 
-K8S_BINARIES=("kubectl" "minikube")
+K8S_BINARIES=("kubectl")
 
 for BIN in "${K8S_BINARIES[@]}"; do
   if command "${BIN}" > /dev/null 2>&1; then

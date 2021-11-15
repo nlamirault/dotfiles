@@ -26,7 +26,7 @@ fi
 [ -r "${HOME}"/.fzf.bash ] && . "${HOME}"/.fzf.bash
 
 
-K8S_BINARIES=("kubectl" "minikube")
+K8S_BINARIES=("kubectl")
 
 for BIN in "${K8S_BINARIES[@]}"; do
   if command -v "${BIN}" > /dev/null 2>&1; then

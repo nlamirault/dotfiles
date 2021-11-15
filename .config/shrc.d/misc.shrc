@@ -15,7 +15,8 @@
 # limitations under the License.
 
 # For GnuPG
-export GPG_TTY=/dev/pts/7
+export GPG_TTY=$(tty)
+# gpg-connect-agent reloadagent /bye
 
 if [ -f ~/.ssh/agent.env ] ; then
     . ~/.ssh/agent.env > /dev/null
