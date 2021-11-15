@@ -115,5 +115,9 @@
 
 [interactive]
     diffFilter = delta --color-only
+
 [pull]
 	rebase = true
+
+[init]
+	defaultBranch = main
