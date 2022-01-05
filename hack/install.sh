@@ -62,6 +62,8 @@ function install_apps {
 	test -L ${HOME}/.config/termite || ln -s ${BASE_DIR}/.config/termite ${HOME}/.config/termite
 	test -L ${HOME}/.config/kitty || ln -s ${BASE_DIR}/.config/termite ${HOME}/.config/kitty
 	test -L ${HOME}/.config/wal || ln -s ${BASE_DIR}/.config/wal ${HOME}/.config/wal
+	test -L ${HOME}/.gtkrc-2.0 || ln -s ${BASE_DIR}/.config/gtk/gtk2/.gtkrc-2.0 ${HOME}/.gtkrc-2.0
+	test -L ${HOME}/.config/gtk-3.0/settings.ini || ${BASE_DIR}/.config/gtk/gtk3/settings.ini ${HOME}/.config/gtk-3.0/settings.ini
 }
 
 function install_ssh {

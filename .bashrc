@@ -90,3 +90,4 @@ if [ -e "$HOME/.asdf/asdf.sh" ]; then
   source $HOME/.asdf/completions/asdf.bash
 fi
 # END ANSIBLE MANAGED BLOCK: asdf
+. "$HOME/.cargo/env"

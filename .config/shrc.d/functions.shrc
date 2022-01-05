@@ -74,3 +74,8 @@ function format_sdcard() {
     esac
   fi
 }
+
+function jdgo() {
+  pushd ${XDG_DOCUMENTS_DIR}/*/*/${1}*
+}
+

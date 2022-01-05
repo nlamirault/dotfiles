@@ -56,6 +56,9 @@ if [ -d "${PERSONAL_DIR}/zshrc.d" ]; then
     done
 fi
 
+# https://www.freedesktop.org/wiki/Software/xdg-user-dirs/
+[ -f ${XDG_CONFIG_HOME}/user-dirs.dirs ] && source ${XDG_CONFIG_HOME}/user-dirs.dirs
+
 if [[ "$-" == *x* ]]; then
   echo "DEBUG MODE is ON ========================== Zsh setup finished."
 fi
@@ -74,3 +77,6 @@ if [ -e "$HOME/.asdf/asdf.sh" ]; then
   source $HOME/.asdf/completions/asdf.bash
 fi
 # END ANSIBLE MANAGED BLOCK: asdf
+
+# Setup rustup, cargo path
+[[ -f /home/nicolas/.rustrc ]] && source /home/nicolas/.rustrc
