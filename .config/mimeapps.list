@@ -30,19 +30,19 @@ image/vnd.djvu=evince.desktop
 image/png=feh.desktop
 image/jpeg=feh.desktop
 
-text/html=chromium.desktop
-x-scheme-handler/http=chromium.desktop
-x-scheme-handler/https=chromium.desktop
-x-scheme-handler/about=chromium.desktop
-x-scheme-handler/unknown=chromium.desktop
-x-scheme-handler/webcal=chromium.desktop
+text/html=google-chrome-beta.desktop
+x-scheme-handler/http=google-chrome-beta.desktop
+x-scheme-handler/https=google-chrome-beta.desktop
+x-scheme-handler/about=google-chrome-beta.desktop
+x-scheme-handler/unknown=google-chrome-beta.desktop
+x-scheme-handler/webcal=google-chrome-beta.desktop
 
-application/x-extension-htm=chromium.desktop
-application/x-extension-html=chromium.desktop
-application/x-extension-shtml=chromium.desktop
-application/xhtml+xml=chromium.desktop
-application/x-extension-xhtml=chromium.desktop
-application/x-extension-xht=chromium.desktop
+application/x-extension-htm=google-chrome-beta.desktop
+application/x-extension-html=google-chrome-beta.desktop
+application/x-extension-shtml=google-chrome-beta.desktop
+application/xhtml+xml=google-chrome-beta.desktop
+application/x-extension-xhtml=google-chrome-beta.desktop
+application/x-extension-xht=google-chrome-beta.desktop
 
 video/ogg=vlc.desktop
 video/x-msvideo=vlc.desktop
@@ -59,14 +59,14 @@ application/x-flash-video=vlc.desktop
 [Added Associations]
 application/pdf=evince.desktop;
 
-x-scheme-handler/http=chromium.desktop;
-x-scheme-handler/https=chromium.desktop;
-x-scheme-handler/ftp=chromium.desktop;
-x-scheme-handler/chrome=chromium.desktop;
-text/html=chromium.desktop;
-application/x-extension-htm=chromium.desktop;
-application/x-extension-html=chromium.desktop;
-application/x-extension-shtml=chromium.desktop;
-application/xhtml+xml=chromium.desktop;
-application/x-extension-xhtml=chromium.desktop;
-application/x-extension-xht=chromium.desktop;
+x-scheme-handler/http=google-chrome-beta.desktop;
+x-scheme-handler/https=google-chrome-beta.desktop;
+x-scheme-handler/ftp=google-chrome-beta.desktop;
+x-scheme-handler/chrome=google-chrome-beta.desktop;
+text/html=google-chrome-beta.desktop;
+application/x-extension-htm=google-chrome-beta.desktop;
+application/x-extension-html=google-chrome-beta.desktop;
+application/x-extension-shtml=google-chrome-beta.desktop;
+application/xhtml+xml=google-chrome-beta.desktop;
+application/x-extension-xhtml=google-chrome-beta.desktop;
+application/x-extension-xht=google-chrome-beta.desktop;
