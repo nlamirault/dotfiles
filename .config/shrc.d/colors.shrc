@@ -19,10 +19,12 @@
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
-(/usr/bin/cat "${HOME}"/.cache/wal/sequences &)
+if [ -d "${HOME}/.cache/wal" ]; then
+    (/usr/bin/cat "${HOME}"/.cache/wal/sequences &)
 
-# Alternative (blocks terminal for 0-3ms)
-/usr/bin/cat "${HOME}"/.cache/wal/sequences
+    # Alternative (blocks terminal for 0-3ms)
+    /usr/bin/cat "${HOME}"/.cache/wal/sequences
+fi
 
 # BUG when bash is configure with "set -e"
 # To add support for TTYs this line can be optionally added.
