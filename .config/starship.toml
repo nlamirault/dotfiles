@@ -95,10 +95,16 @@ deleted = "🗑"
 added_style = "bold blue"
 format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 
+# [kubernetes]
+# symbol = "☸ "
+# disabled = false
 [kubernetes]
-symbol = "☸ "
-style = "red"
+format = 'on [☸ $context \($namespace\)](dimmed red) '
 disabled = false
+[kubernetes.context_aliases]
+"dev.local.cluster.k8s" = "dev"
+".*/openshift-cluster/.*" = "openshift"
+"gke_.*_(?P<cluster>[\\w-]+)" = "gke-$cluster"
 
 # [terraform]
 # format = "[🏎💨 $version]($style) "
