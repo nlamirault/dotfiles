@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Dunst
+Comment=dunst
+Exec=dunst
+Icon=dunst
+Terminal=false
+StartupNotify=false
+Categories=Application;

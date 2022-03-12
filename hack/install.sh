@@ -16,6 +16,12 @@
 
 BASE_DIR=$(pwd)
 
+function create_link() {
+	local dir=$1
+
+	test -L ${HOME}/${dir} || ln -fs ${BASE_DIR}/${dir} ${HOME}/${dir}
+}
+
 function install_shell {
     test -L ${HOME}/.config/shrc.d || ln -fs ${BASE_DIR}/.config/shrc.d/ ${HOME}/.config/shrc.d
 	test -L ${HOME}/.bashrc || ln -fs ${BASE_DIR}/.bashrc ${HOME}/.bashrc
@@ -46,6 +52,8 @@ function install_apps {
 	test -L ${HOME}/.config/user-dirs.dirs || ln -s ${BASE_DIR}/.config/user-dirs.dirs ${HOME}/.config/user-dirs.dirs
 	test -L ${HOME}/.config/user-dirs.locale || ln -s ${BASE_DIR}/.config/user-dirs.locale ${HOME}/.config/user-dirs.locale
 	test -L ${HOME}/.config/mimeapps.list || ln -s ${BASE_DIR}/.config/mimeapps.list ${HOME}/.config/mimeapps.list
+	create_link ".config/autostart"
+	create_link ".config/redshift"
 	test -L ${HOME}/.xinitrc || ln -fs ${BASE_DIR}/.xinitrc ${HOME}/.xinitrc
 	test -L ${HOME}/.gitconfig || ln -fs ${BASE_DIR}/.gitconfig ${HOME}/.gitconfig
 	test -L ${HOME}/.config/i3 || ln -s ${BASE_DIR}/.config/i3 ${HOME}/.config/i3
@@ -72,7 +80,9 @@ function install_ssh {
 	test -L ${HOME}/.ssh/personal || ln -s ${BASE_DIR}/.ssh/personal ${HOME}/.ssh/personal
 }
 
-install_shell
-install_binaries
-install_apps
-install_ssh
+# install_shell
+# install_binaries
+# install_apps
+# install_ssh
+
+

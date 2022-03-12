@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Clipmenud
+Comment=clipmenud
+Exec=clipmenud
+Icon=clipmenud
+Terminal=false
+StartupNotify=false
+Categories=Application;
