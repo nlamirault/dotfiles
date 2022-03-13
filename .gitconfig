@@ -15,7 +15,8 @@
 [user]
     email = nicolas.lamirault@gmail.com
     name = Nicolas Lamirault
-    signingkey = 5F99269A6FCA437C
+    # signingkey = 5F99269A6FCA437C
+	signingkey = FF6B82EB4ADFD316ACF7CA9C8CE4940B006FD0B4
 
 [includeIf "gitdir:~/Work/"]
     path = ~/Work/.gitconfig
