@@ -5,11 +5,13 @@
     "window.menuBarVisibility": "toggle",
     "workbench.editor.enablePreview": false,
     "files.associations": {
-        "*.mk": "makefile"
+        "*.mk": "makefile",
+        "_helpers.tpl": "jinja"
     },
     "[makefile]": {
         "editor.tabSize": 4,
         "editor.insertSpaces": false
     },
     "terminal.integrated.fontFamily": "'Hack Nerd Font Mono'",
+    "redhat.telemetry.enabled": false,
 }
