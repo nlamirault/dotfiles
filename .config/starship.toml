@@ -30,19 +30,22 @@ format = """\
     $git_state\
     $git_metrics\
     $git_status\
-    $package\
     $cmd_duration\
+    $status\
     $custom\
-    $line_break\
     $jobs\
     $time\
+    $aws\
+    $azure\
+    $gcloud\
+    $line_break\
     $character\
     """
 
 [hostname]
-ssh_only = false
-# format =  "on [$hostname](bold red) "
+ssh_only = true
 disabled = false
+# format =  "on [$hostname](bold red) "
 
 # ssh_only = false
 # prefix = "❮"
@@ -52,14 +55,11 @@ disabled = false
 # disabled = false
 
 [character]
-success_symbol = "[❯](bold green) "
-error_symbol = "[✖](bold red) "
+success_symbol = "[❯](bold green)"
+error_symbol = "[✖](bold red)"
 # symbol = "❯"
-# error_symbol = "✖"
 # use_symbol_for_status = false
 # vicmd_symbol = "❮"
-# style_success = "bold green"
-# style_failure = "bold red"
 
 [username]
 disabled = false
@@ -72,49 +72,84 @@ disabled = false
 fish_style_pwd_dir_length = 1
 style = "bold green"
 
+[git_branch]
+# symbol = "🌱 "
+symbol = " "
+# truncation_length = 4
+# truncation_symbol = ""
+
+[git_commit]
+commit_hash_length = 4
+tag_symbol = "🔖 "
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = "[🍒 PICKING](bold red)"
+
 [git_status]
-ahead = "↑"
-behind = "↓"
-diverged = "⤮ "
+# ahead = "↑"
+# behind = "↓"
+# diverged = "⤮ "
 staged = "✮"
-conflicted = "🏳"
-# ahead = "🏎💨"
-# behind = "😰"
-# diverged = "😵"
-# untracked = "🤷‍"
-# stashed = "📦"
-# modified = "📝"
+conflicted = "🏳 "
+ahead = "🏎💨 "
+behind = "😰 "
+diverged = "😵 "
+untracked = "🤷‍ "
+stashed = "📦 "
+modified = "📝 "
 # staged.value = "++"
 # staged.style = "green"
 # staged_count.enabled = true
 # staged_count.style = "green"
-renamed = "👅"
-deleted = "🗑"
+renamed = "👅 "
+deleted = "🗑 "
 
 [git_metrics]
+disabled = false
 added_style = "bold blue"
 format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 
-# [kubernetes]
-# symbol = "☸ "
-# disabled = false
 [kubernetes]
-format = 'on [☸ $context \($namespace\)](dimmed red) '
+format = 'on [☸ $context \($namespace\)](bold red) '
 disabled = false
 [kubernetes.context_aliases]
-"dev.local.cluster.k8s" = "dev"
-".*/openshift-cluster/.*" = "openshift"
+# "dev.local.cluster.k8s" = "dev"
+# ".*/openshift-cluster/.*" = "openshift"
 "gke_.*_(?P<cluster>[\\w-]+)" = "gke-$cluster"
+"arn:aws:eks:.*:.*:cluster/(?P<cluster>[\\w-]+)" = "eks-$cluster"
 
-# [terraform]
-# format = "[🏎💨 $version]($style) "
+[terraform]
+disabled = true
+format = "[🏎💨 $version]($style) "
 
-# [status]
+[status]
 # style = "bg:blue"
 # symbol = "🔴"
 # format = '[\[$symbol $common_meaning$signal_name$maybe_int\]]($style) '
 # map_symbol = true
-# disabled = false
+disabled = false
 
 # [python]
 # format = "🐍 "
+
+[aws]
+disabled = true
+format = 'on [$symbol$profile(\($region\))]($style) '
+style = "bold blue"
+symbol = "🅰 "
+
+[gcloud]
+disabled = true
+format = 'on [$symbol$account(@$domain)(\($project\))]($style) '
+style = "bold blue"
+symbol = "️🇬️ "
+
+[azure]
+disabled = true
+format = "on [$symbol($subscription)]($style) "
+symbol = "ﴃ "
+style = "blue bold"
+
+[package]
+disabled = true
