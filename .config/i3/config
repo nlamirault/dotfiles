@@ -70,10 +70,8 @@ bindsym $mod+Shift+q kill
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # Rofi
-# bindsym $mod+Tab exec rofi -show window -bg "#000000" -fg "#ff5500" -hlbg "#000000" -hlfg "#6fc3df" -bc "#ffe64d" -font monospace\ 10
-# bindsym $mod+d exec rofi -show run -bg "#000000" -fg "#ff5500" -hlbg "#000000" -hlfg "#6fc3df" -bc "#ffe64d" -font monospace\ 10
-bindsym $mod+Tab exec rofi -show window
-bindsym $mod+d exec rofi -show run
+bindsym $mod+Tab exec $HOME/.config/rofi/bin/windows.sh
+bindsym $mod+d exec $HOME/.config/rofi/bin/launcher.sh
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
