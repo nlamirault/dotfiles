@@ -1,0 +1,95 @@
+.TH PostgreSQL Cheatsheet 7 2019-07-06 "PostgreSQL Cheatsheet" "Nicolas Lamirault"
+.SH NAME
+PostgreSQL \- Cheatsheet
+.SH SYNOPSIS
+.PP
+Cheatsheet for PostgreSQL
+.\" .SH NOTE
+.\" .PP
+.\" .SH DESCRIPTION
+.\" .PP
+
+.\" -------------------------------------------------------------------------
+
+.SH Core
+
+.SS Connection
+.PP
+psql -h host -U dbname=db
+
+.SS Switch connection to a new database
+.PP
+\\c dbname [ username ]
+
+.SS List available databases
+.PP
+\\l
+
+.SS List available tables
+.PP
+\\dt
+
+.SS Describe a table
+.PP
+\\d table_name
+
+.SS List available schema
+.PP
+\\dn
+
+.SS List available functions
+.PP
+\\df
+
+.SS List available views
+.PP
+\\dv
+
+.SS List users and their roles
+.PP
+\\du
+
+.SS Command history
+.PP
+\\s
+
+.SS Execute psql commands from a file
+.PP
+\\i filename
+
+.SS Get help on psql commands
+.PP
+\\?
+
+.SS Get help on specific PostgreSQL statement
+.PP
+\\h ALTER TABLE
+
+.SS Switch output options
+.PP
+\\a command switches from aligned to non-aligned column output.
+.PP
+\\H command formats the output to HTML format.
+
+.SH Transations
+
+.SS Execute a transation
+.PP
+begin;
+.PP
+sql request;
+.PP
+commit;
+
+.SS Rollback
+.PP
+begin;
+.PP
+sql request;
+.PP
+rollback;
+
+.\" -------------------------------------------------------------------------
+
+.SH SEE ALSO
+.I \%https://postgresql.org
