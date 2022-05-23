@@ -20,8 +20,8 @@ function zellij_layout() {
     local choice=$1
 
     local layout="${ZELLIJ_LAYOUTS}/${choice}.yaml"
-    if [ -f ${layout} ]; then
-        zellij -l ${layout}
+    if [ -f "${layout}" ]; then
+        zellij -l "${layout}"
     else
         echo "Zellij layout not found: ${layout}"
     fi
@@ -29,4 +29,4 @@ function zellij_layout() {
 
 zellij=$1
 [ -z "${zellij}" ] && echo "Zellij layout satisfied" && exit 1
-zellij_layout ${zellij}
+zellij_layout "${zellij}"
