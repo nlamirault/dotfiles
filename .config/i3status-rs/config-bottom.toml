@@ -12,9 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# theme = "gruvbox-dark"
-icons = "awesome5"
-# icons = "material-nf"
+# icons = "awesome5"
+icons = "material-nf"
 
 [theme]
 name = "plain"
@@ -31,11 +30,11 @@ block = "custom"
 command = "echo '\uf0ac ' `curl ifconfig.io`" # assumes fontawesome icons
 interval = 60
 
-[[block]]
-block = "net"
-device = "enp0s25"
-format = "{ip} {speed_down;K*b} {graph_down;K*b}"
-interval = 5
+# [[block]]
+# block = "net"
+# device = "enp0s25"
+# format = "{ip} {speed_down;K*b} {graph_down;K*b}"
+# interval = 5
 
 [[block]]
 block = "net"

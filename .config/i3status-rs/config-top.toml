@@ -12,9 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# theme = "slick"
-icons = "awesome5"
-# icons = "material-nf"
+# icons = "awesome5"
+icons = "material-nf"
 
 [theme]
 name = "plain"
@@ -25,14 +24,14 @@ idle_fg = "#8CD1F9"
 #separator = "|"
 #separator_bg = "#ffffff"
 
-[[block]]
-block = "focused_window"
-max_width = 21
+# [[block]]
+# block = "focused_window"
+# max_width = 21
 
 [[block]]
 block = "cpu"
 interval = 1
-format = "{barchart} {utilization} {frequency}"
+format = "{utilization} {frequency}"
 
 [[block]]
 block = "memory"
@@ -52,38 +51,25 @@ block = "load"
 interval = 1
 format = "{1m} / {5m} / {15m}"
 
-# [[block]]
-# block = "disk_space"
-# path = "/"
-# alias = "/"
-# info_type = "available"
-# unit = "GB"
-# interval = 20
-# warning = 20.0
-# alert = 10.0
 [[block]]
 block = "disk_space"
 path = "/"
 info_type = "used"
 format = "{icon} {used}/{total} ({available} free)"
-
-
-# [[block]]
-# block = "disk_space"
-# path = "/home"
-# alias = "/home"
-# info_type = "available"
-# unit = "GB"
-# interval = 20
-# warning = 20.0
-# alert = 10.0
-
-# [[block]]
-# block = "backlight"
-# device = "intel_backlight"
+alert_absolute = true
+unit = "GB"
+alert = 50
+warning = 40
 
 [[block]]
 block = "sound"
+
+[[block]]
+block = "backlight"
+device = "intel_backlight"
+minimum = 15
+maximum = 100
+cycle = [100, 50, 0, 50]
 
 [[block]]
 block = "time"
