@@ -16,8 +16,8 @@
     email = nicolas.lamirault@gmail.com
     name = Nicolas Lamirault
     # signingkey = 5F99269A6FCA437C
-	signingkey = FF6B82EB4ADFD316ACF7CA9C8CE4940B006FD0B4
-
+	signingkey = 615BED55995C522D4F54CB57F279689E2863393C
+    
 [includeIf "gitdir:~/Work/"]
     path = ~/Work/.gitconfig
 
@@ -96,16 +96,28 @@
 [commit]
     gpgsign = true
 
+[tag]
+	gpgSign = true
+
 [merge]
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
 
 [push]
 	default = simple
+
 [gpg]
 	program = gpg2
+
 [diff]
 	noprefix = true
+    # tool = difftastic
+
+# [difftool]
+#     prompt = false
+
+# [difftool "difftastic"]
+#     cmd = difft "$LOCAL" "$REMOTE"
 
 [delta]
     plus-color = "#012800"
@@ -115,12 +127,10 @@
     # side-by-side = true
 
 [interactive]
-    diffFilter = delta --color-only
+    # diffFilter = delta --color-only
 
 [pull]
 	rebase = true
 
 [init]
 	defaultBranch = main
-[tag]
-	gpgSign = true
