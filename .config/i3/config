@@ -70,8 +70,8 @@ bindsym $mod+Shift+q kill
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # Rofi
-bindsym $mod+Tab exec $HOME/.config/rofi/bin/windows.sh
-bindsym $mod+d exec $HOME/.config/rofi/bin/launcher.sh
+bindsym $mod+Tab exec $HOME/.config/rofi/launchers/type-7/launcher.sh
+bindsym $mod+d exec $HOME/.config/rofi/launchers/type-7/launcher.sh
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
