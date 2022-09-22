@@ -25,9 +25,13 @@ psql -h host -U dbname=db
 .PP
 \\l
 
-.SS List available tables
+.SS List tables inside public schemas
 .PP
 \\dt
+
+.SS List tables inside particular schemas. For eg: 'schema1'.
+.PP
+\\dt schema1
 
 .SS Describe a table
 .PP
@@ -88,6 +92,22 @@ begin;
 sql request;
 .PP
 rollback;
+
+.SS Dump table to file
+.PP
+\\copy table_name to 'filename.csv' csv header
+
+.SS Dump requests into CSV file
+.PP
+psql>\\f ','
+.PP
+psql>\\a
+.PP
+psql>\\o '/tmp/sql.csv'
+.PP
+psql> select ....
+.PP
+psql>\\q
 
 .\" -------------------------------------------------------------------------
 
