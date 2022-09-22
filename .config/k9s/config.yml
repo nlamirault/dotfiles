@@ -1,0 +1,91 @@
+k9s:
+  refreshRate: 2
+  maxConnRetry: 5
+  enableMouse: false
+  headless: false
+  logoless: false
+  crumbsless: false
+  readOnly: false
+  noIcons: false
+  logger:
+    tail: 100
+    buffer: 5000
+    sinceSeconds: 60
+    fullScreenLogs: false
+    textWrap: false
+    showTime: false
+  currentContext: teleport-swan
+  currentCluster: teleport-swan
+  clusters:
+    arn:aws:eks:eu-west-1:326954429656:cluster/k8s-cluster:
+      namespace:
+        active: all
+        favorites:
+        - all
+        - payment-master
+        - federation-master
+        - monitoring
+        - default
+      view:
+        active: deploy
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    arn:aws:eks:eu-west-1:326954429656:cluster/k8s-cluster-temp:
+      namespace:
+        active: test-istio
+        favorites:
+        - test-istio
+        - istio-system
+        - kube-system
+        - default
+      view:
+        active: pods
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    teleport-swan:
+      namespace:
+        active: payment-prod
+        favorites:
+        - payment-prod
+        - federation-prod
+        - monitoring
+        - default
+      view:
+        active: deploy
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.31
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+  thresholds:
+    cpu:
+      critical: 90
+      warn: 70
+    memory:
+      critical: 90
+      warn: 70
+  screenDumpDir: /tmp/nicolas/k9s-screens-nicolas
