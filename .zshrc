@@ -44,6 +44,14 @@ if [ -d "${HOME}/.config/zshrc.d" ]; then
     done
 fi
 
+if [ -d "${HOME}/.config/work.d" ]; then
+    for file in $(/bin/ls ${HOME}/.config/work.d/*.sh); do
+        # echo "${file}"
+        # shellcheck source=/dev/null
+        . ${file};
+    done
+fi
+
 # Load local configuration
 [ -f ${HOME}/.local.zshrc ] && . ${HOME}/.local.zshrc
 

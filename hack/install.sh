@@ -87,8 +87,6 @@ function install_ssh {
 	mkdir -p ${HOME}/.ssh
 	create_link ".ssh/config"
 	create_link ".ssh/personal"
-	# test -L ${HOME}/.ssh/config || ln -s ${BASE_DIR}/.ssh/config ${HOME}/.ssh/config
-	# test -L ${HOME}/.ssh/personal || ln -s ${BASE_DIR}/.ssh/personal ${HOME}/.ssh/personal
 }
 
 install_shell
