@@ -34,3 +34,11 @@ for BIN in "${K8S_BINARIES[@]}"; do
     . <("${BIN}" completion bash)
   fi
 done
+
+if command "gh" > /dev/null 2>&1; then
+  eval "$(gh completion -s bash)"
+fi
+
+if command "glab" > /dev/null 2>&1; then
+  eval "$(glab completion -s bash)"
+fi

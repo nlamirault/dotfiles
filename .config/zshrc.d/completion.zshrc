@@ -30,18 +30,20 @@ zstyle :compinstall filename '/home/'"${USER}"'/.zshrc.d/completion.zshrc'
 
 [ -r "${HOME}"/.fzf.zsh ] && . "${HOME}"/.fzf.zsh
 
-autoload -Uz compinit
-compinit
-
-
 K8S_BINARIES=("kubectl")
+# for BIN in "${K8S_BINARIES[@]}"; do
+#   echo ${BIN}
+#   command "${BIN}"
+#   if command "${BIN}" > /dev/null 2>&1; then
+#     # shellcheck source=/dev/null
+#     # source <("${BIN}" completion zsh)
+#     kubectl completion zsh > "${HOME}/.local/share/zsh/site-functions/_${BIN}"
+#   fi
+# done
 
-for BIN in "${K8S_BINARIES[@]}"; do
-  if command "${BIN}" > /dev/null 2>&1; then
-    # shellcheck source=/dev/null
-    source <("${BIN}" completion zsh)
-  fi
-done
+if [ -f "${HOME}/.asdf/shims/kubectl" ]; then
+  ${HOME}/.asdf/shims/kubectl completion zsh > "${HOME}/.local/share/zsh/site-functions/_kubectl"
+fi
 
 if [ -f "${HOME}/Applications/google-cloud-sdk/completion.zsh.inc" ]; then
     source ${HOME}/Applications/google-cloud-sdk/completion.zsh.inc
@@ -58,3 +60,18 @@ if [ -f "${HOME}/Applications/azure-cli/venv/bin/activate" ]; then
     source az.completion.sh
     deactivate
 fi
+
+fpath=("${HOME}/.local/share/zsh/site-functions" $fpath)
+
+if command "gh" > /dev/null 2>&1; then
+  gh completion -s zsh > "${HOME}/.local/share/zsh/site-functions/_gh"
+fi
+
+if command "glab" > /dev/null 2>&1; then
+  glab completion -s zsh > "${HOME}/.local/share/zsh/site-functions/_glab"
+fi
+
+
+
+autoload -Uz compinit
+compinit

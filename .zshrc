@@ -21,6 +21,13 @@
 # set -x
 # set -v
 
+# BEGIN ANSIBLE MANAGED BLOCK: asdf
+if [ -e "${HOME}/.asdf/asdf.sh" ]; then
+  source ${HOME}/.asdf/asdf.sh
+  fpath=(${HOME}/.asdf/completions $fpath)
+fi
+# END ANSIBLE MANAGED BLOCK: asdf
+
 if [ -d "${HOME}/.config/shrc.d" ]; then
     for file in $(/bin/ls ${HOME}/.config/shrc.d/*.shrc); do
         # shellcheck source=/dev/null
@@ -78,13 +85,6 @@ autoload -U +X bashcompinit && bashcompinit
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(direnv hook zsh)"
-
-# BEGIN ANSIBLE MANAGED BLOCK: asdf
-if [ -e "$HOME/.asdf/asdf.sh" ]; then
-  source $HOME/.asdf/asdf.sh
-  source $HOME/.asdf/completions/asdf.bash
-fi
-# END ANSIBLE MANAGED BLOCK: asdf
 
 # Setup rustup, cargo path
 [[ -f /home/nicolas/.rustrc ]] && source /home/nicolas/.rustrc
