@@ -31,7 +31,7 @@ opa 0.29.4
 osm v0.4.0
 packer 1.3.3
 popeye v0.8.6
-ruby 2.7.3
+ruby 2.7.6
 scaleway-cli 2.4.0
 snyk 1.437.3
 sops 3.7.1
