@@ -24,7 +24,7 @@ kpt v0.34.0
 kubectl 1.21.0
 kubeseal 0.13.1
 kubeval 0.15.0
-kustomize 4.5.2
+kustomize 4.5.7
 linkerd 2.9.1
 nova 2.3.0
 opa 0.29.4
