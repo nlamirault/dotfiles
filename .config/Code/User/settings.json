@@ -6,12 +6,30 @@
     "workbench.editor.enablePreview": false,
     "files.associations": {
         "*.mk": "makefile",
-        "_helpers.tpl": "jinja"
+        "_helpers.tpl": "jinja",
+        // Ansible
+        "**/defaults/**/*.yml": "jinja-yaml",
+        "**/group_vars/**/*": "jinja-yaml",
+        "**/host_vars/**/*": "jinja-yaml",
+        "**/vars/**/*.yml": "jinja-yaml",
+        "**/tasks/**/*.yml": "ansible",
+        "**/handlers/*.yml": "ansible",
+        "**/meta/*.yml": "ansible",
+        "**/roles/**/*.yml": "ansible",
+        "**/playbooks/**/*.yml": "ansible",
+        "**/ansible/**/hosts": "ini",
+        "**/ansible/**/inventory": "ini",
+        "ansible.cfg": "ini",
     },
     "[makefile]": {
         "editor.tabSize": 4,
         "editor.insertSpaces": false
     },
     "terminal.integrated.fontFamily": "'Hack Nerd Font Mono'",
-    "redhat.telemetry.enabled": false
+    "redhat.telemetry.enabled": false,
+    "[yaml]": {
+        "editor.defaultFormatter": "kennylong.kubernetes-yaml-formatter",
+        "editor.formatOnSave": false,
+    },
+    "workbench.iconTheme": "vscode-icons",
 }

@@ -1,0 +1,76 @@
+// Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+layout {
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+    
+    // tab_template name="strider_tab" {
+    //     pane size=1 borderless=true {
+    //         plugin location="zellij:tab-bar"
+    //     }
+    //     pane split_direction="Vertical" {
+    //         pane size="15%" {
+    //             // TODO: when we support sending CWD to plugins, this should start in ./zellij-derver
+    //             plugin location="zellij:strider"
+    //         }
+    //         children
+    //     }
+    //     pane size=2 borderless=true {
+    //         plugin location="zellij:status-bar"
+    //     }
+    // }
+    
+    tab name="Home" split_direction="vertical" {
+        pane
+    }
+
+    tab name="Journal" split_direction="vertical" {
+        pane
+    }
+
+    tab name="Dotfiles" split_direction="vertical" {
+        pane
+    }
+
+    tab name="Divona" split_direction="vertical" {
+        pane
+    }
+
+    // strider_tab name="Dotfiles" split_direction="vertical" cwd="${HOME}/Projects/dotfiles" {
+    //     pane edit="./pty.rs" name="PTY"
+    //     pane edit="./os_input_output.rs" name="OS_INPUT_OUTPUT"
+    // }
+    // tab name="Divona" split_direction="horizontal" cwd="${HOME}/Projects/divona" {
+    //     pane split_direction="vertical" {
+    //         pane edit="./tiled_panes/mod.rs" name="TILED PANES"
+    //         pane edit="./tiled_panes/tiled_pane_grid.rs" name="TILED PANES - GRID"
+    //         pane edit="./tiled_panes/pane_resizer.rs" name="TILED PANES - GRID - RESIZER"
+    //     }
+    //     pane split_direction="vertical" {
+    //         pane edit="./floating_panes/mod.rs" name="FLOATING_PANES"
+    //         pane edit="./floating_panes/floating_pane_grid.rs" name="FLOATING_PANES - GRID"
+    //     }
+    // }
+}
+
+session_name "perso"
+attach_to_session true

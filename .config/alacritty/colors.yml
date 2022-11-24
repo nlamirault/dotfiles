@@ -13,11 +13,11 @@
 # limitations under the License.
 
 # Colors (Tomorrow Night)
-#colors:
+colors:
   # Default colors
-  #primary:
-  #  background: '#1d1f21'
-  #  foreground: '#c5c8c6'
+  primary:
+   background: '#000000' #1d1f21'
+   foreground: '#FFFFFF' #c5c8c6'
 
     # Bright and dim foreground colors
     #
