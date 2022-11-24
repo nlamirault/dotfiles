@@ -1,4 +1,4 @@
-helm 3.8.0
+helm 3.10.2
 awscli 2.9.1
 kubectl 1.25.0
 tfsec 1.28.1
