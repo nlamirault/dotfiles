@@ -46,13 +46,9 @@ floating_modifier $mod
 bindsym $mod+Return exec $term
 
 # Lock screen
-# bindsym $mod+a exec slimlock
-# bindsym $mod+Shift+a exec i3lock -i $HOME/.local/share/backgrounds/lightdm-archlinux-background.png #archlinux-lock.png
-bindsym $mod+Shift+a exec i3lock -i $HOME/.local/share/backgrounds/wallpaperflare.com_wallpaper.png
-# bindsym $mod+Shift+a exec loginctl lock-session $XDG_SESSION_ID
-# bindsym $mod+Shift+a exec light-locker-command -l
-# https://github.com/the-cavalry/light-locker/issues/138
-# bindsym $mod+a exec dm-tool switch-to-greeter
+bindsym $mod+Shift+Escape exec i3lock -i $HOME/.local/share/backgrounds/wallpaperflare.com_wallpaper.png
+# bindsym $mod+Shift+Escape exec loginctl lock-session $XDG_SESSION_ID
+# bindsym $mod+Shift+Escape exec light-locker-command -l
 
 bindsym $mod+t exec $fm
 

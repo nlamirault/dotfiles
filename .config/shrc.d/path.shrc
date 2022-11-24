@@ -40,8 +40,8 @@ export PATH="${HOME}/.cask/bin:${PATH}"
 export PATH="${HOME}/.evm/bin:${PATH}"
 
 # Golang
-# export GOROOT=${APPLICATIONS_HOME}/golang
 export GOPATH=${APPLICATIONS_HOME}/golang
+export GOROOT=${APPLICATIONS_HOME}/go
 export PATH=${PATH}:${GOPATH}/bin:${GOROOT}/bin
 
 # Rust
