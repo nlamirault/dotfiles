@@ -21,13 +21,6 @@
 # set -x
 # set -v
 
-# BEGIN ANSIBLE MANAGED BLOCK: asdf
-if [ -e "${HOME}/.asdf/asdf.sh" ]; then
-  source ${HOME}/.asdf/asdf.sh
-  fpath=(${HOME}/.asdf/completions $fpath)
-fi
-# END ANSIBLE MANAGED BLOCK: asdf
-
 if [ -d "${HOME}/.config/shrc.d" ]; then
     for file in $(/bin/ls ${HOME}/.config/shrc.d/*.shrc); do
         # shellcheck source=/dev/null
@@ -73,6 +66,13 @@ fi
 
 # https://www.freedesktop.org/wiki/Software/xdg-user-dirs/
 [ -f ${XDG_CONFIG_HOME}/user-dirs.dirs ] && source ${XDG_CONFIG_HOME}/user-dirs.dirs
+
+# BEGIN ANSIBLE MANAGED BLOCK: asdf
+if [ -e "${HOME}/.asdf/asdf.sh" ]; then
+  source ${HOME}/.asdf/asdf.sh
+  fpath=(${HOME}/.asdf/completions $fpath)
+fi
+# END ANSIBLE MANAGED BLOCK: asdf
 
 if [[ "$-" == *x* ]]; then
   echo "DEBUG MODE is ON ========================== Zsh setup finished."
