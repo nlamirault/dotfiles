@@ -19,7 +19,7 @@ ZELLIJ_LAYOUTS="${HOME}/.config/zellij"
 function zellij_layout() {
     local choice=$1
 
-    local layout="${ZELLIJ_LAYOUTS}/${choice}.yaml"
+    local layout="${ZELLIJ_LAYOUTS}/${choice}.kdl"
     if [ -f "${layout}" ]; then
         zellij -l "${layout}"
     else
