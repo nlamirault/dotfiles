@@ -30,8 +30,7 @@ categories:
       - 'bug'
   - title: '🚨 Maintenance'
     labels:
-      - 'area/renovate'
-      - 'dependency/flux'
+      - 'kind/renovate'
       - 'chore'
   - title: '📝 Documentation'
     labels:
