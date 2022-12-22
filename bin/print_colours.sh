@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,10 +13,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-# Tom Hale, 2016. MIT Licence.
-# Print out 256 colours, with each number printed in its corresponding colour
-# See http://askubuntu.com/questions/821157/print-a-256-color-test-pattern-in-the-terminal/821163#821163
+#
+# SPDX-License-Identifier: Apache-2.0
 
 set -eu # Fail on errors or undeclared variables
 
