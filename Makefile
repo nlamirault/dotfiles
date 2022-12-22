@@ -93,5 +93,10 @@ print-%:
 validate: ## Execute git-hooks
 	@pre-commit run -a
 
+.PHONY: install
+install: ## Install dotfiles
+	./hack/install.sh
+
 .PHONY: test
+test: ## Test installation
 	@bats -p ./tests
