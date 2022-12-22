@@ -7,7 +7,6 @@
     "files.associations": {
         "*.mk": "makefile",
         "_helpers.tpl": "jinja",
-        // Ansible
         "**/defaults/**/*.yml": "jinja-yaml",
         "**/group_vars/**/*": "jinja-yaml",
         "**/host_vars/**/*": "jinja-yaml",
@@ -20,6 +19,7 @@
         "**/ansible/**/hosts": "ini",
         "**/ansible/**/inventory": "ini",
         "ansible.cfg": "ini",
+        "*.hcl": "hcl"
     },
     "[makefile]": {
         "editor.tabSize": 4,
