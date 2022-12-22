@@ -34,9 +34,9 @@ jobs:
         run: |
           git clone https://github.com/bats-core/bats-core.git
           cd bats-core
-          sudo ./install.sh /usr/local
+          ./install.sh /usr/local
 
       - name: Tests
         run: |
           ./hack/install.sh
-          bats -t ./tests
+          ./hack/test.sh

@@ -37,4 +37,4 @@ jobs:
       - name: Tests
         run: |
           ./hack/install.sh
-          bats -t ./tests
+          ./hack/test.sh
