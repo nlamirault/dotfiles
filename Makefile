@@ -92,3 +92,6 @@ print-%:
 .PHONY: validate
 validate: ## Execute git-hooks
 	@pre-commit run -a
+
+.PHONY: test
+	@bats -p ./tests
