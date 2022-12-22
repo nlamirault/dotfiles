@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,10 +14,8 @@
 
 # labels to be used with /area command
 area:
-  - 'gcp'
-  - 'aws'
-  - 'azure'
-  - 'kubernetes'
+  - 'ansible'
+  - 'github'
 
 kind:
   - 'documentation'
@@ -40,23 +38,3 @@ status:
 # File globs for PR labeler
 # tests:
 #   - '**/*.test.ts'
-
-'area/kubernetes':
-  - kubernetes/*
-  - kubernetes/**/*
-
-'area/gcp':
-  - iac/gcp/*
-  - iac/gcp/**/*
-
-'area/aws':
-  - iac/aws/*
-  - iac/aws/**/*
-
-'area/azure':
-  - iac/azure/*
-  - iac/azure/**/*
-
-'kind/documentation':
-  - docs/*
-  - docs/**/*

@@ -15,54 +15,53 @@
   "rebaseWhen": "conflicted",
   "assignees": ["@nlamirault"],
   "reviewersFromCodeOwners": true,
-  // "labels": ["kind/renovate"],
+  "labels": ["kind/renovate"],
+  // "regexManagers": [
+  //   {
+  //     "fileMatch": ["kubernetes/.+\\.yaml$"],
+  //     "matchStrings": [
+  //       // helmrelease
+  //       "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n",
+  //       // kube-prometheus-stack
+  //       "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-zA-Z-]+)-(?<currentValue>.*)\n",
+  //       // cert-manager
+  //       "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n.*\\/(?<currentValue>.*?)\\/"
+  //     ],
+  //     "datasourceTemplate": "helm"
+  //   },
+  // ],
   "packageRules": [
-    // Labels for Terraform
+    // Labels for Ansible
     {
-      "datasources": ["terraform", "terraform-version", "terraform-provider", "terraform-module"],
+      "datasources": ["role", "galaxy", "galaxy-collection"],
       "updateTypes": ["major"],
-      "labels": ["kind/renovate", "lifecycle/active", "dependency/terraform", "priority/high", "size/xs"]
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/ansible", "dependency/ansible", "priority/high", "size/xs"]
     },
     {
-      "datasources": ["terraform", "terraform-version", "terraform-provider", "terraform-module"],
+      "datasources": ["role", "galaxy", "galaxy-collection"],
       "updateTypes": ["minor"],
-      "labels": ["kind/renovate", "lifecycle/active", "dependency/terraform", "priority/medium", "size/xs"]
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/ansible", "dependency/ansible", "priority/medium", "size/xs"]
     },
     {
-      "datasources": ["terraform", "terraform-version", "terraform-provider", "terraform-module"],
+      "datasources": ["role", "galaxy", "galaxy-collection"],
       "updateTypes": ["patch"],
-      "labels": ["kind/renovate", "lifecycle/active", "dependency/terraform", "priority/low", "size/xs"]
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/ansible", "dependency/ansible", "priority/low", "size/xs"]
     },
+    // Labels for Github Actions
     {
-      "matchPackageNames": ["hashicorp/terraform"],
-      "matchUpdateTypes": ["major"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/terraform", "priority/high", "size/xs"]
-    },
-    {
-      "matchPackageNames": ["hashicorp/terraform"],
-      "matchUpdateTypes": ["minor"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/terraform", "priority/medium", "size/xs"]
-    },
-    {
-      "matchPackageNames": ["hashicorp/terraform"],
-      "matchUpdateTypes": ["patch"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/terraform", "priority/low", "size/xs"]
-    },
-    // Labels for TFlint Plugin
-    {
-      "matchManagers": ["tflint-plugin"],
+      "datasources": ["action"],
       "updateTypes": ["major"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/terraform", "dependency/terraform", "priority/high", "size/xs"]
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/github", "dependency/github", "priority/high", "size/xs"]
     },
     {
-      "matchManagers": ["tflint-plugin"],
+      "datasources": ["action"],
       "updateTypes": ["minor"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/terraform", "dependency/terraform", "priority/medium", "size/xs"]
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/github", "dependency/github", "priority/medium", "size/xs"]
     },
     {
-      "matchManagers": ["tflint-plugin"],
+      "datasources": ["action"],
       "updateTypes": ["patch"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/terraform", "dependency/terraform", "priority/low", "size/xs"]
+      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/github", "dependency/github", "priority/low", "size/xs"]
     },
     // Labels for Docker
     {
@@ -79,54 +78,6 @@
       "datasources": ["docker"],
       "updateTypes": ["patch"],
       "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/docker", "priority/low", "size/xs"]
-    },
-    // Labels for Helm
-    {
-      "datasources": ["helm"],
-      "updateTypes": ["major"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/helm", "priority/high", "size/xs"]
-    },
-    {
-      "datasources": ["helm"],
-      "updateTypes": ["minor"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/helm", "priority/medium", "size/xs"]
-    },
-    {
-      "datasources": ["helm"],
-      "updateTypes": ["patch"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/helm", "priority/low", "size/xs"]
-    },
-    // Labels for Ansible
-    {
-      "datasources": ["galaxy", "galaxy-collection"],
-      "updateTypes": ["major"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/ansible", "priority/high", "size/xs"]
-    },
-    {
-      "datasources": ["galaxy", "galaxy-collection"],
-      "updateTypes": ["minor"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/ansible", "priority/medium", "size/xs"]
-    },
-    {
-      "datasources": ["galaxy", "galaxy-collection"],
-      "updateTypes": ["patch"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/ansible", "priority/low", "size/xs"]
-    },
-    // Labels for Github Actions
-    {
-      "matchManagers": ["github-actions"],
-      "updateTypes": ["major"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/github", "priority/high", "size/xs"]
-    },
-    {
-      "matchManagers": ["github-actions"],
-      "updateTypes": ["minor"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/github", "priority/medium", "size/xs"]
-    },
-    {
-      "matchManagers": ["github-actions"],
-      "updateTypes": ["patch"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/github", "priority/low", "size/xs"]
     },
     // Labels for Github Tags
     {
