@@ -15,21 +15,23 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: teleport-swan
-  currentCluster: teleport-swan
+  currentContext: arn:aws:eks:eu-west-1:326954429656:cluster/k8s-cluster
+  currentCluster: arn:aws:eks:eu-west-1:326954429656:cluster/k8s-cluster
   clusters:
     arn:aws:eks:eu-west-1:326954429656:cluster/k8s-cluster:
       namespace:
-        active: federation-master
+        active: gitlab-managed-apps
         lockFavorites: false
         favorites:
+        - gitlab-managed-apps
+        - opencost
         - all
         - payment-master
         - federation-master
         - monitoring
         - default
       view:
-        active: po
+        active: deploy
       featureGates:
         nodeShell: false
       shellPod:
@@ -65,7 +67,7 @@ k9s:
       portForwardAddress: localhost
     k3s-portefaix-homelab:
       namespace:
-        active: logging
+        active: opentelemetry
         lockFavorites: false
         favorites:
         - logging
@@ -75,7 +77,7 @@ k9s:
         - tracing
         - default
       view:
-        active: po
+        active: pod
       featureGates:
         nodeShell: false
       shellPod:

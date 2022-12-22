@@ -26,29 +26,32 @@ export MANPATH
 export TMPDIR=/tmp/${USER}
 [ -d /tmp/${USER} ] || mkdir /tmp/${USER}
 
-export APPLICATIONS_HOME=${HOME}/Applications
-export PERSONAL_DIR=${HOME}/.config/personal
-export WORK_HOME=${HOME}/Work
-export PROJECTS_HOME=${HOME}/Projects
+export APPLICATIONS_HOME="${HOME}/Applications"
+export PERSONAL_DIR="${HOME}/.config/personal"
+export WORK_HOME="${HOME}/Work"
+export PROJECTS_HOME="${HOME}/Projects"
 
 # ASDF-VM
 [ -f /opt/asdf-vm/asdf.sh ] && . /opt/asdf-vm/asdf.sh
 # [ -f ${HOME}/ ] && . ${HOME}/.asdf/installs/gcloud/347.0.0/completion.zsh.inc
+# Homebrew
+export PATH="${PATH}:/opt/homebrew/bin/"
 
 # Emacs lisp
 export PATH="${HOME}/.cask/bin:${PATH}"
 export PATH="${HOME}/.evm/bin:${PATH}"
 
 # Golang
-export GOPATH=${APPLICATIONS_HOME}/golang
-export GOROOT=${APPLICATIONS_HOME}/go
-export PATH=${PATH}:${GOPATH}/bin:${GOROOT}/bin
+export GOPATH="${APPLICATIONS_HOME}/golang"
+# export GOROOT="${APPLICATIONS_HOME}/golang"
+export GOBIN="${GOPATH}/bin"
+export PATH="${PATH}:${GOPATH}/bin:${GOBIN}"
 
 # Rust
-export RUST_SRC_PATH=${APPLICATIONS_HOME}/rust/src
-export PATH=${PATH}:${RUST_SRC_PATH}/usr/local/bin
-export PATH=${PATH}:${HOME}/.cargo/bin/
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${RUST_SRC_PATH}/usr/local/lib
+export RUST_SRC_PATH="${APPLICATIONS_HOME}/rust/src"
+export PATH="${PATH}:${RUST_SRC_PATH}/usr/local/bin"
+export PATH="${PATH}:${HOME}/.cargo/bin/"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${RUST_SRC_PATH}/usr/local/lib"
 
 # Python
 export PATH="${HOME}/.poetry/bin:${PATH}"
@@ -58,8 +61,8 @@ export PATH="${HOME}/.gem/ruby/3.0.0/bin:${PATH}"
 export PATH="${HOME}/.local/share/gem/ruby/3.0.0/bin:${PATH}"
 
 # Erlang
-export ERLANG_HOME=${APPLICATIONS_HOME}/otp_src
-export PATH=${PATH}:${ERLANG_HOME}/bin/
+export ERLANG_HOME="${APPLICATIONS_HOME}/otp_src"
+export PATH="${PATH}:${ERLANG_HOME}/bin/"
 
 # Java
 # export JAVA_HOME=${APPLICATIONS_HOME}/jre

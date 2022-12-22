@@ -71,7 +71,9 @@ if command "glab" > /dev/null 2>&1; then
   glab completion -s zsh > "${HOME}/.local/share/zsh/site-functions/_glab"
 fi
 
-
+if [ -f "/opt/homebrew/bin/brew" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 autoload -Uz compinit
 compinit
