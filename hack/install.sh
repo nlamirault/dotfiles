@@ -77,6 +77,7 @@ function install_apps {
 	create_link ".config/kitty"
 	create_link ".config/wal"
 	create_link ".config/zellij"
+	create_link ".config/yabai"
 	mkdir -p ${HOME}/.config/Code/User
 	create_link ".config/Code/User/settings.json"
 	# create_link ""
