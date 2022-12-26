@@ -31,8 +31,8 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: arn:aws:eks:eu-west-1:326954429656:cluster/k8s-cluster
-  currentCluster: arn:aws:eks:eu-west-1:326954429656:cluster/k8s-cluster
+  currentContext: teleport-swan-teleport-swan
+  currentCluster: teleport-swan
   clusters:
     arn:aws:eks:eu-west-1:326954429656:cluster/k8s-cluster:
       namespace:
@@ -107,7 +107,7 @@ k9s:
       portForwardAddress: localhost
     teleport-swan:
       namespace:
-        active: federation-prod
+        active: payment-prod
         lockFavorites: false
         favorites:
         - federation-master

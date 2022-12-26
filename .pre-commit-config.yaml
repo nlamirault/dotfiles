@@ -43,3 +43,11 @@ repos:
     - --license-filepath
     - LICENSE
     # - --remove-header
+  - id: insert-license
+    files: (\.kdl)
+    args:
+    - --license-filepath
+    - LICENSE
+    - --comment-style
+    - //
+    # - --remove-header
