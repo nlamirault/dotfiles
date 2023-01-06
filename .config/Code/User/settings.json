@@ -28,7 +28,6 @@
     "terminal.integrated.fontFamily": "'Hack Nerd Font Mono'",
     "redhat.telemetry.enabled": false,
     "[yaml]": {
-        "editor.defaultFormatter": "kennylong.kubernetes-yaml-formatter",
         "editor.formatOnSave": false,
     },
     "workbench.iconTheme": "vscode-icons",
