@@ -47,7 +47,7 @@ function install_binaries {
 }
 
 function install_share {
-	mkdir -p "${HOME}/.config"
+	mkdir -p "${HOME}/.local/share"
 	create_link ".local/share/backgrounds"
 	create_link ".local/share/man"
 	create_link ".local/share/icons"
