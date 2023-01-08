@@ -21,7 +21,7 @@ BASE_DIR=$(pwd)
 function create_link() {
 	local dir=$1
 
-	test -L ${HOME}/${dir} || ln -fs ${BASE_DIR}/${dir} ${HOME}/${dir}
+	test -L "${HOME}/${dir}" || ln -fs "${BASE_DIR}/${dir}" "${HOME}/${dir}"
 }
 
 function install_shell {
@@ -36,7 +36,7 @@ function install_shell {
 }
 
 function install_binaries {
-	mkdir -p ${HOME}/bin
+	mkdir -p "${HOME}/bin"
 	create_link "/bin/tmux-lam.sh"
 	create_link "/bin/tmux-perso.sh"
 	create_link "/bin/tmux-zeiot.sh"
@@ -47,13 +47,14 @@ function install_binaries {
 }
 
 function install_share {
+	mkdir -p "${HOME}/.config"
 	create_link ".local/share/backgrounds"
 	create_link ".local/share/man"
 	create_link ".local/share/icons"
 }
 
 function install_apps {
-	mkdir -p ${HOME}/.config
+	mkdir -p "${HOME}/.config"
 	create_link ".gitconfig"
 	create_link ".gtkrc-2.0"
 	create_link ".htop"
@@ -80,14 +81,14 @@ function install_apps {
 	create_link ".config/wal"
 	create_link ".config/zellij"
 	create_link ".config/yabai"
-	mkdir -p ${HOME}/.config/Code/User
+	mkdir -p "${HOME}/.config/Code/User"
 	create_link ".config/Code/User/settings.json"
 	# create_link ""
 	# create_link ""
 }
 
 function install_ssh {
-	mkdir -p ${HOME}/.ssh
+	mkdir -p "${HOME}/.ssh"
 	create_link ".ssh/config"
 	create_link ".ssh/personal"
 }
