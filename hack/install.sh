@@ -44,6 +44,8 @@ function install_binaries {
 	create_link "/bin/alacritty-perso.sh"
 	create_link "/bin/zellij.sh"
 	create_link "/bin/yk-reset.sh"
+	cd "${HOME}"
+	create_link ".tool-versions"
 }
 
 function install_share {
