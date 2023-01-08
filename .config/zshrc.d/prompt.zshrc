@@ -111,6 +111,8 @@ if [  "$TERM" != "linux" ]; then
     eval "$(starship init zsh)"
   elif [ -f /usr/bin/starship ]; then
     eval "$(starship init zsh)"
+  elif [ -f /usr/local/bin/starship ]; then
+    eval "$(starship init zsh)"
   elif [ -f "$HOME/bin/powerline-go" ]; then
     install_powerline_precmd
   else
