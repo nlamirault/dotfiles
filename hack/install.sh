@@ -79,6 +79,7 @@ function install_apps {
 	create_link ".config/tmux"
 	create_link ".config/alacritty"
 	create_link ".config/termite"
+	create_link ".config/sketchybar"
 	create_link ".config/kitty"
 	create_link ".config/wal"
 	create_link ".config/zellij"
