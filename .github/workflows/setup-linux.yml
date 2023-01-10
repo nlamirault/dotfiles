@@ -30,13 +30,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.3.0
 
-      - name: Install dependencies
-        run: |
-          git clone https://github.com/bats-core/bats-core.git
-          cd bats-core
-          ./install.sh /usr/local
+      # - name: Install dependencies
+      #   run: |
+      #     git clone https://github.com/bats-core/bats-core.git
+      #     cd bats-core
+      #     sudo ./install.sh /usr/local
+
+      - uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 18
+      - run: npm install -g bats
+      - run: bats -v
 
       - name: Tests
         run: |
+          export TERM=xterm
           ./hack/install.sh
-          ./hack/test.sh
+          bats -p tests

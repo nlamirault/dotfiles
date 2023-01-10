@@ -1,3 +1,5 @@
+#!/usr/bin/sh
+
 # Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,34 +16,10 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-name: Test / MacOS
+SKETCHYBAR_DIR="${HOME}/.config/sketchybar"
 
-on:
-  # - push
-  pull_request:
-    branches:
-      - master
+export SKETCHYBAR_ITEM_DIR="${SKETCHYBAR_DIR}/items"
+export SKETCHYBAR_PLUGIN_DIR="${SKETCHYBAR_DIR}/plugins"
 
-jobs:
-  test:
-    runs-on: macos-latest
-    steps:
-
-      - name: Checkout
-        uses: actions/checkout@v3.3.0
-
-      # - name: Install dependencies
-      #   run: |
-      #     brew install bats-core
-
-      - uses: actions/setup-node@v3.6.0
-        with:
-          node-version: 18
-      - run: npm install -g bats
-      - run: bats -v
-
-      - name: Tests
-        run: |
-          export TERM=xterm
-          ./hack/install.sh
-          bats -p tests
+. "${SKETCHYBAR_DIR}/config/colors.sh"
+. "${SKETCHYBAR_DIR}/config/icons.sh"

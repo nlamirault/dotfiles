@@ -1,3 +1,5 @@
+#!/bin/env sh
+
 # Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,34 +16,13 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-name: Test / MacOS
+. "${HOME}/.config/sketchybar/env.sh"
 
-on:
-  # - push
-  pull_request:
-    branches:
-      - master
+TOPMEM=$(ps axo "rss,ucomm" | sort -nr | tail +1 | head -n1 | awk '{printf "%.0fMB %s\n", $1 / 1024, $2}' | sed -e 's/com.apple.//g')
+MEM=$(echo "${TOPMEM}" | sed -nr 's/([^MB]+).*/\1/p')
 
-jobs:
-  test:
-    runs-on: macos-latest
-    steps:
-
-      - name: Checkout
-        uses: actions/checkout@v3.3.0
-
-      # - name: Install dependencies
-      #   run: |
-      #     brew install bats-core
-
-      - uses: actions/setup-node@v3.6.0
-        with:
-          node-version: 18
-      - run: npm install -g bats
-      - run: bats -v
-
-      - name: Tests
-        run: |
-          export TERM=xterm
-          ./hack/install.sh
-          bats -p tests
+if [ "${MEM}" -gt 2048 ]; then
+  sketchybar -m --set "${NAME}" label=" ${TOPMEM}" drawing=on
+else
+  sketchybar -m --set "${NAME}" label="" drawing=off
+fi

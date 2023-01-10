@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,34 +16,26 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-name: Test / MacOS
+. "${HOME}/.config/sketchybar/env.sh"
 
-on:
-  # - push
-  pull_request:
-    branches:
-      - master
+COUNT=$(brew outdated | wc -l | tr -d ' ')
 
-jobs:
-  test:
-    runs-on: macos-latest
-    steps:
+COLOR=${RED}
 
-      - name: Checkout
-        uses: actions/checkout@v3.3.0
+case "$COUNT" in
+  [3-5][0-9])
+    COLOR=${ORANGE}
+    ;;
+  [1-2][0-9])
+    COLOR=${YELLOW}
+    ;;
+  [1-9])
+    COLOR=${WHITE}
+    ;;
+  0)
+    COLOR=${GREEN}
+    COUNT=􀆅
+    ;;
+esac
 
-      # - name: Install dependencies
-      #   run: |
-      #     brew install bats-core
-
-      - uses: actions/setup-node@v3.6.0
-        with:
-          node-version: 18
-      - run: npm install -g bats
-      - run: bats -v
-
-      - name: Tests
-        run: |
-          export TERM=xterm
-          ./hack/install.sh
-          bats -p tests
+sketchybar --set "${NAME}" label="${COUNT}" icon.color="${COLOR}"

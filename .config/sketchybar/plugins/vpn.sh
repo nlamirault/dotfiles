@@ -1,3 +1,5 @@
+#!/bin/env bash
+
 # Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,34 +16,12 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-name: Test / MacOS
+. "${HOME}/.config/sketchybar/env.sh"
 
-on:
-  # - push
-  pull_request:
-    branches:
-      - master
+VPN=$(scutil --nc list | grep Connected | sed -E 's/.*"(.*)".*/\1/')
 
-jobs:
-  test:
-    runs-on: macos-latest
-    steps:
-
-      - name: Checkout
-        uses: actions/checkout@v3.3.0
-
-      # - name: Install dependencies
-      #   run: |
-      #     brew install bats-core
-
-      - uses: actions/setup-node@v3.6.0
-        with:
-          node-version: 18
-      - run: npm install -g bats
-      - run: bats -v
-
-      - name: Tests
-        run: |
-          export TERM=xterm
-          ./hack/install.sh
-          bats -p tests
+if [[ "${VPN}" != "" ]]; then
+  sketchybar -m --set vpn icon= label="${VPN}" drawing=on
+else
+  sketchybar -m --set vpn drawing=off
+fi

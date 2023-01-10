@@ -1,3 +1,5 @@
+#!/bin/env sh
+
 # Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,34 +16,15 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-name: Test / MacOS
+. "${HOME}/.config/sketchybar/env.sh"
 
-on:
-  # - push
-  pull_request:
-    branches:
-      - master
-
-jobs:
-  test:
-    runs-on: macos-latest
-    steps:
-
-      - name: Checkout
-        uses: actions/checkout@v3.3.0
-
-      # - name: Install dependencies
-      #   run: |
-      #     brew install bats-core
-
-      - uses: actions/setup-node@v3.6.0
-        with:
-          node-version: 18
-      - run: npm install -g bats
-      - run: bats -v
-
-      - name: Tests
-        run: |
-          export TERM=xterm
-          ./hack/install.sh
-          bats -p tests
+sketchybar \
+    --add item battery right                                   \
+    --set battery script="${SKETCHYBAR_PLUGIN_DIR}/battery.sh" \
+                  icon.font="${FONT}:Regular:19.0"             \
+                  padding_right=5                              \
+                  padding_left=0                               \
+                  label.drawing=off                            \
+                  update_freq=120                              \
+                  updates=on                                   \
+    --subscribe battery power_source_change system_woke

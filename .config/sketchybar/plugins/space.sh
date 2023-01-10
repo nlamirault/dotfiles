@@ -1,3 +1,5 @@
+#!/bin/env sh
+
 # Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,34 +16,30 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-name: Test / MacOS
+. "${HOME}/.config/sketchybar/env.sh"
 
-on:
-  # - push
-  pull_request:
-    branches:
-      - master
+update() {
+  WIDTH="dynamic"
+  if [ "$SELECTED" = "true" ]; then
+    WIDTH="0"
+  fi
 
-jobs:
-  test:
-    runs-on: macos-latest
-    steps:
+  sketchybar --animate tanh 20 --set $NAME icon.highlight=$SELECTED label.width=$WIDTH
 
-      - name: Checkout
-        uses: actions/checkout@v3.3.0
+}
 
-      # - name: Install dependencies
-      #   run: |
-      #     brew install bats-core
+mouse_clicked() {
+  if [ "$BUTTON" = "right" ]; then
+    yabai -m space --destroy $SID
+    sketchybar --trigger space_change
+  else
+    yabai -m space --focus $SID 2>/dev/null
+  fi
+}
 
-      - uses: actions/setup-node@v3.6.0
-        with:
-          node-version: 18
-      - run: npm install -g bats
-      - run: bats -v
-
-      - name: Tests
-        run: |
-          export TERM=xterm
-          ./hack/install.sh
-          bats -p tests
+case "$SENDER" in
+  "mouse.clicked") mouse_clicked
+  ;;
+  *) update
+  ;;
+esac
