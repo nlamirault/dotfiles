@@ -39,4 +39,4 @@ jobs:
       - name: Tests
         run: |
           ./hack/install.sh
-          ./hack/test.sh
+          bats -p tests
