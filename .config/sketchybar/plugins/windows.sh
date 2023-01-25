@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 #
