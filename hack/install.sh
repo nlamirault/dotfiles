@@ -44,7 +44,7 @@ function install_binaries {
 	create_link "/bin/alacritty-perso.sh"
 	create_link "/bin/zellij.sh"
 	create_link "/bin/yk-reset.sh"
-	cd "${HOME}"
+	cd "${HOME}" || exit
 	create_link ".tool-versions"
 }
 
@@ -58,7 +58,6 @@ function install_share {
 function install_apps {
 	mkdir -p "${HOME}/.config"
 	create_link ".gitconfig"
-	create_link ".gtkrc-2.0"
 	create_link ".htop"
 	create_link ".editorconfig"
 	create_link ".tmux.conf"
@@ -67,27 +66,31 @@ function install_apps {
 	create_link ".config/user-dirs.locale"
 	create_link ".config/mimeapps.list"
 	create_link ".config/autostart"
-	create_link ".config/redshift"
 	create_link ".config/starship.toml"
-	create_link ".config/i3"
-	create_link ".config/conky"
-	create_link ".config/rofi"
-	create_link ".config/dunst"
-	create_link ".config/polybar"
-	create_link ".config/sway"
-	create_link ".config/i3status-rs"
 	create_link ".config/tmux"
 	create_link ".config/alacritty"
-	create_link ".config/termite"
-	create_link ".config/sketchybar"
 	create_link ".config/kitty"
-	create_link ".config/wal"
 	create_link ".config/zellij"
-	create_link ".config/yabai"
 	mkdir -p "${HOME}/.config/Code/User"
 	create_link ".config/Code/User/settings.json"
-	# create_link ""
-	# create_link ""
+
+	if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+		create_link ".gtkrc-2.0"
+		create_link ".config/i3status-rs"
+		create_link ".config/i3"
+		create_link ".config/conky"
+		create_link ".config/rofi"
+		create_link ".config/dunst"
+		create_link ".config/polybar"
+		create_link ".config/sway"
+		create_link ".config/wal"
+		create_link ".config/redshift"
+		create_link ".config/termite"
+
+	elif [[ "$OSTYPE" == "darwin"* ]]; then
+		create_link ".config/sketchybar"
+		create_link ".config/yabai"
+	fi
 }
 
 function install_ssh {
@@ -101,5 +104,3 @@ install_binaries
 install_ssh
 install_share
 install_apps
-
-
