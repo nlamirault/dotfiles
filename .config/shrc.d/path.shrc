@@ -33,11 +33,14 @@ export PERSONAL_DIR="${HOME}/.config/personal"
 export WORK_HOME="${HOME}/Work"
 export PROJECTS_HOME="${HOME}/Projects"
 
+# Homebrew
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export PATH="${PATH}:/opt/homebrew/bin/"
+fi
+
 # ASDF-VM
 [ -f /opt/asdf-vm/asdf.sh ] && . /opt/asdf-vm/asdf.sh
 # [ -f ${HOME}/ ] && . ${HOME}/.asdf/installs/gcloud/347.0.0/completion.zsh.inc
-# Homebrew
-export PATH="${PATH}:/opt/homebrew/bin/"
 
 # Emacs lisp
 export PATH="${HOME}/.cask/bin:${PATH}"

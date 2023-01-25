@@ -113,9 +113,11 @@ if [  "$TERM" != "linux" ]; then
     eval "$(starship init zsh)"
   elif [ -f /usr/local/bin/starship ]; then
     eval "$(starship init zsh)"
-  elif [ -f "$HOME/bin/powerline-go" ]; then
-    install_powerline_precmd
-  else
-    PROMPT='%F{255}%K{0}  %M %k%f%F{0}%K{27} %F{255}%K{27} %2~ %k%f%F{27}%K{208} $(git_prompt) %k%f%F{208}%K{0}%F{255}%K{0}  %F{0}%K{232} $(kube_prompt) %{$reset_color%} '
+  elif [ -f /opt/homebrew/bin/starship ]; then
+    eval "$(starship init zsh)"
+  # elif [ -f "$HOME/bin/powerline-go" ]; then
+  #   install_powerline_precmd
+  # else
+  #   PROMPT='%F{255}%K{0}  %M %k%f%F{0}%K{27} %F{255}%K{27} %2~ %k%f%F{27}%K{208} $(git_prompt) %k%f%F{208}%K{0}%F{255}%K{0}  %F{0}%K{232} $(kube_prompt) %{$reset_color%} '
   fi
 fi
