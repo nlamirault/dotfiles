@@ -89,6 +89,7 @@ function install_apps {
 	elif [[ "$OSTYPE" == "darwin"* ]]; then
 		create_link ".config/sketchybar"
 		create_link ".config/yabai"
+		create_link ".config/skhd"
 	fi
 }
 
