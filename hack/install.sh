@@ -56,7 +56,6 @@ function install_share {
 }
 
 function install_apps {
-	mkdir -p "${HOME}/.config"
 	create_link ".gitconfig"
 	create_link ".htop"
 	create_link ".editorconfig"
@@ -99,6 +98,7 @@ function install_ssh {
 	create_link ".ssh/personal"
 }
 
+mkdir -p "${HOME}/.config"
 install_shell
 install_binaries
 install_ssh
