@@ -1,31 +1,13 @@
-#!/bin/env sh
-
-# Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-# SPDX-License-Identifier: Apache-2.0
-
-. "${HOME}/.config/sketchybar/env.sh"
+#!/usr/bin/env sh
 
 # Trigger the brew_udpate event when brew update or upgrade is run from cmdline
 # e.g. via function in .zshrc
 
-sketchybar \
-    --add event brew_update                              \
-    --add item brew right                                \
-    --set brew script="${SKETCHYBAR_PLUGIN_DIR}/brew.sh" \
-          icon=􀐛                                         \
-          label=?                                        \
-          padding_right=10                               \
-    --subscribe brew brew_update
+sketchybar --add event brew_update                 \
+           --add item brew right                   \
+           --set brew script="$PLUGIN_DIR/brew.sh" \
+                      icon=􀐛                       \
+                      label=?                      \
+                      background.padding_right=15  \
+          --subscribe brew brew_update
+

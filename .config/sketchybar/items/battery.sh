@@ -1,30 +1,11 @@
-#!/bin/env sh
-
-# Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-# SPDX-License-Identifier: Apache-2.0
-
-. "${HOME}/.config/sketchybar/env.sh"
-
-sketchybar \
-    --add item battery right                                   \
-    --set battery script="${SKETCHYBAR_PLUGIN_DIR}/battery.sh" \
-                  icon.font="${FONT}:Regular:19.0"             \
-                  padding_right=5                              \
-                  padding_left=0                               \
-                  label.drawing=off                            \
-                  update_freq=120                              \
-                  updates=on                                   \
-    --subscribe battery power_source_change system_woke
+sketchybar  --add       item        battery     right                       \
+            --set       battery     script="$PLUGIN_DIR/battery.sh"         \
+                                    update_freq=5                           \
+                                    label.font="$FONT:Light:20.0"           \
+                                    icon.font="$FONT:Semibold:12.0"         \
+                                    label.color=$WHITE                      \
+                                    icon.color=$WHITE \
+                                    icon.padding_right=4 \
+                                    label.padding_right=10 \
+                                    label.padding_left=5 \
+            --subscribe battery     system_woke
