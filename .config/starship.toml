@@ -36,7 +36,6 @@ add_newline = false
 # """
 
 format = """\
-    $os\
     $username\
     $hostname\
     $directory\

@@ -70,8 +70,6 @@ function install_apps {
 	create_link ".config/alacritty"
 	create_link ".config/kitty"
 	create_link ".config/zellij"
-	mkdir -p "${HOME}/.config/Code/User"
-	create_link ".config/Code/User/settings.json"
 
 	if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 		create_link ".gtkrc-2.0"
@@ -85,11 +83,15 @@ function install_apps {
 		create_link ".config/wal"
 		create_link ".config/redshift"
 		create_link ".config/termite"
+		mkdir -p "${HOME}/.config/Code/User"
+		create_link ".config/Code/User/settings.json"
 
 	elif [[ "$OSTYPE" == "darwin"* ]]; then
 		create_link ".config/sketchybar"
 		create_link ".config/yabai"
 		create_link ".config/skhd"
+		mkdir -p "${HOME}/Library/Application Support/Code/User"
+		ln -fs "${BASE_DIR}/.config/Code/User/settings.json" "${HOME}/Library/Application Support/Code/User"
 	fi
 }
 

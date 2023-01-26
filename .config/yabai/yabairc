@@ -16,100 +16,212 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-### Variables ###
-
-export external_bar_height="24"   # Height of top bar in pt                                         (usage: 24/16/any number)
-export shadow_toggle="off"        # Determines wether window shadows are on                         (usage: on/off)
-export border_toggle="on"         # Determines wether borders for active windows are on             (usage: on/off)
-export border_width="2"           # Determines the width of the active window's border              (usage: 2/5/any number)
-export border_radius="11"         # radius of the active window's border                            (usage: 11/0/any number)
-export opacity_toggle="off"       # Detriments wether opacity based focus is on                     (usage: on/off)
-export layout="bsp"               # Layout of windows                                               (usage: bsp/float/stack)
-export gap_width="35"             # width of window gaps                                            (usage: 17/8/any number)
-export animation_duration="0"     # Window animation duration                                       (usage: 0.0/0.3/0.5)
-
-### Load scriptting adittion ##
 sudo yabai --load-sa
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"  # If yabai detected that i loaded the scripting addition, restart yabai
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
-### Focus the window that is hoverd with the mouse ###
-yabai -m config focus_follows_mouse autoraise
+# Spaces
+yabai -m space 1 --label "1"
+yabai -m space 2 --label "2"
+yabai -m space 3 --label "3"
+yabai -m space 4 --label "4"
+yabai -m space 5 --label "5"
+yabai -m space 6 --label "6"
+yabai -m space 7 --label "7"
+yabai -m space 8 --label "8"
 
-### Toggles ###
-yabai -m config external_bar all:$external_bar_height:0          # height of external bar (configured in variables)
-yabai -m config window_shadow $shadow_toggle                     # turn on/off window shadows (configured in variables)
-yabai -m config layout $layout                                   # set layout (configured in variables)
-yabai -m config window_animation_duration $animation_duration    # Set animation duration (configured in variables)
-yabai -m config window_border_radius $border_radius              # set border radius (configured in variables)
+# global settings
+yabai -m config window_shadow                off
+yabai -m config mouse_follows_focus          off
+yabai -m config focus_follows_mouse          off
+yabai -m config window_placement             second_child
+yabai -m config window_topmost               off
+yabai -m config insert_feedback_color        0xffd75f5f
+yabai -m config split_ratio                  0.50
+yabai -m config auto_balance                 off
+yabai -m config mouse_modifier               fn
+yabai -m config mouse_action1                move
+yabai -m config mouse_action2                resize
+yabai -m config mouse_drop_action            swap
 
-### Configure opacity based focus ###
-yabai -m config window_opacity             $opacity_toggle      # Turn on/off opacity based focus (configured in variables)
-yabai -m config window_opacity_duration    0.2                  # Time it takes to fade between windows
-yabai -m config active_window_opacity      1.0                  # opacity for the focused window
-yabai -m config normal_window_opacity      0.9                  # opacity for other windows
+# window opacities
+yabai -m config window_opacity               off
+yabai -m config window_opacity_duration      0.1
+yabai -m config active_window_opacity        1.0
+yabai -m config normal_window_opacity        0.95
 
-### Confgure mouse usage ###
-yabai -m config mouse_modifier               ctrl
+# window borders
+yabai -m config window_border                off
+yabai -m config window_border_width          0.1
+yabai -m config active_window_border_color   0x00292929
+yabai -m config normal_window_border_color   0x00292929
+
+# general space settings
+yabai -m config layout                       bsp
+yabai -m config bottom_padding               0
+yabai -m config left_padding                 0
+yabai -m config right_padding                0
+yabai -m config window_gap                   0
+
+# Mouse support
+yabai -m config mouse_modifier               alt
 yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
 
 
-### Configure window borders ###
-yabai -m config window_border $border_toggle            # Turn on/off window borders (configured in variables)
-yabai -m config window_border_width $border_width       # Set border width (configured in variables)
-yabai -m config active_window_border_color 0xFF6faec0   # Set border color for the active window
-yabai -m config normal_window_border_color 0xFF3e4050   # set border color for other windows
+# rules
+# exceptions
+yabai -m rule --add app='^Spotify$' manage=on
+yabai -m rule --add app='^Signal$' manage=off
+yabai -m rule --add app='^Preview$' manage=off
+yabai -m rule --add app='^Finder$' manage=on
+yabai -m rule --add app='^System Information$' manage=off
+yabai -m rule --add app='^System Preferences$' manage=off
+yabai -m rule --add title='Preferences$' manage=off
+yabai -m rule --add title='Settings$' manage=off
 
-### Configure window gaps ###
-yabai -m config top_padding                8   # Top gap width (configured in variables)
-yabai -m config bottom_padding             10   # Bottom gap width (configured in variables)
-yabai -m config left_padding               10   # left gap width (configured in variables)
-yabai -m config right_padding              10   # right gap width (configured in variables)
-yabai -m config window_gap                 8   # inside gap width (configured in variables)
+echo "yabai configuration loaded.."
 
-### Window rules/exeptions ###
-yabai -m rule --add app="^(Calculator||Spotify|zoom.us|Photo Booth|Archive Utility|System Settings|Karabiner-EventViewer|Karabiner-Elements|Alfred Preferences|)$" manage=off  # Don't tile unresizable apps
 
-### Space labels ###
 
-function setup_space {
-  local idx="$1"
-  local name="$2"
-  local space=
-  echo "setup space $idx : $name"
 
-  space=$(yabai -m query --spaces --space "$idx")
-  if [ -z "$space" ]; then
-    yabai -m space --create
-  fi
 
-  yabai -m space "$idx" --label "$name"
-}
+# ### Variables ###
 
-setup_space 1 home
-setup_space 2 workterm
-setup_space 3 chat
-setup_space 4 workterm
-setup_space 5 misc
-setup_space 6 myweb
-setup_space 7 music
-setup_space 8 myterm
+# export external_bar_height="24"   # Height of top bar in pt                                         (usage: 24/16/any number)
+# export shadow_toggle="off"        # Determines wether window shadows are on                         (usage: on/off)
+# export border_toggle="on"         # Determines wether borders for active windows are on             (usage: on/off)
+# export border_width="2"           # Determines the width of the active window's border              (usage: 2/5/any number)
+# export border_radius="11"         # radius of the active window's border                            (usage: 11/0/any number)
+# export opacity_toggle="off"       # Detriments wether opacity based focus is on                     (usage: on/off)
+# export layout="bsp"               # Layout of windows                                               (usage: bsp/float/stack)
+# export gap_width="35"             # width of window gaps                                            (usage: 17/8/any number)
+# export animation_duration="0"     # Window animation duration                                       (usage: 0.0/0.3/0.5)
 
-# yabai -m rule --add app="^Brave Browser$" space=^2
+# ### Load scriptting adittion ##
+# sudo yabai --load-sa
+# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"  # If yabai detected that i loaded the scripting addition, restart yabai
 
-### Sketchybar ###
-yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"         # Notify sketchybar when space changes
-yabai -m signal --add event=window_title_changed action="sketchybar --trigger title_change"   # Notify sketchybar when the focused app changes
+# ### Focus the window that is hoverd with the mouse ###
+# yabai -m config focus_follows_mouse autoraise
+
+# ### Toggles ###
+# yabai -m config external_bar all:$external_bar_height:0          # height of external bar (configured in variables)
+# yabai -m config window_shadow $shadow_toggle                     # turn on/off window shadows (configured in variables)
+# yabai -m config layout $layout                                   # set layout (configured in variables)
+# yabai -m config window_animation_duration $animation_duration    # Set animation duration (configured in variables)
+# yabai -m config window_border_radius $border_radius              # set border radius (configured in variables)
+
+# ### Configure opacity based focus ###
+# yabai -m config window_opacity             $opacity_toggle      # Turn on/off opacity based focus (configured in variables)
+# yabai -m config window_opacity_duration    0.2                  # Time it takes to fade between windows
+# yabai -m config active_window_opacity      1.0                  # opacity for the focused window
+# yabai -m config normal_window_opacity      0.9                  # opacity for other windows
+
+# ### Confgure mouse usage ###
+# yabai -m config mouse_modifier               ctrl
+# yabai -m config mouse_action1                move
+# yabai -m config mouse_action2                resize
+
+
+# ### Configure window borders ###
+# yabai -m config window_border $border_toggle            # Turn on/off window borders (configured in variables)
+# yabai -m config window_border_width $border_width       # Set border width (configured in variables)
+# yabai -m config active_window_border_color 0xFF6faec0   # Set border color for the active window
+# yabai -m config normal_window_border_color 0xFF3e4050   # set border color for other windows
+
+# ### Configure window gaps ###
+# yabai -m config top_padding                8   # Top gap width (configured in variables)
+# yabai -m config bottom_padding             10   # Bottom gap width (configured in variables)
+# yabai -m config left_padding               10   # left gap width (configured in variables)
+# yabai -m config right_padding              10   # right gap width (configured in variables)
+# yabai -m config window_gap                 8   # inside gap width (configured in variables)
+
+# ### Window rules/exeptions ###
+# yabai -m rule --add app="^(Calculator||Spotify|zoom.us|Photo Booth|Archive Utility|System Settings|Karabiner-EventViewer|Karabiner-Elements|Alfred Preferences|)$" manage=off  # Don't tile unresizable apps
+
+# ### Space labels ###
+
+# function setup_space {
+#   local idx="$1"
+#   local name="$2"
+#   local space=
+#   echo "setup space $idx : $name"
+
+#   space=$(yabai -m query --spaces --space "$idx")
+#   if [ -z "$space" ]; then
+#     yabai -m space --create
+#   fi
+
+#   yabai -m space "$idx" --label "$name"
+# }
+
+# setup_space 1 home
+# setup_space 2 workterm
+# setup_space 3 chat
+# setup_space 4 workterm
+# setup_space 5 misc
+# setup_space 6 myweb
+# setup_space 7 music
+# setup_space 8 myterm
+
+# # yabai -m rule --add app="^Brave Browser$" space=^2
+
+# ### Sketchybar ###
+# yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"         # Notify sketchybar when space changes
+# yabai -m signal --add event=window_title_changed action="sketchybar --trigger title_change"   # Notify sketchybar when the focused app changes
+
+
+
+
 
 # Do not manage some apps which are not resizable
-yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
-yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Path Finder$" manage=off
-yabai -m rule --add app="^App Store$" manage=off
-yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
+# yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
+# yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
+# yabai -m rule --add app="^System Settings$" sticky=on layer=above manage=off
+# yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
+# yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
+# yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
+# yabai -m rule --add app="^Path Finder$" manage=off
+# yabai -m rule --add app="^App Store$" manage=off
+# yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
 
-### Notify when the yabai config finished loading ###
-echo "yabai configuration loaded.."
+# ## Global settings
+# # yabai -m config focus_follows_mouse          autoraise
+# # yabai -m config focus_follows_mouse          on
+
+# # New window spawns to the right if vertical split, or bottom if horizontal split
+# yabai -m config window_placement second_child
+# yabai -m config window_topmost off
+# # yabai -m config window_shadow float
+# yabai -m config window_opacity off
+
+# yabai -m config active_window_opacity 1.0
+# # yabai -m config normal_window_opacity        0.97
+# # yabai -m config window_border                on | off
+
+# ## WTIH SIP DISABLED (Limelight build into Yabai, enable it here)
+# # yabai -m config window_border on
+# # yabai -m config window_border_width 3
+# # yabai -m config active_window_border_color 0xFFFF0000
+# # yabai -m config normal_window_border_color 0xFF414141
+# # yabai -m config insert_feedback_color        0xffd75f5f
+
+# yabai -m config auto_balance off
+# yabai -m config split_ratio 0.50
+# # # set mouse interaction modifier key (default: fn)
+# yabai -m config mouse_modifier ctrl
+# # set modifier + right-click drag to resize window (default: resize)
+# yabai -m config mouse_action2 resize
+# # set modifier + left-click drag to resize window (default: move)
+# yabai -m config mouse_action1 move
+
+# ## Change how yabai looks
+# yabai -m config layout bsp
+# yabai -m config top_padding 0
+# yabai -m config bottom_padding 0
+# yabai -m config left_padding 0
+# yabai -m config right_padding 0
+# yabai -m config window_gap 0
+
+# ### Notify when the yabai config finished loading ###
+# echo "yabai configuration loaded.."
