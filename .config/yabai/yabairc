@@ -67,17 +67,21 @@ yabai -m config mouse_modifier               alt
 yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
 
-
-# rules
-# exceptions
-yabai -m rule --add app='^Spotify$' manage=on
-yabai -m rule --add app='^Signal$' manage=off
-yabai -m rule --add app='^Preview$' manage=off
-yabai -m rule --add app='^Finder$' manage=on
+# Do not manage some apps which are not resizable
+yabai -m rule --add app="^System Settings$" sticky=on layer=above manage=off
 yabai -m rule --add app='^System Information$' manage=off
 yabai -m rule --add app='^System Preferences$' manage=off
+yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
 yabai -m rule --add title='Preferences$' manage=off
 yabai -m rule --add title='Settings$' manage=off
+yabai -m rule --add app='^Preview$' manage=off
+yabai -m rule --add app='^Finder$' manage=on
+yabai -m rule --add app="^Path Finder$" manage=off
+yabai -m rule --add app="^App Store$" manage=off
+yabai -m rule --add app='^Spotify$' manage=on
+yabai -m rule --add app='^Signal$' manage=off
+
 
 echo "yabai configuration loaded.."
 
@@ -174,16 +178,6 @@ echo "yabai configuration loaded.."
 
 
 
-# Do not manage some apps which are not resizable
-# yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
-# yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
-# yabai -m rule --add app="^System Settings$" sticky=on layer=above manage=off
-# yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
-# yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
-# yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
-# yabai -m rule --add app="^Path Finder$" manage=off
-# yabai -m rule --add app="^App Store$" manage=off
-# yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
 
 # ## Global settings
 # # yabai -m config focus_follows_mouse          autoraise

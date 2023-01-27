@@ -25,10 +25,10 @@ sketchybar --bar     height=25                                         \
                      position=top                                      \
                      sticky=on                                         \
                      padding_right=1                                   \
-                     padding_left=1                                   \
+                     padding_left=1                                    \
                      corner_radius=1                                   \
-                     y_offset=0                                       \
-                     margin=1                                         \
+                     y_offset=0                                        \
+                     margin=1                                          \
                      blur_radius=2                                    \
                      notch_width=0                                     \
                                                                        \
@@ -62,14 +62,18 @@ source "$ITEM_DIR/front_app.sh"
 # Right
 source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/battery.sh"
-# source "$ITEM_DIR/input.sh"
 source "$ITEM_DIR/brew.sh"
+# source "$ITEM_DIR/input.sh"
 # source "$ITEM_DIR/github.sh"
 # source "$ITEM_DIR/volume.sh"
 # source "$ITEM_DIR/divider.sh"
 source "$ITEM_DIR/net.sh"
-source "$ITEM_DIR/network.sh"
+# source "$ITEM_DIR/network.sh"
 source "$ITEM_DIR/cpu.sh"
+source "$ITEM_DIR/disk.sh"
+source "$ITEM_DIR/memory.sh"
+source "$ITEM_DIR/internet.sh"
+
 
 # Forcing all item scripts to run (never do this outside of sketchybarrc)
 sketchybar --update

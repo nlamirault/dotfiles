@@ -42,7 +42,7 @@ alt - right : yabai -m window --focus east
 alt - p : yabai -m window --focus stack.next || yabai -m window --focus south
 alt - n : yabai -m window --focus stack.prev || yabai -m window --focus north
 
-# move focused window to next/prev workspace
+# move focused window to other workspace
 alt + shift - 1 : yabai -m window --space 1
 alt + shift - 2 : yabai -m window --space 2
 alt + shift - 3 : yabai -m window --space 3
