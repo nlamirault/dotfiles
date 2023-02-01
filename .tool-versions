@@ -1,5 +1,5 @@
 helm 3.11.0
-awscli 2.9.17
+awscli 2.9.20
 kubectl 1.26.0
 tfsec 1.28.1
 tflint 0.42.2
