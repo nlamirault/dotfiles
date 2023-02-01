@@ -40,7 +40,6 @@ fi
 
 # ASDF-VM
 [ -f /opt/asdf-vm/asdf.sh ] && . /opt/asdf-vm/asdf.sh
-# [ -f ${HOME}/ ] && . ${HOME}/.asdf/installs/gcloud/347.0.0/completion.zsh.inc
 
 # Emacs lisp
 export PATH="${HOME}/.cask/bin:${PATH}"

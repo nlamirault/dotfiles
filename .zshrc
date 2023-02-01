@@ -87,6 +87,8 @@ fi
 if [ -e "${HOME}/.asdf/asdf.sh" ]; then
   source ${HOME}/.asdf/asdf.sh
   fpath=(${HOME}/.asdf/completions $fpath)
+elif [ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]; then
+    source /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 # END ANSIBLE MANAGED BLOCK: asdf
 
@@ -106,3 +108,4 @@ eval "$(direnv hook zsh)"
 [[ -f /home/nicolas/.rustrc ]] && source /home/nicolas/.rustrc
 
 export PATH="$HOME/.poetry/bin:$PATH"
+

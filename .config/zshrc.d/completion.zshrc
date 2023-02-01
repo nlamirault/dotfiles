@@ -43,6 +43,7 @@ K8S_BINARIES=("kubectl")
 #   fi
 # done
 
+mkdir -p "${HOME}/.local/share/zsh/site-functions"
 if [ -f "${HOME}/.asdf/shims/kubectl" ]; then
   ${HOME}/.asdf/shims/kubectl completion zsh > "${HOME}/.local/share/zsh/site-functions/_kubectl"
 fi
