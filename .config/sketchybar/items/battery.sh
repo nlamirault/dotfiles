@@ -5,7 +5,7 @@ sketchybar  --add       item        battery     right                       \
                                     icon.font="$FONT:Semibold:12.0"         \
                                     label.color=$WHITE                      \
                                     icon.color=$WHITE \
-                                    icon.padding_right=4 \
-                                    label.padding_right=10 \
-                                    label.padding_left=5 \
+                                    icon.padding_right=1 \
+                                    label.padding_right=1 \
+                                    label.padding_left=1 \
             --subscribe battery     system_woke

@@ -34,4 +34,5 @@
     "[python]": {
         "editor.formatOnType": true
     },
+    "window.commandCenter": true,
 }
