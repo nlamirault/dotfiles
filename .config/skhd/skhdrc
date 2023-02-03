@@ -30,10 +30,10 @@ alt - f : yabai -m space --layout float
 alt - s : yabai -m space --layout stack
 
 # change focus
-shift + alt - h : yabai -m window --focus west
-shift + alt - j : yabai -m window --focus south
-shift + alt - k : yabai -m window --focus north
-shift + alt - l : yabai -m window --focus east
+ctrl + shift - h : yabai -m window --focus west
+ctrl + shift - j : yabai -m window --focus south
+ctrl + shift - k : yabai -m window --focus north
+ctrl + shift - l : yabai -m window --focus east
 
 # change focus (using arrow keys)
 alt - left  : yabai -m window --focus west
@@ -42,8 +42,8 @@ alt - left  : yabai -m window --focus west
 alt - right : yabai -m window --focus east
 
 # Stack Navigation
-alt - p : yabai -m window --focus stack.next || yabai -m window --focus south
-alt - n : yabai -m window --focus stack.prev || yabai -m window --focus north
+ctrl + shift - p : yabai -m window --focus stack.next || yabai -m window --focus south
+ctrl + shift - n : yabai -m window --focus stack.prev || yabai -m window --focus north
 
 # Not working with SPI enable
 # So : in "System Preferences -> Keyboard -> shortcuts -> Mission Control" for workspace switching.
