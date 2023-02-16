@@ -84,6 +84,12 @@ esac
   if [ "${machine}" == "Mac" ]; then
     run test -d ${HOME}/.config/yabai
     [ "$status" -eq 0 ]
+
+    run test -d ${HOME}/.config/skhd
+    [ "$status" -eq 0 ]
+
+    run test -d ${HOME}/.config/sketchybar
+    [ "$status" -eq 0 ]
   fi
 
 }
