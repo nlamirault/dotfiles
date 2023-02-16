@@ -27,34 +27,7 @@ esac
   run ls ${HOME}/.config/user-dirs.locale
   [ "$status" -eq 0 ]
 
-  run ls ${HOME}/.config/mimeapps.list
-  [ "$status" -eq 0 ]
-
-  run test -d ${HOME}/.config/autostart
-  [ "$status" -eq 0 ]
-
   run ls ${HOME}/.config/starship.toml
-  [ "$status" -eq 0 ]
-
-  run test -d ${HOME}/.config/i3
-  [ "$status" -eq 0 ]
-
-  run test -d ${HOME}/.config/conky
-  [ "$status" -eq 0 ]
-
-  run test -d ${HOME}/.config/rofi
-  [ "$status" -eq 0 ]
-
-  run test -d ${HOME}/.config/dunst
-  [ "$status" -eq 0 ]
-
-  run test -d ${HOME}/.config/polybar
-  [ "$status" -eq 0 ]
-
-  run test -d ${HOME}/.config/sway
-  [ "$status" -eq 0 ]
-
-  run test -d ${HOME}/.config/i3status-rs
   [ "$status" -eq 0 ]
 
   run test -d ${HOME}/.config/tmux
@@ -63,23 +36,54 @@ esac
   run test -d ${HOME}/.config/alacritty
   [ "$status" -eq 0 ]
 
-  run test -d ${HOME}/.config/termite
-  [ "$status" -eq 0 ]
-
-  run test -d ${HOME}/.config/kitty
-  [ "$status" -eq 0 ]
-
-  run test -d ${HOME}/.config/wal
-  [ "$status" -eq 0 ]
-
   run test -d ${HOME}/.config/zellij
   [ "$status" -eq 0 ]
+
+  if [ "${machine}" == "Linux" ]; then
+    run ls ${HOME}/.config/mimeapps.list
+    [ "$status" -eq 0 ]
+
+    run test -d ${HOME}/.config/autostart
+    [ "$status" -eq 0 ]
+
+    run test -d ${HOME}/.config/sway
+    [ "$status" -eq 0 ]
+
+    run test -d ${HOME}/.config/i3status-rs
+    [ "$status" -eq 0 ]
+
+    run test -d ${HOME}/.config/i3
+    [ "$status" -eq 0 ]
+
+    run test -d ${HOME}/.config/conky
+    [ "$status" -eq 0 ]
+
+    run test -d ${HOME}/.config/rofi
+    [ "$status" -eq 0 ]
+
+    run test -d ${HOME}/.config/dunst
+    [ "$status" -eq 0 ]
+
+    run test -d ${HOME}/.config/polybar
+    [ "$status" -eq 0 ]
+
+    run test -d ${HOME}/.config/termite
+    [ "$status" -eq 0 ]
+
+    run test -d ${HOME}/.config/kitty
+    [ "$status" -eq 0 ]
+
+    run test -d ${HOME}/.config/wal
+    [ "$status" -eq 0 ]
+
+    run test -d ${HOME}/.config/Code
+    [ "$status" -eq 0 ]
+
+  fi
 
   if [ "${machine}" == "Mac" ]; then
     run test -d ${HOME}/.config/yabai
     [ "$status" -eq 0 ]
   fi
 
-  run test -d ${HOME}/.config/Code
-  [ "$status" -eq 0 ]
 }
