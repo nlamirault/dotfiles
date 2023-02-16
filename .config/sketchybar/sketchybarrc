@@ -22,7 +22,7 @@ launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /
 sketchybar --bar     height=25                                         \
                      color=$BAR_COLOR                                  \
                      shadow=on                                         \
-                     position=top                                      \
+                     position=bottom                                      \
                      sticky=on                                         \
                      padding_right=1                                   \
                      padding_left=1                                    \

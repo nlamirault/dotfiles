@@ -63,11 +63,14 @@ yabai -m config bottom_padding               0
 yabai -m config left_padding                 0
 yabai -m config right_padding                0
 yabai -m config window_gap                   0
+yabai -m config top_padding                  0
 
 # Mouse support
 yabai -m config mouse_modifier               alt
 yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
+
+yabai -m config external_bar all:0:25
 
 # Do not manage some apps which are not resizable
 yabai -m rule --add app="^System Settings$" sticky=on layer=above manage=off
