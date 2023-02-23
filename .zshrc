@@ -81,10 +81,6 @@ if [[ "$-" == *x* ]]; then
   echo "DEBUG MODE is ON ========================== Zsh setup finished."
 fi
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -F /home/nicolas/bin/aliyun aliyun
-autoload -U +X bashcompinit && bashcompinit
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(direnv hook zsh)"
