@@ -37,6 +37,7 @@
     
     meld = !"git difftool -d --tool=meld" 2> /dev/null 
 
+    s = status
     b = branch
     bd = branch -D
     c = commit
@@ -68,6 +69,8 @@
     pfo = !CURRENT=$(git current) && git pull --set-upstream origin $CURRENT
     pdc = !CURRENT=$(git current) && git switch master && git pull --set-upstream origin && git branch -D $CURRENT
     pdc2 = !CURRENT=$(git current) && git switch main && git pull --set-upstream origin && git branch -D $CURRENT
+    pswc = !CURRENT=$(git current) && git switch master && git pull && git swc -c
+    pswc2 = !CURRENT=$(git current) && git switch main && git pull && git swc -c
     dto = diff origin/master..master
     dtm = !CURRENT=$(git current) && git diff master...$CURRENT
 

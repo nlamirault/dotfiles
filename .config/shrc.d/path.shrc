@@ -38,6 +38,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     export PATH="${PATH}:/opt/homebrew/bin/"
 fi
 
+# Tfenv
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export TFENV_ARCH=arm64
+fi
+
 # ASDF-VM
 [ -f /opt/asdf-vm/asdf.sh ] && . /opt/asdf-vm/asdf.sh
 

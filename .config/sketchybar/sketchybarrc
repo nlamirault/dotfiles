@@ -21,7 +21,7 @@ launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /
 # Setting up the general bar appearance and default values
 sketchybar --bar     height=25                                         \
                      color=$BAR_COLOR                                  \
-                     shadow=on                                         \
+                     shadow=off                                         \
                      position=bottom                                      \
                      sticky=on                                         \
                      padding_right=1                                   \
@@ -60,8 +60,8 @@ source "$ITEM_DIR/front_app.sh"
 # source "$ITEM_DIR/spotify.sh"
 
 # Right
-source "$ITEM_DIR/calendar.sh"
-source "$ITEM_DIR/battery.sh"
+# source "$ITEM_DIR/calendar.sh"
+# source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/brew.sh"
 # source "$ITEM_DIR/input.sh"
 # source "$ITEM_DIR/github.sh"
