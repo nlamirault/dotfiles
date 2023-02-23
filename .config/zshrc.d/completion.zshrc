@@ -44,9 +44,12 @@ K8S_BINARIES=("kubectl")
 # done
 
 mkdir -p "${HOME}/.local/share/zsh/site-functions"
-if [ -f "${HOME}/.asdf/shims/kubectl" ]; then
-  ${HOME}/.asdf/shims/kubectl completion zsh > "${HOME}/.local/share/zsh/site-functions/_kubectl"
-fi
+
+rtx complete -s zsh  > ${HOME}/.local/share/zsh/site-functions/_rtx
+
+# if [ -f "${HOME}/.asdf/shims/kubectl" ]; then
+#   ${HOME}/.asdf/shims/kubectl completion zsh > "${HOME}/.local/share/zsh/site-functions/_kubectl"
+# fi
 
 if [ -f "${HOME}/Applications/google-cloud-sdk/completion.zsh.inc" ]; then
     source ${HOME}/Applications/google-cloud-sdk/completion.zsh.inc

@@ -69,14 +69,13 @@ fi
 # https://www.freedesktop.org/wiki/Software/xdg-user-dirs/
 [ -f ${XDG_CONFIG_HOME}/user-dirs.dirs ] && source ${XDG_CONFIG_HOME}/user-dirs.dirs
 
-# BEGIN ANSIBLE MANAGED BLOCK: asdf
-if [ -e "${HOME}/.asdf/asdf.sh" ]; then
-  source ${HOME}/.asdf/asdf.sh
-  fpath=(${HOME}/.asdf/completions $fpath)
-elif [ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]; then
-    source /opt/homebrew/opt/asdf/libexec/asdf.sh
-fi
-# END ANSIBLE MANAGED BLOCK: asdf
+# if [ -e "${HOME}/.asdf/asdf.sh" ]; then
+#   source ${HOME}/.asdf/asdf.sh
+#   fpath=(${HOME}/.asdf/completions $fpath)
+# elif [ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]; then
+#     source /opt/homebrew/opt/asdf/libexec/asdf.sh
+# fi
+eval "$(rtx activate zsh)"
 
 if [[ "$-" == *x* ]]; then
   echo "DEBUG MODE is ON ========================== Zsh setup finished."
