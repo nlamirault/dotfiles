@@ -40,11 +40,8 @@ fi
 
 # Tfenv
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    export TFENV_ARCH=arm64
+    export TFENV_ARCH=amd64
 fi
-
-# ASDF-VM
-[ -f /opt/asdf-vm/asdf.sh ] && . /opt/asdf-vm/asdf.sh
 
 # Emacs lisp
 export PATH="${HOME}/.cask/bin:${PATH}"

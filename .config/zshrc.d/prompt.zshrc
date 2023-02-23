@@ -32,92 +32,88 @@ POWERLINE_GO_MODULES="user,host,ssh,cwd,perms,git,kube,root,exit"
 
 DIRECTORY_END=""
 
-function kube_prompt() {
+# function kube_prompt() {
 
-  # Get current context
-  CONTEXT=$(cat ~/.kube/config | grep "current-context:" | sed "s/current-context: //")
-  if [ -n "$CONTEXT" ]; then
-      echo "(k8s: ${CONTEXT})"
-  fi
-}
+#   # Get current context
+#   CONTEXT=$(cat ~/.kube/config | grep "current-context:" | sed "s/current-context: //")
+#   if [ -n "$CONTEXT" ]; then
+#       echo "(k8s: ${CONTEXT})"
+#   fi
+# }
 
 
-function git_prompt() {
-    GIT_BRANCH=$(__git_ps1)
-    if [ -z "$GIT_BRANCH" ]; then
-    else
-        local NUM_MODIFIED=$(git diff --name-only --diff-filter=M | wc -l)
-        local NUM_STAGED=$(git diff --staged --name-only --diff-filter=AM | wc -l)
-        local NUM_CONFLICT=$(git diff --name-only --diff-filter=U | wc -l)
-        local GIT_STATUS=" %F{27}%K{255}  $NUM_MODIFIED %k%f"
-        # local GIT_STATUS="\[\e[48;5;255m\]\[\e[38;5;208m\]\[\e[38;5;27m\]  $NUM_MODIFIED \[\e[38;5;208m\]\[\e[38;5;2m\]  $NUM_STAGED \[\e[38;5;208m\]\[\e[38;5;9m\] ✘ $NUM_CONFLICT "
-        ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-        DIRECTORY_END="%F{27}%K{208}"
-        echo "%F{255}%K{208} (${ref#refs/heads/})"
-    fi
-}
+# function git_prompt() {
+#     GIT_BRANCH=$(__git_ps1)
+#     if [ -z "$GIT_BRANCH" ]; then
+#     else
+#         local NUM_MODIFIED=$(git diff --name-only --diff-filter=M | wc -l)
+#         local NUM_STAGED=$(git diff --staged --name-only --diff-filter=AM | wc -l)
+#         local NUM_CONFLICT=$(git diff --name-only --diff-filter=U | wc -l)
+#         local GIT_STATUS=" %F{27}%K{255}  $NUM_MODIFIED %k%f"
+#         # local GIT_STATUS="\[\e[48;5;255m\]\[\e[38;5;208m\]\[\e[38;5;27m\]  $NUM_MODIFIED \[\e[38;5;208m\]\[\e[38;5;2m\]  $NUM_STAGED \[\e[38;5;208m\]\[\e[38;5;9m\] ✘ $NUM_CONFLICT "
+#         ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+#         DIRECTORY_END="%F{27}%K{208}"
+#         echo "%F{255}%K{208} (${ref#refs/heads/})"
+#     fi
+# }
 
-# # Display colored git branch if we are in a git repo
-function git_colored_prompt() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "$(git_color_status) (${ref#refs/heads/}$(git_commits))"
-}
+# # # Display colored git branch if we are in a git repo
+# function git_colored_prompt() {
+#   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+#   echo "$(git_color_status) (${ref#refs/heads/}$(git_commits))"
+# }
 
-# # Append git commit difference to prompt
-function git_commits() {
-  git_info=$(cat $HOME/.git-status-for-prompt)
-  if [ -n "$(echo $git_info | grep "Your branch is behind")" ]; then
-    difference="-"
-  elif [ -n "$(echo $git_info | grep "Your branch is ahead of")" ]; then
-    difference="+"
-  fi
-  if [ -n $difference ]; then
-    difference+=$(echo $git_info | grep "Your branch is" | sed "s/Your branch is .* by//g" | sed "s/[^0-9]//g")
-    echo $difference
-  fi
-}
+# # # Append git commit difference to prompt
+# function git_commits() {
+#   git_info=$(cat $HOME/.git-status-for-prompt)
+#   if [ -n "$(echo $git_info | grep "Your branch is behind")" ]; then
+#     difference="-"
+#   elif [ -n "$(echo $git_info | grep "Your branch is ahead of")" ]; then
+#     difference="+"
+#   fi
+#   if [ -n $difference ]; then
+#     difference+=$(echo $git_info | grep "Your branch is" | sed "s/Your branch is .* by//g" | sed "s/[^0-9]//g")
+#     echo $difference
+#   fi
+# }
 
-# # Change colors depending on git status
-function git_color_status() {
-  git_info=$(cat $HOME/.git-status-for-prompt)
-  if [ -n "$(echo $git_info | grep "Changes not staged")" ]; then
-    echo "%{$fg[red]%}"
-  elif [ -n "$(echo $git_info | grep "Changes to be committed")" ]; then
-    echo "%{$fg[yellow]%}"
-  elif [ -n "$(echo $git_info | grep "Untracked files")" ]; then
-    echo "%{$fg[cyan]%}"
-  else
-    echo "%{$fg[green]%}"
-  fi
-}
+# # # Change colors depending on git status
+# function git_color_status() {
+#   git_info=$(cat $HOME/.git-status-for-prompt)
+#   if [ -n "$(echo $git_info | grep "Changes not staged")" ]; then
+#     echo "%{$fg[red]%}"
+#   elif [ -n "$(echo $git_info | grep "Changes to be committed")" ]; then
+#     echo "%{$fg[yellow]%}"
+#   elif [ -n "$(echo $git_info | grep "Untracked files")" ]; then
+#     echo "%{$fg[cyan]%}"
+#   else
+#     echo "%{$fg[green]%}"
+#   fi
+# }
 
-function powerline_precmd() {
-    PS1="$($HOME/bin/powerline-go -error $? -shell zsh -shorten-gke-names -shorten-eks-names -modules ${POWERLINE_GO_MODULES} -truncate-segment-width 5)"
-}
+# function powerline_precmd() {
+#     PS1="$($HOME/bin/powerline-go -error $? -shell zsh -shorten-gke-names -shorten-eks-names -modules ${POWERLINE_GO_MODULES} -truncate-segment-width 5)"
+# }
 
-function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
-}
+# function install_powerline_precmd() {
+#   for s in "${precmd_functions[@]}"; do
+#     if [ "$s" = "powerline_precmd" ]; then
+#       return
+#     fi
+#   done
+#   precmd_functions+=(powerline_precmd)
+# }
 
 # Custom prompt
 
 if [  "$TERM" != "linux" ]; then
-  if [ -f "${HOME}/.asdf/shims/starship" ]; then
-    eval "$(starship init zsh)"
-  elif [ -f /usr/bin/starship ]; then
+  # if [ -f "${HOME}/.asdf/shims/starship" ]; then
+  #   eval "$(starship init zsh)"
+  if [ -f /usr/bin/starship ]; then
     eval "$(starship init zsh)"
   elif [ -f /usr/local/bin/starship ]; then
     eval "$(starship init zsh)"
   elif [ -f /opt/homebrew/bin/starship ]; then
     eval "$(starship init zsh)"
-  # elif [ -f "$HOME/bin/powerline-go" ]; then
-  #   install_powerline_precmd
-  # else
-  #   PROMPT='%F{255}%K{0}  %M %k%f%F{0}%K{27} %F{255}%K{27} %2~ %k%f%F{27}%K{208} $(git_prompt) %k%f%F{208}%K{0}%F{255}%K{0}  %F{0}%K{232} $(kube_prompt) %{$reset_color%} '
   fi
 fi
