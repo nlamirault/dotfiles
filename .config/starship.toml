@@ -40,6 +40,9 @@ format = """\
     $aws\
     $azure\
     $gcloud\
+    $rust\
+    $golang\
+    $python\
     $line_break\
     $character\
     """
@@ -58,7 +61,8 @@ disabled = false
 
 [character]
 success_symbol = "[❯](bold green)"
-error_symbol = "[✖](bold red)"
+# success_symbol = "[](bold green) "
+error_symbol = "[✖](bold red) "
 # symbol = "❯"
 # use_symbol_for_status = false
 # vicmd_symbol = "❮"
@@ -73,6 +77,13 @@ truncate_to_repo = true
 disabled = false
 fish_style_pwd_dir_length = 1
 style = "bold green"
+read_only = " "
+
+# [directory.substitutions]
+# "Documents" = " "
+# "Downloads" = " "
+# "Music" = " "
+# "Pictures" = " "
 
 [git_branch]
 # symbol = "🌱 "
@@ -132,8 +143,18 @@ format = "[🏎💨 $version]($style) "
 # map_symbol = true
 disabled = false
 
-# [python]
-# format = "🐍 "
+[rust]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[golang]
+symbol = "ﳑ"
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[python]
+symbol = " "
 
 [aws]
 disabled = true
@@ -153,8 +174,47 @@ format = "on [$symbol($subscription)]($style) "
 symbol = "ﴃ "
 style = "blue bold"
 
+[package]
+disabled = true
+symbol = " "
+
 [os]
 disabled = false
 
-[package]
-disabled = true
+[os.symbols]
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "﯑ "
+Gentoo = " "
+HardenedBSD = "ﲊ "
+Illumos = " "
+Linux = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = " "
+openSUSE = " "
+OracleLinux = " "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = " "
+Solus = "ﴱ "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = " "

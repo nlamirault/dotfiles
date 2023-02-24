@@ -87,6 +87,3 @@ eval "$(direnv hook zsh)"
 
 # Setup rustup, cargo path
 [[ -f /home/nicolas/.rustrc ]] && source /home/nicolas/.rustrc
-
-export PATH="$HOME/.poetry/bin:$PATH"
-
