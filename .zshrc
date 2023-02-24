@@ -25,6 +25,7 @@
 
 if [ -d "${HOME}/.config/shrc.d" ]; then
     for file in $(/bin/ls ${HOME}/.config/shrc.d/*.shrc); do
+        # echo ${file}
         # shellcheck source=/dev/null
         . ${file};
     done
@@ -60,7 +61,7 @@ fi
 # Load secret or personal configuration (PERSONAL_DIR loaded from path.shrc)
 if [ -d "${PERSONAL_DIR}/zshrc.d" ]; then
     for file in $(/bin/ls ${PERSONAL_DIR}/zshrc.d/*.zshrc); do
-        # echo ${file}
+        echo ${file}
         # shellcheck source=/dev/null
         [ -r "${file}" ] && . "${file}";
     done
@@ -75,15 +76,16 @@ fi
 # elif [ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]; then
 #     source /opt/homebrew/opt/asdf/libexec/asdf.sh
 # fi
-eval "$(rtx activate zsh)"
-
-if [[ "$-" == *x* ]]; then
-  echo "DEBUG MODE is ON ========================== Zsh setup finished."
-fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(direnv hook zsh)"
 
-# Setup rustup, cargo path
-[[ -f /home/nicolas/.rustrc ]] && source /home/nicolas/.rustrc
+eval "$(rtx activate zsh)"
+eval $(rtx env) # Without this line, PATH not updated into Zellij
+
+[[ -f "${HOME}/.rustrc" ]] && source "${HOME}/.rustrc"
+
+if [[ "$-" == *x* ]]; then
+  echo "DEBUG MODE is ON ========================== Zsh setup finished."
+fi

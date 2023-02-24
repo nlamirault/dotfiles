@@ -30,7 +30,6 @@ function install_shell {
 	create_link ".bash_profile"
 	create_link ".config/bashrc.d"
 	create_link ".zshrc"
-	create_link ".zprofile"
 	create_link ".config/zshrc.d"
 	create_link ".config/fish"
 }
