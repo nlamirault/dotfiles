@@ -3,7 +3,7 @@
 source "$HOME/.config/sketchybar/colors.sh"
 
 PUBLIC_IP=$(curl -s ifconfig.io)
-PRIVATE_IP="192.168.1.10"
+PRIVATE_IP="$(ipconfig getifaddr en0)"
 
 sketchybar -m \
   --set public_ip label=$PUBLIC_IP \
