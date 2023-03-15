@@ -14,11 +14,20 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-# icons = "awesome5"
-icons = "material-nf"
+# icons_format = "awesome5"
+# icons_format = "material-nf"
 
 [theme]
-name = "plain"
+theme = "plain"
+
+[icons]
+icons = "awesome4"
+
+[icons.overrides]
+bat = " | | "
+bat_full = " |X| "
+bat_charging = " |^| "
+bat_discharging = " |v| "
 
 [theme.overrides]
 idle_bg = "#000000"
@@ -33,33 +42,35 @@ idle_fg = "#8CD1F9"
 [[block]]
 block = "cpu"
 interval = 1
-format = "{utilization} {frequency}"
+format = "$utilization $frequency"
 
 [[block]]
 block = "memory"
-format_mem = "{mem_used;G}/{mem_total;G}"
-format_swap = "{swap_used;G}/{swap_total;G}"
-display_type = "memory"
-icons = true
-clickable = true
-interval = 5
-warning_mem = 80
-warning_swap = 80
-critical_mem = 95
-critical_swap = 95
+# format_mem = "{mem_used;G}/{mem_total;G}"
+# format_swap = "{swap_used;G}/{swap_total;G}"
+# display_type = "memory"
+# icons = true
+# clickable = true
+# interval = 5
+# warning_mem = 80
+# warning_swap = 80
+# critical_mem = 95
+# critical_swap = 95
+format = " $icon $mem_total_used_percents.eng(w:2) "
+format_alt = " $icon_swap $swap_used_percents.eng(w:2) "
 
 [[block]]
 block = "load"
 interval = 1
-format = "{1m} / {5m} / {15m}"
+format = "$1m / $5m / $15m"
 
 [[block]]
 block = "disk_space"
 path = "/"
 info_type = "used"
-format = "{icon} {used}/{total} ({available} free)"
-alert_absolute = true
-unit = "GB"
+format = "$icon $used/$total ($available free)"
+# alert_absolute = true
+# unit = "GB"
 alert = 50
 warning = 40
 
@@ -77,4 +88,4 @@ cycle = [100, 50, 0, 50]
 block = "time"
 timezone = "Europe/Paris"
 interval = 60
-format = "%a %d/%m/%Y %R"
+format = " $timestamp.datetime(f:'%a %d/%m %R') "
