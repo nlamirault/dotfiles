@@ -35,4 +35,5 @@
         "editor.formatOnType": true
     },
     "window.commandCenter": true,
+    "explorer.confirmDragAndDrop": false,
 }
