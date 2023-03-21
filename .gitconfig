@@ -104,10 +104,12 @@
 
 [gpg]
 	program = gpg
-	format = x509
+    # https://github.com/sigstore/gitsign/issues/40
+	# format = x509
 
-[gpg "x509"]
-	program = gitsign
+# https://github.com/sigstore/gitsign/issues/40
+# [gpg "x509"]
+# 	program = gitsign
 
 [merge]
 	# Include summaries of merged commits in newly created merge commit messages
