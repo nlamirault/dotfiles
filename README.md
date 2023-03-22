@@ -2,8 +2,6 @@
 
 [![License Apache 2][badge-license]](LICENSE)
 
-[![Circle CI](https://circleci.com/gh/nlamirault/dotfiles/tree/master.svg?style=svg)](https://circleci.com/gh/nlamirault/dotfiles/tree/master)
-
 Configuration for:
 
 * [x] bash
