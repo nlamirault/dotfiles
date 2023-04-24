@@ -30,7 +30,7 @@
     "[yaml]": {
         "editor.formatOnSave": false,
     },
-    "workbench.iconTheme": "vscode-icons",
+    "workbench.iconTheme": "material-icon-theme",
     "[python]": {
         "editor.formatOnType": true
     },
