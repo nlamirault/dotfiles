@@ -4,7 +4,7 @@ tfsec 1.28.1
 tflint 0.46.1
 terraform-docs 0.16.0
 helm-docs 1.11.0
-kustomize 5.0.0
+kustomize 5.1.0
 k9s 0.26.7
 kind 0.16.0
 osm v1.1.0
