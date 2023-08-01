@@ -36,7 +36,7 @@ jobs:
       #     cd bats-core
       #     sudo ./install.sh /usr/local
 
-      - uses: actions/setup-node@v3.6.0
+      - uses: actions/setup-node@v3.7.0
         with:
           node-version: 18
       - run: npm install -g bats
