@@ -1,4 +1,4 @@
-helm 3.11.3
+helm 3.12.3
 kubectl 1.27.4
 tfsec 1.28.1
 tflint 0.46.1
