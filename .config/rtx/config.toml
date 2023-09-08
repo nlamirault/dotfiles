@@ -1,0 +1,9 @@
+[tools]
+helm = "3.12.0"
+kubectl = "1.26.0"
+timoni = "0.8.2"
+boundary = "0.12.2"
+spacectl = "0.24.1"
+k6 = "0.45.1"
+node = "18"
+teleport-ent = "12.3.2"
