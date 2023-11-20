@@ -16,6 +16,6 @@
 
 # shellcheck source=/dev/null
 [ -r "${HOME}"/.zshrc ] && . "${HOME}"/.zshrc
-export PATH="${HOME}/.kzenv/bin:$PATH"
 
+export PATH="${HOME}/.kzenv/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"

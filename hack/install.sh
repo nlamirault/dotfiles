@@ -30,6 +30,7 @@ function install_shell {
 	create_link ".bash_profile"
 	create_link ".config/bashrc.d"
 	create_link ".zshrc"
+	create_link ".zprofile"
 	create_link ".config/zshrc.d"
 	create_link ".config/fish"
 }
@@ -69,6 +70,7 @@ function install_apps {
 	create_link ".config/tmux"
 	create_link ".config/alacritty"
 	create_link ".config/kitty"
+	create_link ".config/wezterm"
 	create_link ".config/zellij"
 
 	if [[ "$OSTYPE" == "linux-gnu"* ]]; then

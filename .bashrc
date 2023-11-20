@@ -80,3 +80,4 @@ complete -C /usr/local/lib/kzenv/versions/3.5.0/kustomize kustomize
 eval "$(rtx activate bash)"
 
 . "${HOME}/.cargo/env"
+. "$HOME/.cargo/env"

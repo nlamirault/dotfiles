@@ -14,6 +14,8 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
+"$schema" = 'https://starship.rs/config-schema.json'
+
 # Don't print a new line at the start of the prompt
 add_newline = false
 
@@ -21,29 +23,38 @@ add_newline = false
 #     $all\
 # """
 
-format = """\
-    $username\
-    $hostname\
-    $directory\
-    $kubernetes\
-    $terraform\
-    $git_branch\
-    $git_commit\
-    $git_state\
-    $git_metrics\
-    $git_status\
-    $custom\
-    $jobs\
-    $time\
-    $aws\
-    $azure\
-    $gcloud\
-    $rust\
-    $golang\
-    $python\
-    $line_break\
-    $character\
-    """
+# format = """\
+#     $os\
+#     $username\
+#     $hostname\
+#     $directory\
+#     $kubernetes\
+#     $terraform\
+#     $git_branch\
+#     $git_commit\
+#     $git_state\
+#     $git_metrics\
+#     $git_status\
+#     $custom\
+#     $jobs\
+#     $time\
+#     $aws\
+#     $azure\
+#     $gcloud\
+#     $rust\
+#     $golang\
+#     $python\
+#     $line_break\
+#     $character\
+#     """
+
+# format = '''
+# [│](bold green)$directory$rust$package
+# [└─>](bold green) '''
+
+format = '''
+[│ ]()$os$username$hostname$directory$kubernetes$aws$azure$gcloud$rust$golang$python$git_branch$git_commit$git_state$git_metrics$git_status$custom
+[└─](bold white) $character'''
 
 [hostname]
 ssh_only = true
@@ -58,9 +69,10 @@ disabled = false
 # disabled = false
 
 [character]
-success_symbol = "[❯](bold green)"
-# success_symbol = "[](bold green) "
-error_symbol = "[✖](bold red) "
+success_symbol = '[➜](bold green)'
+# success_symbol = "[❯ ](bold green)"
+error_symbol = '[✗](bold red) '
+# error_symbol = "[✖ ](bold red) "
 # symbol = "❯"
 # use_symbol_for_status = false
 # vicmd_symbol = "❮"
@@ -75,13 +87,23 @@ truncate_to_repo = true
 disabled = false
 fish_style_pwd_dir_length = 1
 style = "bold green"
-read_only = " "
+read_only = "🔒"
+home_symbol = " 🏠 ~"
 
-# [directory.substitutions]
-# "Documents" = " "
+[directory.substitutions]
 # "Downloads" = " "
 # "Music" = " "
 # "Pictures" = " "
+"Documents" = "📂 Documents"
+"Downloads" = "📥 Downloads"
+"Music" = "🎧 Music"
+"Pictures" = "📷 Pictures"
+"Videos" = "🎞️ Videos"
+"Applications" = "🚀 Applications"
+"Desktop" = "🖥️ Desktop"
+"Playground" = '🧪 Playground'
+"Repositories" = '🚦 Repositories'
+"Projects" = "💻 Projects"
 
 [git_branch]
 # symbol = "🌱 "
@@ -122,7 +144,7 @@ added_style = "bold blue"
 format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 
 [kubernetes]
-format = 'on [☸ $context \($namespace\)](bold red) '
+format = ' [☸ $context \($namespace\)](bold red) '
 disabled = false
 [kubernetes.context_aliases]
 # "dev.local.cluster.k8s" = "dev"
@@ -155,28 +177,30 @@ format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 symbol = " "
 
 [aws]
-disabled = true
-format = 'on [$symbol$profile(\($region\))]($style) '
+disabled = false
+format = ' [$symbol($profile )]($style) '
 style = "bold blue"
 symbol = "🅰 "
 
+[azure]
+disabled = false
+format = ' [$symbol($subscription)]($style) '
+symbol = '󰠅 '
+style = 'blue bold'
+
 [gcloud]
 disabled = true
-format = 'on [$symbol$account(@$domain)(\($project\))]($style) '
+format = ' [$symbol$account(@$domain)(\($project\))]($style) '
 style = "bold blue"
-symbol = "️🇬️ "
-
-[azure]
-disabled = true
-format = "on [$symbol($subscription)]($style) "
-symbol = "ﴃ "
-style = "blue bold"
+symbol = '️🇬️ '
 
 [package]
 disabled = true
 symbol = " "
 
 [os]
+# format = "on [($name )]($style)"
+style = "bold white"
 disabled = false
 
 [os.symbols]

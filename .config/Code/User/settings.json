@@ -1,6 +1,10 @@
 {
-    "editor.fontFamily": "'Hack Nerd Font', Menlo, Monaco, 'Courier New', monospace",
+    // "editor.fontFamily": "'Hack Nerd Font', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": true,
+    // "editor.fontFamily": "Monaspace Krypton",
+    // "editor.fontLigatures": "'calt', 'liga', 'dlig'",
+    "editor.fontFamily": "'Monaspace Neon', monospace",
+    // "editor.fontLigatures": "'calt', 'liga', 'dlig'",
     "editor.minimap.enabled": false,
     "window.menuBarVisibility": "toggle",
     "workbench.editor.enablePreview": false,
@@ -19,7 +23,8 @@
         "**/ansible/**/hosts": "ini",
         "**/ansible/**/inventory": "ini",
         "ansible.cfg": "ini",
-        "*.hcl": "hcl"
+        "*.hcl": "terraform",
+        "*.yml": "ansible"
     },
     "[makefile]": {
         "editor.tabSize": 4,
@@ -36,4 +41,9 @@
     },
     "window.commandCenter": true,
     "explorer.confirmDragAndDrop": false,
+    "terminal.integrated.env.osx": {
+        "FIG_NEW_SESSION": "1"
+    },
+    "D2.previewLayout": "dagre",
+    "D2.previewSketch": false,
 }

@@ -19,7 +19,8 @@
 # skhd -V: print configuration before launching
 
 # Open applications
-lalt - return : open -na /opt/homebrew/Caskroom/alacritty/0.11.0/Alacritty.app/Contents/MacOS/alacritty
+# lalt - return : open -na /opt/homebrew/Caskroom/alacritty/0.11.0/Alacritty.app/Contents/MacOS/alacritty
+lalt - return : open -na /Applications/Wezterm.app
 ralt - return : open -na /Applications/iTerm.app
 lalt + shift - q: yabai -m window --close
 ctrl + shift - f: open -a /Applications/Path\ Finder.app
