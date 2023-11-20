@@ -103,7 +103,7 @@
     gpgSign = true
 
 [gpg]
-	program = gpg
+	# program = gpg
 	format = ssh
     # https://github.com/sigstore/gitsign/issues/40
 	# format = x509
