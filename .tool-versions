@@ -14,7 +14,7 @@ k3sup 0.12.8
 flux2 2.0.1
 istioctl 1.11.8
 minikube 1.28.0
-argocd 2.6.1
+argocd 2.9.2
 clusterctl 1.2.5
 conftest v0.25.0
 boundary 0.11.2
