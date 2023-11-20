@@ -15,8 +15,8 @@
 [user]
     email = nicolas.lamirault@gmail.com
     name = Nicolas Lamirault
-    # signingkey = 5F99269A6FCA437C
-    signingkey = 615BED55995C522D4F54CB57F279689E2863393C
+    # signingkey = 615BED55995C522D4F54CB57F279689E2863393C
+	signingkey = /Users/nicolas.lamirault/.ssh/id_ed25519.pub
     
 [includeIf "gitdir:~/Work/"]
     path = ~/Work/.gitconfig
@@ -80,7 +80,7 @@
 	
 
 [giggle]
-    main-window-maximized = false
+	main-window-maximized = false
 	main-window-geometry = 1262x772+1861+210
 	history-view-vpane-position = 301
 	file-view-vpane-position = 346
@@ -100,10 +100,11 @@
     gpgsign = true
 
 [tag]
-	gpgSign = true
+    gpgSign = true
 
 [gpg]
 	program = gpg
+	format = ssh
     # https://github.com/sigstore/gitsign/issues/40
 	# format = x509
 
