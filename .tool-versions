@@ -1,5 +1,5 @@
 helm 3.11.3
-kubectl 1.27.4
+kubectl 1.29.0
 tfsec 1.28.2
 tflint 0.46.1
 terraform-docs 0.16.0
