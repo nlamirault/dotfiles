@@ -11,7 +11,7 @@ osm v1.1.0
 sloth 0.11.0
 agebox 0.6.1
 k3sup 0.12.8
-flux2 2.0.1
+flux2 2.2.2
 istioctl 1.11.8
 minikube 1.28.0
 argocd 2.6.1
