@@ -1,6 +1,6 @@
 helm 3.11.3
 kubectl 1.27.4
-tfsec 1.28.2
+tfsec 1.28.5
 tflint 0.46.1
 terraform-docs 0.16.0
 helm-docs 1.11.0
