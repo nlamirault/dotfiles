@@ -90,6 +90,11 @@ elif [ -x "$(command -v vim)" ]; then
     alias vi='vim'
 fi
 
+# Git
+# -----------------------------------------------------
+
+alias gitui='gitui -t ~/.config/gitui/mocha.ron'
+
 # Network
 # -----------------------------------------------------
 
