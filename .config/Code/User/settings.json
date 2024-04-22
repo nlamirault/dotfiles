@@ -42,8 +42,11 @@
     "window.commandCenter": true,
     "explorer.confirmDragAndDrop": false,
     "terminal.integrated.env.osx": {
-        "FIG_NEW_SESSION": "1"
+        "FIG_NEW_SESSION": "1",
+        "CW_NEW_SESSION": "1"
     },
     "D2.previewLayout": "dagre",
-    "D2.previewSketch": false,
+    "D2.previewSketch": true,
+    "editor.inlineSuggest.suppressSuggestions": true,
+    "continue.enableTabAutocomplete": true,
 }

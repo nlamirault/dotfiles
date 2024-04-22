@@ -89,3 +89,11 @@ function kubectlgetall {
     kubectl -n "${1}" get --ignore-not-found "${i}"
   done
 }
+
+function gh-pr {
+    if [ $# -eq 0 ]; then
+        echo 'usage: gh-pr -l "kind/xxxxx" -l "area/xxxxx" -l "priority/xxxxx"'
+    else
+      gh pr create --draft -a nlamirault -l "lifecycle/active" -l "status/in_progress" $*
+    fi
+}

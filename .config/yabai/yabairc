@@ -32,24 +32,24 @@ yabai -m space 9 --label "9"
 yabai -m space 10 --label "10"
 
 # global settings
-yabai -m config window_shadow                off
-yabai -m config mouse_follows_focus          on
-yabai -m config focus_follows_mouse          on
-yabai -m config window_placement             second_child
-yabai -m config window_topmost               off
-yabai -m config insert_feedback_color        0xffd75f5f
-yabai -m config split_ratio                  0.50
 yabai -m config auto_balance                 off
+yabai -m config focus_follows_mouse          on
+yabai -m config insert_feedback_color        0xffd75f5f
+yabai -m config mouse_follows_focus          on
 yabai -m config mouse_modifier               fn
 yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
 yabai -m config mouse_drop_action            swap
+yabai -m config split_ratio                  0.50
 
 # window opacities
 yabai -m config window_opacity               off
-yabai -m config window_opacity_duration      0.1
+yabai -m config window_placement             second_child
+yabai -m config window_shadow                off
+yabai -m config window_topmost               off
+yabai -m config window_opacity_duration      0.0
 yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        0.95
+yabai -m config normal_window_opacity        1.0
 
 # window borders
 yabai -m config window_border                off
@@ -70,7 +70,7 @@ yabai -m config mouse_modifier               alt
 yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
 
-yabai -m config external_bar all:0:25
+yabai -m config external_bar                 all:0:25
 
 # Do not manage some apps which are not resizable
 yabai -m rule --add app="^System Settings$" sticky=on layer=above manage=off

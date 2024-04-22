@@ -1,23 +1,10 @@
-# Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-# SPDX-License-Identifier: Apache-2.0
+
+# min_version = "2024.1.1"
 
 [tools]
 argocd = '2.6.1'
-cilium-cli = '0.12.4'
-cilium-hubble = '0.10.0'
+cilium-cli = "0.15.20"
+cilium-hubble = "0.13.0"
 clusterctl = '1.4.3'
 helm = '3.12.0'
 helm-cr = '1.4.1'
@@ -25,23 +12,20 @@ helm-ct = '3.4.0'
 kind = '0.16.0'
 kubectl = '1.26.0'
 kustomize = '5.0.0'
-k3sup = '0.12.8'
-k9s = '0.26.7'
+k3sup = '0.13.4'
+k9s = "0.31.7"
 teleport-ent = '12.3.2'
 terraform = '1.4.6'
 terraform-docs = '0.16.0'
 tflint = '0.42.2'
 tfsec = '1.28.1'
-trivy = '0.47.0'
-vault = '1.9.0'
-timoni = "0.15.0"
-
-[settings]
-experimental = true
-legacy_version_file = true                       
-legacy_version_file_disable_tools = ['terraform'] 
-verbose = false     
-asdf_compat = false # set to true to ensure .tool-versions will be compatible with asdf, see `RTX_ASDF_COMPAT`
-# number of plugins or runtimes to install in parallel. The default is `4`.
-jobs = 4            
-log_level = 'debug'
+trivy = "latest"
+vault = "1.15.4"
+timoni = "0.19.0"
+mimirtool = "2.11.0"
+k6 = "0.49.0"
+melange = "latest"
+apko = "latest"
+k3d = "5.6.0"
+node = "latest"
+java = "23-loom+2-48.0.0"
