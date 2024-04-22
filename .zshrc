@@ -81,11 +81,12 @@ fi
 
 eval "$(direnv hook zsh)"
 
-eval "$(rtx activate zsh)"
-eval $(rtx env) # Without this line, PATH not updated into Zellij
+eval "$(mise activate zsh)"
+eval $(mise env) # Without this line, PATH not updated into Zellij
 
 [[ -f "${HOME}/.rustrc" ]] && source "${HOME}/.rustrc"
 
 if [[ "$-" == *x* ]]; then
   echo "DEBUG MODE is ON ========================== Zsh setup finished."
 fi
+
