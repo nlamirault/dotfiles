@@ -76,10 +76,17 @@
     dto = diff origin/master..master
     dtm = !CURRENT=$(git current) && git diff master...$CURRENT
 
-   # Gitlab
+    # Gitlab
     glpbmr = !CURRENT=$(git current) && git push --set-upstream origin $CURRENT -o merge_request.create -o merge_request.target=master -o merge_request.merge_when_pipeline_succeeds
     glpbmrd = !CURRENT=$(git current) && git  push --set-upstream origin $CURRENT -o merge_request.create -o merge_request.target=master -o merge_request.merge_when_pipeline_succeeds -o merge_request.remove_source_branch
 	
+    # AI
+    # ai-explain = "!f() { DIFF=`git show -b $*`; ollama run wizardcoder:33b \"Explain what the purpose of this changeset is:\n\n$DIFF\"; }; f"
+	# ai-review = "!f() { DIFF=`git show -b $*`; ollama run wizardcoder:33b \"Review this changeset. Provide suggestions for improvements, coding best practices, improve readability, and maintainability. Respond in markdown format\n\n$DIFF\"; }; f"
+    ai-explain = "!f() { DIFF=`git show -b $*`; ollama run mistral:latest \"Explain what the purpose of this changeset is:\n\n$DIFF\"; }; f"
+	ai-review = "!f() { DIFF=`git show -b $*`; ollama run mistral:latest \"Review this changeset. Provide suggestions for improvements, coding best practices, improve readability, and maintainability. Respond in markdown format\n\n$DIFF\"; }; f"
+    # ai-explain = "!f() { DIFF=`git diff origin/master...`; ollama run mistral:latest \"Explain what the purpose of this changeset is:\n\n$DIFF\"; }; f"
+	# ai-review = "!f() { DIFF=`git diff origin/master...`; ollama run mistral:latest \"Review this changeset. Provide suggestions for improvements, coding best practices, improve readability, and maintainability. Respond in markdown format\n\n$DIFF\"; }; f"
 
 [giggle]
 	main-window-maximized = false
