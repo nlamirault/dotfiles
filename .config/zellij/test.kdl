@@ -1,0 +1,144 @@
+simplified_ui false
+pane_frames false
+
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=false {
+            plugin location="file:~/.local/share/zellij/plugins/zjstatus.wasm" {
+                format_left   "{mode}#[fg=black]{tabs}"
+                format_center ""
+                format_right  "#[fg=#6867AF,bold]  {datetime}#[fg=cyan]↖ "
+                format_space  "#[fg=yellow] "
+                // {session}
+                hide_frame_for_single_pane "false"
+                border_enabled  "false"
+                // mode_normal  "#[fg=red]  "
+                mode_normal  "#[fg=yellow] 🍎  "
+                mode_locked  "#[fg=red]   "
+                mode_tmux    "#[bg=cyan]"
+                // 
+                // ●
+                // 
+                // 
+                // 
+                // 
+                // 
+                // 
+                // 
+                // 
+                // 
+                // 
+                // 
+                // 
+                // 
+                // 
+                // 
+                // 
+                // 
+                // 
+                // 
+                // 
+                //  
+                // 
+                // 
+                // 
+                // 
+                // 
+                // 
+                // 󰀱
+                // 󰚄
+                // 󰝆
+                // 󰡄
+                // 󰨈
+                // 󰩖
+                // 󰩗
+                // 󱂡
+                // 󱂛
+                // 󱂑
+                // 󱂐
+                // 󱂏
+                // 󱂎
+                // 󱂍
+                // 󱂌
+                // 󱂋
+                // 󱂊
+                // 󱂉
+                // 󱂅
+                // 󱂈
+                // 󰟹
+                // 󰟯
+                // 󰟲
+                // 󰟰
+                // 󰟽
+                // 󰎢
+                // 󰎣
+                // 󰎥
+                // 󰎦
+                // 󰎨
+                // 󰎩
+                // 󰎫
+                // 󰎬
+                // 󰎲
+                // 󰎮
+                // 󰎯
+                // 󰎰
+                // 󰎴
+                // 󰎵
+                // 󰎷
+                // 󰎸
+                // 󰎺
+                // 󰎻
+                // 󰎽
+                // 󰎾   
+                // mode_normal        "#[bg=#89B4FA] {name} "
+                // mode_locked        "#[bg=#89B4FA] {name} "
+                // mode_resize        "#[bg=#89B4FA] {name} "
+                // mode_pane          "#[bg=#89B4FA] {name} "
+                // mode_tab           "#[bg=#89B4FA] {name} "
+                // mode_scroll        "#[bg=#89B4FA] {name} "
+                // mode_enter_search  "#[bg=#89B4FA] {name} "
+                // mode_search        "#[bg=#89B4FA] {name} "
+                // mode_rename_tab    "#[bg=#89B4FA] {name} "
+                // mode_rename_pane   "#[bg=#89B4FA] {name} "
+                // mode_session       "#[bg=#89B4FA] {name} "
+                // mode_move          "#[bg=#89B4FA] {name} "
+                // mode_prompt        "#[bg=#89B4FA] {name} "
+                // mode_tmux          "#[bg=#ffc387] {name} "
+
+                // formatting for inactive tabs
+                tab_normal              "#[fg=#6C7086]{name}"
+                tab_normal_fullscreen   "#[fg=#6C7086]{name}"
+                tab_normal_sync         "#[fg=#6C7086]{name}"
+
+                // formatting for the current active tab
+                tab_active              "#[fg=blue,bold]{name}#[fg=yellow,bold]{floating_indicator}"
+                tab_active_fullscreen   "#[fg=yellow,bold]{name}#[fg=yellow,bold]{fullscreen_indicator}"
+                tab_active_sync         "#[fg=green,bold]{name}#[fg=yellow,bold]{sync_indicator}"
+
+                // separator between the tabs
+                tab_separator           "#[fg=cyan,bold] ⋮ "
+
+                // indicators
+                tab_sync_indicator       " "
+                tab_fullscreen_indicator " "
+                tab_floating_indicator   ""
+
+                datetime        "#[fg=#6C7086,bold] {format} "
+                datetime_format "%A, %d %b %Y %H:%M"
+                datetime_timezone "Europe/Paris"
+            }
+        }
+    }
+    tab name="󰎦" focus=true borderless=true    
+    tab name="󰎩"
+    tab name="󰎬"
+    
+}
+keybinds {
+    shared {
+        bind "Alt 1" { NewTab; }
+        bind "Alt 2" { GoToNextTab; }
+        bind "Alt 3" { CloseTab; }
+    }
+}
