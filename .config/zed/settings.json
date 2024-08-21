@@ -1,0 +1,168 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "tab_size": 2,
+  "format_on_save": "on",
+  "hour_format": "hour24",
+  "theme": "Ayu Dark",
+  "base_keymap": "VSCode",
+  "ui_font_size": 14,
+  "buffer_font_size": 14,
+  // Indentation, rainbow indentation
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware"
+  },
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true,
+    "edit_debounce_ms": 700,
+    "scroll_debounce_ms": 50
+  },
+  "file_types": {
+    "Dockerfile": ["Dockerfile", "Dockerfile.*"],
+    "JSON": ["json", "jsonc", "*.code-snippets"]
+  },
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": true
+    }
+  },
+  "language_models": {
+    "ollama": {
+      "api_url": "http://localhost:11434"
+    }
+  },
+  "languages": {
+    "Go": {
+      "code_actions_on_format": {
+        "source.organizeImports": true
+      }
+    },
+    "JSON": {
+      "tab_size": 4,
+      "prettier": {
+        "allowed": true
+      }
+    },
+    "Markdown": {
+      "format_on_save": "on",
+      "use_on_type_format": false,
+      "prettier": {
+        "allowed": true
+      },
+      "remove_trailing_whitespace_on_save": true
+    },
+    "Python": {
+      "format_on_save": { "language_server": { "name": "ruff" } },
+      "formatter": [
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        },
+        {
+          "code_actions": {
+            // Fix all auto-fixable lint violations
+            "source.fixAll.ruff": true,
+            // Organize imports
+            "source.organizeImports.ruff": true
+          }
+        }
+      ],
+      "language_servers": ["ruff"]
+    },
+    "YAML": {
+      "prettier": {
+        "allowed": true
+      }
+    }
+  },
+  "lsp": {
+    "ruff": {
+      "initialization_options": {
+        "settings": {
+          "lineLength": 100,
+          "lint": {
+            "extendSelect": ["I"]
+          }
+        }
+      }
+    },
+    "rust-analyzer": {
+      "initialization_options": {
+        "rust": {
+          "analyzerTargetDir": true
+        }
+      },
+      "binary": {
+        "path_lookup": true
+      }
+    },
+    "terraform-ls": {
+      "initialization_options": {
+        "experimentalFeatures": {
+          "prefillRequiredFields": true
+        }
+      }
+    }
+  },
+  "preview_tabs": {
+    "enabled": false,
+    "enable_preview_from_file_finder": false
+  },
+  "project_panel": {
+    "button": true,
+    "dock": "left",
+    "git_status": true
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "notification_panel": {
+    "dock": "left"
+  },
+  "chat_panel": {
+    "dock": "left"
+  },
+  "scrollbar": {
+    "show": "auto",
+    "cursors": true,
+    "git_diff": true,
+    "search_results": true,
+    "selected_symbol": true,
+    "diagnostics": true
+  },
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": true
+  },
+  "tabs": {
+    "close_position": "right",
+    "file_icons": true,
+    "git_status": false
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": true
+  },
+  "wrap_guides": [80, 120],
+  "show_wrap_guides": true,
+  // Turn off telemetry
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  }
+}
