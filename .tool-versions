@@ -34,4 +34,4 @@ dagger 0.2.35
 nova 3.4.0
 vcluster 0.13.0
 opa 0.50.2
-trivy 0.47.0
+trivy 0.56.2
