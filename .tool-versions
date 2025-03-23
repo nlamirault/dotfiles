@@ -3,7 +3,7 @@ kubectl 1.27.4
 tfsec 1.28.2
 tflint 0.46.1
 terraform-docs 0.16.0
-helm-docs 1.11.0
+helm-docs 1.14.2
 kustomize 5.0.0
 k9s 0.26.7
 kind 0.16.0
