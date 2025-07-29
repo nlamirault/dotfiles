@@ -1,13 +1,12 @@
 {
-    // "editor.fontFamily": "'Hack Nerd Font', Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontLigatures": true,
-    // "editor.fontFamily": "Monaspace Krypton",
-    // "editor.fontLigatures": "'calt', 'liga', 'dlig'",
-    "editor.fontFamily": "'Monaspace Neon', monospace",
-    // "editor.fontLigatures": "'calt', 'liga', 'dlig'",
-    "editor.minimap.enabled": false,
-    "window.menuBarVisibility": "toggle",
+    "terminal.integrated.env.osx": {
+        "CW_NEW_SESSION": "1",
+        "Q_NEW_SESSION": "1"
+    },
     "workbench.editor.enablePreview": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontLigatures": true,
+    "editor.minimap.enabled": false,
     "files.associations": {
         "*.mk": "makefile",
         "_helpers.tpl": "jinja",
@@ -22,31 +21,25 @@
         "**/playbooks/**/*.yml": "ansible",
         "**/ansible/**/hosts": "ini",
         "**/ansible/**/inventory": "ini",
+        "*.yaml": "yaml",
         "ansible.cfg": "ini",
         "*.hcl": "terraform",
-        "*.yml": "ansible"
+        "*.yml": "yaml"
     },
     "[makefile]": {
         "editor.tabSize": 4,
         "editor.insertSpaces": false
     },
-    "terminal.integrated.fontFamily": "'Hack Nerd Font Mono'",
-    "redhat.telemetry.enabled": false,
     "[yaml]": {
         "editor.formatOnSave": false,
     },
-    "workbench.iconTheme": "material-icon-theme",
-    "[python]": {
-        "editor.formatOnType": true
-    },
-    "window.commandCenter": true,
-    "explorer.confirmDragAndDrop": false,
-    "terminal.integrated.env.osx": {
-        "FIG_NEW_SESSION": "1",
-        "CW_NEW_SESSION": "1"
-    },
+    "editor.fontFamily": "'Monaspace Neon', monospace",
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "dprint.dprint",
+    "editor.formatOnSave": true,
+    "workbench.colorTheme": "Visual Studio Dark",
+    "lldb.library": "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB",
+    "lldb.launch.expressions": "native",
     "D2.previewLayout": "dagre",
-    "D2.previewSketch": true,
-    "editor.inlineSuggest.suppressSuggestions": true,
-    "continue.enableTabAutocomplete": true,
+    "editor.accessibilitySupport": "off",
 }

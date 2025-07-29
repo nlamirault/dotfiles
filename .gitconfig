@@ -14,14 +14,14 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-[user]
-    email = nicolas.lamirault@gmail.com
-    name = Nicolas Lamirault
-    # signingkey = 615BED55995C522D4F54CB57F279689E2863393C
-	signingkey = /Users/nicolas.lamirault/.ssh/id_ed25519.pub
-    
+; [user]
+;     email = nicolas.lamirault@gmail.com
+;     name = Nicolas Lamirault
+
 [includeIf "gitdir:~/Work/"]
     path = ~/Work/.gitconfig
+[includeIf "gitdir:~/Projects/"]
+    path = ~/Projects/.gitconfig
 
 [color]
     ui = true
@@ -36,8 +36,8 @@
     lga = log --format='%Cred%h%Creset %ad %C(bold cyan)%an%Creset - %s%C(yellow)%d%Creset' --graph --date=short --abbrev-commit --all
     #lgme = log --since yesterday --oneline --author 'Nicolas Lamirault'
     lgme = log --oneline --author 'Your User'
-    
-    meld = !"git difftool -d --tool=meld" 2> /dev/null 
+
+    meld = !"git difftool -d --tool=meld" 2> /dev/null
 
     s = status
     b = branch
@@ -52,7 +52,7 @@
     shp = stash pop
     sw = switch
     swc = switch -c
-    
+
     t = tag
     ta = tag -a
     td = tag -d
@@ -65,7 +65,7 @@
     whatsnew = !sh -c 'git log $1@{1}..$1@{0} "$@"'
     who = shortlog -sne
     recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
-    
+
     current = rev-parse --abbrev-ref HEAD
     pto = !CURRENT=$(git current) && git push --set-upstream origin $CURRENT
     pfo = !CURRENT=$(git current) && git pull --set-upstream origin $CURRENT
@@ -79,14 +79,14 @@
     # Gitlab
     glpbmr = !CURRENT=$(git current) && git push --set-upstream origin $CURRENT -o merge_request.create -o merge_request.target=master -o merge_request.merge_when_pipeline_succeeds
     glpbmrd = !CURRENT=$(git current) && git  push --set-upstream origin $CURRENT -o merge_request.create -o merge_request.target=master -o merge_request.merge_when_pipeline_succeeds -o merge_request.remove_source_branch
-	
+
     # AI
     # ai-explain = "!f() { DIFF=`git show -b $*`; ollama run wizardcoder:33b \"Explain what the purpose of this changeset is:\n\n$DIFF\"; }; f"
 	# ai-review = "!f() { DIFF=`git show -b $*`; ollama run wizardcoder:33b \"Review this changeset. Provide suggestions for improvements, coding best practices, improve readability, and maintainability. Respond in markdown format\n\n$DIFF\"; }; f"
-    ai-explain = "!f() { DIFF=`git show -b $*`; ollama run mistral:latest \"Explain what the purpose of this changeset is:\n\n$DIFF\"; }; f"
-	ai-review = "!f() { DIFF=`git show -b $*`; ollama run mistral:latest \"Review this changeset. Provide suggestions for improvements, coding best practices, improve readability, and maintainability. Respond in markdown format\n\n$DIFF\"; }; f"
-    # ai-explain = "!f() { DIFF=`git diff origin/master...`; ollama run mistral:latest \"Explain what the purpose of this changeset is:\n\n$DIFF\"; }; f"
-	# ai-review = "!f() { DIFF=`git diff origin/master...`; ollama run mistral:latest \"Review this changeset. Provide suggestions for improvements, coding best practices, improve readability, and maintainability. Respond in markdown format\n\n$DIFF\"; }; f"
+    ai-commit-explain = "!f() { DIFF=`git show -b $*`; ollama run mistral:latest \"Explain what the purpose of this changeset is:\n\n$DIFF\"; }; f"
+	ai-commit-review = "!f() { DIFF=`git show -b $*`; ollama run mistral:latest \"Review this changeset. Provide suggestions for improvements, coding best practices, improve readability, and maintainability. Respond in markdown format\n\n$DIFF\"; }; f"
+    ai-branch-explain = "!f() { DIFF=`git diff origin/master...`; ollama run mistral:latest \"Explain what the purpose of this changeset is:\n\n$DIFF\"; }; f"
+	ai-branch-review = "!f() { DIFF=`git diff origin/master...`; ollama run mistral:latest \"Review this changeset. Provide suggestions for improvements, coding best practices, improve readability, and maintainability. Respond in markdown format\n\n$DIFF\"; }; f"
 
 [giggle]
 	main-window-maximized = false
@@ -124,6 +124,7 @@
 [merge]
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
+    conflictstyle = diff3
 
 [push]
 	default = simple
@@ -139,8 +140,8 @@
 #     cmd = difft "$LOCAL" "$REMOTE"
 
 [delta]
-    plus-color = "#012800"
-    minus-color = "#340001"
+    dark = true
+    # true-color = always
     syntax-theme = Nord # delta --list-syntax-themes
     line-numbers = true
     # side-by-side = true
@@ -153,3 +154,7 @@
 
 [init]
 	defaultBranch = main
+[gpg "x509"]
+	program = gitsign
+[gpg "ssh"]
+	allowedSignersFile = /tmp/allowed_signers

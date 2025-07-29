@@ -20,17 +20,18 @@
 export GPG_TTY=$(tty)
 # gpg-connect-agent reloadagent /bye
 
-if [ -f ~/.ssh/agent.env ] ; then
-    . ~/.ssh/agent.env > /dev/null
-    if ! kill -0 $SSH_AGENT_PID > /dev/null 2>&1; then
-        echo "Stale agent file found. Spawning new agent… "
-        eval `ssh-agent | tee ~/.ssh/agent.env`
-        ssh-add
-    fi
-else
-    echo "Starting ssh-agent"
-    eval `ssh-agent | tee ~/.ssh/agent.env`
+if [ -f "${HOME}/.ssh/agent.env" ]; then
+  # echo "Load ssh agent environment"
+  . "${HOME}/.ssh/agent.env" >/dev/null
+  if ! kill -0 $SSH_AGENT_PID >/dev/null 2>&1; then
+    echo "Stale agent file found. Spawning new agent… "
+    eval $(ssh-agent | tee ~/.ssh/agent.env)
     ssh-add
+  fi
+else
+  echo "Starting ssh-agent"
+  eval $(ssh-agent | tee "${HOME}/.ssh/agent.env")
+  ssh-add
 fi
 
 # # Start the gpg-agent if not already running

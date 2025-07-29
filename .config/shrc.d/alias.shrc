@@ -23,44 +23,49 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 # Modern tools
 # -----------------------------------------------------
 
-LS_ALIAS="lsd"
-
-if  [ -x "$(command -v lsd)" ] && [ "${LS_ALIAS}" = "lsd" ]; then
-    alias ls='lsd'
-    alias la='lsd -a'
-    alias lt='lsd -alrt'
-    alias tree='ls --tree'
-    alias tree_ng='ls -alrt --tree'
-elif  [ -x "$(command -v exa)"  ]&& [ "${LS_ALIAS}" = "exa" ]; then
-    alias ls='exa --icons'
-    alias la='exa -agbhl --time-style=long-iso --icons'
-    alias lt='exa -agbhl --time-style=long-iso -s modified --icons'
-    alias lo='ls -la --icons'
-    alias tree='exa -abhlT'
+LS_ALIAS="eza"
+if [ -x "$(command -v eza)" ] && [ "${LS_ALIAS}" = "eza" ]; then
+  alias ls='eza'
+  alias ll='eza --group-directories-first --icons'
+  alias la='eza --group-directories-first --icons -a'
+  alias lt='eza --group-directories-first  --icons -alr'
+  alias tree='eza --tree'
+elif [ -x "$(command -v lsd)" ] && [ "${LS_ALIAS}" = "lsd" ]; then
+  alias ls='lsd'
+  alias la='lsd -a'
+  alias lt='lsd -alrt'
+  alias tree='ls --tree'
+  alias tree_ng='ls -alrt --tree'
+elif [ -x "$(command -v exa)" ] && [ "${LS_ALIAS}" = "exa" ]; then
+  alias ls='exa --icons'
+  alias la='exa -agbhl --time-style=long-iso --icons'
+  alias lt='exa -agbhl --time-style=long-iso -s modified --icons'
+  alias lo='ls -la --icons'
+  alias tree='exa -abhlT'
 else
-    myos="$(uname)"
-    # shellcheck disable=SC2034
-    case "$myos" in
-        Linux) colorflag="--color" ;;
-        FreeBSD|OpenBSD) colorflag="-G";;
-        SunOS) colorflag="-G" ;;
-        *) colorflag="" ;;
-    esac
-    alias ls='command ls ${colorflag}'
-    alias ls='ls -lF ${colorflag}'
-    alias la='ls -laF ${colorflag}'
+  myos="$(uname)"
+  # shellcheck disable=SC2034
+  case "$myos" in
+  Linux) colorflag="--color" ;;
+  FreeBSD | OpenBSD) colorflag="-G" ;;
+  SunOS) colorflag="-G" ;;
+  *) colorflag="" ;;
+  esac
+  alias ls='command ls ${colorflag}'
+  alias ls='ls -lF ${colorflag}'
+  alias la='ls -laF ${colorflag}'
 fi
 
 if [ -x "$(command -v rg)" ]; then
-    alias grep='rg -S'
+  alias grep='rg -S'
 else
-    alias grep='grep --color=auto'
-    alias egrep='egrep --color=auto'
-    alias fgrep='fgrep --color=auto'
+  alias grep='grep --color=auto'
+  alias egrep='egrep --color=auto'
+  alias fgrep='fgrep --color=auto'
 fi
 
 if [ -x "$(command -v bat)" ]; then
-    alias cat='bat'
+  alias cat='bat'
 fi
 
 alias lsi="devicons-ls"
@@ -85,15 +90,16 @@ alias nowdate='date +"%d-%m-%Y"'
 # -----------------------------------------------------
 
 if [ -x "$(command -v nvim)" ]; then
-    alias vi='nvim'
+  alias vi='nvim'
 elif [ -x "$(command -v vim)" ]; then
-    alias vi='vim'
+  alias vi='vim'
 fi
+alias astronvim="NVIM_APPNAME=astronvim nvim"
 
 # Git
 # -----------------------------------------------------
 
-alias gitui='gitui -t ~/.config/gitui/mocha.ron'
+alias gitui='gitui -t ~/.config/gitui/catppuccin-frappe.ron'
 
 # Network
 # -----------------------------------------------------
@@ -157,7 +163,6 @@ alias xrandr_cfg="xrandr -q | awk '/connected/{d=\$1}/*/{print d \"\t\" \$1}'"
 
 alias httpsnif="sudo ngrep -d 'enp0s25' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i enp0s25 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
-
 
 # Misc
 # -----------------------------------------------------

@@ -45,41 +45,49 @@ K8S_BINARIES=("kubectl")
 
 mkdir -p "${HOME}/.local/share/zsh/site-functions"
 
-mise complete -s zsh  > ${HOME}/.local/share/zsh/site-functions/_mise
+mise complete -s zsh >${HOME}/.local/share/zsh/site-functions/_mise
 
 # if [ -f "${HOME}/.asdf/shims/kubectl" ]; then
 #   ${HOME}/.asdf/shims/kubectl completion zsh > "${HOME}/.local/share/zsh/site-functions/_kubectl"
 # fi
 
 if [ -f "${HOME}/Applications/google-cloud-sdk/completion.zsh.inc" ]; then
-    source ${HOME}/Applications/google-cloud-sdk/completion.zsh.inc
+  source ${HOME}/Applications/google-cloud-sdk/completion.zsh.inc
 fi
 
 if [ -f "${HOME}/Applications/aws-cli/venv/bin/activate" ]; then
-    source ${HOME}/Applications/aws-cli/venv/bin/activate
-    source aws_zsh_completer.sh
-    deactivate
+  source ${HOME}/Applications/aws-cli/venv/bin/activate
+  source aws_zsh_completer.sh
+  deactivate
 fi
 
 if [ -f "${HOME}/Applications/azure-cli/venv/bin/activate" ]; then
-    source ${HOME}/Applications/azure-cli/venv/bin/activate
-    source az.completion.sh
-    deactivate
+  source ${HOME}/Applications/azure-cli/venv/bin/activate
+  source az.completion.sh
+  deactivate
 fi
 
 fpath=("${HOME}/.local/share/zsh/site-functions" $fpath)
 
-if command "gh" > /dev/null 2>&1; then
-  gh completion -s zsh > "${HOME}/.local/share/zsh/site-functions/_gh"
+if command "gh" >/dev/null 2>&1; then
+  gh completion -s zsh >"${HOME}/.local/share/zsh/site-functions/_gh"
 fi
 
-if command "glab" > /dev/null 2>&1; then
-  glab completion -s zsh > "${HOME}/.local/share/zsh/site-functions/_glab"
+if command "glab" >/dev/null 2>&1; then
+  glab completion -s zsh >"${HOME}/.local/share/zsh/site-functions/_glab"
 fi
 
 if [ -f "/opt/homebrew/bin/brew" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-autoload -Uz compinit
-compinit
+if type brew &>/dev/null; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  autoload -Uz compinit
+  compinit
+else
+  autoload -Uz compinit
+  compinit
+fi
+
+source <(konf-go shellwrapper zsh)
