@@ -1,4 +1,4 @@
-theme "nord"
+// theme "tokyo-night-dark"
 
 ui {
     pane_frames {
@@ -24,9 +24,9 @@ plugins {
     about location="zellij:about"
 
     zellij-pane-picker location="https://github.com/shihanng/zellij-pane-picker/releases/download/v0.6.0/zellij-pane-picker.wasm" {
-        // list_panes ""
-        // plugin_select_down "Ctrl n"
-        // plugin_select_up "Ctrl p"
+        list_panes ""
+        plugin_select_down "Ctrl n"
+        plugin_select_up "Ctrl p"
     }
 }
 
@@ -51,6 +51,54 @@ layout {
             plugin location="zellij:status-bar"
         }
     }
+
+    // tab_template name="strider_tab" {
+    //     pane size=1 borderless=true {
+    //         plugin location="zellij:tab-bar"
+    //     }
+    //     pane split_direction="Vertical" {
+    //         pane size="15%" {
+    //             // TODO: when we support sending CWD to plugins, this should start in ./zellij-derver
+    //             plugin location="zellij:strider"
+    //         }
+    //         children
+    //     }
+    //     pane size=2 borderless=true {
+    //         plugin location="zellij:status-bar"
+    //     }
+    // }
+
+    tab name="Home" split_direction="vertical" {
+        pane
+    }
+
+    tab name="Dotfiles" split_direction="vertical" {
+        pane
+    }
+
+    tab name="Divona" split_direction="vertical" {
+        pane
+    }
+
+    tab name="Portefaix-K8s" split_direction="vertical" {
+        pane
+    }
+
+    tab name="Portefaix-Infra" split_direction="vertical" {
+        pane
+    }
+
+    tab name="Portefaix-Hub" split_direction="vertical" {
+        pane
+    }
+
+    tab name="Portefaix-KRM" split_direction="vertical" {
+        pane
+    }
+
+    tab name="Portefaix-Misc" split_direction="vertical" {
+        pane
+    }
 }
 
 // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
@@ -63,7 +111,7 @@ keybinds {
       //         quick_jump true
       //     }
       // }
-      bind "Ctrl y" {
+      bind "Ctrl w" {
           LaunchOrFocusPlugin "zellij-pane-picker" {
               floating true; move_to_focused_tab true;
           }
@@ -72,5 +120,5 @@ keybinds {
 }
 
 
-session_name "test"
+session_name "core"
 attach_to_session true
