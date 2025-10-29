@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+# AWS CLI
+# -----------------------------------------------------
+
+alias aws-apigw-dns='aws apigatewayv2 get-domain-names --query "Items[].DomainName" --output table'
+alias aws-cloudfront-distrib-dns='aws cloudfront list-distributions --query "DistributionList.Items[].{Id:Id, DomainName:DomainName, Aliases:Aliases.Items}" --output table'

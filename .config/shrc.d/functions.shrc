@@ -16,22 +16,22 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-function extract(){
-  if [ -f "${1}" ] ; then
+function extract() {
+  if [ -f "${1}" ]; then
     case "${1}" in
-      *.tar.bz2) tar xjf "${1}" ;;
-      *.tar.gz) tar xzf "${1}" ;;
-      *.bz2) bunzip2 "${1}" ;;
-      *.rar) unrar x "${1}" ;;
-      *.gz) gunzip "${1}" ;;
-      *.tar) tar xf "${1}" ;;
-      *.tbz2) tar xjf "${1}" ;;
-      *.tgz) tar xzf "${1}" ;;
-      *.zip) unzip "${1}" ;;
-      *.Z) uncompress "${1}" ;;
-      *.7z) 7z x "${1}" ;;
-      *.xz) tar xJf "${1}" ;;
-      *) echo -e "Unknown format.\n${1}" ;;
+    *.tar.bz2) tar xjf "${1}" ;;
+    *.tar.gz) tar xzf "${1}" ;;
+    *.bz2) bunzip2 "${1}" ;;
+    *.rar) unrar x "${1}" ;;
+    *.gz) gunzip "${1}" ;;
+    *.tar) tar xf "${1}" ;;
+    *.tbz2) tar xjf "${1}" ;;
+    *.tgz) tar xzf "${1}" ;;
+    *.zip) unzip "${1}" ;;
+    *.Z) uncompress "${1}" ;;
+    *.7z) 7z x "${1}" ;;
+    *.xz) tar xJf "${1}" ;;
+    *) echo -e "Unknown format.\n${1}" ;;
     esac
   else
     echo "Invalid file specified. ${1}" >/dev/stderr
@@ -40,20 +40,19 @@ function extract(){
 }
 
 function weather() {
-    curl http://wttr.in/"${1:-bordeaux}"
+  curl http://wttr.in/"${1:-bordeaux}"
 }
 
 function coin() {
-    curl http://rate.sx/"${1}"
+  curl http://rate.sx/"${1}"
 }
 
 function ip_info() {
-    curl ipinfo.io/"${1:-8.8.8.8}"
+  curl ipinfo.io/"${1:-8.8.8.8}"
 }
 
 function print_colors() {
-  for i in {0..255};
-  do
+  for i in {0..255}; do
     printf "\x1b[38;5;%smcolour%s\x1b[0m\n" ${i} ${i}
   done
 }
@@ -65,14 +64,14 @@ function ssh_proxy_socks() {
 }
 
 function format_sdcard() {
-  if [ -f "${1}" ] ; then
+  if [ -f "${1}" ]; then
     case "${1}" in
-        fat32)
-            sudo mkfs.vfat /dev/mmcblk0p1
-            ;;
-        *)
-            echo "Please specify filesystem"
-            ;;
+    fat32)
+      sudo mkfs.vfat /dev/mmcblk0p1
+      ;;
+    *)
+      echo "Please specify filesystem"
+      ;;
     esac
   fi
 }
@@ -80,8 +79,6 @@ function format_sdcard() {
 function jdgo() {
   pushd ${XDG_DOCUMENTS_DIR}/*/*/${1}*
 }
-
-
 
 function kubectlgetall {
   for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events.events.k8s.io" | grep -v "events" | sort | uniq); do
@@ -91,9 +88,9 @@ function kubectlgetall {
 }
 
 function gh-pr {
-    if [ $# -eq 0 ]; then
-        echo 'usage: gh-pr -l "kind/xxxxx" -l "area/xxxxx" -l "priority/xxxxx"'
-    else
-      gh pr create --draft -a nlamirault -l "lifecycle/active" -l "status/in_progress" $*
-    fi
+  if [ $# -eq 0 ]; then
+    echo 'usage: gh-pr -l "kind/xxxxx" -l "area/xxxxx" -l "priority/xxxxx"'
+  else
+    gh pr create --draft -a nlamirault -l "lifecycle/active" -l "status/in_progress" $*
+  fi
 }

@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+# Kubernetes
+# -----------------------------------------------------
+
+alias k8s-istio-lb='kubectl -n istio-system get svc | grep LoadBalancer'
+
+# Karpenter
+alias k8s-karpenter-nodepools='kubectl get nodepools.karpenter.sh'
+alias k8s-karpenter-nodeclaims='kubectl get nodeclaims.karpenter.sh --sort-by=".metadata.creationTimestamp" -owide'

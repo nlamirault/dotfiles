@@ -89,5 +89,3 @@ else
   autoload -Uz compinit
   compinit
 fi
-
-source <(konf-go shellwrapper zsh)

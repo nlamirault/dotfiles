@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+alias zellij-devops="zellij -l ~/.config/zellij/core.kdl"
