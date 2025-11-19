@@ -1,5 +1,13 @@
 #!/bin/zsh
 
+function ai-vibe() {
+  ln -s "${HOME}/Projects/vibe-coding/.rules" .rules
+  ln -s "${HOME}/Projects/vibe-coding/AGENTS.md" AGENTS.md
+  ln -s "${HOME}/Projects/vibe-coding/AGENTS.md" CLAUDE.md
+  mkdir -p .kiro/steering/
+  # ln -s "${HOME}/Projects/vibe-coding/AGENTS.md" .kiro/steering
+}
+
 function ai-claude() {
   local env_vars=(
     "DISABLE_ERROR_REPORTING=1"
@@ -42,4 +50,18 @@ function ai-claude-otel() {
   local claude_args=("--dangerously-skip-permissions")
   claude_args+=("$@")
   env "${env_vars[@]}" "claude" "${claude_args[@]}"
+}
+
+ai-git-diff() {
+  local provider="${1:-claude}"
+  local prompt="Summarize the changes in this git diff output."
+
+  if [ "$provider" = "gemini" ]; then
+    git diff | gemini -p "$prompt"
+  elif [ "$provider" = "claude" ]; then
+    git diff | ai-claude -p "$prompt"
+  else
+    echo "Unsupported provider: $provider. Please use 'gemini' or 'claude'."
+    return 1
+  fi
 }

@@ -1,3 +1,1 @@
 #!/usr/bin/env sh
-
-alias claude-git-diff='git diff | claude -p "Summarize the changes in this git diff output."'

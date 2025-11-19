@@ -1,3 +1,5 @@
+# Kiro CLI pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
 # Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,44 +17,40 @@
 # SPDX-License-Identifier: Apache-2.0
 
 # Usage:
-# set -x			# activate debugging from here
-# w
-# set +x			# stop debugging from here
-
 # set -e
 # set -x
 # set -v
 
 if [ -d "${HOME}/.config/shrc.d" ]; then
-    for file in $(/bin/ls ${HOME}/.config/shrc.d/*.shrc); do
-        # echo ${file}
-        # shellcheck source=/dev/null
-        . ${file};
-    done
+  for file in $(/bin/ls ${HOME}/.config/shrc.d/*.shrc); do
+    # echo ${file}
+    # shellcheck source=/dev/null
+    . ${file}
+  done
 fi
 
 if [ -d "${HOME}/.config/shells_vendor" ]; then
-    for file in $(/bin/ls "${HOME}"/.config/shells_vendor/*.sh); do
-        # echo ${file}
-        # shellcheck source=/dev/null
-        [ -r "${file}" ] && . "${file}";
-    done
+  for file in $(/bin/ls "${HOME}"/.config/shells_vendor/*.sh); do
+    # echo ${file}
+    # shellcheck source=/dev/null
+    [ -r "${file}" ] && . "${file}"
+  done
 fi
 
 if [ -d "${HOME}/.config/zshrc.d" ]; then
-    for file in $(/bin/ls ${HOME}/.config/zshrc.d/*.zshrc); do
-        # echo "${file}"
-        # shellcheck source=/dev/null
-        . ${file};
-    done
+  for file in $(/bin/ls ${HOME}/.config/zshrc.d/*.zshrc); do
+    # echo "${file}"
+    # shellcheck source=/dev/null
+    . ${file}
+  done
 fi
 
 if [ -d "${HOME}/.config/work.d" ]; then
-    for file in $(/bin/ls ${HOME}/.config/work.d/*.sh); do
-        # echo "${file}"
-        # shellcheck source=/dev/null
-        . ${file};
-    done
+  for file in $(/bin/ls ${HOME}/.config/work.d/*.sh); do
+    # echo "${file}"
+    # shellcheck source=/dev/null
+    . ${file}
+  done
 fi
 
 # Load local configuration
@@ -60,11 +58,11 @@ fi
 
 # Load secret or personal configuration (PERSONAL_DIR loaded from path.shrc)
 if [ -d "${PERSONAL_DIR}/zshrc.d" ]; then
-    for file in $(/bin/ls ${PERSONAL_DIR}/zshrc.d/*.zshrc); do
-        echo ${file}
-        # shellcheck source=/dev/null
-        [ -r "${file}" ] && . "${file}";
-    done
+  for file in $(/bin/ls ${PERSONAL_DIR}/zshrc.d/*.zshrc); do
+    echo ${file}
+    # shellcheck source=/dev/null
+    [ -r "${file}" ] && . "${file}"
+  done
 fi
 
 # https://www.freedesktop.org/wiki/Software/xdg-user-dirs/
@@ -90,3 +88,22 @@ if [[ "$-" == *x* ]]; then
   echo "DEBUG MODE is ON ========================== Zsh setup finished."
 fi
 
+. "$HOME/.cargo/env"
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+[[ ! -r '/Users/nicolas.lamirault/.opam/opam-init/init.zsh' ]] || source '/Users/nicolas.lamirault/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+# END opam configuration
+
+# Kiro CLI post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
+
+# Added by Antigravity
+export PATH="/Users/nicolas.lamirault/.antigravity/antigravity/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/nicolas.lamirault/.antigravity/antigravity/bin:$PATH"

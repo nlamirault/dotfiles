@@ -24,9 +24,9 @@ plugins {
     about location="zellij:about"
 
     zellij-pane-picker location="https://github.com/shihanng/zellij-pane-picker/releases/download/v0.6.0/zellij-pane-picker.wasm" {
-        list_panes ""
-        plugin_select_down "Ctrl n"
-        plugin_select_up "Ctrl p"
+        // list_panes ""
+        // plugin_select_down "Ctrl n"
+        // plugin_select_up "Ctrl p"
     }
 }
 
@@ -104,14 +104,14 @@ layout {
 // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
 keybinds {
   shared_except "locked" {
-      // bind "Ctrl y" {
-      //     LaunchOrFocusPlugin "file:~/.config/zellij/plugins/room.wasm" {
-      //         floating true
-      //         ignore_case true
-      //         quick_jump true
-      //     }
-      // }
-      bind "Ctrl w" {
+    //   bind "Ctrl y" {
+    //       LaunchOrFocusPlugin "file:~/.config/zellij/plugins/room.wasm" {
+    //           floating true
+    //           ignore_case true
+    //           quick_jump true
+    //       }
+    //   }
+      bind "Ctrl y" {
           LaunchOrFocusPlugin "zellij-pane-picker" {
               floating true; move_to_focused_tab true;
           }

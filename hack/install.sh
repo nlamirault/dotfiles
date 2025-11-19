@@ -19,88 +19,89 @@
 BASE_DIR=$(pwd)
 
 function create_link() {
-	local dir=$1
+  local dir=$1
 
-	test -L "${HOME}/${dir}" || ln -fs "${BASE_DIR}/${dir}" "${HOME}/${dir}"
+  test -L "${HOME}/${dir}" || ln -fs "${BASE_DIR}/${dir}" "${HOME}/${dir}"
 }
 
 function install_shell {
-	create_link ".config/shrc.d"
-	create_link ".bashrc"
-	create_link ".bash_profile"
-	create_link ".config/bashrc.d"
-	create_link ".zshrc"
-	create_link ".zprofile"
-	create_link ".config/zshrc.d"
-	create_link ".config/fish"
+  create_link ".config/shrc.d"
+  create_link ".bashrc"
+  create_link ".bash_profile"
+  create_link ".config/bashrc.d"
+  create_link ".zshrc"
+  create_link ".zprofile"
+  create_link ".config/zshrc.d"
+  create_link ".config/fish"
 }
 
 function install_binaries {
-	mkdir -p "${HOME}/bin"
-	create_link "/bin/tmux-lam.sh"
-	create_link "/bin/tmux-perso.sh"
-	create_link "/bin/tmux-zeiot.sh"
-	create_link "/bin/tmux-pilotariak.sh"
-	create_link "/bin/alacritty-perso.sh"
-	create_link "/bin/zellij.sh"
-	create_link "/bin/yk-reset.sh"
-	cd "${HOME}" || exit
-	create_link ".tool-versions"
-	create_link ".tool-versions-plugins"
+  mkdir -p "${HOME}/bin"
+  create_link "/bin/tmux-lam.sh"
+  create_link "/bin/tmux-perso.sh"
+  create_link "/bin/tmux-zeiot.sh"
+  create_link "/bin/tmux-pilotariak.sh"
+  create_link "/bin/alacritty-perso.sh"
+  create_link "/bin/zellij.sh"
+  create_link "/bin/yk-reset.sh"
+  cd "${HOME}" || exit
+  create_link ".tool-versions"
+  create_link ".tool-versions-plugins"
 }
 
 function install_share {
-	mkdir -p "${HOME}/.local/share"
-	create_link ".local/share/backgrounds"
-	create_link ".local/share/man"
-	create_link ".local/share/icons"
+  mkdir -p "${HOME}/.local/share"
+  create_link ".local/share/backgrounds"
+  create_link ".local/share/man"
+  create_link ".local/share/icons"
 }
 
 function install_apps {
-	create_link ".gitconfig"
-	create_link ".htop"
-	create_link ".editorconfig"
-	create_link ".tmux.conf"
-	create_link ".xinitrc"
-	create_link ".config/user-dirs.dirs"
-	create_link ".config/user-dirs.locale"
-	create_link ".config/mimeapps.list"
-	create_link ".config/autostart"
-	create_link ".config/starship.toml"
-	create_link ".config/tmux"
-	create_link ".config/alacritty"
-	create_link ".config/kitty"
-	create_link ".config/wezterm"
-	create_link ".config/zellij"
+  create_link ".gitconfig"
+  create_link ".htop"
+  create_link ".editorconfig"
+  create_link ".tmux.conf"
+  create_link ".xinitrc"
+  create_link ".config/user-dirs.dirs"
+  create_link ".config/user-dirs.locale"
+  create_link ".config/mimeapps.list"
+  create_link ".config/autostart"
+  create_link ".config/starship.toml"
+  create_link ".config/tmux"
+  create_link ".config/alacritty"
+  create_link ".config/kitty"
+  create_link ".config/wezterm"
+  create_link ".config/rift"
+  create_link ".config/zellij"
 
-	if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-		create_link ".gtkrc-2.0"
-		create_link ".config/i3status-rs"
-		create_link ".config/i3"
-		create_link ".config/conky"
-		create_link ".config/rofi"
-		create_link ".config/dunst"
-		create_link ".config/polybar"
-		create_link ".config/sway"
-		create_link ".config/wal"
-		create_link ".config/redshift"
-		create_link ".config/termite"
-		mkdir -p "${HOME}/.config/Code/User"
-		create_link ".config/Code/User/settings.json"
+  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    create_link ".gtkrc-2.0"
+    create_link ".config/i3status-rs"
+    create_link ".config/i3"
+    create_link ".config/conky"
+    create_link ".config/rofi"
+    create_link ".config/dunst"
+    create_link ".config/polybar"
+    create_link ".config/sway"
+    create_link ".config/wal"
+    create_link ".config/redshift"
+    create_link ".config/termite"
+    mkdir -p "${HOME}/.config/Code/User"
+    create_link ".config/Code/User/settings.json"
 
-	elif [[ "$OSTYPE" == "darwin"* ]]; then
-		create_link ".config/sketchybar"
-		create_link ".config/yabai"
-		create_link ".config/skhd"
-		mkdir -p "${HOME}/Library/Application Support/Code/User"
-		ln -fs "${BASE_DIR}/.config/Code/User/settings.json" "${HOME}/Library/Application Support/Code/User"
-	fi
+  elif [[ "$OSTYPE" == "darwin"* ]]; then
+    create_link ".config/sketchybar"
+    create_link ".config/yabai"
+    create_link ".config/skhd"
+    mkdir -p "${HOME}/Library/Application Support/Code/User"
+    ln -fs "${BASE_DIR}/.config/Code/User/settings.json" "${HOME}/Library/Application Support/Code/User"
+  fi
 }
 
 function install_ssh {
-	mkdir -p "${HOME}/.ssh"
-	create_link ".ssh/config"
-	create_link ".ssh/personal"
+  mkdir -p "${HOME}/.ssh"
+  create_link ".ssh/config"
+  create_link ".ssh/personal"
 }
 
 mkdir -p "${HOME}/.config"

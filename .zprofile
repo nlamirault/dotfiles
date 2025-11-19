@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Kiro CLI pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zprofile.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zprofile.pre.zsh"
 
 # Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 #
@@ -21,3 +23,9 @@
 
 export PATH="${HOME}/.kzenv/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
+
+# Added by swiftly
+. "/Users/nicolas.lamirault/.swiftly/env.sh"
+
+# Kiro CLI post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zprofile.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zprofile.post.zsh"

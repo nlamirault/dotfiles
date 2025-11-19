@@ -96,7 +96,7 @@ default_orientation = "perpendicular"
 [settings.layout.gaps.outer]
 top = 6
 left = 0
-bottom = 30
+bottom = 0 # 30 with sketchybar
 right = 0
 
 [settings.layout.gaps.inner]
@@ -255,7 +255,7 @@ app_rules = []
 # Example usage: with `comb1 = "Alt + Shift"`, you can write:
 #   "comb1 + H" = { move_node = "left" }
 [modifier_combinations]
-comb1 = "Alt + Shift"
+comb1 = "Ctrl + Shift"
 
 [keys]
 # Key binding syntax

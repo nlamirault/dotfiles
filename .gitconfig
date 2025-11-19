@@ -97,7 +97,7 @@
 
 [core]
     editor = nvim
-    pager = delta
+    ; pager = delta
 
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes

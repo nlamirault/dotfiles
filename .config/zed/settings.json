@@ -33,32 +33,17 @@
     "button": true,
     "dock": "right",
     "default_width": 640,
-    "default_height": 320,
-    "provider": "ollama",
-    "version": "2"
+    "default_height": 320
   },
   "auto_update_extensions": {
     "vscode-great-icons": false,
     "helm": false
   },
-  "context_servers": {
-    "mcp-server-git": {
-      "command": {
-        "path": "uvx",
-        "args": ["mcp-server-git"]
-      },
-      "settings": {
-        "enable_something": true
-      }
-    }
-  },
   "tab_size": 2,
   "format_on_save": "on",
-  "hour_format": "hour24",
-  "theme": "Catppuccin Macchiato",
+  "theme": "VSCode Dark Modern",
   "base_keymap": "VSCode",
   "ui_font_size": 15,
-  "ui_font_family": "Zed Plex Sans",
   "buffer_font_size": 12,
   // Indentation, rainbow indentation
   "indent_guides": {
@@ -119,19 +104,10 @@
       "remove_trailing_whitespace_on_save": true
     },
     "Python": {
-      "format_on_save": { "language_server": { "name": "ruff" } },
       "formatter": [
         {
           "language_server": {
             "name": "ruff"
-          }
-        },
-        {
-          "code_actions": {
-            // Fix all auto-fixable lint violations
-            "source.fixAll.ruff": true,
-            // Organize imports
-            "source.organizeImports.ruff": true
           }
         }
       ],

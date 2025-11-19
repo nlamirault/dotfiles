@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Kiro CLI pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/bash_profile.pre.bash" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/bash_profile.pre.bash"
 
 # Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 #
@@ -27,3 +29,6 @@ export PATH="$HOME/.poetry/bin:$PATH"
 . "$HOME/.cargo/env"
 
 if [ -e /home/nicolas/.nix-profile/etc/profile.d/nix.sh ]; then . /home/nicolas/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# Kiro CLI post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/bash_profile.post.bash" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/bash_profile.post.bash"
