@@ -76,6 +76,10 @@ layout {
         pane
     }
 
+    tab name="Agentic" split_direction="vertical" {
+        pane
+    }
+
     tab name="Divona" split_direction="vertical" {
         pane
     }

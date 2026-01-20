@@ -1,0 +1,34 @@
+---
+version: '3.5'
+services:
+  atuin:
+    restart: always
+    # image: ghcr.io/atuinsh/atuin:main
+    image: ghcr.io/atuinsh/atuin:17.0.1
+    command: server start
+    volumes:
+      - "./config:/config"
+    links:
+      - postgresql:db
+    ports:
+      - 8888:8888
+    environment:
+      ATUIN_HOST: "0.0.0.0"
+      ATUIN_OPEN_REGISTRATION: "true"
+      # ATUIN_DB_URI: postgres://$ATUIN_DB_USERNAME:$ATUIN_DB_PASSWORD@db/atuin
+      ATUIN_DB_URI: postgres://atuin:admin@db/atuin"
+  postgresql:
+    # image: postgres:14
+    image: arm64v8/postgres:14
+    restart: unless-stopped
+    volumes:
+      # Don't remove permanent storage for index database files!
+      - "./database:/var/lib/postgresql/data/"
+    environment:
+      POSTGRES_USER: atuin # $ATUIN_DB_USERNAME
+      POSTGRES_PASSWORD: password # $ATUIN_DB_PASSWORD
+      POSTGRES_DB: atuin
+      PGDATA: /var/lib/postgresql/data/pgdata
+
+volumes:
+  database:

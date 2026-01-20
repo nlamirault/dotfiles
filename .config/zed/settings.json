@@ -13,18 +13,42 @@
 // limitations under the License.
 //
 // SPDX-License-Identifier: Apache-2.0
-
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run the `open default settings` command
-// from the command palette or from `Zed` application menu.
 {
   "icon_theme": "VSCode Great Icons Theme",
   "agent": {
+    "profiles": {
+      "swan": {
+        "name": "Swan",
+        "tools": {},
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      },
+      "ask": {
+        "name": "Ask",
+        "tools": {
+          "diagnostics": true,
+          "fetch": true,
+          "list_directory": true,
+          "project_notifications": false,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "open": true,
+          "grep": true,
+          "thinking": true,
+          "web_search": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {
+          "awslabs.iam-mcp-server": {
+            "tools": {
+              "put_user_policy": false
+            }
+          }
+        }
+      }
+    },
+    "default_profile": "write",
     "always_allow_tool_actions": true,
     "default_model": {
       "provider": "anthropic",
@@ -41,7 +65,7 @@
   },
   "tab_size": 2,
   "format_on_save": "on",
-  "theme": "VSCode Dark Modern",
+  "theme": "VSCode Classic",
   "base_keymap": "VSCode",
   "ui_font_size": 15,
   "buffer_font_size": 12,
@@ -60,14 +84,15 @@
   },
   "file_types": {
     "Dockerfile": ["Dockerfile", "Dockerfile.*"],
-    "JSON": ["json", "jsonc", "*.code-snippets"],
-    "Helm": [
-      "**/templates/**/*.tpl",
-      "**/templates/**/*.yaml",
-      "**/templates/**/*.yml",
-      "**/helmfile.d/**/*.yaml",
-      "**/helmfile.d/**/*.yml"
-    ]
+    "JSON": ["json", "jsonc", "*.code-snippets"]
+    // "Helm": [
+    //   "**/templates/**/*.tpl",
+    //   "**/templates/**/*.yaml",
+    //   "**/templates/**/*.yml",
+    //   "**/helmfile.d/**/*.yaml",
+    //   "**/helmfile.d/**/*.yml",
+    //   "**/values*.yaml"
+    // ]
   },
   "git": {
     "git_gutter": "tracked_files",
@@ -126,6 +151,16 @@
     }
   },
   "lsp": {
+    "helm_ls": {
+      "settings": {
+        "helm-ls": {
+          "logLevel": "info",
+          "yamlls": {
+            "enabled": true
+          }
+        }
+      }
+    },
     "pyright": {
       "settings": {
         "python.analysis": {
@@ -152,15 +187,22 @@
         "rust": {
           "analyzerTargetDir": true
         }
-      },
-      "binary": {
-        "path_lookup": true
       }
     },
     "terraform-ls": {
       "initialization_options": {
         "experimentalFeatures": {
           "prefillRequiredFields": true
+        }
+      }
+    },
+    "yaml-language-server": {
+      "settings": {
+        "yaml": {
+          "keyOrdering": true,
+          "format": {
+            "singleQuote": true
+          }
         }
       }
     }
@@ -200,9 +242,6 @@
   "notification_panel": {
     "dock": "left"
   },
-  "chat_panel": {
-    "dock": "left"
-  },
   "scrollbar": {
     "show": "auto",
     "cursors": true,
@@ -230,5 +269,71 @@
   "telemetry": {
     "diagnostics": false,
     "metrics": false
+  },
+  "context_servers": {
+    "awslabs.aws-api-mcp-server": {
+      "command": "uvx",
+      "args": ["awslabs.aws-api-mcp-server@latest"],
+      "env": {
+        "AWS_REGION": "eu-west-1",
+        "FASTMCP_LOG_LEVEL": "INFO"
+      }
+    },
+    "awslabs.core-mcp-server": {
+      "command": "uvx",
+      "args": ["awslabs.core-mcp-server@latest"],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "INFO"
+      }
+    },
+    "awslabs.aws-documentation-mcp-server": {
+      "command": "uvx",
+      "args": ["awslabs.aws-documentation-mcp-server@latest"],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "INFO"
+      }
+    },
+    "awslabs.ecs-mcp-server": {
+      "command": "uvx",
+      "args": ["--from", "awslabs-ecs-mcp-server", "ecs-mcp-server"],
+      "env": {
+        "AWS_REGION": "eu-west-1",
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "ALLOW_WRITE": "false",
+        "ALLOW_SENSITIVE_DATA": "false"
+      }
+    },
+    "awslabs.iam-mcp-server": {
+      "command": "uvx",
+      "args": ["awslabs.iam-mcp-server@latest", "--readonly"],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      }
+    },
+    "aws-knowledge-mcp-server": {
+      "enabled": true,
+      "settings": {},
+
+      "url": "https://knowledge-mcp.global.api.aws"
+    },
+    "awslabs.aws-pricing-mcp-server": {
+      "command": "uvx",
+      "args": ["awslabs.aws-pricing-mcp-server@latest"],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      }
+    },
+    "kubernetes-mcp-server": {
+      "command": "npx",
+      "args": ["-y", "kubernetes-mcp-server@latest", "--read-only"]
+    },
+    "kubernetes": {
+      "command": "npx",
+      "args": ["mcp-server-kubernetes"]
+    },
+    "terraform": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "hashicorp/terraform-mcp-server"]
+    }
   }
 }

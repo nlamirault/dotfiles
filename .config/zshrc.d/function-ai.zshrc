@@ -1,11 +1,14 @@
 #!/bin/zsh
 
-function ai-vibe() {
-  ln -s "${HOME}/Projects/vibe-coding/.rules" .rules
-  ln -s "${HOME}/Projects/vibe-coding/AGENTS.md" AGENTS.md
-  ln -s "${HOME}/Projects/vibe-coding/AGENTS.md" CLAUDE.md
+function ai-agentic() {
+  ln -s "${HOME}/Projects/agentic/.rules" .rules
+  ln -s "${HOME}/Projects/agentic/.rules" .clinerules
+  ln -s "${HOME}/Projects/agentic/AGENTS.md" AGENTS.md
+  ln -s "${HOME}/Projects/agentic/AGENTS.md" CLAUDE.md
   mkdir -p .kiro/steering/
-  # ln -s "${HOME}/Projects/vibe-coding/AGENTS.md" .kiro/steering
+  # ln -s "${HOME}/Projects/agentic/AGENTS.md" .kiro/steering
+  ln -s "${HOME}/Projects/agentic/.mcp.json" "${HOME}/.mcp.json"
+  ln -s "${HOME}/Projects/agentic/.mcp.json" "${HOME}/.gemini/antigravity/mcp_config.json"
 }
 
 function ai-claude() {
@@ -15,7 +18,7 @@ function ai-claude() {
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=true"
   )
 
-  local claude_args=("--dangerously-skip-permissions")
+  local claude_args=("") # ("--dangerously-skip-permissions")
   claude_args+=("$@")
   env "${env_vars[@]}" "claude" "${claude_args[@]}"
 }
@@ -52,7 +55,21 @@ function ai-claude-otel() {
   env "${env_vars[@]}" "claude" "${claude_args[@]}"
 }
 
-ai-git-diff() {
+function ai-gemini-otel() {
+  log_info "[Gemini] Setting up Open Telemetry environment"
+  export GEMINI_TELEMETRY_ENABLED=true
+  export GEMINI_TELEMETRY_TARGET=local
+  export GEMINI_TELEMETRY_OTLP_PROTOCOL=http
+  export GEMINI_TELEMETRY_LOG_PROMPTS=true
+  export GEMINI_TELEMETRY_OTLP_ENDPOINT=https://api.smith.langchain.com/otel
+  export OTEL_EXPORTER_OTLP_HEADERS="x-api-key=${langsmith_api_key},Langsmith-Project=${langsmith_project}"
+  log_final "Running Gemini with Open Telemetry ${GEMINI_TELEMETRY_OTLP_ENDPOINT}"
+
+  gemini_args+=("$@")
+  gemini "${gemini_args[@]}"
+}
+
+function ai-git-diff() {
   local provider="${1:-claude}"
   local prompt="Summarize the changes in this git diff output."
 

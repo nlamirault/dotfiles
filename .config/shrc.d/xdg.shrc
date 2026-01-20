@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 #
@@ -17,16 +17,75 @@
 # SPDX-License-Identifier: Apache-2.0
 
 # See https://wiki.archlinux.org/index.php/XDG_Base_Directory
+# https://github.com/adrg/xdg
 
-# if [[ "$OSTYPE" == "darwin"* ]]; then
-#     export XDG_CONFIG_HOME="${HOME}/Library"
-#     export XDG_DATA_HOME="${HOME}/Library/Application Support"
-#     export XDG_CACHE_HOME="${HOME}/Library/Caches"
-# else
-export XDG_CONFIG_HOME="${HOME}/.config"
-export XDG_CACHE_HOME="${HOME}/.cache"
-export XDG_DATA_HOME="${HOME}/.local/share"
+function xdg_unix_base_directories() {
+  export XDG_DESKTOP_DIR="$HOME/Desktop"
+  export XDG_DOWNLOAD_DIR="$HOME/Downloads"
+  export XDG_DOCUMENTS_DIR="$HOME/Documents"
+  export XDG_MUSIC_DIR="$HOME/Music"
+  export XDG_PICTURES_DIR="$HOME/Pictures"
+  export XDG_VIDEOS_DIR="$HOME/Videos"
+  export XDG_TEMPLATES_DIR="$HOME/Templates"
+  export XDG_PUBLICSHARE_DIR="$HOME/Public"
+}
 
-export XDG_DATA_DIRS=/usr/local/share:/usr/share
-export XDG_CONFIG_DIRS=/etc/xdg
-# fi
+function xdg_win_base_directories() {
+  export XDG_DESKTOP_DIR="%USERPROFILE%\Desktop"
+  export XDG_DOWNLOAD_DIR="%USERPROFILE%\Downloads"
+  export XDG_DOCUMENTS_DIR="%USERPROFILE%\Documents"
+  export XDG_MUSIC_DIR="%USERPROFILE%\Music"
+  export XDG_PICTURES_DIR="%USERPROFILE%\Pictures"
+  export XDG_VIDEOS_DIR="%USERPROFILE%\Videos"
+  export XDG_TEMPLATES_DIR="$HOME/Templates"
+  export XDG_PUBLICSHARE_DIR="%SystemDrive%\Users\Public"
+}
+
+OS_NAME="$(uname -s)"
+case "$OS_NAME" in
+Linux*)
+  export XDG_CONFIG_HOME="${HOME}/.config"
+  # echo "🐧 Linux (or WSL)"
+  export XDG_DATA_HOME="${HOME}/.local/share"
+  export XDG_CACHE_HOME="${HOME}/.cache"
+  export XDG_STATE_HOME="${HOME}/.local/state"
+  export XDG_BIN_HOME="${HOME}/.local/bin"
+  export XDG_DATA_DIRS="/usr/local/share:/usr/share:${HOME}/.local/share"
+  export XDG_CONFIG_DIRS="/etc/xdg:${HOME}/.config"
+  xdg_unix_base_directories
+  [ -z "${XDG_RUNTIME_DIR}" ] && export XDG_RUNTIME_DIR="/run/user/${UID}"
+  ;;
+Darwin*)
+  # echo "🍎 MacOS"
+  # export XDG_CONFIG_HOME="${HOME}/Library/Application Support"
+  # export XDG_DATA_HOME="${HOME}/Library/Application Support"
+  # export XDG_CACHE_HOME="${HOME}/Library/Caches"
+  # export XDG_STATE_HOME="${HOME}/Library/Application Support"
+  # export XDG_DATA_DIRS="/Library/Application Support:${HOME}/.local/share"
+  # export XDG_CONFIG_DIRS="${HOME}/Library/Preferences:/Library/Application Support:/Library/Preferences:${HOME}/.config"
+  export XDG_CONFIG_HOME="${HOME}/.config"
+  export XDG_DATA_HOME="${HOME}/.local/share"
+  export XDG_CACHE_HOME="${HOME}/.cache"
+  export XDG_STATE_HOME="${HOME}/.local/state"
+  export XDG_BIN_HOME="${HOME}/.local/bin"
+  export XDG_DATA_DIRS="/usr/local/share:/usr/share:${HOME}/.local/share"
+  export XDG_CONFIG_DIRS="/etc/xdg:${HOME}/.config"
+  export XDG_RUNTIME_DIR="$(getconf DARWIN_USER_TEMP_DIR)"
+  xdg_unix_base_directories
+  ;;
+CYGWIN* | MINGW* | MSYS*)
+  # echo "🪟 Windows"
+  export XDG_CONFIG_HOME="%USERPROFILE%\AppData\Local"
+  export XDG_DATA_HOME="%APPADATA%:%ProgramData%"
+  export XDG_CACHE_HOME="%LOCALAPPDATA%\cache"
+  export XDG_STATE_HOME="%LOCALAPPDATA%"
+  export XDG_BIN_HOME="%LOCALAPPDATA%\Programs"
+  export XDG_DATA_DIRS="%APPADATA%:%ProgramData%"
+  export XDG_CONFIG_DIRS="%APPADATA%:%ProgramData%"
+  export XDG_RUNTIME_DIR="%LOCALAPPDATA%\Temp"
+  xdg_win_base_directories
+  ;;
+*)
+  echo "❓ Unknown OS : $OS_NAME"
+  ;;
+esac
