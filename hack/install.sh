@@ -45,8 +45,6 @@ function install_binaries {
   create_link "/bin/zellij.sh"
   create_link "/bin/yk-reset.sh"
   cd "${HOME}" || exit
-  create_link ".tool-versions"
-  create_link ".tool-versions-plugins"
 }
 
 function install_share {

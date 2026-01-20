@@ -1,0 +1,5 @@
+{
+  "model": "haiku",
+  "statusLine": { "style": "hidden" },
+  "notifications": { "enabled": false }
+}

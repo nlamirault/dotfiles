@@ -1,0 +1,57 @@
+{
+  "cleanupPeriodDays": 30,
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0"
+  },
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Grep",
+      "WebFetch",
+      "WebSearch"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)"
+    ]
+  },
+  "enabledPlugins": {
+    "document-skills@anthropic-agent-skills": true,
+    "code-review@claude-code-plugins": true,
+    "commit-commands@claude-code-plugins": true,
+    "security-guidance@claude-code-plugins": true,
+    "context-engineering-fundamentals@context-engineering-marketplace": true,
+    "plugin-dev@claude-code-plugins": true,
+    "pr-review-toolkit@claude-code-plugins": true,
+    "engineering-infra@swan": true,
+    "github@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "Notion@claude-plugins-official": false,
+    "plugin-dev@claude-plugins-official": true,
+    "linear@claude-plugins-official": true,
+    "shell@nlamirault-agentic": true,
+    "observability@nlamirault-agentic": true
+  },
+  "alwaysThinkingEnabled": false,
+  "commit": {
+    "templates": "feat: $MESSAGE",
+    "trailers": {
+      "Co-authored-by": "Claude Code <claude@anthropic.com>"
+    }
+  },
+  "pr": {
+    "attribution": "Managed-By: Claude Code <claude@anthropic.com>"
+  },
+  "verbose": false,
+  "autoUpdates": true,
+  "preferredNotifChannel": "terminal_bell"
+}

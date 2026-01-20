@@ -1,0 +1,36 @@
+{
+  "model": "sonnet",
+  "statusLine": {
+    "style": "detailed",
+    "showCost": true,
+    "showTokens": true,
+    "showModel": true
+  },
+  "editor": {
+    "mode": "vim",
+    "lineNumbers": true
+  },
+  "display": {
+    "codeBlockStyle": "bordered",
+    "syntaxHighlighting": true,
+    "diffStyle": "unified",
+    "animations": true
+  },
+  "history": {
+    "maxSize": 1000,
+    "saveToDisk": true
+  },
+  "keybindings": {
+    "submit": "Enter",
+    "newLine": "Shift+Enter",
+    "cancel": "Ctrl+C"
+  },
+  "notifications": {
+    "onTaskComplete": true,
+    "onError": true
+  },
+  "terminal": {
+    "scrollback": 10000,
+    "wordWrap": true
+  }
+}

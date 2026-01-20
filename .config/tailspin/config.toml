@@ -1,0 +1,65 @@
+# Tailspin configuration
+
+[date]
+style = { fg = "magenta" }
+# To shorten the date, uncomment the line below
+# shorten = { to = "␣", style = { fg = "magenta" } }
+
+[time]
+time = { fg = "blue" }
+zone = { fg = "red" }
+# To shorten the time, uncomment the line below
+# shorten = { to = "␣", style = { fg = "blue" } }
+
+[url]
+http = { faint = true }
+https = { bold = true }
+host = { fg = "blue", faint = true }
+path = { fg = "blue" }
+query_params_key = { fg = "magenta" }
+query_params_value = { fg = "cyan" }
+symbols = { fg = "red" }
+
+[number]
+style = { fg = "cyan" }
+
+[ip]
+segment = { fg = "blue", italic = true }
+separator = { fg = "red" }
+
+[quotes]
+style = { fg = "white" }
+token = '"'
+
+[path]
+segment = { fg = "green", italic = true }
+separator = { fg = "yellow" }
+
+[uuid]
+segment = { fg = "blue", italic = true }
+separator = { fg = "red" }
+
+[key_value]
+key = { faint = true }
+separator = { fg = "white" }
+
+[process]
+name = { fg = "green" }
+separator = { fg = "red" }
+id = { fg = "yellow" }
+
+[[keywords]]
+words = ['error']
+style = { fg = "red" }
+
+[[keywords]]
+words = ['warn']
+style = { fg = "yellow" }
+
+[[keywords]]
+words = ['info']
+style = { fg = "green" }
+
+[[keywords]]
+words = ['debug']
+style = { fg = "blue" }

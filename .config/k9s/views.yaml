@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,13 +14,42 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-case "${SHELL}" in
-"zsh")
-  # shellcheck source=/dev/null
-  . /usr/share/git/completion/git-completion.zsh
-  ;;
-"bash")
-  # shellcheck source=/dev/null
-  . /usr/share/git/completion/git-completion.bash
-  ;;
-esac
+views:
+  v1/nodes:
+    columns:
+      - NAME
+      - STATUS
+      - VERSION
+      - "%CPU"
+      - "%MEM"
+      - "CPU/A"
+      - "MEM/A"
+      - TAINTS
+      - NODEPOOL:.metadata.labels.karpenter\.sh/nodepool
+      - ZONE:.metadata.labels.topology\.kubernetes\.io/zone
+
+  v1/pods:
+    sortColumn: AGE:asc
+    columns:
+      - AGE
+      - NAMESPACE
+      - NAME
+      - IP
+      - CPU
+      - MEM
+      - "%CPU/R"
+      - "%CPU/L"
+      - "%MEM/R"
+      - "%MEM/L"
+      - NODE
+      - LABELS
+      - STATUS
+      - READY
+
+  v1/services:
+    columns:
+      - AGE
+      - NAMESPACE
+      - NAME
+      - TYPE
+      - CLUSTER-IP

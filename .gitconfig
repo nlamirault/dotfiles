@@ -20,6 +20,7 @@
 
 [includeIf "gitdir:~/Work/"]
     path = ~/Work/.gitconfig
+
 [includeIf "gitdir:~/Projects/"]
     path = ~/Projects/.gitconfig
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 #
@@ -22,10 +22,10 @@
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
 if [ -d "${HOME}/.cache/wal" ]; then
-    (/usr/bin/cat "${HOME}"/.cache/wal/sequences &)
+  (/usr/bin/cat "${HOME}"/.cache/wal/sequences &)
 
-    # Alternative (blocks terminal for 0-3ms)
-    /usr/bin/cat "${HOME}"/.cache/wal/sequences
+  # Alternative (blocks terminal for 0-3ms)
+  /usr/bin/cat "${HOME}"/.cache/wal/sequences
 fi
 
 # BUG when bash is configure with "set -e"
@@ -38,7 +38,6 @@ fi
 
 TERM=xterm-256color
 
-
 # # Colors for man pages
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
@@ -48,27 +47,24 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
-
 function colors_ls() {
-    local style=$1
-    for COLOR in {0..255}
-    do
-        for STYLE in $style
-        do
-            TAG="\033[${STYLE};${COLOR}m"
-            STR="${STYLE};${COLOR}"
-            echo -ne "${TAG}${STR}${NONE}  "
-        done
-        echo
+  local style=$1
+  for COLOR in {0..255}; do
+    for STYLE in $style; do
+      TAG="\033[${STYLE};${COLOR}m"
+      STR="${STYLE};${COLOR}"
+      echo -ne "${TAG}${STR}${NONE}  "
     done
+    echo
+  done
 }
 
 function colors_foreground_ls() {
-    local FOREGROUND_STYLE="38;5"
-    colors_ls $FOREGROUND_STYLE
+  local FOREGROUND_STYLE="38;5"
+  colors_ls $FOREGROUND_STYLE
 }
 
 function colors_background_ls() {
-    local BACKGROUND_STYLE="48;5"
-    colors_ls $BACKGROUND_STYLE
+  local BACKGROUND_STYLE="48;5"
+  colors_ls $BACKGROUND_STYLE
 }
