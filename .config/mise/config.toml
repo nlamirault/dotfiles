@@ -11,7 +11,7 @@ experimental = false # enable experimental features such as shims
 idiomatic_version_file_enable_tools = ["terraform"]
 
 [tools]
-argocd = '2.6.1'
+argocd = '2.14.21'
 cilium-cli = "0.15.20"
 cilium-hubble = "0.13.0"
 clusterctl = '1.4.3'
