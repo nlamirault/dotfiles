@@ -41,7 +41,6 @@
     "shell@nlamirault-agentic": true,
     "observability@nlamirault-agentic": true
   },
-  "alwaysThinkingEnabled": false,
   "commit": {
     "templates": "feat: $MESSAGE",
     "trailers": {
