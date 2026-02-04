@@ -10,6 +10,7 @@ foreground = ffffff
 # theme = MaterialOcean
 # theme = Catppuccin Frappe
 # theme = Adwaita Dark
+theme = "Github Dark"
 
 cursor-style = block
 
