@@ -21,11 +21,3 @@
 # shellcheck source=/dev/null
 [ -r "${HOME}"/.zshrc ] && . "${HOME}"/.zshrc
 
-export PATH="${HOME}/.kzenv/bin:$PATH"
-export PATH="$HOME/.poetry/bin:$PATH"
-
-# Added by swiftly
-. "/Users/nicolas.lamirault/.swiftly/env.sh"
-
-# Kiro CLI post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zprofile.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zprofile.post.zsh"

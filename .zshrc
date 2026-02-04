@@ -77,19 +77,16 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-eval "$(direnv hook zsh)"
-
-eval "$(mise activate zsh)"
-eval $(mise env) # Without this line, PATH not updated into Zellij
-
 [[ -f "${HOME}/.rustrc" ]] && source "${HOME}/.rustrc"
 
 if [[ "$-" == *x* ]]; then
   echo "DEBUG MODE is ON ========================== Zsh setup finished."
 fi
 
-. "$HOME/.cargo/env"
 
+if [ -d "${HOME}/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
@@ -105,5 +102,4 @@ fi
 # Added by Antigravity
 export PATH="/Users/nicolas.lamirault/.antigravity/antigravity/bin:$PATH"
 
-# Added by Antigravity
-export PATH="/Users/nicolas.lamirault/.antigravity/antigravity/bin:$PATH"
+eval "$(~/.local/bin/mise activate zsh)"
