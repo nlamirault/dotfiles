@@ -13,7 +13,7 @@ idiomatic_version_file_enable_tools = ["terraform"]
 [tools]
 argocd = '2.6.1'
 cilium-cli = "0.15.20"
-cilium-hubble = "0.13.0"
+cilium-hubble = "0.13.6"
 clusterctl = '1.4.3'
 helm = "4.0.0"
 helm-cr = '1.4.1'
