@@ -39,6 +39,6 @@ kubectl = "1.34.0"
 podman = "5.7.0"
 krew = "0.4.5"
 zellij = "latest"
-aws-cli = { version = "2.33.15", symlink_bins = "true" }
+aws-cli = { version = "2.36.40", symlink_bins = "true" }
 atuin = "18.12.1"
 fnox = "latest"
