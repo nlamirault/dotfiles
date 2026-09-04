@@ -23,11 +23,12 @@ plugins {
     plugin-manager location="zellij:plugin-manager"
     about location="zellij:about"
 
-    zellij-pane-picker location="https://github.com/shihanng/zellij-pane-picker/releases/download/v0.6.0/zellij-pane-picker.wasm" {
+    // zellij-pane-picker location="https://github.com/shihanng/zellij-pane-picker/releases/download/v0.6.0/zellij-pane-picker.wasm" {
         // list_panes ""
         // plugin_select_down "Ctrl n"
         // plugin_select_up "Ctrl p"
-    }
+    // }
+
 }
 
 // Plugins to load in the background when a new session starts
@@ -39,6 +40,7 @@ load_plugins {
         hide_frame_except_for_fullscreen "false"
     }
     zellij-pane-picker
+    tab-finder
 }
 
 layout {
@@ -108,18 +110,21 @@ layout {
 // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
 keybinds {
   shared_except "locked" {
-    //   bind "Ctrl y" {
-    //       LaunchOrFocusPlugin "file:~/.config/zellij/plugins/room.wasm" {
-    //           floating true
-    //           ignore_case true
-    //           quick_jump true
-    //       }
-    //   }
-      bind "Ctrl y" {
-          LaunchOrFocusPlugin "zellij-pane-picker" {
-              floating true; move_to_focused_tab true;
-          }
-      }
+       bind "Ctrl y" {
+           // LaunchOrFocusPlugin "file:~/.config/zellij/plugins/room.wasm" {
+           //    floating true
+           //    ignore_case true
+           //    quick_jump true
+           // }
+           LaunchOrFocusPlugin "file:~/.config/zellij/plugins/harpoon.wasm" {
+             floating true; move_to_focused_tab true;
+           }
+       }
+    // bind "Ctrl y" {
+    //      LaunchOrFocusPlugin "zellij-pane-picker" {
+    //        floating true; move_to_focused_tab true;
+    //    }
+    // }
   }
 }
 
