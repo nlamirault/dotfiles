@@ -40,5 +40,5 @@ podman = "5.7.0"
 krew = "0.4.5"
 zellij = "latest"
 aws-cli = { version = "2.33.15", symlink_bins = "true" }
-atuin = "18.12.1"
+atuin = "18.21.0"
 fnox = "latest"
