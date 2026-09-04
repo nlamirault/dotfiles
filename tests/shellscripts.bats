@@ -1,10 +1,7 @@
 #!/usr/bin/env bats
 
 @test "Personal shell script files" {
-  run ls ${HOME}/bin/tmux-lam.sh
-  [ "$status" -eq 0 ]
-
-  run ls ${HOME}/bin/tmux-perso.sh
+  run ls ${HOME}/bin/tmux-core.sh
   [ "$status" -eq 0 ]
 
   run ls ${HOME}/bin/alacritty-perso.sh
