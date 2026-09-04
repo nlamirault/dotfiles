@@ -37,10 +37,7 @@ function install_shell {
 
 function install_binaries {
   mkdir -p "${HOME}/bin"
-  create_link "/bin/tmux-lam.sh"
-  create_link "/bin/tmux-perso.sh"
-  create_link "/bin/tmux-zeiot.sh"
-  create_link "/bin/tmux-pilotariak.sh"
+  create_link "/bin/tmux-core.sh"
   create_link "/bin/alacritty-perso.sh"
   create_link "/bin/zellij.sh"
   create_link "/bin/yk-reset.sh"

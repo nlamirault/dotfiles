@@ -70,6 +70,18 @@ function k8s-karpenter-nodepool-pods {
   done
 }
 
+function k8s-node-viewer {
+  local nodeclass=$1
+
+  if [ -z "${nodeclass}" ]; then
+    log_error "Usage: k8s-karpenter-nodepool-pods <ec2nodeclass>"
+    return 1
+  fi
+
+  eks-node-viewer --resources cpu,memory --node-selector "karpenter.k8s.aws/ec2nodeclass=${nodeclass}"
+}
+
+
 function k8s-pods-image {
   local image=$1
   if [ -z "${image}" ]; then

@@ -5,6 +5,14 @@
 
 alias k8s-istio-lb='kubectl -n istio-system get svc | grep LoadBalancer'
 
+# Nodes
+alias k8s-node-resources='kubectl get nodes -o custom-columns="NAME:.metadata.name,TYPE:.metadata.labels.node\.kubernetes\.io/instance-type,CPU:.status.capacity.cpu,MEMORY:.status.capacity.memory"'
+alias k8s-node-instances='kubectl get nodes -L node.kubernetes.io/instance-type'
+alias k8s-node-taints='kubectl get nodes -o custom-columns=NAME:.metadata.name,TAINTS:.spec.taints'
+
 # Karpenter
 alias k8s-karpenter-nodepools='kubectl get nodepools.karpenter.sh'
 alias k8s-karpenter-nodeclaims='kubectl get nodeclaims.karpenter.sh --sort-by=".metadata.creationTimestamp" -owide'
+
+# EKS Node Viewer
+alias k8s-eks-nodes='eks-node-viewer --resources cpu,memory --node-selector karpenter.sh/nodepool --extra-labels topology.kubernetes.io/zone'
