@@ -15,7 +15,7 @@
 #   ease_in_quint, ease_out_quint, ease_in_out_quint,
 #   ease_in_expo, ease_out_expo, ease_in_out_expo,
 #   ease_in_circ, ease_out_circ, ease_in_out_circ
-animate = true
+animate = false # See https://github.com/acsandmann/rift/issues/269
 animation_duration = 0.3
 animation_fps = 100.0
 animation_easing = "ease_in_out_cubic"
@@ -105,7 +105,7 @@ vertical = 0
 
 [settings.ui.menu_bar]
 # enable menu bar workspace indicators
-enabled = true
+enabled = false
 # if enabled, it will show all workspaces including empty ones. disabled because this
 # tends to take up too much room in the menubar and then is auto hidden by macos
 show_empty = true

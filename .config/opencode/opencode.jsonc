@@ -1,23 +1,13 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "autoupdate": true,
-  "enabled_providers": ["anthropic", "openai"],
-  "model": "anthropic/claude-sonnet-4-5",
+  "plugin": ["@devtheops/opencode-plugin-otel"],
   "provider": {
     "anthropic": {
       "options": {
-        "apiKey": "{env:ANTHROPIC_API_KEY}",
         "setCacheKey": true,
         "timeout": 600000
       }
     }
-  },
-  "theme": "matrix",
-  "tui": {
-    "scroll_speed": 3,
-    "scroll_acceleration": {
-      "enabled": true
-    },
-    "diff_style": "auto"
   }
 }
