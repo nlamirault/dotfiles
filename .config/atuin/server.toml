@@ -1,0 +1,35 @@
+# The host address to bind to
+# Default: 127.0.0.1 (localhost only)
+# Use 0.0.0.0 to listen on all interfaces
+ATUIN_HOST="127.0.0.1"
+
+# The port to listen on
+# Default: 8888
+ATUIN_PORT="8888"
+
+# Allow new user registrations
+# Default: false
+# WARNING: Only set to true if you want to allow public registrations
+ATUIN_OPEN_REGISTRATION="false"
+
+# Database URI
+# ATUIN_DB_URI="postgres://atuin:password@localhost/atuin"
+ATUIN_DB_URI="sqlite:///$XDG_CACHE_HOME/atuin/atuin.db"
+
+# Logging level
+# Options: error, warn, info, debug, trace
+# Default: info
+RUST_LOG="info,atuin_server=info"
+
+## Maximum size for one history entry
+max_history_length = 8192
+
+## Maximum size for one record entry
+## 1024 * 1024 * 1024
+max_record_size = 1073741824
+
+## Webhook to be called when user registers on the servers
+# register_webhook_username = ""
+
+## Default page size for requests
+page_size = 1100
