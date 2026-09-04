@@ -17,7 +17,9 @@
 # Labels for action/labeler
 
 area/ansible:
-  - defaults/*
-  - tasks/*
-  - handlers/*
-  - vars/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - defaults/*
+          - tasks/*
+          - handlers/*
+          - vars/*
