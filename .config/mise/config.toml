@@ -11,7 +11,7 @@ experimental = false # enable experimental features such as shims
 idiomatic_version_file_enable_tools = ["terraform"]
 
 [tools]
-helm = "4.0.0"
+helm = "4.2.4"
 helm-cr = '1.4.1'
 helm-ct = "3.11.0"
 k9s = "0.40.3"
