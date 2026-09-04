@@ -1,7 +1,8 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "cleanupPeriodDays": 30,
   "env": {
-    "CLAUDE_CODE_ENABLE_TELEMETRY": "0"
+    "ENABLE_LSP_TOOL": "1"
   },
   "permissions": {
     "allow": [
@@ -15,10 +16,56 @@
       "WebSearch"
     ],
     "deny": [
+      "Bash(rm -rf *)",
+      "Bash(rm -fr *)",
+      "Bash(sudo *)",
+      "Bash(mkfs *)",
+      "Bash(dd *)",
+      "Bash(curl *|bash*)",
+      "Bash(wget *|bash*)",
+      "Bash(git push --force*)",
+      "Bash(git push *--force*)",
+      "Bash(git reset --hard*)",
+      "Edit(~/.bashrc)",
+      "Edit(~/.zshrc)",
+      "Edit(~/.ssh/**)",
+      "Read(~/.ssh/**)",
+      "Read(~/.gnupg/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.azure/**)",
+      "Read(~/.config/gh/**)",
+      "Read(~/.git-credentials)",
+      "Read(~/.docker/config.json)",
       "Read(./.env)",
       "Read(./.env.*)",
-      "Read(./secrets/**)"
+      "Read(~/.kube/**)",
+      "Read(~/.npmrc)",
+      "Read(~/.npm/**)",
+      "Read(~/.pypirc)",
+      "Read(~/.gem/credentials)",
+      "Read(~/Library/Keychains/**)"
     ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "CMD=$(jq -r '.tool_input.command'); if echo \"$CMD\" | grep -qE 'rm[[:space:]]+-[^[:space:]]*r[^[:space:]]*f'; then echo 'BLOCKED: Use trash instead of rm -rf' >&2; exit 2; fi"
+          },
+          {
+            "type": "command",
+            "command": "CMD=$(jq -r '.tool_input.command'); if echo \"$CMD\" | grep -qE 'git[[:space:]]+push.*(main|master)'; then echo 'BLOCKED: Use feature branches, not direct push to main' >&2; exit 2; fi"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/scripts/statusline.sh"
   },
   "enabledPlugins": {
     "document-skills@anthropic-agent-skills": true,
@@ -29,17 +76,39 @@
     "plugin-dev@claude-code-plugins": true,
     "pr-review-toolkit@claude-code-plugins": true,
     "engineering-infra@swan": true,
-    "github@claude-plugins-official": true,
-    "feature-dev@claude-plugins-official": true,
+    "shell@nlamirault-agentic": true,
+    "observability@nlamirault-agentic": true,
+    "cicd@nlamirault-agentic": true,
+    "cloud@nlamirault-agentic": true,
+    "content-generation@nlamirault-agentic": true,
+    "documentation@nlamirault-agentic": true,
+    "engineering-workflow@nlamirault-agentic": true,
+    "go@nlamirault-agentic": true,
+    "kubernetes@nlamirault-agentic": true,
+    "ocaml@nlamirault-agentic": true,
+    "productivity@nlamirault-agentic": true,
+    "project@nlamirault-agentic": true,
+    "python@nlamirault-agentic": true,
+    "rust@nlamirault-agentic": true,
+    "security@nlamirault-agentic": true,
+    "terraform@nlamirault-agentic": true,
+    "zig@nlamirault-agentic": true,
+    "engineering@knowledge-work-plugins": true,
+    "enterprise-search@knowledge-work-plugins": true,
+    "product-management@knowledge-work-plugins": true,
+    "productivity@knowledge-work-plugins": true,
     "code-review@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
-    "Notion@claude-plugins-official": false,
+    "claude-md-management@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true,
     "plugin-dev@claude-plugins-official": true,
+    "explanatory-output-style@claude-plugins-official": true,
+    "Notion@claude-plugins-official": true,
     "linear@claude-plugins-official": true,
-    "shell@nlamirault-agentic": true,
-    "observability@nlamirault-agentic": true
+    "skill-creator@claude-plugins-official": true,
+    "ccc-skills@ccc": true
   },
   "commit": {
     "templates": "feat: $MESSAGE",
