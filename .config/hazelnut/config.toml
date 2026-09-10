@@ -1,0 +1,19 @@
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# STEP 1: Define which folders to watch
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[[watch]]
+path = "/home/nicolas.lamirault/Downloads"  # Use full path (~ not expanded)
+recursive = false                   # Set true to include subfolders
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# STEP 2: Define rules for what to do with files
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[[rule]]
+name = "Organize PDFs"
+
+[rule.condition]
+extension = "pdf"
+
+[rule.action]
+type = "move"
+destination = "/home/nicolas.lamirault/Documents/PDFs"

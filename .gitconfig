@@ -14,10 +14,6 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-; [user]
-;     email = nicolas.lamirault@gmail.com
-;     name = Nicolas Lamirault
-
 [includeIf "gitdir:~/Work/"]
     path = ~/Work/.gitconfig
 
@@ -31,63 +27,59 @@
     branch = auto
 
 [alias]
-    aliases = config --get-regexp alias
-    lgtree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-    lg = log --graph --format='%Cred%h%Creset %ad %C(bold cyan)%an%Creset - %s - %C(yellow)%d%Creset' --date=short --abbrev-commit
-    lga = log --format='%Cred%h%Creset %ad %C(bold cyan)%an%Creset - %s%C(yellow)%d%Creset' --graph --date=short --abbrev-commit --all
-    #lgme = log --since yesterday --oneline --author 'Nicolas Lamirault'
-    lgme = log --oneline --author 'Your User'
+  aliases = config --get-regexp alias
+  lgtree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  lg = log --graph --format='%Cred%h%Creset %ad %C(bold cyan)%an%Creset - %s - %C(yellow)%d%Creset' --date=short --abbrev-commit
+  lga = log --format='%Cred%h%Creset %ad %C(bold cyan)%an%Creset - %s%C(yellow)%d%Creset' --graph --date=short --abbrev-commit --all
+  #lgme = log --since yesterday --oneline --author 'Nicolas Lamirault'
+  lgme = log --oneline --author 'Your User'
 
-    meld = !"git difftool -d --tool=meld" 2> /dev/null
+  meld = !"git difftool -d --tool=meld" 2> /dev/null
 
-    s = status
-    b = branch
-    bd = branch -D
-    c = commit
-    csm = commit -s -m
-    pr = prune -v
-    sh = stash
-    shl = stash list
-    sha = stash apply
-    shc = stash clear
-    shp = stash pop
-    sw = switch
-    swc = switch -c
+  s = status
+  b = branch
+  bd = branch -D
+  c = commit
+  csm = commit -s -m
+  pr = prune -v
+  sh = stash
+  shl = stash list
+  sha = stash apply
+  shc = stash clear
+  shp = stash pop
+  sw = switch
+  swc = switch -c
 
-    t = tag
-    ta = tag -a
-    td = tag -d
-    # ts = tag --format='%(creatordate:short)%09%(objectname:short)%09%(refname:strip=2)%09%(contents:subject)' --sort=creatordate
-    ts = tag --format='%(creatordate:short)%09%(objectname:short)%09%(refname:strip=2)%09%(contents:subject)' --sort=taggerdate
+  t = tag
+  ta = tag -a
+  td = tag -d
+  # ts = tag --format='%(creatordate:short)%09%(objectname:short)%09%(refname:strip=2)%09%(contents:subject)' --sort=creatordate
+  ts = tag --format='%(creatordate:short)%09%(objectname:short)%09%(refname:strip=2)%09%(contents:subject)' --sort=taggerdate
 
-    cancel = reset --hard
-    undo = revert HEAD
-    diffstat = diff --stat -r
-    whatsnew = !sh -c 'git log $1@{1}..$1@{0} "$@"'
-    who = shortlog -sne
-    recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
+  cancel = reset --hard
+  undo = revert HEAD
+  diffstat = diff --stat -r
+  whatsnew = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+  who = shortlog -sne
+  recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
 
-    current = rev-parse --abbrev-ref HEAD
-    pto = !CURRENT=$(git current) && git push --set-upstream origin $CURRENT
-    pfo = !CURRENT=$(git current) && git pull --set-upstream origin $CURRENT
-    pdc = !CURRENT=$(git current) && git switch master && git pull --set-upstream origin && git branch -D $CURRENT
-    pdc2 = !CURRENT=$(git current) && git switch main && git pull --set-upstream origin && git branch -D $CURRENT
-    pswc = !CURRENT=$(git current) && git switch master && git pull && git swc -c
-    pswc2 = !CURRENT=$(git current) && git switch main && git pull && git swc -c
-    dto = diff origin/master..master
-    dtm = !CURRENT=$(git current) && git diff master...$CURRENT
+  current = rev-parse --abbrev-ref HEAD
+  pto = !CURRENT=$(git current) && git push --set-upstream origin $CURRENT
+  pfo = !CURRENT=$(git current) && git pull --set-upstream origin $CURRENT
+  pdc = !CURRENT=$(git current) && git switch master && git pull --set-upstream origin && git branch -D $CURRENT
+  pdc2 = !CURRENT=$(git current) && git switch main && git pull --set-upstream origin && git branch -D $CURRENT
+  pswc = !CURRENT=$(git current) && git switch master && git pull && git swc -c
+  pswc2 = !CURRENT=$(git current) && git switch main && git pull && git swc -c
+  dto = diff origin/master..master
+  dtm = !CURRENT=$(git current) && git diff master...$CURRENT
 
-    # Gitlab
-    glpbmr = !CURRENT=$(git current) && git push --set-upstream origin $CURRENT -o merge_request.create -o merge_request.target=master -o merge_request.merge_when_pipeline_succeeds
-    glpbmrd = !CURRENT=$(git current) && git  push --set-upstream origin $CURRENT -o merge_request.create -o merge_request.target=master -o merge_request.merge_when_pipeline_succeeds -o merge_request.remove_source_branch
-
-    # AI
-    # ai-explain = "!f() { DIFF=`git show -b $*`; ollama run wizardcoder:33b \"Explain what the purpose of this changeset is:\n\n$DIFF\"; }; f"
-	# ai-review = "!f() { DIFF=`git show -b $*`; ollama run wizardcoder:33b \"Review this changeset. Provide suggestions for improvements, coding best practices, improve readability, and maintainability. Respond in markdown format\n\n$DIFF\"; }; f"
-    ai-commit-explain = "!f() { DIFF=`git show -b $*`; ollama run mistral:latest \"Explain what the purpose of this changeset is:\n\n$DIFF\"; }; f"
-	ai-commit-review = "!f() { DIFF=`git show -b $*`; ollama run mistral:latest \"Review this changeset. Provide suggestions for improvements, coding best practices, improve readability, and maintainability. Respond in markdown format\n\n$DIFF\"; }; f"
-    ai-branch-explain = "!f() { DIFF=`git diff origin/master...`; ollama run mistral:latest \"Explain what the purpose of this changeset is:\n\n$DIFF\"; }; f"
-	ai-branch-review = "!f() { DIFF=`git diff origin/master...`; ollama run mistral:latest \"Review this changeset. Provide suggestions for improvements, coding best practices, improve readability, and maintainability. Respond in markdown format\n\n$DIFF\"; }; f"
+  # Worktree
+	wta = "!f() { git worktree add -b \"$1\" \"../$1\"; }; f"
+	wtr = "!f() { git worktree remove \"../$1\"; }; f"
+	wtl = "!f() { git worktree list; }; f"
+	wtp = "!f() { git worktree prune; }; f"
+	hdiff = -c core.pager=\"hunk pager\" diff
+	hshow = -c core.pager=\"hunk pager\" show
 
 [giggle]
 	main-window-maximized = false
@@ -99,6 +91,7 @@
 [core]
     editor = nvim
     ; pager = delta
+    ; pager = hunk pager
 
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes
@@ -125,14 +118,14 @@
 [merge]
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
-    conflictstyle = diff3
+  conflictstyle = diff3
 
 [push]
 	default = simple
 
 [diff]
 	noprefix = true
-    # tool = difftastic
+  # tool = difftastic
 
 # [difftool]
 #     prompt = false

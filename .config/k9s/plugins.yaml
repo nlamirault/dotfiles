@@ -49,3 +49,26 @@ plugins:
     args:
     - -c
     - "kubectl logs -f $NAME -n $NAMESPACE --context $CONTEXT | gonzo"
+  #--- Display cleaned manifest without managedFields/status noise (requires kubectl-neat)
+  neat:
+    shortCut: Ctrl-N
+    description: "Neat manifest"
+    scopes:
+      - all
+    command: bash
+    background: false
+    args:
+      - -c
+      - "kubectl --context $CONTEXT -n $NAMESPACE get $RESOURCE_NAME $NAME -o yaml | kubectl neat | less"
+  #--- Multi-pod log tailing for a deployment (requires stern)
+  stern:
+    shortCut: Ctrl-S
+    description: "Stern multi-pod logs"
+    scopes:
+      - deployments
+    command: stern
+    background: false
+    args:
+      - --context=$CONTEXT
+      - -n=$NAMESPACE
+      - $NAME

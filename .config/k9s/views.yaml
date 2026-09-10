@@ -1,55 +1,148 @@
-# Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-# SPDX-License-Identifier: Apache-2.0
+# $XDG_CONFIG_HOME/k9s/views.yaml
+# Custom column views for K9s resources.
+# Each view overrides the default columns for a given resource (GVR).
+# Column syntax: LABEL:<jsonpath>|<flags>
+#   Flags: S=short (truncate), R=right-align, RS=right-align+short
+# Requires k9s >= 0.26 for custom columns; >= 0.50 for 'super column' blowout syntax.
 
 views:
-  v1/nodes:
-    columns:
-      - NAME
-      - STATUS
-      - VERSION
-      - "%CPU"
-      - "%MEM"
-      - "CPU/A"
-      - "MEM/A"
-      - TAINTS
-      - NODEPOOL:.metadata.labels.karpenter\.sh/nodepool
-      - ZONE:.metadata.labels.topology\.kubernetes\.io/zone
-
+  # Pods: extended view with resource usage and custom columns for image version and DNS ndots
   v1/pods:
     sortColumn: AGE:asc
     columns:
-      - AGE
       - NAMESPACE
       - NAME
-      - IP
+      - PF
+      - READY|S
+      - STATUS|S
+      - RESTARTS
       - CPU
       - MEM
-      - "%CPU/R"
-      - "%CPU/L"
-      - "%MEM/R"
-      - "%MEM/L"
+      - '%CPU/R'
+      - '%CPU/L'
+      - '%MEM/R'
+      - '%MEM/L'
+      - IP|S
       - NODE
-      - LABELS
-      - STATUS
-      - READY
-
-  v1/services:
-    columns:
       - AGE
+      # Support 'super column blow' 0.50.0 and later
+      - IMAGE VERSION:.spec.containers[0].image|split(":")|.[-1]|RS
+
+  v1/pods@kube*:
+    columns:
+      - NAME
+      - AGE
+      - LABELS
+
+  # ServiceAccounts: includes EKS IAM role annotation for IRSA (IAM Roles for Service Accounts)
+  v1/serviceaccounts:
+    sortColumn: AGE:asc
+    columns:
+      - NAMESPACE
+      - NAME
+      - SECRET
+      - ROLE:.metadata.annotations.eks\.amazonaws\.com/role-arn|RS
+      - AGE
+
+  # Nodes: shows EC2 instance ID, EKS managed node group, instance type, and Karpenter capacity type
+  v1/nodes:
+    sortColumn: AGE:asc
+    columns:
+      - NAME
+      - INSTANCE ID:.spec.providerID|split("/")|.[-1]|RS
+      # EKS Managed Node Group
+      - GROUP:.metadata.labels.eks\.amazonaws\.com/nodegroup|S
+      - TYPE:.metadata.labels.node\.kubernetes\.io/instance-type|S
+      # CAPTYPE is only available in karpenter nodes
+      - CAPTYPE:.metadata.labels.karpenter\.sh/capacity-type|S
+      - STATUS
+      - ROLE
+      - TAINTS
+      - VERSION
+      - PODS
+      - CPU
+      - MEM
+      - '%CPU'
+      - '%MEM'
+      - 'CPU/A'
+      - 'MEM/A'
+      - AGE
+
+  # ArgoCD ApplicationSets: shows target Git revision alongside namespace/name
+  argoproj.io/v1alpha1/applicationsets:
+    sortColumn: AGE:asc
+    columns:
+      - NAMESPACE
+      - NAME
+      - REVISION:.spec.template.spec.source.targetRevision|S
+      - AGE
+
+  # Karpenter EC2NodeClasses: shows EBS volume config and AMI details for node provisioning templates
+  karpenter.k8s.aws/v1/ec2nodeclasses:
+    sortColumn: AGE:asc
+    columns:
+      - NAME
+      - DISK SIZE:.spec.blockDeviceMappings[0].ebs.volumeSize|S
+      - VOL TYPE:.spec.blockDeviceMappings[0].ebs.volumeType|S
+      - AMI FAMILY:.spec.amiFamily|S
+      - AMI SELECTOR:.spec.amiSelectorTerms[0].alias|S
+      - AGE
+
+  # Gateway API HTTPRoutes: shows parent Gateway ref, first hostname, and number of routing rules
+  gateway.networking.k8s.io/v1/httproutes:
+    sortColumn: AGE:asc
+    columns:
+      - NAMESPACE
+      - NAME
+      - PARENT NAME:.spec.parentRefs[0].name|S
+      - PARENT NS:.spec.parentRefs[0].namespace|S
+      - HOSTNAMES:.spec.hostnames[0]|S
+      - RULES:.spec.rules|length|RS
+      - AGE
+
+  # Services: explicit view to surface type and external IP at a glance
+  v1/services:
+    sortColumn: NAME:asc
+    columns:
       - NAMESPACE
       - NAME
       - TYPE
       - CLUSTER-IP
+      - EXTERNAL-IP
+      - PORT(S)
+      - AGE
+
+  # ArgoCD Applications: health/sync status, project, repo and revision per app
+  argoproj.io/v1alpha1/applications:
+    sortColumn: NAME:asc
+    columns:
+      - NAMESPACE
+      - NAME
+      - PROJECT:.spec.project|S
+      - REPO:.spec.source.repoURL|split("/")|.[-1]|RS
+      - REVISION:.spec.source.targetRevision|S
+      - SYNC:.status.sync.status|S
+      - HEALTH:.status.health.status|S
+      - AGE
+
+  # Karpenter NodePools: resource limits, disruption policy, and readiness condition
+  karpenter.sh/v1/nodepools:
+    sortColumn: AGE:asc
+    columns:
+      - NAME
+      - READY:.status.conditions[?(@.type=="Ready")].status|S
+      - NODES:.status.resources.nodes|S
+      - CPU LIMIT:.spec.limits.cpu|S
+      - MEM LIMIT:.spec.limits.memory|S
+      - DISRUPTION:.spec.disruption.consolidationPolicy|S
+      - AGE
+
+  # ExternalSecrets (ESO): shows SecretStore source and sync readiness
+  external-secrets.io/v1beta1/externalsecrets:
+    sortColumn: AGE:asc
+    columns:
+      - NAMESPACE
+      - NAME
+      - STORE:.spec.secretStoreRef.name|S
+      - READY:.status.conditions[?(@.type=="Ready")].status|S
+      - AGE

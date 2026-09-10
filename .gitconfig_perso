@@ -21,3 +21,6 @@
 
 [core]
     sshCommand = ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes
+
+[gpg "ssh"]
+	allowedSignersFile = ~/Projects/.allowed_signers
