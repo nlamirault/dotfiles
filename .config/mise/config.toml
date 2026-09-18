@@ -11,7 +11,7 @@ experimental = false                                # enable experimental featur
 idiomatic_version_file_enable_tools = ["terraform"]
 
 [tools]
-helm = "4.0.0"
+helm = "4.3.0"
 helm-cr = '1.4.1'
 helm-ct = "3.11.0"
 k9s = "0.50.18"
