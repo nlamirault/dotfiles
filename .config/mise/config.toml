@@ -37,7 +37,7 @@ prek = "0.5.3"
 grype = "0.103.0"
 kubectl = "1.37.0"
 podman = "5.7.0"
-krew = "0.4.5"
+krew = "0.5.0"
 zellij = "latest"
 aws-cli = { version = "2.33.15", symlink_bins = "true" }
 atuin = "18.22.0"
