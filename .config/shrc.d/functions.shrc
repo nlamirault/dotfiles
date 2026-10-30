@@ -79,18 +79,3 @@ function format_sdcard() {
 function jdgo() {
   pushd ${XDG_DOCUMENTS_DIR}/*/*/${1}*
 }
-
-function kubectlgetall {
-  for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events.events.k8s.io" | grep -v "events" | sort | uniq); do
-    echo "[ Kubernetes: $i ]"
-    kubectl -n "${1}" get --ignore-not-found "${i}"
-  done
-}
-
-function gh-pr {
-  if [ $# -eq 0 ]; then
-    echo 'usage: gh-pr -l "kind/xxxxx" -l "area/xxxxx" -l "priority/xxxxx"'
-  else
-    gh pr create --draft -a nlamirault -l "lifecycle/active" -l "status/in_progress" $*
-  fi
-}

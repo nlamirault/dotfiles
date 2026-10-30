@@ -8,6 +8,8 @@
 # Reload: Cmd+Shift+, (macOS)
 # View options: ghostty +show-config --default --docs
 
+language = en
+
 # # Zellij
 # keybind = cmd+t=unbind
 # keybind = cmd+n=unbind
@@ -18,6 +20,8 @@
 
 # --- Typography ---
 font-family = "Hack Nerd Font Mono Regular" # JetBrainsMonoNerdFont
+font-family = "Herdr Agent Icons Max"
+font-codepoint-map = U+E1A0-U+E1B0="Herdr Agent Icons Max"
 font-size = 13
 font-thicken = true
 adjust-cell-height = 2

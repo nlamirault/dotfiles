@@ -62,6 +62,7 @@ function ai-credentials() {
   _infisical_get_secret "NVIDIA_API_KEY" "/nvidia" "NVIDIA_API_KEY" || return 1
   _infisical_get_secret "OPENAI_API_KEY" "/openai" "OPENAI_API_KEY" || return 1
   _infisical_get_secret "OPENROUTER_API_KEY" "/openrouter" "OPENROUTER_API_KEY" || return 1
+  _infisical_get_secret "TEAMOROUTER_API_KEY" "/teamorouter" "TEAMOROUTER_API_KEY" || return 1
 
   log_final "[secrets] AI secrets loaded"
 }

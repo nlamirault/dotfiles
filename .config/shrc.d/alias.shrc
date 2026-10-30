@@ -70,15 +70,6 @@ fi
 
 alias lsi="devicons-ls"
 
-# Directories
-# -----------------------------------------------------
-
-alias dh='cd ${HOME}'
-alias dw='cd ${HOME}/Work'
-alias dp='cd ${HOME}/Projects'
-alias dt='cd ${HOME}/Desktop'
-alias dl='cd ${HOME}/Downloads'
-
 # Time
 # -----------------------------------------------------
 
@@ -95,11 +86,6 @@ elif [ -x "$(command -v vim)" ]; then
   alias vi='vim'
 fi
 alias astronvim="NVIM_APPNAME=astronvim nvim"
-
-# Git
-# -----------------------------------------------------
-
-alias gitui='gitui -t ~/.config/gitui/catppuccin-frappe.ron'
 
 # Network
 # -----------------------------------------------------
@@ -121,54 +107,3 @@ alias fwunblockip="iptables -D INPUT -j DROP -s "
 
 alias lsports='sudo lsof -i -T -n'
 alias showports='netstat -tulanp'
-
-# reboot / halt / poweroff
-alias reboot='sudo /sbin/reboot'
-alias poweroff='sudo /sbin/poweroff'
-alias halt='sudo /sbin/halt'
-alias shutdown='sudo /sbin/shutdown'
-
-# System
-# -----------------------------------------------------
-
-alias showmount='mount |column -t'
-alias mount_sdcard='sudo mount /dev/mmcblk0p1 /mnt/sdcard'
-alias mount_usbdisk='sudo mount -t ntfs /dev/sda1 /mnt/usb-drive'
-
-alias meminfo='free -m -l -t'
-
-## get top process eating memory
-alias psmem='ps auxf | sort -nr -k 4'
-alias psmem10='ps auxf | sort -nr -k 4 | head -10'
-## get top process eating cpu ##
-alias pscpu='ps auxf | sort -nr -k 3'
-alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
-alias psmy='ps -ef | grep $USER"'
-
-## Get server cpu info ##
-alias cpuinfo='lscpu'
-## get GPU ram on desktop / laptop##
-alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
-
-# Display
-# -----------------------------------------------------
-
-alias xrandr_ls="xrandr -q|awk '/connected/ {print \$1}'"
-alias xrandr_on="xrandr -q|awk '/ connected/ {print \$1}'"
-alias xrandr_off="xrandr -q|awk '/disconnected/ {print \$1}'"
-alias xrandr_cfg="xrandr -q | awk '/connected/{d=\$1}/*/{print d \"\t\" \$1}'"
-
-# Web
-# -----------------------------------------------------
-
-alias httpsnif="sudo ngrep -d 'enp0s25' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i enp0s25 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
-
-# Misc
-# -----------------------------------------------------
-
-alias clean='find . \( -name ".*~" -o -name "*~" -o -name ".saves*" -o -name ".#*" \) -print -exec /bin/rm {} \;'
-alias ssh_wk="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
-
-alias my_motd="rust-motd"
-alias my_fetch="freshfetch"

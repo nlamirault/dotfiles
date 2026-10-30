@@ -86,3 +86,5 @@ eval "$(rtx activate bash)"
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/bashrc.post.bash" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/bashrc.post.bash"
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init bash)"; fi

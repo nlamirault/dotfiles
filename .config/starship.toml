@@ -1,96 +1,32 @@
-# Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-# SPDX-License-Identifier: Apache-2.0
-
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Don't print a new line at the start of the prompt
-add_newline = false
-
-# format = """
-#     $all\
-# """
-
-# format = """\
-#     $os\
-#     $username\
-#     $hostname\
-#     $directory\
-#     $kubernetes\
-#     $terraform\
-#     $git_branch\
-#     $git_commit\
-#     $git_state\
-#     $git_metrics\
-#     $git_status\
-#     $custom\
-#     $jobs\
-#     $time\
-#     $aws\
-#     $azure\
-#     $gcloud\
-#     $rust\
-#     $golang\
-#     $python\
-#     $line_break\
-#     $character\
-#     """
-
-# format = '''
-# [│ ]()$os$username$hostname$directory$kubernetes$aws$azure$gcloud$rust$golang$python$git_branch$git_commit$git_state$git_metrics$git_status$custom
-# [└─](bold white) $character'''
-
-format = '''
-[│ ]()$os$username$hostname$directory$kubernetes$git_branch$git_state$git_status$custom
-[└─](bold white) $character'''
-
-[hostname]
-ssh_only = true
-disabled = false
-# format =  "on [$hostname](bold red) "
-
-# ssh_only = false
-# prefix = "❮"
-# suffix = "❯"
-# # format = "❮$hostname($style)❯ "
-# trim_at = ""
-# disabled = false
-
-[character]
-success_symbol = '[➜](bold green)'
-# success_symbol = "[❯ ](bold green)"
-error_symbol = '[✗](bold red) '
-# error_symbol = "[✖ ](bold red) "
-# symbol = "❯"
-# use_symbol_for_status = false
-# vicmd_symbol = "❮"
-
-[username]
-disabled = false
-show_always = true
+format = """
+[░▒▓](#a3aed2)\
+$os\
+[](bg:#769ff0 fg:#a3aed2)\
+$directory\
+[](fg:#769ff0 bg:#394260)\
+$git_branch\
+$git_status\
+[](fg:#394260 bg:#212736)\
+$nodejs\
+$bun\
+$rust\
+$golang\
+$python\
+[](fg:#212736 bg:#1d2230)\
+$kubernetes\
+[ ](fg:#1d2230)\
+\n$character"""
 
 [directory]
-truncation_length = 8
-truncate_to_repo = true
-disabled = false
-fish_style_pwd_dir_length = 1
-style = "bold green"
-read_only = "🔒"
-home_symbol = " 🏠 ~"
+style = "fg:#e3e5e5 bg:#769ff0"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
 
 [directory.substitutions]
+# "Documents" = "󰈙 "
 # "Downloads" = " "
 # "Music" = " "
 # "Pictures" = " "
@@ -106,62 +42,34 @@ home_symbol = " 🏠 ~"
 "Projects" = "💻 Projects"
 
 [git_branch]
-# symbol = "🌱 "
-symbol = " "
-# truncation_length = 4
-# truncation_symbol = ""
-
-[git_commit]
-commit_hash_length = 4
-tag_symbol = "🔖 "
-
-[git_state]
-format = '[\($state( $progress_current of $progress_total)\)]($style) '
-cherry_pick = "[🍒 PICKING](bold red)"
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
 
 [git_status]
-# ahead = "↑"
-# behind = "↓"
-# diverged = "⤮ "
-staged = "✮"
-conflicted = "🏳 "
-ahead = "🏎💨 "
-behind = "😰 "
-diverged = "😵 "
-untracked = "🤷‍ "
-stashed = "📦 "
-modified = "📝 "
-# staged.value = "++"
-# staged.style = "green"
-# staged_count.enabled = true
-# staged_count.style = "green"
-renamed = "👅 "
-deleted = "🗑 "
-
-[git_metrics]
-disabled = false
-added_style = "bold blue"
-format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+style = "bg:#394260"
+format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
 
 [kubernetes]
-format = ' [☸ $context \($namespace\)](bold red) '
+# format = ' [☸ $context \($namespace\)](bold red) '
+format = '[[$symbol($context)](fg:#BBC5C7 bg:#212736)]($namespace)'
 disabled = false
+
 [kubernetes.context_aliases]
 # "dev.local.cluster.k8s" = "dev"
 # ".*/openshift-cluster/.*" = "openshift"
 "gke_.*_(?P<cluster>[\\w-]+)" = "gke-$cluster"
 "arn:aws:eks:.*:.*:cluster/(?P<cluster>[\\w-]+)" = "eks-$cluster"
 
-[terraform]
-disabled = true
-format = "[🏎💨 $version]($style) "
+[nodejs]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
-[status]
-# style = "bg:blue"
-# symbol = "🔴"
-# format = '[\[$symbol $common_meaning$signal_name$maybe_int\]]($style) '
-# map_symbol = true
-disabled = false
+[bun]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [rust]
 symbol = ""
@@ -169,74 +77,51 @@ style = "bg:#212736"
 format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [golang]
-symbol = "ﳑ"
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[php]
+symbol = ""
 style = "bg:#212736"
 format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [python]
 symbol = " "
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
-[aws]
-disabled = false
-format = ' [$symbol($profile )]($style) '
-style = "bold blue"
-symbol = "🅰 "
-
-[azure]
-disabled = false
-format = ' [$symbol($subscription)]($style) '
-symbol = '󰠅 '
-style = 'blue bold'
-
-[gcloud]
+[time]
 disabled = true
-format = ' [$symbol$account(@$domain)(\($project\))]($style) '
-style = "bold blue"
-symbol = '️🇬️ '
-
-[package]
-disabled = true
-symbol = " "
+time_format = "%R" # Hour:Minute Format
+style = "bg:#1d2230"
+format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
 
 [os]
-# format = "on [($name )]($style)"
-style = "bold white"
+style = "bg:#a3aed2 fg:#090c0c"
+format = "[ $symbol ]($style)"
 disabled = false
 
 [os.symbols]
-Alpine = " "
-Amazon = " "
-Android = " "
-Arch = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Garuda = "﯑ "
-Gentoo = " "
-HardenedBSD = "ﲊ "
-Illumos = " "
-Linux = " "
-Macos = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-OpenBSD = " "
-openSUSE = " "
-OracleLinux = " "
-Pop = " "
-Raspbian = " "
-Redhat = " "
-RedHatEnterprise = " "
-Redox = " "
-Solus = "ﴱ "
-SUSE = " "
-Ubuntu = " "
-Unknown = " "
-Windows = " "
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+AOSC = ""
+Arch = "󰣇"
+Artix = "󰣇"
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+Pop = ""
