@@ -19,8 +19,7 @@ language = en
 # keybind = cmd+opt+right=unbind
 
 # --- Typography ---
-font-family = "Hack Nerd Font Mono Regular" # JetBrainsMonoNerdFont
-font-family = "Herdr Agent Icons Max"
+font-family = "Hack Nerd Font Mono Regular"
 font-codepoint-map = U+E1A0-U+E1B0="Herdr Agent Icons Max"
 font-size = 13
 font-thicken = true
